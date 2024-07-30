@@ -8,5 +8,5 @@ let contacts = [
         "name"  : "Ralf Ralleisen",
         "email" : "ralle.ralleisen@einsenralle.com",
         "phone" : "+49178965123544",
-    }
+    },
 ];
