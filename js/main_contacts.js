@@ -28,7 +28,7 @@ function getInitialLetter(contact) {
 
 function renderContact(contact, index) {
     let letter = getInitialLetter(contact);
-    let letterContainer = document.getElementById(`letterContainer-${letter}`); // Container für den Buchstaben
+    let letterContainer = document.getElementById(`letterContainer-${letter}`);
 
     if (letterContainer) {
         letterContainer.innerHTML += /*html*/`
