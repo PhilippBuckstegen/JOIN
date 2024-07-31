@@ -33,6 +33,7 @@ body{
     justify-content: center;
     color: #A8A8A8;
     background-color: rgb(42,54,71) ;
+    border: none;
 }
 
 .police-wrapper{
@@ -48,6 +49,17 @@ body{
 .police-button{
     color: #A8A8A8;
     background-color: rgb(42,54,71) ;
-    width: 121px;
+    width: 232px;
     height: 35px;
+    border: none;
+}
+
+.button-sidebar:hover{
+    color: white;
+    background-color: #29ABE2 ;
+}
+
+.police-button:hover{
+    color: white;
+    background-color: #29ABE2 ;
 }
