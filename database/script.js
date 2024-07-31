@@ -141,7 +141,7 @@ async function renderContacts(){
                         <div class="letter-header">${alphabet[j]}</div>
                         <div class="letter-header-border"></div>
                     <!-- </div> -->
-                    <div id="contact${i}" class="contact">
+                    <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
                         <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
                         <div class="name-mail">
                             <span class="name">${contacts[i].name}</span>
@@ -155,7 +155,7 @@ async function renderContacts(){
                 let letterContainer = document.getElementById(`letterContainer${alphabet[j]}`);   
                 letterContainer.innerHTML += /*html*/ `
                 <!-- <div> -->
-                    <div id="contact${i}" class="contact">
+                    <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
                         <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
                         <div class="name-mail">
                             <span class="name">${contacts[i].name}</span>
