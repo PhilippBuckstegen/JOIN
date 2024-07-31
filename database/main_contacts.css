@@ -63,6 +63,15 @@ body {
   border-radius: 10px;
 }
 
+.contact:not(.contact-active):hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.08)
+  );
+  cursor: pointer;
+}
+
 .contact-icon {
   color: white;
   border-radius: 100%;
@@ -184,6 +193,10 @@ body {
   color: black;
 }
 
+.contact-details-email a {
+  color: #007CEE;
+}
+
 .information {
   font-size: 21px;
   font-weight: 400;
@@ -194,8 +207,37 @@ body {
   font-weight: 400;
 }
 
-.edit {
+.edit,
+.delete {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.contact-overlay-icon {
+  min-width: 120px;
+  height: 120px;
+  border: 2px solid white;
+}
+
+.name-edit-delete {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-delete {
+  display: flex;
+  gap: 13px;
+}
+
+.detail-name {
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+}
+
+.edit-delete img {
+  width: 24px;
+  height: 24px;
 }
