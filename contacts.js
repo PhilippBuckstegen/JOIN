@@ -10,157 +10,159 @@ const currentAbbrNameContainer = document.getElementById(
 );
 const currentAbbrName = document.getElementById("currentAbbrName");
 const currentName = document.getElementById("currentName");
+const currentEmail = document.getElementById("currentEmail");
+const currentPhone = document.getElementById("currentPhone");
 
 let contacts = [
   {
     name: "Erika Krawotki",
     email: "erika.krawotki@yahoo.de",
-    phone: "+491523659879",
+    phone: "+49 1523659879",
   },
   {
     name: "Ralf Ralleisen",
     email: "ralle.ralleisen@einsenralle.com",
-    phone: "+49178965123544",
+    phone: "+49 178965123544",
   },
   {
     name: "Hans Müller",
     email: "hans.mueller@gmail.com",
-    phone: "+4915123456789",
+    phone: "+49 15123456789",
   },
   {
     name: "Anna Schmidt",
     email: "anna.schmidt@web.de",
-    phone: "+491716543210",
+    phone: "+49 1716543210",
   },
   {
     name: "Peter Fischer",
     email: "peter.fischer@yahoo.de",
-    phone: "+4915112345678",
+    phone: "+49 15112345678",
   },
   {
     name: "Katrin Wagner",
     email: "katrin.wagner@hotmail.com",
-    phone: "+4917012345678",
+    phone: "+49 17012345678",
   },
   {
     name: "Jürgen Becker",
     email: "juergen.becker@outlook.de",
-    phone: "+4915781234567",
+    phone: "+49 15781234567",
   },
   {
     name: "Monika Hoffmann",
     email: "monika.hoffmann@gmx.de",
-    phone: "+4916321234567",
+    phone: "+49 16321234567",
   },
   {
     name: "Thomas Schäfer",
     email: "thomas.schaefer@yahoo.de",
-    phone: "+4917887654321",
+    phone: "+49 17887654321",
   },
   {
     name: "Sabine Bauer",
     email: "sabine.bauer@t-online.de",
-    phone: "+4915212345678",
+    phone: "+49 15212345678",
   },
   {
     name: "Andreas Keller",
     email: "andreas.keller@gmail.com",
-    phone: "+4917312345678",
+    phone: "+49 17312345678",
   },
   {
     name: "Martina Klein",
     email: "martina.klein@web.de",
-    phone: "+4915212345679",
+    phone: "+49 15212345679",
   },
   {
     name: "Michael Richter",
     email: "michael.richter@hotmail.com",
-    phone: "+4916012345678",
+    phone: "+49 16012345678",
   },
   {
     name: "Sandra Wolf",
     email: "sandra.wolf@yahoo.de",
-    phone: "+4917812345678",
+    phone: "+49 17812345678",
   },
   {
     name: "Frank König",
     email: "frank.koenig@outlook.de",
-    phone: "+4915612345678",
+    phone: "+49 15612345678",
   },
   {
     name: "Nina Krause",
     email: "nina.krause@t-online.de",
-    phone: "+4916312345678",
+    phone: "+49 16312345678",
   },
   {
     name: "Uwe Frank",
     email: "uwe.frank@gmx.de",
-    phone: "+4917512345678",
+    phone: "+49 17512345678",
   },
   {
     name: "Julia Neumann",
     email: "julia.neumann@gmail.com",
-    phone: "+4917212345678",
+    phone: "+49 17212345678",
   },
   {
     name: "Stefan Schwarz",
     email: "stefan.schwarz@web.de",
-    phone: "+4917012345679",
+    phone: "+49 17012345679",
   },
   {
     name: "Karin Weber",
     email: "karin.weber@yahoo.de",
-    phone: "+4917212345679",
+    phone: "+49 17212345679",
   },
   {
     name: "Wolfgang Schröder",
     email: "wolfgang.schroeder@hotmail.com",
-    phone: "+4917312345679",
+    phone: "+49 17312345679",
   },
   {
     name: "Birgit Zimmermann",
     email: "birgit.zimmermann@outlook.de",
-    phone: "+4917412345678",
+    phone: "+49 17412345678",
   },
   {
     name: "Oliver Hartmann",
     email: "oliver.hartmann@t-online.de",
-    phone: "+4917512345679",
+    phone: "+49 17512345679",
   },
   {
     name: "Ingrid Böhm",
     email: "ingrid.boehm@gmx.de",
-    phone: "+4916012345679",
+    phone: "+49 16012345679",
   },
   {
     name: "Philipp Langer",
     email: "philipp.langer@gmail.com",
-    phone: "+4915912345678",
+    phone: "+49 15912345678",
   },
   {
     name: "Heike Schubert",
     email: "heike.schubert@web.de",
-    phone: "+4917812345679",
+    phone: "+49 17812345679",
   },
   {
     name: "Torsten Huber",
     email: "torsten.huber@yahoo.de",
-    phone: "+4916012345680",
+    phone: "+49 16012345680",
   },
   {
     name: "Michaela Werner",
     email: "michaela.werner@hotmail.com",
-    phone: "+4915212345680",
+    phone: "+49 15212345680",
   },
   {
     name: "Rolf Meier",
     email: "rolf.meier@outlook.de",
-    phone: "+4917012345680",
+    phone: "+49 17012345680",
   },
   {
     name: "Claudia Kraus",
     email: "claudia.kraus@t-online.de",
-    phone: "+4917312345680",
+    phone: "+49 17312345680",
   },
 ];
 
@@ -190,7 +192,35 @@ function nameAbbreviation(fullName) {
   return name + surname;
 }
 
+/*
+function getInitials(contact) {
+    let initials = contact.name.split(' ').map(name => name[0]).join('');
+    return initials.toUpperCase();
+}
+*/
+
 displayContacts();
 
 currentAbbrName.textContent = nameAbbreviation(contacts[0].name);
 currentName.textContent = contacts[0].name;
+
+currentEmail.textContent = contacts[0].email;
+currentPhone.textContent = contacts[0].phone;
+
+function getRandomColor() {
+  // Generate a random number between 0 and 255 for each color channel (R, G, B)
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+
+  // Convert the numbers to hexadecimal format and pad with zeros if necessary
+  const hexR = r.toString(16).padStart(2, "0");
+  const hexG = g.toString(16).padStart(2, "0");
+  const hexB = b.toString(16).padStart(2, "0");
+
+  // Combine the hex values into a single string and return it
+  return `#${hexR}${hexG}${hexB}`;
+}
+
+// Example usage
+console.log(getRandomColor());
