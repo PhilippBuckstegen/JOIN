@@ -1,9 +1,11 @@
 function showContactDetails(index) {
-  //document.getElementById(`contact${i}`).classList.add('contact-is-active');
-  let contactDetails = document.getElementById('contactDetailsContainer');
-  let contact = contacts[index];
-  //contactDetails = '';
-  contactDetails.innerHTML = /*html*/ `
+    let previousContact = document.querySelector('.contact-is-active');
+    if (previousContact) {
+        previousContact.classList.remove('contact-is-active');
+    }
+    let contactDetails = document.getElementById('contactDetailsContainer');
+    let contact = contacts[index];
+    contactDetails.innerHTML = /*html*/ `
         <div id="ContactDetailsOverlay" class="contact-details-overlay">
             <div class="contact-icon-name">
                 <div class="contact-overlay-icon contact-icon detail-name">${contact.initials}</div>
@@ -35,4 +37,10 @@ function showContactDetails(index) {
             </div>
         </div>        
         `;
+        
+    let currentContact = document.getElementById(`contact${index}`);
+    if (currentContact) {
+        currentContact.classList.add('contact-is-active');
+    }
 }
+
