@@ -181,6 +181,9 @@ function displayContacts() {
             </div>
         </div>
       `;
+
+    document.getElementById(`nameAbbrContainer${i}`).style.backgroundColor =
+      getRandomColor();
   }
 }
 
@@ -221,6 +224,3 @@ function getRandomColor() {
   // Combine the hex values into a single string and return it
   return `#${hexR}${hexG}${hexB}`;
 }
-
-// Example usage
-console.log(getRandomColor());
