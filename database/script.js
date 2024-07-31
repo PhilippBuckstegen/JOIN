@@ -78,53 +78,99 @@ async function storeEditedData(i){
 }
 
 
+// async function renderContacts(){
+//     await getContactsFromDatabase();
+//     let contactArea = document.getElementById('contactArea');
+//     contactArea.innerHTML = "";
+//     storedCharacter = "";
+//     for(i = 0; i < contacts.length; i++){
+//         for(j = 0; j < alphabet.length; j++){
+//             if(alphabet[j] === contacts[i].initials[0] && storedCharacter != alphabet[j]){    
+//                 contactArea.innerHTML += /*html*/ `
+//                 <div>
+//                     <p class="firstLetterSort">${alphabet[j]}</p>
+//                     <span class="initials">${contacts[i].initials}</span>
+//                     <input type="text" id="name${i}" value="${contacts[i].name}" disabled>
+//                     <input type="email" id="email${i}" value="${contacts[i].email}" disabled>
+//                     <input type="phone" id="phone${i}" value="${Number(contacts[i].phone)}" disabled>
+//                     <button id="editContactsButton${i}" onclick="editContacts(${i})">Edit</button>
+//                     <button id="storeEditedContactsButton${i}" onclick="storeEditedData(${i})">Store</button>
+//                     <button id="deleteContactButton${i}" onclick="deleteContact(${i})">Delete</button>
+//                     <br>
+//                     <br>
+//                 </div>
+//                 `;
+//             storedCharacter = alphabet[j];
+//             break;
+//             } else if(alphabet[j] === contacts[i].initials[0] && storedCharacter === alphabet[j]){    
+//                 contactArea.innerHTML += /*html*/ `
+//                 <div>
+//                     <!-- <p class="firstLetterSort">${alphabet[j]}</p> -->
+//                     <span class="initials">${contacts[i].initials}</span>
+//                     <input type="text" id="name${i}" value="${contacts[i].name}" disabled>
+//                     <input type="email" id="email${i}" value="${contacts[i].email}" disabled>
+//                     <input type="phone" id="phone${i}" value="${Number(contacts[i].phone)}" disabled>
+//                     <button id="editContactsButton${i}" onclick="editContacts(${i})">Edit</button>
+//                     <button id="storeEditedContactsButton${i}" onclick="storeEditedData(${i})">Store</button>
+//                     <button id="deleteContactButton${i}" onclick="deleteContact(${i})">Delete</button>
+//                     <br>
+//                     <br>
+//                 </div>
+//                 `;
+//             storedCharacter = alphabet[j];
+//             }
+//         }
+//     }
+//     contactArea.innerHTML += /*html*/`
+//         <br>
+//         <button onclick="addNewContact()">Add Contact</button>
+//     `;
+// }
+
 async function renderContacts(){
     await getContactsFromDatabase();
-    let contactArea = document.getElementById('contactArea');
+    let contactArea = document.getElementById('listContacts');
     contactArea.innerHTML = "";
     storedCharacter = "";
     for(i = 0; i < contacts.length; i++){
         for(j = 0; j < alphabet.length; j++){
             if(alphabet[j] === contacts[i].initials[0] && storedCharacter != alphabet[j]){    
                 contactArea.innerHTML += /*html*/ `
-                <div>
-                    <p class="firstLetterSort">${alphabet[j]}</p>
-                    <span class="initials">${contacts[i].initials}</span>
-                    <input type="text" id="name${i}" value="${contacts[i].name}" disabled>
-                    <input type="email" id="email${i}" value="${contacts[i].email}" disabled>
-                    <input type="phone" id="phone${i}" value="${Number(contacts[i].phone)}" disabled>
-                    <button id="editContactsButton${i}" onclick="editContacts(${i})">Edit</button>
-                    <button id="storeEditedContactsButton${i}" onclick="storeEditedData(${i})">Store</button>
-                    <button id="deleteContactButton${i}" onclick="deleteContact(${i})">Delete</button>
-                    <br>
-                    <br>
+                <!-- <div> -->
+                <div id="letterContainer${alphabet[j]}" class="letter-contacts-container">
+                        <div class="letter-header">${alphabet[j]}</div>
+                        <div class="letter-header-border"></div>
+                    <!-- </div> -->
+                    <div id="contact${i}" class="contact">
+                        <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
+                        <div class="name-mail">
+                            <span class="name">${contacts[i].name}</span>
+                            <span class="mail">${contacts[i].email}</span>
+                    </div>
                 </div>
                 `;
             storedCharacter = alphabet[j];
             break;
-            } else if(alphabet[j] === contacts[i].initials[0] && storedCharacter === alphabet[j]){    
-                contactArea.innerHTML += /*html*/ `
-                <div>
-                    <!-- <p class="firstLetterSort">${alphabet[j]}</p> -->
-                    <span class="initials">${contacts[i].initials}</span>
-                    <input type="text" id="name${i}" value="${contacts[i].name}" disabled>
-                    <input type="email" id="email${i}" value="${contacts[i].email}" disabled>
-                    <input type="phone" id="phone${i}" value="${Number(contacts[i].phone)}" disabled>
-                    <button id="editContactsButton${i}" onclick="editContacts(${i})">Edit</button>
-                    <button id="storeEditedContactsButton${i}" onclick="storeEditedData(${i})">Store</button>
-                    <button id="deleteContactButton${i}" onclick="deleteContact(${i})">Delete</button>
-                    <br>
-                    <br>
-                </div>
+            } else if(alphabet[j] === contacts[i].initials[0] && storedCharacter === alphabet[j]){ 
+                let letterContainer = document.getElementById(`letterContainer${alphabet[j]}`);   
+                letterContainer.innerHTML += /*html*/ `
+                <!-- <div> -->
+                    <div id="contact${i}" class="contact">
+                        <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
+                        <div class="name-mail">
+                            <span class="name">${contacts[i].name}</span>
+                            <span class="mail">${contacts[i].email}</span>
+                    </div>
+                <!-- </div> -->
                 `;
             storedCharacter = alphabet[j];
             }
         }
     }
-    contactArea.innerHTML += /*html*/`
-        <br>
-        <button onclick="addNewContact()">Add Contact</button>
-    `;
+    // contactArea.innerHTML += /*html*/`
+    //     <br>
+    //     <button onclick="addNewContact()">Add Contact</button>
+    // `;
 }
 
 
