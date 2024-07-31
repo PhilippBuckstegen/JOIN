@@ -63,7 +63,7 @@ body {
   border-radius: 10px;
 }
 
-.contact:not(.contact-active):hover {
+.contact:not(.contact-is-active):hover {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.03),
