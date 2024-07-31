@@ -11,17 +11,20 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- script -->
     <script src="script.js"></script>
-    <!-- <script src="script.js"></script> -->
+    <script src="contact_details.js"></script>
+
+    <!-- style -->
     <link rel="stylesheet" href="main_contacts.css" />
   </head>
   <body>
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
       <div id="contactsContainer" class="contacts-container">
-        <div id="listContacts" class="list-contacts-container">
-        </div>
+        <div id="listContacts" class="list-contacts-container"></div>
       </div>
+      <!-- redner contact list -->
 
       <!-- contacts info -->
       <div class="contacts-info-container">
@@ -30,25 +33,40 @@
           <div class="header-border"></div>
           <p class="header-subheadline">Better with a team</p>
         </div>
-        <div class="contact-details-container">
+        <div id="contactDetailsContainer" class="contact-details-container">
+          <!-- render contact details -->
+          <!--  
           <div id="ContactDetailsOverlay" class="contact-details-overlay">
-            <div class="contact-icon-name"></div>
-            <div class="contact-info-edit">
-              <div class="information">Contact Information</div>
-              <div class="edit">
-                <img src="" alt="icon-edit" />
-                <span>Edit Contact</span>
+            <div class="contact-icon-name">
+              <div class="contact-overlay-icon contact-icon detail-name">AB</div>
+              <div class="name-edit-delete">
+                <span class="detail-name">NAME</span>
+                <div class="edit-delete">
+                  <div class="edit">
+                    <img src="/assets/icons/edit.svg" alt="icon-edit" />
+                    <span>Edit</span>
+                  </div>
+                  <div class="delete">
+                    <img src="/assets/icons/delete.svg" alt="icon-delete" />
+                    <span>Delete</span>
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="contact-info-edit">
+              <div class="information">Contact Information</div>
+            </div>
+
             <div class="contact-details-email">
               <b>Email</b>
-              <a href="mailto:erika.krawotki@yahoo.de">0123-456789</a>
+              <a href="mailto:erika.krawotki@yahoo.de">erika.krawotki@yahoo.de</a>
             </div>
             <div class="contact-details-phone">
               <b>Phone</b>
               <a href="tel:0123-456789">0123-456789</a>
             </div>
           </div>
+          -->
         </div>
       </div>
     </section>

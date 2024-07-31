@@ -87,7 +87,12 @@ async function renderContacts(){
                     <div id="letterContainer${alphabet[j]}" class="letter-contacts-container">
                         <div class="letter-header">${alphabet[j]}</div>
                         <div class="letter-header-border"></div>
+<<<<<<< HEAD
                     <div id="contact${i}" class="contact">
+=======
+                    <!-- </div> -->
+                    <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
+>>>>>>> 030f0a252f6b26deb022751f2d8dfc58d8778475
                         <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
                         <div class="name-mail">
                             <span class="name">${contacts[i].name}</span>
@@ -100,7 +105,12 @@ async function renderContacts(){
             } else if(alphabet[j] === contacts[i].initials[0] && storedCharacter === alphabet[j]){ 
                 let letterContainer = document.getElementById(`letterContainer${alphabet[j]}`);   
                 letterContainer.innerHTML += /*html*/ `
+<<<<<<< HEAD
                     <div id="contact${i}" class="contact">
+=======
+                <!-- <div> -->
+                    <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
+>>>>>>> 030f0a252f6b26deb022751f2d8dfc58d8778475
                         <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
                         <div class="name-mail">
                             <span class="name">${contacts[i].name}</span>
