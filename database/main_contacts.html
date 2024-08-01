@@ -14,11 +14,18 @@
     <!-- script -->
     <script src="script.js"></script>
     <script src="contact_details.js"></script>
-
+    <script src="/sidebar/sidebarScript.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="main_contacts.css" />
+    <link rel="stylesheet" href="/sidebar/style.css">
   </head>
-  <body>
+  <body onload="renderContacts()">
+<!-- Sidebar wird hier dynamisch geladen -->
+    <div class="side-wrap">
+      <div class="sidebar"></div> 
+    </div>
+    
+  
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
       <!-- <div id="addContactContainer">
@@ -197,5 +204,6 @@
       </div>
       <!--Overlay 2 End-->
     </section>
+    
   </body>
 </html>
