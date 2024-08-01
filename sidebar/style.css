@@ -1,6 +1,7 @@
 body{
     margin: 0;
 }
+
 .side-wrap{
     display: flex;
     justify-content: center;
@@ -9,7 +10,9 @@ body{
     height: 100vh;
     width: 232px;
     position: absolute;
+    top: 0px;
 }
+
 .sidebar{
     display: flex;
     flex-direction: column;
@@ -22,11 +25,13 @@ body{
     margin-top: 60px;
     margin-bottom: 60px;
 }
+
 .sidebar-buttons-height{
     height: 229px;
     width: 232px;
     gap: 15px;
 }
+
 .button-sidebar{
     width: 232px;
     height: 46px;
@@ -48,6 +53,7 @@ body{
     padding: 243px,0px,0px,52px;
     gap: 4px;
 }
+
 .police-button{
     color: #A8A8A8;
     background-color: rgb(42,54,71) ;
