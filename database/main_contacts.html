@@ -99,38 +99,8 @@
           </div>
           <div class="overlayHeaderContainer"><h1>Edit contact</h1></div>
         </div>
-
-        <div class="editOverlaySec2 flexContainer">
-          <div class="overlayAbbrContainer flexContainer">
-            <div id="overlayAbbr" class="flexContainer">
-              <p id="overlayAbbrPar">TW</p>
-            </div>
-          </div>
-
-          <div class="overlayFormContainer flexContainerCol">
-            <div id="closeContainer" class="flexContainer">
-              <img id="closeBtn" src="./images/close.svg" alt="icon" />
-            </div>
-            <form id="editForm" action="" class="flexContainerCol">
-              <input type="text" id="fullName" name="fullName" />
-              <input type="email" id="email" name="email" />
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                minlength="10"
-                maxlength="11"
-                pattern="[0-9]{11}"
-              />
-              <div class="overlayBtnsContainer flexContainer">
-                <button id="deleteBtn" class="overlayBtns">Delete</button>
-                <button id="saveBtn" class="overlayBtns flexContainer">
-                  Save
-                  <img id="checkImg" src="./images/check.svg" alt="icon" />
-                </button>
-              </div>
-            </form>
-          </div>
+        <div class="editOverlaySec2 flexContainer" id="editOverlayContainer">
+          <!-- Edit Overlay wird hier gerendert -->
         </div>
       </div>
       <!--Overlay 1 End-->
@@ -181,9 +151,9 @@
                 name="phoneAdd"
                 placeholder="Phone"
                 minlength="5"
-                maxlength="11"
+                maxlength="15"
               />
-              <!-- input phone changed type from tel to phone and changed minlength form 10 to 5 removed pattern="[0-9]{11}"-->
+              <!-- pattern="[0-9]{15}" -->
               <div class="overlayBtnsContainer flexContainer">
                 <button type="button" id="cancelBtn" class="overlayBtns flexContainer" onclick="toggleAddContactOverlay()">
                   Cancel
