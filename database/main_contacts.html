@@ -21,14 +21,20 @@
   <body>
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
-      <div id="addContactContainer">
+      <!-- <div id="addContactContainer">
         <button id="addContactBtn" class="flexContainer">
           Add new contact
           <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
         </button>
-      </div>
+      </div> -->
 
       <div id="contactsContainer" class="contacts-container">
+        <div id="addContactContainer">
+          <button id="addContactBtn" class="flexContainer" onclick="showAddContactOverlay()">
+            Add new contact
+            <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
+          </button>
+        </div>
         <div id="listContacts" class="list-contacts-container"></div>
       </div>
       <!-- redner contact list -->
@@ -149,7 +155,7 @@
             <div id="closeContainer" class="flexContainer">
               <img id="addCloseBtn" src="./images/close.svg" alt="icon" />
             </div>
-            <form id="editFormAdd" action="" class="flexContainerCol">
+            <form id="editFormAdd" action="" class="flexContainerCol" onsubmit="addNewContactToDatabase(event)">
               <input
                 type="text"
                 id="fullNameAdd"
@@ -167,10 +173,10 @@
                 id="phoneAdd"
                 name="phoneAdd"
                 placeholder="Phone"
-                minlength="10"
+                minlength="5"
                 maxlength="11"
-                pattern="[0-9]{11}"
               />
+              <!-- input phone changed type from tel to phone and changed minlength form 10 to 5 removed pattern="[0-9]{11}"-->
               <div class="overlayBtnsContainer flexContainer">
                 <button id="cancelBtn" class="overlayBtns flexContainer">
                   Cancel
@@ -180,7 +186,7 @@
                     alt="icon"
                   />
                 </button>
-                <button id="createBtn" class="overlayBtns flexContainer">
+                <button type="submit" id="createBtn" class="overlayBtns flexContainer">
                   Create contact
                   <img id="checkImgAdd" src="./images/check.svg" alt="icon" />
                 </button>

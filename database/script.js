@@ -1,6 +1,6 @@
 const BASE_URL =
   "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/";
-let contacts = [];
+let contacts = {};
 // let sortedContacts = [];
 let alphabet = [
   "A",
@@ -55,34 +55,52 @@ async function getContactsFromDatabase() {
 }
 
 async function writeContactsToDatabase() {
-  await postData(
-    "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
-    "contacts",
-    contacts
-  );
+  await postData("https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/", "contacts", contacts);
   await getContactsFromDatabase();
 }
 
 // Funktion um Daten in die Datenbank zu schreiben
-async function postData(BASE_URL, path = "", data) {
-  try {
-    let response = await fetch(BASE_URL + path + ".json", {
+// async function postData(BASE_URL, path="", data){
+//   try{
+//       let response = await fetch(BASE_URL + path + ".json", {
+//       method: "PUT",
+//       headers: {
+//           "Content-Type" : "application/json",
+//       },
+//       body: JSON.stringify(data)
+//   });
+//   if(response.ok == false){
+//       console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!");
+//   };
+//   let responseToJson = await response.json()
+//   return responseToJson;
+//   } catch (error) {
+//       console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!", error);
+//   }
+//   console.log(responseToJson);
+// }
+
+// Funktion um Daten in die Datenbank zu schreiben
+async function postData(BASE_URL, path="", data){
+  try{
+      let response = await fetch(BASE_URL + path + ".json", {
       method: "PUT",
       header: {
-        "Content-Type": "application/json",
+          "Content-Type" : "application/json",
       },
-      body: JSON.stringify(data),
-    });
-    if (response.ok == false) {
+      body: JSON.stringify(data)
+  });
+  if(response.ok == false){
       console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!");
-    }
-    let responseToJson = await response.json();
-    return responseToJson;
+  };
+  let responseToJson = await response.json()
+  return responseToJson;
   } catch (error) {
-    console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!", error);
+      console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!", error);
   }
   console.log(responseToJson);
 }
+
 
 function editContacts(i) {
   document.getElementById(`name${i}`).disabled = false;
@@ -164,16 +182,17 @@ function addNewContact() {
     `;
 }
 
-async function addNewContactToDatabase() {
-  let addName = document.getElementById("addName");
-  let addEmail = document.getElementById("addEmail");
-  let addPhone = document.getElementById("addPhone");
+async function addNewContactToDatabase(event){
+  event.preventDefault();
+  let addName = document.getElementById('fullNameAdd');
+  let addEmail = document.getElementById('emailAdd');
+  let addPhone = document.getElementById('phoneAdd');
   let newContact = {
-    name: addName.value,
-    email: addEmail.value,
-    phone: addPhone.value,
-    initials: generateInitials(addName.value),
-  };
+    "name": addName.value,
+    "email": addEmail.value,
+    "phone": addPhone.value,
+    "initials": generateInitials(addName.value),
+  }
   contacts.push(newContact);
   sortContactsByInitials(contacts);
   await writeContactsToDatabase();
@@ -239,4 +258,9 @@ function getRandomColor() {
 
   // Return the color at the randomly selected index
   return colors[randomIndex];
+}
+
+
+function showAddContactOverlay(){
+  document.getElementById('addContactOverlay').classList.remove('none');
 }
