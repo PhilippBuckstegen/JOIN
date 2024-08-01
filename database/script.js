@@ -31,8 +31,6 @@ let alphabet = [
   "Z",
 ];
 
-let lastAddedName = "";
-
 // Funktion um Daten aus der Datenbank zu fetchen
 async function loadData(BASE_URL, path = "") {
   try {
@@ -93,6 +91,7 @@ function editContacts(i) {
 
 async function storeEditedData(i, event) {
   event.preventDefault();
+  setAllPrevousItemsLastEditedFalse(contacts)
   // let name = document.getElementById(`name${i}`);
   // let email = document.getElementById(`email${i}`);
   // let phone = document.getElementById(`phone${i}`);
@@ -103,13 +102,15 @@ async function storeEditedData(i, event) {
   contacts[i].email = editedEmail.value;
   contacts[i].phone = editedPhone.value;
   contacts[i].initials = generateInitials(editedName.value);
+  contacts[i].lastEdited = true;
   addRandomColorToJSON(contacts);
+  sortContactsByInitials(contacts);
   // toggleEditContactOverlay();
   await writeContactsToDatabase();
   await getContactsFromDatabase();
   toggleEditContactOverlay();
   await renderContacts();
-  showContactDetails(i);
+  showContactDetails(findLastEditedIndex(contacts));
   editInputsCleanUp();
   // toggleEditContactOverlay();
 }
@@ -180,10 +181,10 @@ function addNewContact() {
 
 async function addNewContactToDatabase(event){
   event.preventDefault();
+  setAllPrevousItemsLastAddedFalse(contacts);
   let addName = document.getElementById('fullNameAdd');
   let addEmail = document.getElementById('emailAdd');
   let addPhone = document.getElementById('phoneAdd');
-  setAllPrevousItemsLastAddedFalse(contacts);
   let newContact = {
     "name": addName.value,
     "email": addEmail.value,
@@ -208,10 +209,25 @@ function setAllPrevousItemsLastAddedFalse(object){
   }
 }
 
+function setAllPrevousItemsLastEditedFalse(object){
+  for(i=0; i < object.length; i++){
+    object[i].lastEdited = false;
+  }
+}
+
 
 function findLastAddedIndex(objects) {
   for (let i = 0; i < objects.length; i++) {
     if (objects[i].lastAdded === true) {
+      return i;
+    }
+  }
+  return -1; // Wenn kein Objekt mit lastAdded = true gefunden wird
+}
+
+function findLastEditedIndex(objects) {
+  for (let i = 0; i < objects.length; i++) {
+    if (objects[i].lastEdited === true) {
       return i;
     }
   }
@@ -227,6 +243,7 @@ async function deleteContact(i) {
   await renderContacts();
   document.getElementById("contactDetailsContainer").innerHTML = "";
 }
+
 
 function generateInitials(name) {
   let nameParts = name.split(" ");
