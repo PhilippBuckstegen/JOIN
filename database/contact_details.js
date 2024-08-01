@@ -8,7 +8,7 @@ function showContactDetails(index) {
   contactDetails.innerHTML = /*html*/ `
         <div id="ContactDetailsOverlay" class="contact-details-overlay show">
             <div class="contact-icon-name">
-                <div class="contact-overlay-icon contact-icon detail-name">${contact.initials}</div>
+                <div class="contact-overlay-icon contact-icon detail-name" id="initialsDetailsCircle">${contact.initials}</div>
                 <div class="name-edit-delete">
                     <span class="detail-name">${contact.name}</span>
                     <div class="edit-delete">
@@ -47,6 +47,8 @@ function showContactDetails(index) {
     addClassToElement('contactsContainer', 'd-none');
     removeClassFromElement('contactInfoContainer', 'd-none');
   }
+  document.getElementById(`initialsDetailsCircle`).style.backgroundColor = contacts[index].backgroundColor;
+  // addBackgroundColorToDetailsCircle(index, "initialsDetailsCircle");
 }
 
 function addClassToElement(elementId, className) {
@@ -86,3 +88,7 @@ function handleResize() {
 handleResize();
   
 window.addEventListener('resize', handleResize);
+
+// function addBackgroundColorToDetailsCircle(i, id){
+//   document.getElementById(`${id}`).style.backgroundColor = contacts[i].backgroundColor;
+// }

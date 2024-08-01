@@ -31,6 +31,8 @@ let alphabet = [
   "Z",
 ];
 
+let lastAddedName = "";
+
 // Funktion um Daten aus der Datenbank zu fetchen
 async function loadData(BASE_URL, path = "") {
   try {
@@ -51,7 +53,7 @@ async function getContactsFromDatabase() {
     "contacts"
   );
   contacts = data;
-  console.log(contacts);
+  // console.log(contacts);
 }
 
 async function writeContactsToDatabase() {
@@ -59,26 +61,6 @@ async function writeContactsToDatabase() {
   await getContactsFromDatabase();
 }
 
-// Funktion um Daten in die Datenbank zu schreiben
-// async function postData(BASE_URL, path="", data){
-//   try{
-//       let response = await fetch(BASE_URL + path + ".json", {
-//       method: "PUT",
-//       headers: {
-//           "Content-Type" : "application/json",
-//       },
-//       body: JSON.stringify(data)
-//   });
-//   if(response.ok == false){
-//       console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!");
-//   };
-//   let responseToJson = await response.json()
-//   return responseToJson;
-//   } catch (error) {
-//       console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!", error);
-//   }
-//   console.log(responseToJson);
-// }
 
 // Funktion um Daten in die Datenbank zu schreiben
 async function postData(BASE_URL, path="", data){
@@ -108,6 +90,7 @@ function editContacts(i) {
   document.getElementById(`phone${i}`).disabled = false;
 }
 
+
 async function storeEditedData(i, event) {
   event.preventDefault();
   // let name = document.getElementById(`name${i}`);
@@ -120,20 +103,17 @@ async function storeEditedData(i, event) {
   contacts[i].email = editedEmail.value;
   contacts[i].phone = editedPhone.value;
   contacts[i].initials = generateInitials(editedName.value);
+  addRandomColorToJSON(contacts);
+  // toggleEditContactOverlay();
   await writeContactsToDatabase();
   await getContactsFromDatabase();
+  toggleEditContactOverlay();
   await renderContacts();
   showContactDetails(i);
   editInputsCleanUp();
-  toggleEditContactOverlay();
+  // toggleEditContactOverlay();
 }
 
-// let editName = document.getElementById('fullName');
-// let editEmail = document.getElementById('email');
-// let editPhone = document.getElementById('phone');
-// editName.value = contacts[i].name;
-// editEmail.value = contacts[i].email;
-// editPhone.value = contacts[i].phone;
 
 async function renderContacts() {
   await getContactsFromDatabase();
@@ -152,7 +132,7 @@ async function renderContacts() {
                         <div class="letter-header-border"></div>
                     <!-- </div> -->
                     <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
-                        <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
+                        <div class="contact-icon contact-icon-wh bg-color" id="initialsCircle${i}">${contacts[i].initials}</div>
                         <div class="name-mail">
                             <span class="name">${contacts[i].name}</span>
                             <span class="mail">${contacts[i].email}</span>
@@ -171,7 +151,7 @@ async function renderContacts() {
         letterContainer.innerHTML += /*html*/ `
                 <!-- <div> -->
                     <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
-                        <div class="contact-icon contact-icon-wh bg-color">${contacts[i].initials}</div>
+                        <div class="contact-icon contact-icon-wh bg-color" id="initialsCircle${i}">${contacts[i].initials}</div>
                         <div class="name-mail">
                             <span class="name">${contacts[i].name}</span>
                             <span class="mail">${contacts[i].email}</span>
@@ -181,8 +161,10 @@ async function renderContacts() {
         storedCharacter = alphabet[j];
       }
     }
+    document.getElementById(`initialsCircle${i}`).style.backgroundColor = contacts[i].backgroundColor;
   }
 }
+
 
 function addNewContact() {
   let contactArea = document.getElementById("contactArea");
@@ -201,22 +183,46 @@ async function addNewContactToDatabase(event){
   let addName = document.getElementById('fullNameAdd');
   let addEmail = document.getElementById('emailAdd');
   let addPhone = document.getElementById('phoneAdd');
+  setAllPrevousItemsLastAddedFalse(contacts);
   let newContact = {
     "name": addName.value,
     "email": addEmail.value,
     "phone": addPhone.value,
     "initials": generateInitials(addName.value),
+    "lastAdded" : true,
   }
+  lastAddedName = newContact.name;
   contacts.push(newContact);
   toggleAddContactOverlay()
   sortContactsByInitials(contacts);
+  addRandomColorToJSON(contacts);
   await writeContactsToDatabase();
   await renderContacts();
+  showContactDetails(findLastAddedIndex(contacts));
 }
+
+
+function setAllPrevousItemsLastAddedFalse(object){
+  for(i=0; i < object.length; i++){
+    object[i].lastAdded = false;
+  }
+}
+
+
+function findLastAddedIndex(objects) {
+  for (let i = 0; i < objects.length; i++) {
+    if (objects[i].lastAdded === true) {
+      return i;
+    }
+  }
+  return -1; // Wenn kein Objekt mit lastAdded = true gefunden wird
+}
+
 
 async function deleteContact(i) {
   contacts.splice(i, 1);
   sortContactsByInitials(contacts);
+  addRandomColorToJSON(contacts);
   await writeContactsToDatabase();
   await renderContacts();
   document.getElementById("contactDetailsContainer").innerHTML = "";
@@ -274,6 +280,13 @@ function getRandomColor() {
 
   // Return the color at the randomly selected index
   return colors[randomIndex];
+}
+
+
+function addRandomColorToJSON(object){
+  for(i = 0; i < object.length; i++){
+    object[i].backgroundColor = getRandomColor(); 
+  }
 }
 
 
@@ -345,4 +358,5 @@ editArea.innerHTML = /*html*/ `
 </form>
 </div>
 `;
+document.getElementById(`overlayAbbr`).style.backgroundColor = contacts[i].backgroundColor;
 }
