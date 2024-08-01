@@ -166,9 +166,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /* transform: translateX(100vw); */
-  /* transition: all 220ms ease-in-out; */
 }
+
+.back-to-contact-list {
+  position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+/*
+.contact-details-overlay.show {
+  right: 0;
+}
+*/
 
 .contact-icon-name {
   display: flex;

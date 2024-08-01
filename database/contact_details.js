@@ -6,7 +6,7 @@ function showContactDetails(index) {
   let contactDetails = document.getElementById("contactDetailsContainer");
   let contact = contacts[index];
   contactDetails.innerHTML = /*html*/ `
-        <div id="ContactDetailsOverlay" class="contact-details-overlay">
+        <div id="ContactDetailsOverlay" class="contact-details-overlay show">
             <div class="contact-icon-name">
                 <div class="contact-overlay-icon contact-icon detail-name">${contact.initials}</div>
                 <div class="name-edit-delete">
@@ -60,6 +60,8 @@ function removeClassFromElement(elementId, className) {
 }
   
 function hideContactDetails() {
+    let activeContacts = document.querySelectorAll('.contact-is-active');
+    activeContacts.forEach(contact => contact.classList.remove('contact-is-active'));
     removeClassFromElement('contactsContainer', 'd-none');
     addClassToElement('contactInfoContainer', 'd-none');
 }

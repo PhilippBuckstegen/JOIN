@@ -22,11 +22,36 @@
 ----------------------------------------------------*/
 
 @media (max-width: 1200px) {
-    .contacts-container{
-        width: 100%;
-        max-width: unset;
-    }
+  .contacts-container {
+    width: 100%;
+    max-width: unset;
+  }
 
-    
+  .back-to-contact-list {
+    display: flex;
+  }
 }
 
+@media (max-width: 900px) {
+  .main-contacts {
+    margin-left: 0;
+    position: relative;
+  }
+}
+
+@media (max-width: 680px) {
+  .contacts-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-direction: column;
+  }
+
+  .header-border {
+    border: 2px solid #29abe2;
+    border-radius: 2px;
+    margin: 12px 0px;
+    width: 116px;
+    height: 0;
+  }
+}
