@@ -315,6 +315,25 @@ main {
 }
 */
 
+/* Flex Classes */
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Flex Classes End */
+
+/*Edit Contact Overlay*/
+
 #editOverlay {
   position: fixed;
   top: 10%;
@@ -454,6 +473,8 @@ main {
   width: 14px;
 }
 
+/*Edit Contact Overlay End*/
+
 /*Add Contact Overlay*/
 
 #addContactOverlay {
@@ -562,6 +583,16 @@ main {
   background-size: 22px;
 }
 
+#editFormAdd input::placeholder {
+  color: #d1d1d1;
+  opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: #d1d1d1;
+}
+
 #editFormAdd input:focus {
   outline: #29abe2 solid 1px;
 }
@@ -609,3 +640,5 @@ main {
 #checkImgAdd {
   width: 14px;
 }
+
+/*Add Contact Overlay End*/
