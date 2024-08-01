@@ -8,6 +8,7 @@ body{
     background: rgb(42,54,71) ;
     height: 100vh;
     width: 232px;
+    position: absolute;
 }
 .sidebar{
     display: flex;
