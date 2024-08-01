@@ -17,3 +17,15 @@
 /* Breakpoint 5 - Desktops - TVs */
 @media screen and (min-width: 1201px) {
 }
+
+/*--------------------------------------------------
+----------------------------------------------------*/
+
+@media (max-width: 1200px) {
+    .contacts-container{
+        width: 100%;
+        max-width: unset;
+    }
+
+}
+
