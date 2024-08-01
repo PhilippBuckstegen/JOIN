@@ -194,6 +194,7 @@ async function addNewContactToDatabase(event){
     "initials": generateInitials(addName.value),
   }
   contacts.push(newContact);
+  toggleAddContactOverlay()
   sortContactsByInitials(contacts);
   await writeContactsToDatabase();
   await renderContacts();
@@ -204,6 +205,7 @@ async function deleteContact(i) {
   sortContactsByInitials(contacts);
   await writeContactsToDatabase();
   await renderContacts();
+  document.getElementById("contactDetailsContainer").innerHTML = "";
 }
 
 function generateInitials(name) {
@@ -261,6 +263,9 @@ function getRandomColor() {
 }
 
 
-function showAddContactOverlay(){
-  document.getElementById('addContactOverlay').classList.remove('none');
+function toggleAddContactOverlay(){
+  document.getElementById('addContactOverlay').classList.toggle('none');
+  document.getElementById('fullNameAdd').value = "";
+  document.getElementById('emailAdd').value = "";
+  document.getElementById('phoneAdd').value = "";
 }

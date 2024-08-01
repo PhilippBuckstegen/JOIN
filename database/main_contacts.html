@@ -37,7 +37,7 @@
 
       <div id="contactsContainer" class="contacts-container">
         <div id="addContactContainer">
-          <button id="addContactBtn" class="flexContainer" onclick="showAddContactOverlay()">
+          <button id="addContactBtn" class="flexContainer" onclick="toggleAddContactOverlay()">
             Add new contact
             <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
           </button>
@@ -160,7 +160,7 @@
 
           <div class="overlayFormContainer flexContainerCol">
             <div id="closeContainer" class="flexContainer">
-              <img id="addCloseBtn" src="./images/close.svg" alt="icon" />
+              <img id="addCloseBtn" src="./images/close.svg" alt="icon" onclick="toggleAddContactOverlay()"/>
             </div>
             <form id="editFormAdd" action="" class="flexContainerCol" onsubmit="addNewContactToDatabase(event)">
               <input
@@ -185,7 +185,7 @@
               />
               <!-- input phone changed type from tel to phone and changed minlength form 10 to 5 removed pattern="[0-9]{11}"-->
               <div class="overlayBtnsContainer flexContainer">
-                <button type="button" id="cancelBtn" class="overlayBtns flexContainer">
+                <button type="button" id="cancelBtn" class="overlayBtns flexContainer" onclick="toggleAddContactOverlay()">
                   Cancel
                   <img
                     id="cancelImgAdd"

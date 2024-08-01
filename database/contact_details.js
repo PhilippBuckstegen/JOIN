@@ -16,8 +16,8 @@ function showContactDetails(index) {
                             <img src="/assets/icons/edit.svg" alt="icon-edit" />
                             <span>Edit</span>
                         </div>
-                        <div class="delete">
-                            <img src="/assets/icons/delete.svg" alt="icon-delete" />
+                        <div class="delete" onclick="deleteContact(${index})">
+                            <img src="/assets/icons/delete.svg" alt="icon-delete"/>
                             <span>Delete</span>
                         </div>
                     </div>
