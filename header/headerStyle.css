@@ -1,0 +1,28 @@
+
+header{
+display: flex;
+width: Fixed (1,440px)px;
+height: Hug (96px)px;
+padding: 20px 40px 20px 348px;
+gap: 0px;
+justify: space-between;
+opacity: 1px;
+}
+
+.header-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+p {
+    font-size: 24px;
+    margin: 0; 
+}
+
+img {
+    margin-right: 0; 
+    height: auto; 
+    max-height: 100%; 
+}
