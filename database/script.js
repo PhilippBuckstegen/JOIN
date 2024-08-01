@@ -108,18 +108,32 @@ function editContacts(i) {
   document.getElementById(`phone${i}`).disabled = false;
 }
 
-async function storeEditedData(i) {
-  let name = document.getElementById(`name${i}`);
-  let email = document.getElementById(`email${i}`);
-  let phone = document.getElementById(`phone${i}`);
-  contacts[i].name = name.value;
-  contacts[i].email = email.value;
-  contacts[i].phone = phone.value;
-  contacts[i].initials = generateInitials(name.value);
+async function storeEditedData(i, event) {
+  event.preventDefault();
+  // let name = document.getElementById(`name${i}`);
+  // let email = document.getElementById(`email${i}`);
+  // let phone = document.getElementById(`phone${i}`);
+  let editedName = document.getElementById('fullName');
+  let editedEmail = document.getElementById('email');
+  let editedPhone = document.getElementById('phone');
+  contacts[i].name = editedName.value;
+  contacts[i].email = editedEmail.value;
+  contacts[i].phone = editedPhone.value;
+  contacts[i].initials = generateInitials(editedName.value);
   await writeContactsToDatabase();
   await getContactsFromDatabase();
   await renderContacts();
+  showContactDetails(i);
+  editInputsCleanUp();
+  toggleEditContactOverlay();
 }
+
+// let editName = document.getElementById('fullName');
+// let editEmail = document.getElementById('email');
+// let editPhone = document.getElementById('phone');
+// editName.value = contacts[i].name;
+// editEmail.value = contacts[i].email;
+// editPhone.value = contacts[i].phone;
 
 async function renderContacts() {
   await getContactsFromDatabase();
@@ -273,5 +287,62 @@ function toggleAddContactOverlay(){
 
 function toggleEditContactOverlay(){
   document.getElementById('editOverlay').classList.toggle('none');
-  
+}
+
+function getDataToEdit(i){
+  toggleEditContactOverlay();
+  writeEditDataToInputs(i);
+
+}
+
+
+function writeEditDataToInputs(i){
+  renderEditArea(i);
+  let editName = document.getElementById('fullName');
+  let editEmail = document.getElementById('email');
+  let editPhone = document.getElementById('phone');
+  editName.value = contacts[i].name;
+  editEmail.value = contacts[i].email;
+  editPhone.value = contacts[i].phone;
+}
+
+
+function editInputsCleanUp(){
+  document.getElementById('fullName').innerHTML = "";
+  document.getElementById('email').innerHTML = "";
+  document.getElementById('phone').innerHTML = "";
+}
+
+function renderEditArea(i){
+let editArea = document.getElementById('editOverlayContainer');
+editArea.innerHTML = /*html*/ `
+<div class="overlayAbbrContainer flexContainer">
+<div id="overlayAbbr" class="flexContainer">
+  <p id="overlayAbbrPar">${contacts[i].initials}</p>
+</div>
+</div>
+<div class="overlayFormContainer flexContainerCol">
+<div id="closeContainer" class="flexContainer">
+  <img id="closeBtn" src="./images/close.svg" alt="icon" onclick="toggleEditContactOverlay()"/>
+</div>
+<form id="editForm" action="" class="flexContainerCol" onsubmit="storeEditedData(${i}, event)">
+  <input type="text" id="fullName" name="fullName"/>
+  <input type="email" id="email" name="email" />
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    minlength="5"
+    maxlength="20"
+    />
+  <div class="overlayBtnsContainer flexContainer">
+    <button type="button" id="deleteBtn" class="overlayBtns" onclick="toggleEditContactOverlay()">Cancel</button>
+    <button type="submit" id="saveBtn" class="overlayBtns flexContainer">
+      Save
+      <img id="checkImg" src="./images/check.svg" alt="icon" />
+    </button>
+  </div>
+</form>
+</div>
+`;
 }
