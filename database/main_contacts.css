@@ -63,7 +63,7 @@ body {
   border-radius: 10px;
 }
 
-.contact:not(.contact-active):hover {
+.contact:not(.contact-is-active):hover {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.03),
@@ -193,6 +193,10 @@ body {
   color: black;
 }
 
+.contact-details-email a {
+  color: #007cee;
+}
+
 .information {
   font-size: 21px;
   font-weight: 400;
@@ -203,8 +207,68 @@ body {
   font-weight: 400;
 }
 
-.edit {
+.edit,
+.delete {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.contact-overlay-icon {
+  min-width: 120px;
+  height: 120px;
+  border: 2px solid white;
+}
+
+.name-edit-delete {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-delete {
+  display: flex;
+  gap: 13px;
+}
+
+.detail-name {
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+}
+
+.edit-delete img {
+  width: 24px;
+  height: 24px;
+}
+
+#contactsContainer {
+  overflow-y: scroll;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  /*height: 100vh;*/
+}
+
+#contactsContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+#contactsContainer::-webkit-scrollbar-button {
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#contactsContainer::-webkit-scrollbar-button:end:increment {
+  background-image: url(./images/arrow_bottom.svg);
+}
+
+#contactsContainer::-webkit-scrollbar-button:start:decrement {
+  background-image: url(./images/arrow_top.svg);
+}
+
+#contactsContainer::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: #a8a8a8;
+  border-radius: 18px;
 }
