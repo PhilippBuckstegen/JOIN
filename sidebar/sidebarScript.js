@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
    
-    fetch('sidebar.html')
+    fetch('../sidebar/sidebar.html')
       .then(response => response.text())
       .then(data => {
         document.querySelector('.side-wrap').innerHTML = data;
