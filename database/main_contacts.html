@@ -18,7 +18,7 @@
     <!-- style -->
     <link rel="stylesheet" href="main_contacts.css" />
   </head>
-  <body>
+  <body onload="renderContacts()">
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
       <!-- <div id="addContactContainer">
@@ -178,7 +178,7 @@
               />
               <!-- input phone changed type from tel to phone and changed minlength form 10 to 5 removed pattern="[0-9]{11}"-->
               <div class="overlayBtnsContainer flexContainer">
-                <button id="cancelBtn" class="overlayBtns flexContainer">
+                <button type="button" id="cancelBtn" class="overlayBtns flexContainer">
                   Cancel
                   <img
                     id="cancelImgAdd"
