@@ -162,8 +162,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /*transform: translateX(100vw);*/
-  /*transition: all 220ms ease-in-out;*/
+  /* transform: translateX(100vw); */
+  /* transition: all 220ms ease-in-out; */
 }
 
 .contact-icon-name {
