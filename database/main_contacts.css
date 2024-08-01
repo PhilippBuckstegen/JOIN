@@ -13,7 +13,7 @@ body {
   display: flex;
 }
 
-.none{
+.none {
   display: none !important;
 }
 
@@ -604,3 +604,21 @@ body {
 }
 
 /*Add Contact Overlay End*/
+
+#addContactContainer {
+  margin-top: 20px;
+}
+
+#addContactBtn {
+  cursor: pointer;
+  background-color: #2a3647;
+  color: #fff;
+  font-weight: 700;
+  padding: 6px 50px;
+  border-radius: 6px;
+  gap: 10px;
+}
+
+#personAddImg {
+  width: 24px;
+}
