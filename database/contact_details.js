@@ -40,6 +40,47 @@ function showContactDetails(index) {
 
   let currentContact = document.getElementById(`contact${index}`);
   if (currentContact) {
-    currentContact.classList.add("contact-is-active");
+      currentContact.classList.add("contact-is-active");
+  }
+
+  if (window.innerWidth <= 1200) {
+    addClassToElement('contactsContainer', 'd-none');
+    removeClassFromElement('contactInfoContainer', 'd-none');
   }
 }
+
+function addClassToElement(elementId, className) {
+    let element = document.getElementById(elementId);
+    element.classList.add(className);
+}
+  
+function removeClassFromElement(elementId, className) {
+    let element = document.getElementById(elementId);
+    element.classList.remove(className);
+}
+  
+function hideContactDetails() {
+    removeClassFromElement('contactsContainer', 'd-none');
+    addClassToElement('contactInfoContainer', 'd-none');
+}
+  
+function handleResize() {
+    let contactDetailsVisible = document.querySelector(".contact-is-active") !== null;
+    
+    if (window.innerWidth <= 1200) {
+      if (contactDetailsVisible) {
+        addClassToElement('contactsContainer', 'd-none');
+        removeClassFromElement('contactInfoContainer', 'd-none');
+      } else {
+        removeClassFromElement('contactsContainer', 'd-none');
+        addClassToElement('contactInfoContainer', 'd-none');
+      }
+    } else {
+      removeClassFromElement('contactsContainer', 'd-none');
+      removeClassFromElement('contactInfoContainer', 'd-none');
+    }
+}
+  
+handleResize();
+  
+window.addEventListener('resize', handleResize);
