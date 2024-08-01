@@ -211,16 +211,22 @@ currentEmail.textContent = contacts[0].email;
 currentPhone.textContent = contacts[0].phone;
 
 function getRandomColor() {
-  // Generate a random number between 0 and 255 for each color channel (R, G, B)
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
+  const colors = [
+    "#FF7A00",
+    "#9327FF",
+    "#6E52FF",
+    "#FC71FF",
+    "#FFBB2B",
+    "#1FD7C1",
+    "#462F8A",
+    "#FF4646",
+    "#00BEE8",
+    "#FF7A00",
+  ];
 
-  // Convert the numbers to hexadecimal format and pad with zeros if necessary
-  const hexR = r.toString(16).padStart(2, "0");
-  const hexG = g.toString(16).padStart(2, "0");
-  const hexB = b.toString(16).padStart(2, "0");
+  // Generate a random index based on the length of the colors array
+  const randomIndex = Math.floor(Math.random() * colors.length);
 
-  // Combine the hex values into a single string and return it
-  return `#${hexR}${hexG}${hexB}`;
+  // Return the color at the randomly selected index
+  return colors[randomIndex];
 }
