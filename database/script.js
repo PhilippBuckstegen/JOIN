@@ -269,3 +269,9 @@ function toggleAddContactOverlay(){
   document.getElementById('emailAdd').value = "";
   document.getElementById('phoneAdd').value = "";
 }
+
+
+function toggleEditContactOverlay(){
+  document.getElementById('editOverlay').classList.toggle('none');
+  
+}

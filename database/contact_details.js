@@ -12,8 +12,8 @@ function showContactDetails(index) {
                 <div class="name-edit-delete">
                     <span class="detail-name">${contact.name}</span>
                     <div class="edit-delete">
-                        <div class="edit">
-                            <img src="/assets/icons/edit.svg" alt="icon-edit" />
+                        <div class="edit" onclick="toggleEditContactOverlay(${index})">
+                            <img src="/assets/icons/edit.svg" alt="icon-edit"/>
                             <span>Edit</span>
                         </div>
                         <div class="delete" onclick="deleteContact(${index})">
