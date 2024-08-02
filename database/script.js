@@ -31,6 +31,7 @@ let alphabet = [
   "Z",
 ];
 
+
 // Funktion um Daten aus der Datenbank zu fetchen
 async function loadData(BASE_URL, path = "") {
   try {
@@ -45,6 +46,7 @@ async function loadData(BASE_URL, path = "") {
   }
 }
 
+
 async function getContactsFromDatabase() {
   let data = await loadData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -53,6 +55,7 @@ async function getContactsFromDatabase() {
   contacts = data;
   // console.log(contacts);
 }
+
 
 async function writeContactsToDatabase() {
   await postData("https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/", "contacts", contacts);
@@ -179,6 +182,7 @@ function addNewContact() {
     `;
 }
 
+
 async function addNewContactToDatabase(event){
   event.preventDefault();
   setAllPrevousItemsLastAddedFalse(contacts);
@@ -209,6 +213,7 @@ function setAllPrevousItemsLastAddedFalse(object){
   }
 }
 
+
 function setAllPrevousItemsLastEditedFalse(object){
   for(i=0; i < object.length; i++){
     object[i].lastEdited = false;
@@ -224,6 +229,7 @@ function findLastAddedIndex(objects) {
   }
   return -1; // Wenn kein Objekt mit lastAdded = true gefunden wird
 }
+
 
 function findLastEditedIndex(objects) {
   for (let i = 0; i < objects.length; i++) {
@@ -252,6 +258,7 @@ function generateInitials(name) {
   return firstNameInitial + lastNameInitial;
 }
 
+
 function sortContactsByInitials(contacts) {
   return contacts.sort((a, b) => {
     let initial_1 = a.initials;
@@ -272,6 +279,7 @@ function sortContactsByInitials(contacts) {
     return 0;
   });
 }
+
 
 /* Random Color 
 z.B.
@@ -319,10 +327,10 @@ function toggleEditContactOverlay(){
   document.getElementById('editOverlay').classList.toggle('none');
 }
 
+
 function getDataToEdit(i){
   toggleEditContactOverlay();
   writeEditDataToInputs(i);
-
 }
 
 
@@ -342,6 +350,7 @@ function editInputsCleanUp(){
   document.getElementById('email').innerHTML = "";
   document.getElementById('phone').innerHTML = "";
 }
+
 
 function renderEditArea(i){
 let editArea = document.getElementById('editOverlayContainer');
