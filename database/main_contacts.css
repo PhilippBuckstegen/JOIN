@@ -176,6 +176,10 @@ body {
   display: none;
 }
 
+.edit-delete-add-mobile {
+  display: none;
+}
+
 /*
 .contact-details-overlay.show {
   right: 0;
