@@ -88,6 +88,43 @@
     bottom: 30px;
   }
 
+  .button-animation-mobile {
+    animation: slideIn 0.3s forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in-buttons {
+    width: 116px;
+    height: 100px;
+    border-radius: 20px 20px 0 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 26px;
+    right: 4px;
+  }
+
+  .slide-in-buttons img {
+    cursor: pointer;
+  }
+
+  .d-none-mobile {
+    display: none;
+  }
+
   .edit-delete-add-mobile img {
     width: 32px;
     height: 32px;
@@ -112,5 +149,8 @@
   .mail {
     font-size: 13px;
   }
-  
+
+  .letter-header {
+    height: 48px;
+  }
 }

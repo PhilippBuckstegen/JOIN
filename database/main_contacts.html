@@ -48,7 +48,11 @@
         </div>
         <div id="listContacts" class="list-contacts-container"></div>
         <div class="edit-delete-add-mobile">
-          <img onclick="toggleAddContactOverlay()" src="/assets/icons/person_add.svg" alt="add-icon-mobile" />
+          <img
+            onclick="toggleAddContactOverlay()"
+            src="/assets/icons/person_add.svg"
+            alt="add-icon-mobile"
+          />
         </div>
       </div>
       <!-- redner contact list -->
@@ -103,7 +107,24 @@
           -->
         </div>
         <div class="edit-delete-add-mobile">
-          <img onclick="" src="/assets/icons/more.svg" alt="edit-delete-mobile" />
+          <img
+            onclick="removeClassFromElement('slideInBtns', 'd-none-mobile'), addClassToElement('slideInBtns', 'button-animation-mobile')"
+            src="/assets/icons/more.svg"
+            alt="edit-delete-mobile"
+          />
+        </div>
+
+        <div id="slideInBtns" class="slide-in-buttons d-none d-none-mobile">
+          <img
+            onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')"
+            src="/assets/icons/edit_mobile.svg"
+            alt="edit-mobile"
+          />
+          <img
+            onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact()"
+            src="/assets/icons/delete_mobile.svg"
+            alt="edit-mobile"
+          />
         </div>
       </div>
     </section>
