@@ -16,17 +16,16 @@
     <!-- <script src="contact_details.js"></script> -->
     <script src="/sidebar/sidebarScript.js"></script>
     <!-- style -->
-    <link rel="stylesheet" href="main_contacts.css">
-    <link rel="stylesheet" href="mobile_contacts.css">
-    <link rel="stylesheet" href="/sidebar/style.css">
+    <link rel="stylesheet" href="main_contacts.css" />
+    <link rel="stylesheet" href="mobile_contacts.css" />
+    <link rel="stylesheet" href="/sidebar/style.css" />
   </head>
   <body onload="renderContacts()">
-<!-- Sidebar wird hier dynamisch geladen -->
+    <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
-      <div class="sidebar"></div> 
+      <div class="sidebar"></div>
     </div>
-    
-  
+
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
       <!-- <div id="addContactContainer">
@@ -37,8 +36,12 @@
       </div> -->
 
       <div id="contactsContainer" class="contacts-container">
-        <div id="addContactContainer">
-          <button id="addContactBtn" class="flexContainer" onclick="toggleAddContactOverlay()">
+        <div id="addContactContainer" class="flexContainer">
+          <button
+            id="addContactBtn"
+            class="flexContainer"
+            onclick="toggleAddContactOverlay()"
+          >
             Add new contact
             <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
           </button>
@@ -50,7 +53,11 @@
       <!-- contacts info -->
       <div id="contactInfoContainer" class="contacts-info-container">
         <div class="back-to-contact-list">
-          <img onclick="hideContactDetails()" src="/assets/icons/arrow-left-line.svg" alt="arrow-back">
+          <img
+            onclick="hideContactDetails()"
+            src="/assets/icons/arrow-left-line.svg"
+            alt="arrow-back"
+          />
         </div>
         <div class="contacts-header">
           <p class="header-headline">Contacts</p>
@@ -134,9 +141,19 @@
 
           <div class="overlayFormContainer flexContainerCol">
             <div id="closeContainer" class="flexContainer">
-              <img id="addCloseBtn" src="./images/close.svg" alt="icon" onclick="toggleAddContactOverlay()"/>
+              <img
+                id="addCloseBtn"
+                src="./images/close.svg"
+                alt="icon"
+                onclick="toggleAddContactOverlay()"
+              />
             </div>
-            <form id="editFormAdd" action="" class="flexContainerCol" onsubmit="addNewContactToDatabase(event)">
+            <form
+              id="editFormAdd"
+              action=""
+              class="flexContainerCol"
+              onsubmit="addNewContactToDatabase(event)"
+            >
               <input
                 type="text"
                 id="fullNameAdd"
@@ -159,7 +176,12 @@
               />
               <!-- pattern="[0-9]{15}" -->
               <div class="overlayBtnsContainer flexContainer">
-                <button type="button" id="cancelBtn" class="overlayBtns flexContainer" onclick="toggleAddContactOverlay()">
+                <button
+                  type="button"
+                  id="cancelBtn"
+                  class="overlayBtns flexContainer"
+                  onclick="toggleAddContactOverlay()"
+                >
                   Cancel
                   <img
                     id="cancelImgAdd"
@@ -167,7 +189,11 @@
                     alt="icon"
                   />
                 </button>
-                <button type="submit" id="createBtn" class="overlayBtns flexContainer">
+                <button
+                  type="submit"
+                  id="createBtn"
+                  class="overlayBtns flexContainer"
+                >
                   Create contact
                   <img id="checkImgAdd" src="./images/check.svg" alt="icon" />
                 </button>
@@ -180,7 +206,5 @@
     </section>
 
     <script src="contact_details.js"></script>
-
-    
   </body>
 </html>

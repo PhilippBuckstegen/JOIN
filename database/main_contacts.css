@@ -170,10 +170,10 @@ body {
 
 .back-to-contact-list {
   position: absolute;
-    top: 30px;
-    right: 30px;
-    cursor: pointer;
-    display: none;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  display: none;
 }
 
 /*
@@ -261,6 +261,7 @@ body {
 
 #contactsContainer {
   overflow-y: scroll;
+  overflow-x: hidden;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   /*height: 100vh;*/
