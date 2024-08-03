@@ -247,9 +247,15 @@ async function deleteContact(i) {
   addRandomColorToJSON(contacts);
   await writeContactsToDatabase();
   await renderContacts();
-  document.getElementById("contactDetailsContainer").innerHTML = "";
+  document.getElementById("contactDetailsContainer").innerHTML = /*html*/`
+    <div class="deleted-contact" id="deleteMessageContainer">
+      <p class="delete-message fade" id="deleteText">Der Kontakt wurde gelöscht!</p>
+    </div>
+  `;
+  setTimeout(() => {
+    document.getElementById("deleteText").classList.add('fade-out');
+  }, 2000);
 }
-
 
 function generateInitials(name) {
   let nameParts = name.split(" ");
@@ -365,15 +371,9 @@ editArea.innerHTML = /*html*/ `
   <img id="closeBtn" src="./images/close.svg" alt="icon" onclick="toggleEditContactOverlay()"/>
 </div>
 <form id="editForm" action="" class="flexContainerCol" onsubmit="storeEditedData(${i}, event)">
-  <input type="text" id="fullName" name="fullName"/>
-  <input type="email" id="email" name="email" />
-  <input
-    type="tel"
-    id="phone"
-    name="phone"
-    minlength="5"
-    maxlength="20"
-    />
+  <input type="text" id="fullName" name="fullName" placeholder="Name" minlength="5" required/>
+  <input type="email" id="email" name="email" placeholder="hans.mustermann@web.de" required/>
+  <input type="tel" id="phone" name="phone" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
   <div class="overlayBtnsContainer flexContainer">
     <button type="button" id="deleteBtn" class="overlayBtns" onclick="toggleEditContactOverlay()">Cancel</button>
     <button type="submit" id="saveBtn" class="overlayBtns flexContainer">

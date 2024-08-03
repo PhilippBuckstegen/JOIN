@@ -644,3 +644,18 @@ body {
 .d-none {
   display: none;
 }
+
+/* CSS Klassen für Message das Text gelöscht wurde */
+
+.delete-message{
+  font-size: 21px;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out; /* 1s ist die Dauer des Übergangs */
+}
+
+.fade-out {
+  opacity: 0;
+}

@@ -48,8 +48,26 @@ function showContactDetails(index) {
     removeClassFromElement('contactInfoContainer', 'd-none');
   }
   document.getElementById(`initialsDetailsCircle`).style.backgroundColor = contacts[index].backgroundColor;
+  renderSlideInBtns(index);
   // addBackgroundColorToDetailsCircle(index, "initialsDetailsCircle");
 }
+
+function renderSlideInBtns(index){
+  let slideInBtns = document.getElementById('slideInBtns');
+  slideInBtns.innerHTML = /*html*/`
+     <img
+            onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')"
+            src="/assets/icons/edit_mobile.svg"
+            alt="edit-mobile"
+          />
+          <img
+            onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact('${index}')"
+            src="/assets/icons/delete_mobile.svg"
+            alt="edit-mobile"
+          />
+  `;
+}
+
 
 function addClassToElement(elementId, className) {
     let element = document.getElementById(elementId);

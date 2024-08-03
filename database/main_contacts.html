@@ -106,7 +106,7 @@
           </div>
           -->
         </div>
-        <div class="edit-delete-add-mobile">
+        <div class="edit-delete-add-mobile" id="editDeleteAddMobile">
           <img
             onclick="removeClassFromElement('slideInBtns', 'd-none-mobile'), addClassToElement('slideInBtns', 'button-animation-mobile')"
             src="/assets/icons/more.svg"
@@ -115,7 +115,8 @@
         </div>
 
         <div id="slideInBtns" class="slide-in-buttons d-none d-none-mobile">
-          <img
+          <!-- Mobile Buttons für add und delete werden hier gerendert -->
+          <!-- <img
             onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')"
             src="/assets/icons/edit_mobile.svg"
             alt="edit-mobile"
@@ -124,7 +125,7 @@
             onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact()"
             src="/assets/icons/delete_mobile.svg"
             alt="edit-mobile"
-          />
+          /> -->
         </div>
       </div>
     </section>
@@ -176,31 +177,10 @@
               />
             </div>
             <form
-              id="editFormAdd"
-              action=""
-              class="flexContainerCol"
-              onsubmit="addNewContactToDatabase(event)"
-            >
-              <input
-                type="text"
-                id="fullNameAdd"
-                name="fullNameAdd"
-                placeholder="Name"
-              />
-              <input
-                type="email"
-                id="emailAdd"
-                name="emailAdd"
-                placeholder="Email"
-              />
-              <input
-                type="tel"
-                id="phoneAdd"
-                name="phoneAdd"
-                placeholder="Phone"
-                minlength="5"
-                maxlength="15"
-              />
+              id="editFormAdd" action="" class="flexContainerCol" onsubmit="addNewContactToDatabase(event)">
+              <input type="text" id="fullNameAdd" name="fullNameAdd" placeholder="Name" minlength="5" required/>
+              <input type="email" id="emailAdd" name="emailAdd" placeholder="hans.mustermann@web.de" required/>
+              <input type="tel" id="phoneAdd" name="phoneAdd" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
               <!-- pattern="[0-9]{15}" -->
               <div class="overlayBtnsContainer flexContainer">
                 <button
