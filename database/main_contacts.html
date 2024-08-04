@@ -19,12 +19,28 @@
     <link rel="stylesheet" href="main_contacts.css" />
     <link rel="stylesheet" href="mobile_contacts.css" />
     <link rel="stylesheet" href="/sidebar/style.css" />
+    <link rel="stylesheet" href="/header/headerStyle.css" />
+    <script type="module">
+      import { loadHeader } from "../header/Headerscript.js";
+      window.addEventListener("DOMContentLoaded", (event) => {
+        loadHeader();
+      });
+    </script>
   </head>
   <body onload="renderContacts()">
     <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
       <div class="sidebar"></div>
     </div>
+    <div id="header-placeholder"></div>
+
+    <script>
+      fetch("headerTemplate.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+    </script>
 
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
@@ -177,10 +193,34 @@
               />
             </div>
             <form
-              id="editFormAdd" action="" class="flexContainerCol" onsubmit="addNewContactToDatabase(event)">
-              <input type="text" id="fullNameAdd" name="fullNameAdd" placeholder="Name" minlength="5" required/>
-              <input type="email" id="emailAdd" name="emailAdd" placeholder="hans.mustermann@web.de" required/>
-              <input type="tel" id="phoneAdd" name="phoneAdd" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
+              id="editFormAdd"
+              action=""
+              class="flexContainerCol"
+              onsubmit="addNewContactToDatabase(event)"
+            >
+              <input
+                type="text"
+                id="fullNameAdd"
+                name="fullNameAdd"
+                placeholder="Name"
+                minlength="5"
+                required
+              />
+              <input
+                type="email"
+                id="emailAdd"
+                name="emailAdd"
+                placeholder="hans.mustermann@web.de"
+                required
+              />
+              <input
+                type="tel"
+                id="phoneAdd"
+                name="phoneAdd"
+                placeholder="+49123456789"
+                pattern="^[+][0-9]{5,20}"
+                required
+              />
               <!-- pattern="[0-9]{15}" -->
               <div class="overlayBtnsContainer flexContainer">
                 <button
