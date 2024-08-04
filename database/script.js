@@ -1,35 +1,7 @@
-const BASE_URL =
-  "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/";
+// Globale Variablem
+const BASE_URL = "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = {};
-// let sortedContacts = [];
-let alphabet = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
 
 
 // Funktion um Daten aus der Datenbank zu fetchen
@@ -53,7 +25,6 @@ async function getContactsFromDatabase() {
     "contacts"
   );
   contacts = data;
-  // console.log(contacts);
 }
 
 
@@ -81,7 +52,6 @@ async function postData(BASE_URL, path="", data){
   } catch (error) {
       console.log("Fehler beim Zugriff zum Schreiben in die Datenbank!", error);
   }
-  console.log(responseToJson);
 }
 
 
@@ -95,9 +65,19 @@ function editContacts(i) {
 async function storeEditedData(i, event) {
   event.preventDefault();
   setAllPrevousItemsLastEditedFalse(contacts)
-  // let name = document.getElementById(`name${i}`);
-  // let email = document.getElementById(`email${i}`);
-  // let phone = document.getElementById(`phone${i}`);
+  writeEditedValueFieldsToContacts(i)
+  addRandomColorToJSON(contacts);
+  sortContactsByInitials(contacts);
+  await writeContactsToDatabase();
+  await getContactsFromDatabase();
+  toggleEditContactOverlay();
+  await renderContacts();
+  showContactDetails(findLastEditedIndex(contacts));
+  editInputsCleanUp();
+}
+
+
+function writeEditedValueFieldsToContacts(i){
   let editedName = document.getElementById('fullName');
   let editedEmail = document.getElementById('email');
   let editedPhone = document.getElementById('phone');
@@ -106,16 +86,6 @@ async function storeEditedData(i, event) {
   contacts[i].phone = editedPhone.value;
   contacts[i].initials = generateInitials(editedName.value);
   contacts[i].lastEdited = true;
-  addRandomColorToJSON(contacts);
-  sortContactsByInitials(contacts);
-  // toggleEditContactOverlay();
-  await writeContactsToDatabase();
-  await getContactsFromDatabase();
-  toggleEditContactOverlay();
-  await renderContacts();
-  showContactDetails(findLastEditedIndex(contacts));
-  editInputsCleanUp();
-  // toggleEditContactOverlay();
 }
 
 
@@ -125,47 +95,23 @@ async function renderContacts() {
   contactArea.innerHTML = "";
   storedCharacter = "";
   for (i = 0; i < contacts.length; i++) {
-    for (j = 0; j < alphabet.length; j++) {
-      if (
-        alphabet[j] === contacts[i].initials[0] &&
-        storedCharacter != alphabet[j]
-      ) {
-        contactArea.innerHTML += /*html*/ `
-                    <div id="letterContainer${alphabet[j]}" class="letter-contacts-container">
-                        <div class="letter-header">${alphabet[j]}</div>
-                        <div class="letter-header-border"></div>
-                    <!-- </div> -->
-                    <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
-                        <div class="contact-icon contact-icon-wh bg-color" id="initialsCircle${i}">${contacts[i].initials}</div>
-                        <div class="name-mail">
-                            <span class="name">${contacts[i].name}</span>
-                            <span class="mail">${contacts[i].email}</span>
-                        </div>
-                    </div>
-                `;
-        storedCharacter = alphabet[j];
-        break;
-      } else if (
-        alphabet[j] === contacts[i].initials[0] &&
-        storedCharacter === alphabet[j]
-      ) {
-        let letterContainer = document.getElementById(
-          `letterContainer${alphabet[j]}`
-        );
-        letterContainer.innerHTML += /*html*/ `
-                <!-- <div> -->
-                    <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
-                        <div class="contact-icon contact-icon-wh bg-color" id="initialsCircle${i}">${contacts[i].initials}</div>
-                        <div class="name-mail">
-                            <span class="name">${contacts[i].name}</span>
-                            <span class="mail">${contacts[i].email}</span>
-                        </div>
-                    </div>
-                `;
-        storedCharacter = alphabet[j];
-      }
-    }
+    renderContactsConditions(contactArea, i);
     document.getElementById(`initialsCircle${i}`).style.backgroundColor = contacts[i].backgroundColor;
+  }
+}
+
+
+function renderContactsConditions(contactArea, i){
+  for (j = 0; j < alphabet.length; j++) {
+    if (alphabet[j] === contacts[i].initials[0] && storedCharacter != alphabet[j]){
+      contactArea.innerHTML += renderContactsWithLetterContainerHTML();
+      storedCharacter = alphabet[j];
+      break;
+    } else if (alphabet[j] === contacts[i].initials[0] && storedCharacter === alphabet[j]) {
+      let letterContainer = document.getElementById(`letterContainer${alphabet[j]}`);
+      letterContainer.innerHTML += renderContactsWithoutLetterContainerHTML();
+      storedCharacter = alphabet[j];
+    }
   }
 }
 
@@ -186,7 +132,18 @@ function addNewContact() {
 async function addNewContactToDatabase(event){
   event.preventDefault();
   setAllPrevousItemsLastAddedFalse(contacts);
-  let addName = document.getElementById('fullNameAdd');
+  writeNewContactToLocalArray();
+  toggleAddContactOverlay()
+  sortContactsByInitials(contacts);
+  addRandomColorToJSON(contacts);
+  await writeContactsToDatabase();
+  await renderContacts();
+  showContactDetails(findLastAddedIndex(contacts));
+}
+
+
+function writeNewContactToLocalArray(){
+    let addName = document.getElementById('fullNameAdd');
   let addEmail = document.getElementById('emailAdd');
   let addPhone = document.getElementById('phoneAdd');
   let newContact = {
@@ -196,14 +153,7 @@ async function addNewContactToDatabase(event){
     "initials": generateInitials(addName.value),
     "lastAdded" : true,
   }
-  lastAddedName = newContact.name;
   contacts.push(newContact);
-  toggleAddContactOverlay()
-  sortContactsByInitials(contacts);
-  addRandomColorToJSON(contacts);
-  await writeContactsToDatabase();
-  await renderContacts();
-  showContactDetails(findLastAddedIndex(contacts));
 }
 
 
@@ -247,15 +197,12 @@ async function deleteContact(i) {
   addRandomColorToJSON(contacts);
   await writeContactsToDatabase();
   await renderContacts();
-  document.getElementById("contactDetailsContainer").innerHTML = /*html*/`
-    <div class="deleted-contact" id="deleteMessageContainer">
-      <p class="delete-message fade" id="deleteText">Der Kontakt wurde gelöscht!</p>
-    </div>
-  `;
+  document.getElementById("contactDetailsContainer").innerHTML = renderDeleteContactMessageHTML();
   setTimeout(() => {
     document.getElementById("deleteText").classList.add('fade-out');
   }, 2000);
 }
+
 
 function generateInitials(name) {
   let nameParts = name.split(" ");
@@ -269,17 +216,13 @@ function sortContactsByInitials(contacts) {
   return contacts.sort((a, b) => {
     let initial_1 = a.initials;
     let initial_2 = b.initials;
-
     if (initial_1[0] < initial_2[0]) {
       return -1;
-    }
-    if (initial_1[0] > initial_2[0]) {
+    } else if (initial_1[0] > initial_2[0]) {
       return 1;
-    }
-    if (initial_1[1] < initial_2[1]) {
+    } else if (initial_1[1] < initial_2[1]) {
       return -1;
-    }
-    if (initial_1[1] > initial_2[1]) {
+    } else if (initial_1[1] > initial_2[1]) {
       return 1;
     }
     return 0;
@@ -287,28 +230,10 @@ function sortContactsByInitials(contacts) {
 }
 
 
-/* Random Color 
-z.B.
- document.getElementById(`nameAbbrContainer${i}`).style.backgroundColor =
-      getRandomColor();
-*/
 function getRandomColor() {
-  const colors = [
-    "#FF7A00",
-    "#9327FF",
-    "#6E52FF",
-    "#FC71FF",
-    "#FFBB2B",
-    "#1FD7C1",
-    "#462F8A",
-    "#FF4646",
-    "#00BEE8",
-    "#FF7A00",
-  ];
-
+  const colors = ["#FF7A00", "#9327FF", "#6E52FF", "#FC71FF", "#FFBB2B", "#1FD7C1", "#462F8A", "#FF4646", "#00BEE8", "#FF7A00",];
   // Generate a random index based on the length of the colors array
   const randomIndex = Math.floor(Math.random() * colors.length);
-
   // Return the color at the randomly selected index
   return colors[randomIndex];
 }
@@ -360,29 +285,73 @@ function editInputsCleanUp(){
 
 function renderEditArea(i){
 let editArea = document.getElementById('editOverlayContainer');
-editArea.innerHTML = /*html*/ `
-<div class="overlayAbbrContainer flexContainer">
-<div id="overlayAbbr" class="flexContainer">
-  <p id="overlayAbbrPar">${contacts[i].initials}</p>
-</div>
-</div>
-<div class="overlayFormContainer flexContainerCol">
-<div id="closeContainer" class="flexContainer">
-  <img id="closeBtn" src="./images/close.svg" alt="icon" onclick="toggleEditContactOverlay()"/>
-</div>
-<form id="editForm" action="" class="flexContainerCol" onsubmit="storeEditedData(${i}, event)">
-  <input type="text" id="fullName" name="fullName" placeholder="Name" minlength="5" required/>
-  <input type="email" id="email" name="email" placeholder="hans.mustermann@web.de" required/>
-  <input type="tel" id="phone" name="phone" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
-  <div class="overlayBtnsContainer flexContainer">
-    <button type="button" id="deleteBtn" class="overlayBtns" onclick="toggleEditContactOverlay()">Cancel</button>
-    <button type="submit" id="saveBtn" class="overlayBtns flexContainer">
-      Save
-      <img id="checkImg" src="./images/check.svg" alt="icon" />
-    </button>
-  </div>
-</form>
-</div>
-`;
+editArea.innerHTML =  renderEditAreaHTML(i);
 document.getElementById(`overlayAbbr`).style.backgroundColor = contacts[i].backgroundColor;
 }
+
+
+// Templates
+
+// function renderContactsWithLetterContainerHTML(){
+//   return /*html*/ `
+//   <div id="letterContainer${alphabet[j]}" class="letter-contacts-container">
+//     <div class="letter-header">${alphabet[j]}</div>
+//     <div class="letter-header-border"></div>
+//   <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
+//     <div class="contact-icon contact-icon-wh bg-color" id="initialsCircle${i}">${contacts[i].initials}</div>
+//     <div class="name-mail">
+//       <span class="name">${contacts[i].name}</span>
+//       <span class="mail">${contacts[i].email}</span>
+//     </div>
+//   </div>
+// `;
+// }
+
+
+// function renderContactsWithoutLetterContainerHTML(){
+//   return /*html*/ `
+//   <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
+//     <div class="contact-icon contact-icon-wh bg-color" id="initialsCircle${i}">${contacts[i].initials}</div>
+//     <div class="name-mail">
+//       <span class="name">${contacts[i].name}</span>
+//       <span class="mail">${contacts[i].email}</span>
+//     </div>
+//   </div>
+// `;
+// }
+
+
+// function renderDeleteContactMessageHTML(){
+//   return /*html*/`
+//   <div class="deleted-contact" id="deleteMessageContainer">
+//     <p class="delete-message fade" id="deleteText">Der Kontakt wurde gelöscht!</p>
+//   </div>
+// `;
+// }
+
+// function renderEditAreaHTML(i){
+//   return /*html*/ `
+//   <div class="overlayAbbrContainer flexContainer">
+//   <div id="overlayAbbr" class="flexContainer">
+//     <p id="overlayAbbrPar">${contacts[i].initials}</p>
+//   </div>
+//   </div>
+//   <div class="overlayFormContainer flexContainerCol">
+//   <div id="closeContainer" class="flexContainer">
+//     <img id="closeBtn" src="./images/close.svg" alt="icon" onclick="toggleEditContactOverlay()"/>
+//   </div>
+//   <form id="editForm" action="" class="flexContainerCol" onsubmit="storeEditedData(${i}, event)">
+//     <input type="text" id="fullName" name="fullName" placeholder="Name" minlength="5" required/>
+//     <input type="email" id="email" name="email" placeholder="hans.mustermann@web.de" required/>
+//     <input type="tel" id="phone" name="phone" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
+//     <div class="overlayBtnsContainer flexContainer">
+//       <button type="button" id="deleteBtn" class="overlayBtns" onclick="toggleEditContactOverlay()">Cancel</button>
+//       <button type="submit" id="saveBtn" class="overlayBtns flexContainer">
+//         Save
+//         <img id="checkImg" src="./images/check.svg" alt="icon" />
+//       </button>
+//     </div>
+//   </form>
+//   </div>
+//   `;
+// }
