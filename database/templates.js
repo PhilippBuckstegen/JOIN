@@ -1,3 +1,7 @@
+/**
+ * This function returns HTML Code for renderContacts function
+ * @returns - HTML Code
+ */
 function renderContactsWithLetterContainerHTML(){
   return /*html*/ `
     <div id="letterContainer${alphabet[j]}" class="letter-contacts-container">
@@ -13,7 +17,12 @@ function renderContactsWithLetterContainerHTML(){
   `;
 }
   
-  
+
+/**
+ * This function returns HTML Code for renderContacts function
+ * 
+ * @returns - HTML Code
+ */
 function renderContactsWithoutLetterContainerHTML(){
   return /*html*/ `
     <div onclick="showContactDetails(${i})" id="contact${i}" class="contact">
@@ -26,7 +35,12 @@ function renderContactsWithoutLetterContainerHTML(){
   `;
 }
   
-  
+
+/**
+ * This function returns HTML Code for deleteContact function
+ * 
+ * @returns - HTML Code
+ */
 function renderDeleteContactMessageHTML(){
   return /*html*/`
     <div class="deleted-contact" id="deleteMessageContainer">
@@ -36,6 +50,12 @@ function renderDeleteContactMessageHTML(){
 }
 
   
+/**
+ * This function returns HTML Code for editContact function
+ * 
+ * @param {number} i - index of cantact which should be edited
+ * @returns          - HTML Code
+ */
 function renderEditAreaHTML(i){
   return /*html*/ `
     <div class="overlayAbbrContainer flexContainer">
@@ -64,12 +84,13 @@ function renderEditAreaHTML(i){
 }
 
 
-
-
-
-
-
-
+/**
+ * This functions returns HTML Code for showContactdetals function
+ * 
+ * @param {object} contact - single JSON object which should be shwon in detail
+ * @param {number} index   - index of JSON object in local JSON array which should be shown in detail
+ * @returns                - HTML Code
+ */
 function renderShowContactDetailsHTML(contact, index){
     return /*html*/ `
       <div id="ContactDetailsOverlay" class="contact-details-overlay show">

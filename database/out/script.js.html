@@ -1,4 +1,32 @@
-// Globale Variablem
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Globale Variablem
 const BASE_URL = "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = {};
 let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
@@ -117,7 +145,7 @@ async function renderContacts() {
   let contactArea = document.getElementById("listContacts");
   contactArea.innerHTML = "";
   storedCharacter = "";
-  for (i = 0; i < contacts.length; i++) {
+  for (i = 0; i &lt; contacts.length; i++) {
     renderContactsConditions(contactArea, i);
     document.getElementById(`initialsCircle${i}`).style.backgroundColor = contacts[i].backgroundColor;
   }
@@ -131,12 +159,12 @@ async function renderContacts() {
  * @param {number} i            - running index of for loops to render contacts
  */
 function renderContactsConditions(contactArea, i){
-  for (j = 0; j < alphabet.length; j++) {
-    if (alphabet[j] === contacts[i].initials[0] && storedCharacter != alphabet[j]){
+  for (j = 0; j &lt; alphabet.length; j++) {
+    if (alphabet[j] === contacts[i].initials[0] &amp;&amp; storedCharacter != alphabet[j]){
       contactArea.innerHTML += renderContactsWithLetterContainerHTML();
       storedCharacter = alphabet[j];
       break;
-    } else if (alphabet[j] === contacts[i].initials[0] && storedCharacter === alphabet[j]) {
+    } else if (alphabet[j] === contacts[i].initials[0] &amp;&amp; storedCharacter === alphabet[j]) {
       let letterContainer = document.getElementById(`letterContainer${alphabet[j]}`);
       letterContainer.innerHTML += renderContactsWithoutLetterContainerHTML();
       storedCharacter = alphabet[j];
@@ -151,12 +179,12 @@ function renderContactsConditions(contactArea, i){
 function addNewContact() {
   let contactArea = document.getElementById("contactArea");
   contactArea.innerHTML += /*html*/ `
-        <div>
-            <input type="text" id="addName">
-            <input type="email" id="addEmail">
-            <input type="phone" id="addPhone">
-            <button onclick="addNewContactToDatabase()">Save to Database</button>
-        </div>
+        &lt;div>
+            &lt;input type="text" id="addName">
+            &lt;input type="email" id="addEmail">
+            &lt;input type="phone" id="addPhone">
+            &lt;button onclick="addNewContactToDatabase()">Save to Database&lt;/button>
+        &lt;/div>
     `;
 }
 
@@ -203,7 +231,7 @@ function writeNewContactToLocalArray(){
  * @param {object} object - object with name of local JSON object
  */
 function setAllPrevousItemsLastAddedFalse(object){
-  for(i=0; i < object.length; i++){
+  for(i=0; i &lt; object.length; i++){
     object[i].lastAdded = false;
   }
 }
@@ -215,7 +243,7 @@ function setAllPrevousItemsLastAddedFalse(object){
  * @param {object} object - object with name of local JSON object
  */
 function setAllPrevousItemsLastEditedFalse(object){
-  for(i=0; i < object.length; i++){
+  for(i=0; i &lt; object.length; i++){
     object[i].lastEdited = false;
   }
 }
@@ -228,7 +256,7 @@ function setAllPrevousItemsLastEditedFalse(object){
  * @returns                - returns index of object which was last added
  */
 function findLastAddedIndex(objects) {
-  for (let i = 0; i < objects.length; i++) {
+  for (let i = 0; i &lt; objects.length; i++) {
     if (objects[i].lastAdded === true) {
       return i;
     }
@@ -244,7 +272,7 @@ function findLastAddedIndex(objects) {
  * @returns                - returns index of object which was last added
  */
 function findLastEditedIndex(objects) {
-  for (let i = 0; i < objects.length; i++) {
+  for (let i = 0; i &lt; objects.length; i++) {
     if (objects[i].lastEdited === true) {
       return i;
     }
@@ -295,11 +323,11 @@ function sortContactsByInitials(contacts) {
   return contacts.sort((a, b) => {
     let initial_1 = a.initials;
     let initial_2 = b.initials;
-    if (initial_1[0] < initial_2[0]) {
+    if (initial_1[0] &lt; initial_2[0]) {
       return -1;
     } else if (initial_1[0] > initial_2[0]) {
       return 1;
-    } else if (initial_1[1] < initial_2[1]) {
+    } else if (initial_1[1] &lt; initial_2[1]) {
       return -1;
     } else if (initial_1[1] > initial_2[1]) {
       return 1;
@@ -329,7 +357,7 @@ function getRandomColor() {
  * @param {JSON} object - name of local JSON Object where background-color should be added
  */
 function addRandomColorToJSON(object){
-  for(i = 0; i < object.length; i++){
+  for(i = 0; i &lt; object.length; i++){
     object[i].backgroundColor = getRandomColor(); 
   }
 }
@@ -401,3 +429,26 @@ let editArea = document.getElementById('editOverlayContainer');
 editArea.innerHTML =  renderEditAreaHTML(i);
 document.getElementById(`overlayAbbr`).style.backgroundColor = contacts[i].backgroundColor;
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addClassToElement">addClassToElement</a></li><li><a href="global.html#addNewContact">addNewContact</a></li><li><a href="global.html#addNewContactToDatabase">addNewContactToDatabase</a></li><li><a href="global.html#addRandomColorToJSON">addRandomColorToJSON</a></li><li><a href="global.html#checkContactDetailsScreenWidth">checkContactDetailsScreenWidth</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#editInputsCleanUp">editInputsCleanUp</a></li><li><a href="global.html#findLastAddedIndex">findLastAddedIndex</a></li><li><a href="global.html#findLastEditedIndex">findLastEditedIndex</a></li><li><a href="global.html#generateInitials">generateInitials</a></li><li><a href="global.html#getContactsFromDatabase">getContactsFromDatabase</a></li><li><a href="global.html#getDataToEdit">getDataToEdit</a></li><li><a href="global.html#getRandomColor">getRandomColor</a></li><li><a href="global.html#handleResize">handleResize</a></li><li><a href="global.html#hideContactDetails">hideContactDetails</a></li><li><a href="global.html#loadData">loadData</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#removeClassFromElement">removeClassFromElement</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderContactsConditions">renderContactsConditions</a></li><li><a href="global.html#renderContactsWithLetterContainerHTML">renderContactsWithLetterContainerHTML</a></li><li><a href="global.html#renderContactsWithoutLetterContainerHTML">renderContactsWithoutLetterContainerHTML</a></li><li><a href="global.html#renderDeleteContactMessageHTML">renderDeleteContactMessageHTML</a></li><li><a href="global.html#renderEditArea">renderEditArea</a></li><li><a href="global.html#renderEditAreaHTML">renderEditAreaHTML</a></li><li><a href="global.html#renderShowContactDetailsHTML">renderShowContactDetailsHTML</a></li><li><a href="global.html#renderSlideInBtns">renderSlideInBtns</a></li><li><a href="global.html#setAllPrevousItemsLastAddedFalse">setAllPrevousItemsLastAddedFalse</a></li><li><a href="global.html#setAllPrevousItemsLastEditedFalse">setAllPrevousItemsLastEditedFalse</a></li><li><a href="global.html#showContactDetails">showContactDetails</a></li><li><a href="global.html#sortContactsByInitials">sortContactsByInitials</a></li><li><a href="global.html#storeEditedData">storeEditedData</a></li><li><a href="global.html#toggleAddContactOverlay">toggleAddContactOverlay</a></li><li><a href="global.html#toggleEditContactOverlay">toggleEditContactOverlay</a></li><li><a href="global.html#writeContactsToDatabase">writeContactsToDatabase</a></li><li><a href="global.html#writeEditDataToInputs">writeEditDataToInputs</a></li><li><a href="global.html#writeEditedValueFieldsToContacts">writeEditedValueFieldsToContacts</a></li><li><a href="global.html#writeNewContactToLocalArray">writeNewContactToLocalArray</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Aug 05 2024 01:06:29 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
