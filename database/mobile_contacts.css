@@ -606,7 +606,6 @@
   .contacts-container {
     width: 100%;
     max-width: unset;
-    margin-bottom: 65px;
   }
 
   .back-to-contact-list {
@@ -622,6 +621,11 @@
 
 @media (max-width: 900px) {
   /*Edit Contact Overlay*/
+
+  .contacts-container {
+    margin-bottom: 65px;
+  }
+
 
   #editOverlay {
     top: 10%;
