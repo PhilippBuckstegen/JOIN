@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/sidebar/style.css" />
     <link rel="stylesheet" href="/header/headerStyle.css" />
     <script type="module">
-      import { loadHeader } from "../header/Headerscript.js";
+      import { loadHeader } from "/header/Headerscript.js";
       window.addEventListener("DOMContentLoaded", (event) => {
         loadHeader();
       });
@@ -35,7 +35,7 @@
     <div id="header-placeholder"></div>
 
     <script>
-      fetch("../header/header.html")
+      fetch("/header/header.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("header-placeholder").innerHTML = data;
