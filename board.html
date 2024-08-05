@@ -1,23 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
 
-    <link rel="stylesheet" href="board.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="board.css" />
+  </head>
+  <body>
     <!-- header and sidebar from includeHTML -->
-     <main class="main-board">
-        <header class="header-board">
-            <div class="headline-board"></div>
-            <div class="search-and-addTask">
-                div
+    <main class="main-board">
+      <header class="header-board">
+        <div class="headline-board">
+          <h2 class="h2-board">Board</h2>
+        </div>
+        <div class="search-and-addTask">
+          <div class="searchbar">
+            <input
+              id="searchInput"
+              class="search-input"
+              type="text"
+              placeholder="Find Task"
+            />
+            <img class="search-img" src="./assets/icons/search.svg" alt="search">
+          </div>
+          <button class="addTask-button">
+            <p class="add-task">Add Task</p>
+            <img src="./assets/icons/add.svg" alt="add">
+          </button>
+        </div>
+      </header>
+      <section class="board">
+        <article class="column-board">
+            <div class="column-board-header">
+                <h2 class="column-headline">To do</h2>
+                <img class="plus-button" src="./assets/icons/plus button.svg" alt="add task">
             </div>
 
-        </header>
 
-     </main>
-</body>
+        </article>
+
+      </section>
+    </main>
+  </body>
 </html>

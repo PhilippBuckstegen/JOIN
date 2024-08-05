@@ -1,0 +1,53 @@
+@media (max-width: 1000px) {
+  .header-wrap p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  header {
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    height: 80px;
+    width: 100%;
+    margin-right: 40px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 11;
+  }
+
+  .header-wrap p {
+    display: none;
+  }
+
+  .header-logo-mobile {
+    display: flex;
+  }
+}
+
+@media (max-width: 680px) {
+  .contacts-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-direction: column;
+  }
+
+  .header-border {
+    border: 1px solid #29abe2;
+    border-radius: 2px;
+    margin: 12px 0px;
+    width: 116px;
+    height: 0;
+  }
+
+  .header-headline {
+    font-size: 48px;
+  }
+
+  .header-subheadline {
+    font-size: 18px;
+  }
+}
