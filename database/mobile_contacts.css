@@ -1710,6 +1710,10 @@
     line-height: 30px;
   }
 
+  .contacts-info-container {
+    padding: 80px 30px 70px 30px;
+  }
+
   .contact-icon-name {
     gap: 28px;
   }
