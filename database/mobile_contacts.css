@@ -20,7 +20,9 @@
 
 /*--------------------------------------------------
 ----------------------------------------------------*/
-
+ #editOverlay,  #addContactOverlay {
+  z-index: 999999;
+ }
 @media (min-width: 1201px) {
   /*Edit Contact Overlay*/
 
