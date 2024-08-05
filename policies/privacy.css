@@ -10,9 +10,9 @@ body{
     font-size: 16px !important;
 } */
 
-.privacy-policy{
+.privacy-policy-area{
     margin-left: 232px;
-    height: 100vh;
+    height: calc(100vh - 96px);
     overflow-y: scroll;
     padding-left: 100px;
     max-width: calc(100% - 232px);
@@ -22,6 +22,11 @@ body{
     flex-direction: column; */
 }
 
-.privacy-policy p{
+.privacy-policy-area p{
     font-size: 16px;;
 }
+
+.pb-50{
+    padding-bottom: 50px;
+}
+
