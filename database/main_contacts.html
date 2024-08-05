@@ -18,9 +18,9 @@
     <script src="/sidebar/sidebarScript.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="main_contacts.css" />
+    <link rel="stylesheet" href="/header/headerStyle.css" />
     <link rel="stylesheet" href="mobile_contacts.css" />
     <link rel="stylesheet" href="/sidebar/style.css" />
-    <link rel="stylesheet" href="/header/headerStyle.css" />
     <script type="module">
       import { loadHeader } from "../header/Headerscript.js";
       window.addEventListener("DOMContentLoaded", (event) => {
@@ -88,7 +88,7 @@
           <div class="header-border"></div>
           <p class="header-subheadline">Better with a team</p>
         </div>
-        <div id="contactDetailsContainer" class="contact-details-container">
+        <div id="contactDetailsContainer" class="contact-details-container" onclick="addClassToElement('slideInBtns', 'd-none-mobile')">
           <!-- render contact details -->
           <!--  
           <div id="ContactDetailsOverlay" class="contact-details-overlay">
