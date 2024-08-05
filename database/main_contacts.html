@@ -1,136 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
     <!-- script -->
     <script src="templates.js"></script>
     <script src="script.js"></script>
     <!-- <script src="contact_details.js"></script> -->
     <script src="/sidebar/sidebarScript.js"></script>
+    <script src="/header/headerScript.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="main_contacts.css" />
+    <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="mobile_contacts.css" />
     <link rel="stylesheet" href="/sidebar/style.css" />
-  </head>
-  <body onload="renderContacts()">
+</head>
+<body onload="renderContacts()">
     <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
       <div class="sidebar"></div>
     </div>
+    <div id="header-placeholder"></div>
 
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
-      <!-- <div id="addContactContainer">
+        <!-- <div id="addContactContainer">
         <button id="addContactBtn" class="flexContainer">
-          Add new contact
-          <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
-        </button>
-      </div> -->
-
-      <div id="contactsContainer" class="contacts-container">
-        <div id="addContactContainer" class="flexContainer">
-          <button
-            id="addContactBtn"
-            class="flexContainer"
-            onclick="toggleAddContactOverlay()"
-          >
             Add new contact
             <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
-          </button>
-        </div>
-        <div id="listContacts" class="list-contacts-container"></div>
-        <div class="edit-delete-add-mobile">
-          <img
-            onclick="toggleAddContactOverlay()"
-            src="/assets/icons/person_add.svg"
-            alt="add-icon-mobile"
-          />
-        </div>
-      </div>
-      <!-- redner contact list -->
+        </button>
+        </div> -->
 
-      <!-- contacts info -->
-      <div id="contactInfoContainer" class="contacts-info-container">
-        <div class="back-to-contact-list">
-          <img
-            onclick="hideContactDetails()"
-            src="/assets/icons/arrow-left-line.svg"
-            alt="arrow-back"
-          />
+        <div id="contactsContainer" class="contacts-container">
+            <div id="addContactContainer" class="flexContainer">
+                <button id="addContactBtn" class="flexContainer" onclick="toggleAddContactOverlay()">
+                    Add new contact
+                    <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
+                </button>
+            </div>
+            <div id="listContacts" class="list-contacts-container"></div>
+            <div class="edit-delete-add-mobile">
+                <img onclick="toggleAddContactOverlay()" src="/assets/icons/person_add.svg" alt="add-icon-mobile" />
+            </div>
         </div>
-        <div class="contacts-header">
-          <p class="header-headline">Contacts</p>
-          <div class="header-border"></div>
-          <p class="header-subheadline">Better with a team</p>
-        </div>
-        <div id="contactDetailsContainer" class="contact-details-container">
-          <!-- render contact details -->
-          <!--  
-          <div id="ContactDetailsOverlay" class="contact-details-overlay">
-            <div class="contact-icon-name">
-              <div class="contact-overlay-icon contact-icon detail-name">AB</div>
-              <div class="name-edit-delete">
-                <span class="detail-name">NAME</span>
-                <div class="edit-delete">
-                  <div class="edit">
-                    <img src="/assets/icons/edit.svg" alt="icon-edit" />
-                    <span>Edit</span>
-                  </div>
-                  <div class="delete">
-                    <img src="/assets/icons/delete.svg" alt="icon-delete" />
-                    <span>Delete</span>
-                  </div>
+        <!-- render contact list -->
+
+        <!-- contacts info -->
+        <div id="contactInfoContainer" class="contacts-info-container">
+            <div class="back-to-contact-list">
+                <img onclick="hideContactDetails()" src="/assets/icons/arrow-left-line.svg" alt="arrow-back" />
+            </div>
+            <div class="contacts-header">
+                <p class="header-headline">Contacts</p>
+                <div class="header-border"></div>
+                <p class="header-subheadline">Better with a team</p>
+            </div>
+            <div id="contactDetailsContainer" class="contact-details-container" onclick="addClassToElement('slideInBtns', 'd-none-mobile')">
+                <!-- render contact details -->
+                <!--  
+                <div id="ContactDetailsOverlay" class="contact-details-overlay">
+                    <div class="contact-icon-name">
+                        <div class="contact-overlay-icon contact-icon detail-name">AB</div>
+                        <div class="name-edit-delete">
+                            <span class="detail-name">NAME</span>
+                            <div class="edit-delete">
+                                <div class="edit">
+                                    <img src="/assets/icons/edit.svg" alt="icon-edit" />
+                                    <span>Edit</span>
+                                </div>
+                                <div class="delete">
+                                    <img src="/assets/icons/delete.svg" alt="icon-delete" />
+                                    <span>Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info-edit">
+                        <div class="information">Contact Information</div>
+                    </div>
+
+                    <div class="contact-details-email">
+                        <b>Email</b>
+                        <a href="mailto:erika.krawotki@yahoo.de">erika.krawotki@yahoo.de</a>
+                    </div>
+                    <div class="contact-details-phone">
+                        <b>Phone</b>
+                        <a href="tel:0123-456789">0123-456789</a>
+                    </div>
                 </div>
-              </div>
+                -->
             </div>
-            <div class="contact-info-edit">
-              <div class="information">Contact Information</div>
+            <div class="edit-delete-add-mobile" id="editDeleteAddMobile">
+                <img onclick="removeClassFromElement('slideInBtns', 'd-none-mobile'), addClassToElement('slideInBtns', 'button-animation-mobile')" src="/assets/icons/more.svg" alt="edit-delete-mobile" />
             </div>
 
-            <div class="contact-details-email">
-              <b>Email</b>
-              <a href="mailto:erika.krawotki@yahoo.de">erika.krawotki@yahoo.de</a>
+            <div id="slideInBtns" class="slide-in-buttons d-none d-none-mobile">
+                <!-- Mobile Buttons für add und delete werden hier gerendert -->
+                <!-- <img
+                onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')"
+                src="/assets/icons/edit_mobile.svg"
+                alt="edit-mobile"
+                />
+                <img
+                onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact()"
+                src="/assets/icons/delete_mobile.svg"
+                alt="edit-mobile"
+                /> -->
             </div>
-            <div class="contact-details-phone">
-              <b>Phone</b>
-              <a href="tel:0123-456789">0123-456789</a>
-            </div>
-          </div>
-          -->
         </div>
-        <div class="edit-delete-add-mobile" id="editDeleteAddMobile">
-          <img
-            onclick="removeClassFromElement('slideInBtns', 'd-none-mobile'), addClassToElement('slideInBtns', 'button-animation-mobile')"
-            src="/assets/icons/more.svg"
-            alt="edit-delete-mobile"
-          />
-        </div>
-
-        <div id="slideInBtns" class="slide-in-buttons d-none d-none-mobile">
-          <!-- Mobile Buttons für add und delete werden hier gerendert -->
-          <!-- <img
-            onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')"
-            src="/assets/icons/edit_mobile.svg"
-            alt="edit-mobile"
-          />
-          <img
-            onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact()"
-            src="/assets/icons/delete_mobile.svg"
-            alt="edit-mobile"
-          /> -->
-        </div>
-      </div>
     </section>
     <section class="overlays">
+<<<<<<< HEAD
       <!--Overlay 1-->
       <!--
       <div id="editOverlay" class="flexContainer">
@@ -233,18 +218,20 @@
                 src="./images/person_white.svg"
                 alt=""
               />
+=======
+        <!--Overlay 1-->
+        <div id="editOverlay" class="flexContainer none">
+            <div class="editOverlaySec1 flexContainerCol">
+                <div class="overlayLogoContainer flexContainer">
+                    <img class="overlayLogo" src="./images/logo.svg" alt="logo" />
+                </div>
+                <div class="overlayHeaderContainer"><h1>Edit contact</h1></div>
+>>>>>>> 16e66e562affdfb3761bf47bd86ea733cafc2273
             </div>
-          </div>
-
-          <div class="overlayFormContainer flexContainerCol">
-            <div id="closeContainer" class="flexContainer">
-              <img
-                id="addCloseBtn"
-                src="./images/close.svg"
-                alt="icon"
-                onclick="toggleAddContactOverlay()"
-              />
+            <div class="editOverlaySec2 flexContainer" id="editOverlayContainer">
+                <!-- Edit Overlay wird hier gerendert -->
             </div>
+<<<<<<< HEAD
             <form
               id="editFormAdd"
               action=""
@@ -300,11 +287,56 @@
               </div>
             </form>
           </div>
+=======
+>>>>>>> 16e66e562affdfb3761bf47bd86ea733cafc2273
         </div>
-      </div>
-      <!--Overlay 2 End-->
+        <!--Overlay 1 End-->
+
+        <!--Overlay 2 -->
+        <div id="addContactOverlay" class="flexContainer none">
+            <div class="addOverlaySec1 flexContainerCol">
+                <div class="overlayLogoContainer flexContainer">
+                    <img class="overlayLogo" src="./images/logo.svg" alt="logo" />
+                </div>
+                <div class="overlayHeaderContainer">
+                    <h1>Add contact</h1>
+                    <p>Tasks are better with a team!</p>
+                </div>
+            </div>
+
+            <div class="addOverlaySec2 flexContainer">
+                <div class="overlayAbbrContainer flexContainer">
+                    <div id="overlayAbbrAdd" class="flexContainer">
+                        <img id="overlayAbbrAddImg" src="./images/person_white.svg" alt="" />
+                    </div>
+                </div>
+
+                <div class="overlayFormContainer flexContainerCol">
+                    <div id="closeContainer" class="flexContainer">
+                        <img id="addCloseBtn" src="./images/close.svg" alt="icon" onclick="toggleAddContactOverlay()" />
+                    </div>
+                    <form id="editFormAdd" action="" class="flexContainerCol" onsubmit="addNewContactToDatabase(event)">
+                        <input type="text" id="fullNameAdd" name="fullNameAdd" placeholder="Name" minlength="5" required />
+                        <input type="email" id="emailAdd" name="emailAdd" placeholder="hans.mustermann@web.de" required />
+                        <input type="tel" id="phoneAdd" name="phoneAdd" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required />
+                        <!-- pattern="[0-9]{15}" -->
+                        <div class="overlayBtnsContainer flexContainer">
+                            <button type="button" id="cancelBtn" class="overlayBtns flexContainer" onclick="toggleAddContactOverlay()">
+                                Cancel
+                                <img id="cancelImgAdd" src="./images/iconoir_cancel.svg" alt="icon" />
+                            </button>
+                            <button type="submit" id="createBtn" class="overlayBtns flexContainer">
+                                Create contact
+                                <img id="checkImgAdd" src="./images/check.svg" alt="icon" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Overlay 2 End-->
     </section>
 
     <script src="contact_details.js"></script>
-  </body>
+</body>
 </html>

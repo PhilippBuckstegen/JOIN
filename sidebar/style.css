@@ -10,8 +10,10 @@ body {
   height: 100vh;
   width: 232px;
   position: absolute;
-  top: 0px;
+  top: 0;
+  z-index: 10; /* Ensure sidebar is on top */
 }
+
 
 .sidebar {
   display: flex;
@@ -33,7 +35,6 @@ body {
 
 .button-sidebar {
   width: 232px;
-  /*height: 46px;*/
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -63,7 +64,6 @@ body {
   align-items: center;
   width: 232px;
   height: 317px;
-  padding: 243px, 0px, 0px, 52px;
   gap: 4px;
 }
 
@@ -83,4 +83,70 @@ body {
 .police-button:hover {
   color: white;
   background-color: #29abe2;
+}
+
+.sizeP {
+  font-size: 16px;
+}
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media Query for screens with max-width of 900px */
+@media (max-width: 900px) {
+  .side-wrap {
+    flex-direction: row;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    margin-top: 750px;
+    z-index: 10;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .join-capa, .sidebar-buttons-height, .police-wrapper {
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
+
+  .join-capa {
+    margin: 10px;
+  }
+
+  .sidebar-buttons-height {
+    height: auto;
+    gap: 0;
+  }
+
+  .button-sidebar, .police-button {
+    width: auto;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .button-sidebar img, .police-button img {
+    margin-bottom: 5px;
+  }
+
+  .button-sidebar p, .police-button p {
+    width: auto;
+    text-align: center;
+  }
+
+  .capa-image, .privacy-policy, .legal-notice {
+    display: none;
+  }
+
 }
