@@ -62,7 +62,7 @@ function addClassToElement(elementId, className) {
  * This function removes a specific class from an specific element
  * 
  * @param {element} elementId - element to remove class from
- * @param {strimg} className  - class which should be removed from element
+ * @param {string} className  - class which should be removed from element
  */
 function removeClassFromElement(elementId, className) {
   let element = document.getElementById(elementId);
