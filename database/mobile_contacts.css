@@ -59,6 +59,14 @@
     margin-left: 40px;
   }
 
+  #overlayLogoContainerEdit {
+    justify-content: flex-end;
+  }
+
+  #editCloseBtnWhite {
+    display: none;
+  }
+
   .overlayHeaderContainer {
     color: #fff;
     font-size: 26px;
@@ -382,7 +390,7 @@
   }
 
   #overlayAbbr {
- background-color: #9327ff;
+    background-color: #9327ff;
     color: #fff;
     font-size: 40px;
     font-weight: 500;
