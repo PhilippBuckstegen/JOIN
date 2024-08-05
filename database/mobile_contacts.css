@@ -606,6 +606,7 @@
   .contacts-container {
     width: 100%;
     max-width: unset;
+    margin-bottom: 65px;
   }
 
   .back-to-contact-list {
