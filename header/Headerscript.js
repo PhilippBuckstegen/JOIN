@@ -7,7 +7,7 @@ export function loadHeader() {
                     <img src="../header/img_header/help.svg" alt="" />
                     <div class="container">
                     <img class="ellipse-style" src="../header/img_header/Ellipse_3.svg" alt="">                 
-                        <span class="span-size">SM</span>
+                        <span id="user-logged-in" class="span-size">SM</span>
                     </div>
                 </div>
             </div>
