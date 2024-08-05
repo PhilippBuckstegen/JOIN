@@ -60,3 +60,7 @@ header {
     text-align: center;
     line-height: 14px;
   }
+
+  .header-logo-mobile {
+    display: none;
+  }

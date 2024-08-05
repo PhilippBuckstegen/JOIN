@@ -2,6 +2,9 @@ export function loadHeader() {
   const headerHTML = `
         <header>
             <div class="header-wrap">
+                <div class="header-logo-mobile">
+                    <img src="../header/img_header/logo_header.svg" alt="Logo_Header">
+                </div>
                 <p>Kanban Project Management Tool</p>
                 <div class="align-this">
                     <img src="../header/img_header/help.svg" alt="" />
