@@ -88,3 +88,10 @@ body {
 .sizeP{
 font-size: 16px;
 }
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
