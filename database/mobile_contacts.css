@@ -1710,6 +1710,10 @@
   .letter-header {
     height: 48px;
   }
+
+  #addContactContainer {
+    display: none;
+  }
 }
 
 @media (max-width: 400px) {
