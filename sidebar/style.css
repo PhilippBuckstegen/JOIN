@@ -148,5 +148,7 @@ body {
   .capa-image, .privacy-policy, .legal-notice {
     display: none;
   }
-
+  .police-wrapper {
+    display: none;
+  }
 }
