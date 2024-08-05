@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: contact_details.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: contact_details.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This function renders the contact details 
+ * 
+ * @param {number} index - index of contact for details
+ */
+function showContactDetails(index) {
+  let previousContact = document.querySelector(".contact-is-active");
+  if (previousContact) {
+    previousContact.classList.remove("contact-is-active");
+  }
+  let contactDetails = document.getElementById("contactDetailsContainer");
+  let contact = contacts[index];
+  contactDetails.innerHTML = renderShowContactDetailsHTML(contact, index);
+  let currentContact = document.getElementById(`contact${index}`);
+  if (currentContact) {
+      currentContact.classList.add("contact-is-active");
+  }
+  checkContactDetailsScreenWidth();
+  document.getElementById(`initialsDetailsCircle`).style.backgroundColor = contacts[index].backgroundColor;
+  renderSlideInBtns(index);
+}
+
+
+/**
+ * This function check the screenwidth for the contact details to display or hide specific elements
+ */
+function checkContactDetailsScreenWidth(){
+  if (window.innerWidth &lt;= 1200) {
+    addClassToElement('contactsContainer', 'd-none');
+    removeClassFromElement('contactInfoContainer', 'd-none');
+  }
+}
+
+
+/**
+ * This function renders the slide-in buttons for responsive design 
+ * 
+ * @param {number} index - index of contact for detail view
+ */
+function renderSlideInBtns(index){
+  let slideInBtns = document.getElementById('slideInBtns');
+  slideInBtns.innerHTML = /*html*/`
+    &lt;img onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')" src="/assets/icons/edit_mobile.svg" alt="edit-mobile"/>
+    &lt;img onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact('${index}')" src="/assets/icons/delete_mobile.svg" alt="edit-mobile"/>
+  `;
+}
+
+
+/**
+ * This function adds a specific class to an specific element
+ * 
+ * @param {element} elementId - element to add class to
+ * @param {string} className  - class which should be added to element
+ */
+function addClassToElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.add(className);
+}
+  
+
+/**
+ * This function removes a specific class from an specific element
+ * 
+ * @param {element} elementId - element to remove class from
+ * @param {strimg} className  - class which should be removed from element
+ */
+function removeClassFromElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.remove(className);
+}
+
+
+/**
+ * This function hides the contact list 
+ */
+function hideContactDetails() {
+    let activeContacts = document.querySelectorAll('.contact-is-active');
+    activeContacts.forEach(contact => contact.classList.remove('contact-is-active'));
+    removeClassFromElement('contactsContainer', 'd-none');
+    addClassToElement('contactInfoContainer', 'd-none');
+}
+  
+
+/**
+ * This function is to handle the resize of the browser window
+ */
+function handleResize() {
+  let contactDetailsVisible = document.querySelector(".contact-is-active") !== null;
+  if (window.innerWidth &lt;= 1200) {
+    if (contactDetailsVisible) {
+      addClassToElement('contactsContainer', 'd-none');
+      removeClassFromElement('contactInfoContainer', 'd-none');
+    } else {
+      removeClassFromElement('contactsContainer', 'd-none');
+      addClassToElement('contactInfoContainer', 'd-none');
+    }
+  } else {
+    removeClassFromElement('contactsContainer', 'd-none');
+    removeClassFromElement('contactInfoContainer', 'd-none');
+  }
+}
+
+
+/**
+ * This functions calls the resize function on first load
+ */
+handleResize();
+ 
+
+/**
+ * This function calls the resize function with every resize of browser window 
+ */
+window.addEventListener('resize', handleResize);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addClassToElement">addClassToElement</a></li><li><a href="global.html#addNewContact">addNewContact</a></li><li><a href="global.html#addNewContactToDatabase">addNewContactToDatabase</a></li><li><a href="global.html#addRandomColorToJSON">addRandomColorToJSON</a></li><li><a href="global.html#checkContactDetailsScreenWidth">checkContactDetailsScreenWidth</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#editInputsCleanUp">editInputsCleanUp</a></li><li><a href="global.html#findLastAddedIndex">findLastAddedIndex</a></li><li><a href="global.html#findLastEditedIndex">findLastEditedIndex</a></li><li><a href="global.html#generateInitials">generateInitials</a></li><li><a href="global.html#getContactsFromDatabase">getContactsFromDatabase</a></li><li><a href="global.html#getDataToEdit">getDataToEdit</a></li><li><a href="global.html#getRandomColor">getRandomColor</a></li><li><a href="global.html#handleResize">handleResize</a></li><li><a href="global.html#hideContactDetails">hideContactDetails</a></li><li><a href="global.html#loadData">loadData</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#removeClassFromElement">removeClassFromElement</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderContactsConditions">renderContactsConditions</a></li><li><a href="global.html#renderContactsWithLetterContainerHTML">renderContactsWithLetterContainerHTML</a></li><li><a href="global.html#renderContactsWithoutLetterContainerHTML">renderContactsWithoutLetterContainerHTML</a></li><li><a href="global.html#renderDeleteContactMessageHTML">renderDeleteContactMessageHTML</a></li><li><a href="global.html#renderEditArea">renderEditArea</a></li><li><a href="global.html#renderEditAreaHTML">renderEditAreaHTML</a></li><li><a href="global.html#renderShowContactDetailsHTML">renderShowContactDetailsHTML</a></li><li><a href="global.html#renderSlideInBtns">renderSlideInBtns</a></li><li><a href="global.html#setAllPrevousItemsLastAddedFalse">setAllPrevousItemsLastAddedFalse</a></li><li><a href="global.html#setAllPrevousItemsLastEditedFalse">setAllPrevousItemsLastEditedFalse</a></li><li><a href="global.html#showContactDetails">showContactDetails</a></li><li><a href="global.html#sortContactsByInitials">sortContactsByInitials</a></li><li><a href="global.html#storeEditedData">storeEditedData</a></li><li><a href="global.html#toggleAddContactOverlay">toggleAddContactOverlay</a></li><li><a href="global.html#toggleEditContactOverlay">toggleEditContactOverlay</a></li><li><a href="global.html#writeContactsToDatabase">writeContactsToDatabase</a></li><li><a href="global.html#writeEditDataToInputs">writeEditDataToInputs</a></li><li><a href="global.html#writeEditedValueFieldsToContacts">writeEditedValueFieldsToContacts</a></li><li><a href="global.html#writeNewContactToLocalArray">writeNewContactToLocalArray</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Aug 05 2024 01:06:29 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
