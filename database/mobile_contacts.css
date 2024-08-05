@@ -380,8 +380,8 @@
     border-bottom-right-radius: 20px !important;
   }
 
-  #overlayAbbr {
- background-color: #9327ff
+#overlayAbbr {
+ background-color: #9327ff;
     color: #fff;
     font-size: 40px;
     font-weight: 500;

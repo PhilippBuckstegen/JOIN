@@ -16,17 +16,19 @@
     <script src="/database/script.js"></script> -->
     <!-- <script src="contact_details.js"></script> -->
     <script src="/sidebar/sidebarScript.js"></script>
+    <script src="/header/headerScript.js"></script>
     <!-- style -->
     <!-- <link rel="stylesheet" href="/database/main_contacts.css" /> -->
     <link rel="stylesheet" href="/policies/privacy.css" />
     <link rel="stylesheet" href="/sidebar/style.css" />
-    <link rel="stylesheet" href="/header/headerStyle.css" />
-    <script type="module">
+    <link rel="stylesheet" href="/header/headerStyle.css"/>
+    <link rel="stylesheet" href="/header/header_style_mobile.css"/>
+    <!-- <script type="module">
       import { loadHeader } from "/header/Headerscript.js";
       window.addEventListener("DOMContentLoaded", (event) => {
         loadHeader();
       });
-    </script>
+    </script> -->
   </head>
   <body>
     <div class="side-wrap">
@@ -34,15 +36,15 @@
     </div>
     <div id="header-placeholder"></div>
 
-    <script>
-      fetch("/header/header.html")
+    <!-- <script>
+      fetch("../header/header.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("header-placeholder").innerHTML = data;
         });
-    </script>
+    </script> -->
 
-    <div class="privacy-policy">
+    <div class="privacy-policy-area">
       <h1>Datenschutz&shy;erkl&auml;rung</h1>
       <div class="part-of-privacy">
         <h2>1. Datenschutz auf einen Blick</h2>
@@ -139,7 +141,7 @@
           90210 Musterstadt
         </p>
       </div>
-      <div class="part-of-privacy">
+      <div class="part-of-privacy pb-50">
         <h2>3. Allgemeine Hinweise und Pflicht&shy;informationen</h2>
         <h3>Datenschutz</h3>
         <p>
