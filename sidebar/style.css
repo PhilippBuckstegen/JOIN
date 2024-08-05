@@ -11,7 +11,7 @@ body {
   width: 232px;
   position: absolute;
   top: 0;
-  z-index: 10; /* Ensure sidebar is on top */
+  z-index: 10;
 }
 
 
@@ -150,5 +150,9 @@ body {
   }
   .police-wrapper {
     display: none;
+  }
+
+  .sizeP {
+    font-size: 14px;
   }
 }
