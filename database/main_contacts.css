@@ -321,6 +321,8 @@ body {
   width: 50%;
   height: 500px;
   background-color: #fff;
+  border-top-right-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
 }
 
 .editOverlaySec1 {
@@ -464,6 +466,8 @@ body {
   width: 50%;
   height: 500px;
   background-color: #fff;
+  border-top-right-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
 }
 
 .addOverlaySec1 {
@@ -647,7 +651,7 @@ body {
 
 /* CSS Klassen für Message das Text gelöscht wurde */
 
-.delete-message{
+.delete-message {
   font-size: 21px;
 }
 

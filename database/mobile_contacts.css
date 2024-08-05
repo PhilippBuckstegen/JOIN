@@ -21,7 +21,585 @@
 /*--------------------------------------------------
 ----------------------------------------------------*/
 
+@media (min-width: 1201px) {
+  /*Edit Contact Overlay*/
+
+  #editOverlay {
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 460px;
+    border-radius: 20px !important;
+  }
+
+  .editOverlaySec1 {
+    width: 35%;
+    height: 100%;
+    background-color: #2a3647;
+    gap: 4px;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+  #editCloseBtnWhite {
+    display: none !important;
+  }
+
+  .overlayLogo {
+    width: 46px;
+    height: 62px;
+    margin-left: 40px;
+  }
+
+  .overlayHeaderContainer {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .overlayHeaderContainer p {
+    font-size: 16px;
+    padding-bottom: 0;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 60px;
+    display: block;
+  }
+
+  .editOverlaySec2 {
+    width: 65%;
+    height: 100%;
+    gap: 20px;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  #overlayAbbr {
+    background-color: #9327ff;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+    width: 300px;
+    justify-content: flex-end;
+  }
+
+  #editForm {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editForm input {
+    text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 300px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    gap: 10px;
+  }
+
+  .overlayBtns {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #deleteBtn {
+    background-color: #fff;
+    color: #2a3647;
+  }
+
+  #saveBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  #checkImg {
+    width: 14px;
+  }
+
+  /*Edit Contact Overlay End*/
+
+  /*Add Contact Overlay*/
+
+  #addContactOverlay {
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 460px;
+    border-radius: 20px !important;
+  }
+
+  .addOverlaySec1 {
+    width: 35%;
+    height: 100%;
+    background-color: #2a3647;
+    gap: 4px;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+  #addCloseBtnWhite {
+    display: none !important;
+  }
+
+  .overlayLogo {
+    width: 46px;
+    height: 62px;
+    margin-left: 40px;
+  }
+
+  .overlayHeaderContainer {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .overlayHeaderContainer p {
+    font-size: 16px;
+    padding-bottom: 0;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 60px;
+    display: block;
+  }
+
+  .addOverlaySec2 {
+    width: 65%;
+    height: 100%;
+    gap: 20px;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  #overlayAbbrAdd {
+    background-color: #d1d1d1;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+    width: 300px;
+    justify-content: flex-end;
+  }
+
+  #editFormAdd {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editFormAdd input {
+    text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 300px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    gap: 10px;
+  }
+
+  .overlayBtns {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #cancelBtn {
+    background-color: #fff;
+    color: #2a3647;
+    padding: 8px 14px;
+  }
+
+  #createBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 14px;
+  }
+
+  #cancelImgAdd {
+    width: 24px;
+  }
+
+  #checkImgAdd {
+    width: 14px;
+  }
+
+  /*Add Contact Overlay End*/
+}
 @media (max-width: 1200px) {
+  /*Edit Contact Overlay*/
+
+  #editOverlay {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 460px;
+    border-radius: 20px !important;
+  }
+
+  .editOverlaySec1 {
+    width: 40%;
+    height: 100%;
+    background-color: #2a3647;
+    gap: 4px;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+  #editCloseBtnWhite {
+    display: none !important;
+  }
+
+  .overlayLogo {
+    width: 46px;
+    height: 62px;
+    margin-left: 40px;
+  }
+
+  .overlayHeaderContainer {
+      color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .overlayHeaderContainer p {
+    font-size: 16px;
+    padding-bottom: 0;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 60px;
+    display: block;
+  }
+
+  .editOverlaySec2 {
+       width: 60%;
+    height: 100%;
+    gap: 20px;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  #overlayAbbr {
+ background-color: #9327ff
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+    width: 300px;
+    justify-content: flex-end;
+  }
+
+  #editForm {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editForm input {
+   text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 300px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    gap: 10px;
+  }
+
+  .overlayBtns {
+   cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px
+  }
+
+  #deleteBtn {
+    background-color: #fff;
+    color: #2a3647;
+     padding: 10px 16px;
+  }
+
+  #saveBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  #checkImg {
+    width: 14px;
+  }
+
+  /*Edit Contact Overlay End*/
+
+  /*Add Contact Overlay*/
+
+  #addContactOverlay {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 460px;
+    border-radius: 20px !important;
+  }
+
+  .addOverlaySec1 {
+    width: 40%;
+    height: 100%;
+    background-color: #2a3647;
+    gap: 4px;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+  #addCloseBtnWhite {
+    display: none !important;
+  }
+
+  .overlayLogo {
+    width: 46px;
+    height: 62px;
+    margin-left: 40px;
+  }
+
+  .overlayHeaderContainer {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .overlayHeaderContainer p {
+    font-size: 16px;
+    padding-bottom: 0;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 60px;
+    display: block;
+  }
+
+  .addOverlaySec2 {
+    width: 60%;
+    height: 100%;
+    gap: 20px;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  #overlayAbbrAdd {
+    background-color: #d1d1d1;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+    width: 300px;
+    justify-content: flex-end;
+  }
+
+  #editFormAdd {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editFormAdd input {
+    text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 300px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    gap: 10px;
+  }
+
+  .overlayBtns {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #cancelBtn {
+    background-color: #fff;
+    color: #2a3647;
+    padding: 8px 14px;
+  }
+
+  #createBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 14px;
+  }
+
+  #cancelImgAdd {
+    width: 24px;
+  }
+
+  #checkImgAdd {
+    width: 14px;
+  }
+
+  /*Add Contact Overlay End*/
+
   .contacts-container {
     width: 100%;
     max-width: unset;
@@ -33,6 +611,293 @@
 }
 
 @media (max-width: 900px) {
+
+  /*Edit Contact Overlay*/
+
+  #editOverlay {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 460px;
+    border-radius: 20px !important;
+  }
+
+  .editOverlaySec1 {
+       width: 35%;
+    height: 100%;
+    background-color: #2a3647;
+    gap: 4px;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+  #editCloseBtnWhite {
+    display: none !important;
+  }
+
+  .overlayLogo {
+    width: 46px;
+    height: 62px;
+    margin-left: 40px;
+  }
+
+  .overlayHeaderContainer {
+      color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+   font-size: 26px;
+    text-align: center;
+  }
+
+  .overlayHeaderContainer p {
+       font-size: 12px;
+    padding-bottom: 0;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 60px;
+    display: block;
+  }
+
+  .editOverlaySec2 {
+      width: 65%;
+    height: 100%;
+    gap: 20px;
+  }
+
+  #overlayAbbr {
+   background-color: #d1d1d1;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-left: 10px;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+ width: 260px;
+    justify-content: flex-end;
+  }
+
+  #editForm {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editForm input {
+text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 260px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    gap: 10px;
+  }
+
+  .overlayBtns {
+  cursor: pointer;
+    font-size: 14px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #deleteBtn {
+    background-color: #fff;
+    color: #2a3647;
+     padding: 10px 16px;
+  }
+
+  #saveBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  #checkImg {
+    width: 14px;
+  }
+
+  /*Edit Contact Overlay End*/
+  /*Add Contact Overlay*/
+
+  #addContactOverlay {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 460px;
+    border-radius: 20px !important;
+  }
+
+  .addOverlaySec1 {
+    width: 35%;
+    height: 100%;
+    background-color: #2a3647;
+    gap: 4px;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+  #addCloseBtnWhite {
+    display: none !important;
+  }
+
+  .overlayLogo {
+    width: 46px;
+    height: 62px;
+    margin-left: 40px;
+  }
+
+  .overlayHeaderContainer {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .overlayHeaderContainer p {
+    font-size: 12px;
+    padding-bottom: 0;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 60px;
+    display: block;
+  }
+
+  .addOverlaySec2 {
+    width: 65%;
+    height: 100%;
+    gap: 20px;
+  }
+
+  #overlayAbbrAdd {
+    background-color: #d1d1d1;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-left: 10px;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+    width: 260px;
+    justify-content: flex-end;
+  }
+
+  #editFormAdd {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editFormAdd input {
+    text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 260px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    gap: 10px;
+  }
+
+  .overlayBtns {
+    cursor: pointer;
+    font-size: 14px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #cancelBtn {
+    background-color: #fff;
+    color: #2a3647;
+    padding: 8px 14px;
+  }
+
+  #createBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 12px 14px;
+  }
+
+  #cancelImgAdd {
+    width: 24px;
+  }
+
+  #checkImgAdd {
+    width: 14px;
+  }
+
+  /*Add Contact Overlay End*/
+
   .main-contacts {
     margin-left: 0;
     position: relative;
@@ -40,6 +905,334 @@
 }
 
 @media (max-width: 680px) {
+
+  
+  /*Edit Contact Overlay*/
+
+  #editOverlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 20px !important;
+    gap: 60px;
+  }
+
+  .editOverlaySec1 {
+         width: 100%;
+    height: 45%;
+    background-color: #2a3647;
+    justify-content: flex-start;
+    border-radius: 0 !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+    .overlayLogo {
+  display: none !important;
+  }
+
+  #editCloseBtnWhite {
+        display: initial !important;
+    width: 14px;
+    height: 14px;
+    margin: 20px;
+    gap: 20px;
+  }
+
+
+
+  .overlayHeaderContainer {
+      color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+ font-size: 32px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer p {
+           font-size: 16px;
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer::after {
+   content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 70px;
+    display: block;
+  }
+
+  .editOverlaySec2 {
+     width: 65%;
+    height: 55%;
+    gap: 20px;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  .overlayAbbrContainer {
+    position: absolute;
+    top: 30%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbr {
+   background-color: #d1d1d1;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+  display: none;
+  }
+
+  #editForm {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editForm input {
+ text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 300px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+     justify-content: center !important;
+    width: 100%;
+  }
+
+  .overlayBtns {
+   cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #deleteBtn {
+    background-color: #fff;
+    color: #2a3647;
+     padding: 10px 16px;
+  }
+
+  #saveBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  #checkImg {
+    width: 14px;
+  }
+
+  /*Edit Contact Overlay End*/
+
+
+  /*Add Contact Overlay*/
+
+  #addContactOverlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 20px !important;
+    gap: 60px;
+  }
+
+  .addOverlaySec1 {
+    width: 100%;
+    height: 45%;
+    background-color: #2a3647;
+    justify-content: flex-start;
+    border-radius: 0 !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-end !important;
+  }
+
+  #addOverlayLogo {
+    display: none !important;
+  }
+
+  #addCloseBtnWhite {
+    display: initial !important;
+    width: 14px;
+    height: 14px;
+    margin: 20px;
+    gap: 20px;
+  }
+
+  .overlayHeaderContainer {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .overlayHeaderContainer h1 {
+    font-size: 32px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer p {
+    font-size: 16px;
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 70px;
+    display: block;
+  }
+
+  .addOverlaySec2 {
+    width: 65%;
+    height: 55%;
+    gap: 20px;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  .overlayAbbrContainer {
+    position: absolute;
+    top: 30%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbrAdd {
+    background-color: #d1d1d1;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+    display: none;
+  }
+
+  #editFormAdd {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editFormAdd input {
+    text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 300px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .overlayBtns {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #cancelBtn {
+    display: none;
+  }
+
+  #createBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 14px;
+  }
+
+  #cancelImgAdd {
+    width: 24px;
+  }
+
+  #checkImgAdd {
+    width: 14px;
+  }
+
+  /*Add Contact Overlay End*/
+
   .contacts-header {
     display: flex;
     align-items: flex-start;
@@ -76,6 +1269,340 @@
 }
 
 @media (max-width: 480px) {
+    /*Edit Contact Overlay*/
+
+  #editOverlay {
+     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 20px !important;
+    gap: 40px;
+  }
+
+  .editOverlaySec1 {
+         width: 100%;
+    height: 45%;
+    background-color: #2a3647;
+    justify-content: flex-start;
+    border-radius: 0 !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+    .overlayLogo {
+  display: none !important;
+  }
+
+  #editCloseBtnWhite {
+        display: initial !important;
+    width: 14px;
+    height: 14px;
+    margin: 20px;
+    gap: 20px;
+  }
+
+
+
+  .overlayHeaderContainer {
+     color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 40px;
+  }
+
+  .overlayHeaderContainer h1 {
+ font-size: 32px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer p {
+           font-size: 16px;
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer::after {
+   content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 70px;
+    display: block;
+  }
+
+  .editOverlaySec2 {
+     width: 65%;
+    height: 55%;
+    gap: 20px;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  .overlayAbbrContainer {
+    position: absolute;
+    top: 32%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbr {
+   background-color: #d1d1d1;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+  display: none;
+  }
+
+  #editForm {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editForm input {
+ text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 280px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+     justify-content: center !important;
+    width: 100%;
+  }
+
+  .overlayBtns {
+   cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #deleteBtn {
+    background-color: #fff;
+    color: #2a3647;
+     padding: 10px 16px;
+  }
+
+  #saveBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  #checkImg {
+    width: 14px;
+  }
+
+  /*Edit Contact Overlay End*/
+  /*Add Contact Overlay*/
+
+  #addContactOverlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 20px !important;
+    gap: 40px;
+  }
+
+  .addOverlaySec1 {
+    width: 100%;
+    height: 45%;
+    background-color: #2a3647;
+    justify-content: flex-start;
+    border-radius: 0 !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+  }
+
+  .overlayLogoContainer {
+    width: 100%;
+    justify-content: flex-end !important;
+  }
+
+  #addOverlayLogo {
+    display: none !important;
+  }
+
+  #addCloseBtnWhite {
+    display: initial !important;
+    width: 14px;
+    height: 14px;
+    margin: 20px;
+    gap: 20px;
+  }
+
+  .overlayHeaderContainer {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 40px;
+  }
+
+  .overlayHeaderContainer h1 {
+    font-size: 32px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer p {
+    font-size: 16px;
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  .overlayHeaderContainer::after {
+    content: "";
+    border-bottom: 3px solid #29abe2;
+    width: 70px;
+    display: block;
+  }
+
+  .addOverlaySec2 {
+    width: 65%;
+    height: 55%;
+    gap: 20px;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  .overlayAbbrContainer {
+    position: absolute;
+    top: 32%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbrAdd {
+    background-color: #d1d1d1;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #overlayAbbrAddImg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlayFormContainer {
+    gap: 40px;
+  }
+
+  #closeContainer {
+    display: none;
+  }
+
+  #editFormAdd {
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #editFormAdd input {
+    text-indent: 2px;
+    font-size: 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    /*padding: 10px 60px;*/
+    width: 280px;
+    height: 38px;
+    text-indent: 20px;
+    background-repeat: no-repeat;
+    background-position: 94% center;
+    background-size: 22px;
+  }
+
+  .overlayBtnsContainer {
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .overlayBtns {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: 1px solid #2a3647;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  #cancelBtn {
+    display: none;
+  }
+
+  #createBtn {
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 14px;
+  }
+
+  #cancelImgAdd {
+    width: 24px;
+  }
+
+  #checkImgAdd {
+    width: 14px;
+  }
+
+  /*Add Contact Overlay End*/
+
   .edit-delete {
     display: none;
   }
@@ -136,10 +1663,6 @@
 
   .edit-delete-add-mobile img:hover {
     background-color: #29abe2;
-  }
-
-  .flexContainer {
-    display: none;
   }
 
   .name {

@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <!-- script -->
-     <script src="templates.js"></script>
+    <script src="templates.js"></script>
     <script src="script.js"></script>
     <!-- <script src="contact_details.js"></script> -->
     <script src="/sidebar/sidebarScript.js"></script>
@@ -132,15 +132,73 @@
     </section>
     <section class="overlays">
       <!--Overlay 1-->
-      <div id="editOverlay" class="flexContainer none">
+      <!--
+      <div id="editOverlay" class="flexContainer">
         <div class="editOverlaySec1 flexContainerCol">
           <div class="overlayLogoContainer flexContainer">
-            <img class="overlayLogo" src="./images/logo.svg" alt="logo" />
+            <img
+              id="editoverlayLogo"
+              class="overlayLogo"
+              src="./images/logo.svg"
+              alt="logo"
+            />
+            <img
+              id="editCloseBtnWhite"
+              src="./images/close_white.svg"
+              alt="close icon"
+            />
           </div>
           <div class="overlayHeaderContainer"><h1>Edit contact</h1></div>
         </div>
         <div class="editOverlaySec2 flexContainer" id="editOverlayContainer">
-          <!-- Edit Overlay wird hier gerendert -->
+           Edit Overlay wird hier gerendert 
+        </div>
+      </div>
+    -->
+      <div id="editOverlay" class="flexContainer">
+        <div class="editOverlaySec1 flexContainerCol">
+          <div class="overlayLogoContainer flexContainer">
+            <img class="overlayLogo" src="./images/logo.svg" alt="logo" />
+            <img
+              id="editCloseBtnWhite"
+              src="./images/close_white.svg"
+              alt="close icon"
+            />
+          </div>
+          <div class="overlayHeaderContainer"><h1>Edit contact</h1></div>
+        </div>
+
+        <div class="editOverlaySec2 flexContainer">
+          <div class="overlayAbbrContainer flexContainer">
+            <div id="overlayAbbr" class="flexContainer">
+              <p id="overlayAbbrPar">TW</p>
+            </div>
+          </div>
+
+          <div class="overlayFormContainer flexContainerCol">
+            <div id="closeContainer" class="flexContainer">
+              <img id="closeBtn" src="./images/close.svg" alt="icon" />
+            </div>
+            <form id="editForm" action="" class="flexContainerCol">
+              <input type="text" id="fullName" name="fullName" />
+              <input type="email" id="email" name="email" />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                minlength="10"
+                maxlength="11"
+                pattern="[0-9]{11}"
+              />
+              <div class="overlayBtnsContainer flexContainer">
+                <button id="deleteBtn" class="overlayBtns">Delete</button>
+                <button id="saveBtn" class="overlayBtns flexContainer">
+                  Save
+                  <img id="checkImg" src="./images/check.svg" alt="icon" />
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <!--Overlay 1 End-->
@@ -149,7 +207,17 @@
       <div id="addContactOverlay" class="flexContainer none">
         <div class="addOverlaySec1 flexContainerCol">
           <div class="overlayLogoContainer flexContainer">
-            <img class="overlayLogo" src="./images/logo.svg" alt="logo" />
+            <img
+              id="addOverlayLogo"
+              class="overlayLogo"
+              src="./images/logo.svg"
+              alt="logo"
+            />
+            <img
+              id="addCloseBtnWhite"
+              src="./images/close_white.svg"
+              alt="close icon"
+            />
           </div>
           <div class="overlayHeaderContainer">
             <h1>Add contact</h1>
@@ -178,10 +246,34 @@
               />
             </div>
             <form
-              id="editFormAdd" action="" class="flexContainerCol" onsubmit="addNewContactToDatabase(event)">
-              <input type="text" id="fullNameAdd" name="fullNameAdd" placeholder="Name" minlength="5" required/>
-              <input type="email" id="emailAdd" name="emailAdd" placeholder="hans.mustermann@web.de" required/>
-              <input type="tel" id="phoneAdd" name="phoneAdd" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
+              id="editFormAdd"
+              action=""
+              class="flexContainerCol"
+              onsubmit="addNewContactToDatabase(event)"
+            >
+              <input
+                type="text"
+                id="fullNameAdd"
+                name="fullNameAdd"
+                placeholder="Name"
+                minlength="5"
+                required
+              />
+              <input
+                type="email"
+                id="emailAdd"
+                name="emailAdd"
+                placeholder="hans.mustermann@web.de"
+                required
+              />
+              <input
+                type="tel"
+                id="phoneAdd"
+                name="phoneAdd"
+                placeholder="+49123456789"
+                pattern="^[+][0-9]{5,20}"
+                required
+              />
               <!-- pattern="[0-9]{15}" -->
               <div class="overlayBtnsContainer flexContainer">
                 <button
