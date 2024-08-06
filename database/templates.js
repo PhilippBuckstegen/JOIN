@@ -67,7 +67,7 @@ function renderEditAreaHTML(i){
       <div id="closeContainer" class="flexContainer">
         <img id="closeBtn" src="./images/close.svg" alt="icon" onclick="toggleEditContactOverlay()"/>
       </div>
-      <form id="editForm" action="" class="flexContainerCol" onsubmit="storeEditedData(${i}, event)">
+      <form id="editForm" action="" class="flexContainerCol">
       <div class="input-and-error">
         <input type="text" id="fullName" name="fullName" placeholder="Name" minlength="5" required/>
         <span id="fullNameErrorMessage" class="error-message no-error-visible">This field is required</span>

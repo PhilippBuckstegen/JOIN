@@ -201,6 +201,7 @@
 
   #addCloseBtnWhite {
     display: none !important;
+    cursor: pointer;
   }
 
   .overlayLogo {
@@ -492,6 +493,7 @@
 
   #addCloseBtnWhite {
     display: none !important;
+    cursor: pointer;
   }
 
   .overlayLogo {
