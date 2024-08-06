@@ -1,0 +1,195 @@
+@font-face {
+  font-family: Montserrat;
+  src: url(./fonts/Montserrat-VariableFont_wght.ttf) format("truetype");
+  font-weight: 400 700;
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url(./fonts/Raleway-VariableFont_wght.ttf) format("truetype");
+  font-weight: 400 700;
+}
+
+.regularMontserrat {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.boldMontserrat {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.regularRaleway {
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.boldRaleway {
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  color: #000;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.none {
+  display: none !important;
+}
+
+#asteriskRed,
+#asteriskTitle,
+#asteriskDate,
+#asteriskCategory,
+#boardSubtasks {
+  color: #b8040d;
+}
+
+.mainContainer {
+  width: 100%;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+@media (min-width: 1201px) {
+
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 900px) {
+
+}
+
+@media (max-width: 680px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+*/
+
+#sectionContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
+#boardDateInputImgContainer,
+#boardSubtasksInputImgContainer {
+  position: relative;
+}
+
+#calendarIcon,
+#plusIcon {
+  position: absolute;
+}
+
+@media (min-width: 1201px) {
+  #addTaskBoardOverlayContainer {
+    border: 1px solid #000;
+    width: 60vw;
+    height: 76vh;
+    background-color: #fff;
+    border-radius: 20px;
+  }
+
+  #addTaskBoardOverlay1 {
+    border: 2px solid red;
+    border-right: 4px solid orange;
+    justify-content: space-around;
+    width: 50%;
+    height: 100%;
+  }
+
+  #addTaskBoardOverlayHeader {
+    border: 1px solid #000;
+    justify-content: flex-start;
+  }
+
+  #taskBoardHeader {
+    font-size: 46px;
+  }
+
+  #addTaskBoardOverlay2 {
+    border: 2px solid red;
+    border-left: 4px solid orange;
+    width: 50%;
+    height: 100%;
+  }
+
+  #boardInputImgContainer {
+    justify-content: flex-start;
+  }
+
+  #calendarIcon {
+    right: 16%;
+    top: 2%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #plusIcon {
+    right: 16%;
+    top: 2%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #priorityHeaderContainer {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  #priorityBtnsContainer {
+    gap: 10px;
+  }
+
+  .boardBtnIcons {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 680px) {
+}
+
+@media (max-width: 480px) {
+}
