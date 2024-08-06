@@ -628,7 +628,7 @@ body {
 /*Add Contact Overlay End*/
 
 #addContactContainer {
-  margin-top: 20px;
+  margin: 32px 0;
 }
 
 #addContactBtn {
@@ -640,7 +640,7 @@ body {
   border-radius: 10px;
   gap: 10px;
   border: none;
-  width: -webkit-fill-available;
+  position: fixed;
 }
 
 #personAddImg {
