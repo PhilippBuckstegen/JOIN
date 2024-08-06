@@ -40,8 +40,8 @@ function checkContactDetailsScreenWidth(){
 function renderSlideInBtns(index){
   let slideInBtns = document.getElementById('slideInBtns');
   slideInBtns.innerHTML = /*html*/`
-    <img onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')" src="/assets/icons/edit_mobile.svg" alt="edit-mobile"/>
-    <img onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact('${index}')" src="/assets/icons/delete_mobile.svg" alt="edit-mobile"/>
+    <img onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')" src="../assets/icons/edit_mobile.svg" alt="edit-mobile"/>
+    <img onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact('${index}')" src="../assets/icons/delete_mobile.svg" alt="edit-mobile"/>
   `;
 }
 

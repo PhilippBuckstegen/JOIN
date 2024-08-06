@@ -100,11 +100,11 @@ function renderShowContactDetailsHTML(contact, index){
             <span class="detail-name">${contact.name}</span>
               <div class="edit-delete">
                 <div class="edit" onclick="getDataToEdit(${index})">
-                  <img src="/assets/icons/edit.svg" alt="icon-edit"/>
+                  <img src="../assets/icons/edit.svg" alt="icon-edit"/>
                   <span>Edit</span>
                 </div>
                 <div class="delete" onclick="deleteContact(${index})">
-                  <img src="/assets/icons/delete.svg" alt="icon-delete"/>
+                  <img src="../assets/icons/delete.svg" alt="icon-delete"/>
                   <span>Delete</span>
                 </div>
               </div>
