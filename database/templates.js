@@ -68,12 +68,21 @@ function renderEditAreaHTML(i){
         <img id="closeBtn" src="./images/close.svg" alt="icon" onclick="toggleEditContactOverlay()"/>
       </div>
       <form id="editForm" action="" class="flexContainerCol" onsubmit="storeEditedData(${i}, event)">
+      <div class="input-and-error">
         <input type="text" id="fullName" name="fullName" placeholder="Name" minlength="5" required/>
+        <span id="fullNameErrorMessage" class="error-message no-error-visible">This field is required</span>
+      </div>
+      <div class="input-and-error">
         <input type="email" id="email" name="email" placeholder="hans.mustermann@web.de" required/>
+        <span id="emailErrorMessage" class="error-message no-error-visible">This field is required</span>
+      </div>
+      <div class="input-and-error">
         <input type="tel" id="phone" name="phone" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
+        <span id="phoneErrorMessage" class="error-message no-error-visible">This field is required</span>
+      </div>
           <div class="overlayBtnsContainer flexContainer">
             <button type="button" id="deleteBtn" class="overlayBtns" onclick="toggleEditContactOverlay()">Cancel</button>
-            <button type="submit" id="saveBtn" class="overlayBtns flexContainer">
+            <button type="button" id="saveBtn" class="overlayBtns flexContainer" onclick="validateEditInputs(${i})">
               Save
               <img id="checkImg" src="./images/check.svg" alt="icon" />
             </button>

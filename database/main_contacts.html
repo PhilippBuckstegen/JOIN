@@ -13,6 +13,7 @@
     />
     <!-- script -->
     <script src="templates.js"></script>
+    <script src="validation.js"></script>
     <script src="script.js"></script>
     <!-- <script src="contact_details.js"></script> -->
     <script src="../sidebar/sidebarScript.js"></script>
@@ -208,6 +209,7 @@
               class="flexContainerCol"
               onsubmit="addNewContactToDatabase(event)"
             >
+            <div class="input-and-error">
               <input
                 type="text"
                 id="fullNameAdd"
@@ -216,6 +218,9 @@
                 minlength="5"
                 required
               />
+              <span id="fullNameAddErrorMessage" class="error-message no-error-visible">This field is required</span>
+            </div>
+            <div class="input-and-error">
               <input
                 type="email"
                 id="emailAdd"
@@ -223,6 +228,9 @@
                 placeholder="hans.mustermann@web.de"
                 required
               />
+              <span id="emailAddErrorMessage" class="error-message no-error-visible">This field is required</span>
+            </div>
+            <div class="input-and-error">
               <input
                 type="tel"
                 id="phoneAdd"
@@ -231,6 +239,8 @@
                 pattern="^[+][0-9]{5,20}"
                 required
               />
+              <span id="phoneAddErrorMessage" class="error-message no-error-visible">This field is required</span>
+            </div>
               <!-- pattern="[0-9]{15}" -->
               <div class="overlayBtnsContainer flexContainer">
                 <button
@@ -247,9 +257,10 @@
                   />
                 </button>
                 <button
-                  type="submit"
+                  type="button"
                   id="createBtn"
                   class="overlayBtns flexContainer"
+                  onclick="validateAddInputs()"
                 >
                   Create contact
                   <img id="checkImgAdd" src="./images/check.svg" alt="icon" />

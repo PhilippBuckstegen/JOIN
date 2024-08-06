@@ -665,3 +665,19 @@ body {
 .fade-out {
   opacity: 0;
 }
+
+.input-and-error{
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message{
+  color: red;
+  font-size: 10px;
+  margin-top: 5px;
+  /* visibility: hidden; */
+}
+
+.no-error-visible{
+  visibility: hidden;
+}
