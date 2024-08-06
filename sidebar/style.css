@@ -42,6 +42,7 @@ body {
   background-color: rgb(42, 54, 71);
   border: none;
   gap: 10px;
+  cursor: pointer;
 }
 
 .button-sidebar img {
@@ -72,6 +73,7 @@ body {
   width: 232px;
   height: 35px;
   border: none;
+  cursor: pointer;
 }
 
 .button-sidebar:hover {
