@@ -101,7 +101,7 @@ function validateAddInputs(){
     if (!phoneRegex.test(inputToCheck.value)) {
       inputToCheck.style.border = "1px solid red";
       errorMessage.classList.remove('no-error-visible');
-      errorMessage.innerHTML = "This field requires + as the first character followed by numbers";
+      errorMessage.innerHTML = "This field requires + as first character followed by numbers";
       isValid = false;
     }
     return isValid;

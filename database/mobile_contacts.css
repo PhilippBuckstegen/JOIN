@@ -946,6 +946,10 @@
   .header-logo-mobile {
     display: flex;
   }
+
+  .error-message{
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 680px) {
@@ -1305,6 +1309,11 @@
     height: 92px;
     border: 2px solid white;
   }
+
+  .error-message{
+    font-size: 10px;
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -1717,6 +1726,7 @@
   #addContactContainer {
     display: none;
   }
+  
 }
 
 @media (max-width: 400px) {
