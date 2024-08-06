@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  position: relative;
 }
 
 .side-wrap {
@@ -10,10 +11,8 @@ body {
   height: 100vh;
   width: 232px;
   position: absolute;
-  top: 0;
   z-index: 10;
 }
-
 
 .sidebar {
   display: flex;
@@ -96,16 +95,15 @@ body {
   align-items: center;
 }
 
-/* Media Query for screens with max-width of 900px */
+/* Media Query für Bildschirme mit max. Breite von 900px */
 @media (max-width: 900px) {
   .side-wrap {
     flex-direction: row;
     width: 100%;
     height: 80px;
-    position: fixed;
-    bottom: 0;
-    margin-top: 750px;
-    z-index: 10;
+    position: absolute;
+    bottom: 0; /* Keine !important Angabe hier */
+    z-index: 12;
   }
 
   .sidebar {
@@ -148,6 +146,7 @@ body {
   .capa-image, .privacy-policy, .legal-notice {
     display: none;
   }
+
   .police-wrapper {
     display: none;
   }
