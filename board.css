@@ -286,7 +286,6 @@ h3 {
     width: 260px;
     box-sizing: border-box;
     flex: 0 0 auto;
-
   }
 
   .search-and-addTask {
@@ -307,5 +306,10 @@ h3 {
     width: 100%;
     margin-bottom: 20px;
     overflow-x: auto;
-}
+    scrollbar-width: none;
+  }
+
+  .slider-tasks::-webkit-scrollbar {
+    display: none;
+  }
 }
