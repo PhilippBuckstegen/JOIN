@@ -238,3 +238,65 @@ h3 {
   font-weight: 400;
   font-size: 16px;
 }
+
+@media (max-width: 1200px) {
+  .board {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column-board {
+    width: 80%;
+  }
+
+  .h2-board {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-board {
+    margin-bottom: 64px;
+    display: flow-root;
+  }
+
+  .h2-board {
+    margin-bottom: 20px;
+  }
+
+  .board {
+    align-items: flex-start;
+  }
+
+  .main-board {
+    padding: 80px 32px 0 44px;
+    overflow-x: hidden;
+  }
+
+  .empty-column {
+    width: 120%;
+  }
+
+  .column-board-header {
+    width: 96%;
+  }
+
+  .task {
+    /* width: 75%; */
+    width: 260px;
+  }
+
+  .search-and-addTask {
+    display: flex;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  .column-content {
+    flex-direction: row;
+  }
+
+  .column-board {
+    width: 100%;
+  }
+}
