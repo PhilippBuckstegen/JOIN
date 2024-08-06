@@ -284,6 +284,9 @@ h3 {
   .task {
     /* width: 75%; */
     width: 260px;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+
   }
 
   .search-and-addTask {
@@ -299,4 +302,10 @@ h3 {
   .column-board {
     width: 100%;
   }
+
+  .slider-tasks {
+    width: 100%;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
 }
