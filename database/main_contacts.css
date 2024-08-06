@@ -636,9 +636,11 @@ body {
   background-color: #2a3647;
   color: #fff;
   font-weight: 700;
-  padding: 6px 50px;
-  border-radius: 6px;
+  padding: 10px 60px;
+  border-radius: 10px;
   gap: 10px;
+  border: none;
+  width: -webkit-fill-available;
 }
 
 #personAddImg {
