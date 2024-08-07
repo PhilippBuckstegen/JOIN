@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function loadHeader() {
     const headerHTML = `
-      <header>
+      <header class="header-headerstyle">
           <div class="header-wrap">
               <div class="header-logo-mobile">
                   <img src="../header/img_header/logo_header.svg" alt="Logo_Header">
