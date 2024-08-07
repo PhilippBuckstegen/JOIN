@@ -740,12 +740,3 @@ body {
   flex-direction: column;
 }
 
-.error-message {
-  color: red;
-  font-size: 10px;
-  margin-top: 5px;
-}
-
-.no-error-visible {
-  visibility: hidden;
-}
