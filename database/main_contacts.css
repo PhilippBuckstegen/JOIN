@@ -689,6 +689,33 @@ body {
   }
 }
 
+@media (min-width: 1401px) {
+  #addContactContainer {
+    background-color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+
+  #addContactBtn {
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #2a3647;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 60px;
+    border-radius: 12px;
+    gap: 16px;
+    border: none;
+  }
+
+  #personAddImg {
+    width: 36px;
+  }
+}
+
 .d-none {
   display: none;
 }
