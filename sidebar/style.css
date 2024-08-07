@@ -2,6 +2,10 @@ body {
   margin: 0;
   position: relative;
 }
+.button-sidebar.selected, .police-button.selected {
+  background-color: #091931;
+  color: white;
+}
 
 .side-wrap {
   display: flex;
