@@ -116,6 +116,19 @@ body {
   position: absolute;
 }
 
+#addTaskBoardOverlayContainer input,
+#addTaskBoardOverlayContainer textarea,
+#addTaskBoardOverlayContainer select,
+#addTaskBoardOverlayContainer button,
+#calendarIcon,
+#plusIcon {
+  cursor: pointer;
+}
+
+.whiteButtons {
+  background-color: #fff;
+}
+
 @media (min-width: 1201px) {
   #addTaskBoardOverlayContainer {
     border: 1px solid #000;
