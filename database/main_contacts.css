@@ -17,6 +17,12 @@ body {
   display: none !important;
 }
 
+/* here */
+
+#listContacts {
+  padding: 16px;
+}
+
 .contacts-container {
   width: 40%;
   max-width: 500px;
@@ -25,7 +31,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 16px;
 }
 
 .list-contacts-container {
@@ -627,24 +632,61 @@ body {
 
 /*Add Contact Overlay End*/
 
+/* here*/
 #addContactContainer {
-  margin: 32px 0;
+  background-color: #fff;
+  padding: 20px 0;
+  width: 100%;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 }
 
 #addContactBtn {
+  font-size: 30px;
   cursor: pointer;
   background-color: #2a3647;
   color: #fff;
   font-weight: 700;
   padding: 10px 60px;
-  border-radius: 10px;
-  gap: 10px;
+  border-radius: 12px;
+  gap: 16px;
   border: none;
-  position: fixed;
+}
+
+#addContactBtn:hover {
+  background-color: #29abe2;
 }
 
 #personAddImg {
-  width: 24px;
+  width: 36px;
+}
+
+@media (min-width: 1201px) {
+  #addContactContainer {
+    background-color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+
+  #addContactBtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #2a3647;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 40px;
+    border-radius: 12px;
+    gap: 12px;
+    border: none;
+  }
+
+  #personAddImg {
+    width: 30px;
+  }
 }
 
 .d-none {
@@ -666,17 +708,17 @@ body {
   opacity: 0;
 }
 
-.input-and-error{
+.input-and-error {
   display: flex;
   flex-direction: column;
 }
 
-.error-message{
+.error-message {
   color: red;
   font-size: 10px;
   margin-top: 5px;
 }
 
-.no-error-visible{
+.no-error-visible {
   visibility: hidden;
 }
