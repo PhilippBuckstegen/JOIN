@@ -636,10 +636,6 @@
 @media (max-width: 900px) {
   /*Edit Contact Overlay*/
 
-  .contacts-container {
-    margin-bottom: 65px;
-  }
-
   #editOverlay {
     top: 10%;
     left: 10%;
@@ -928,6 +924,7 @@
   .main-contacts {
     margin-left: 0;
     position: relative;
+    height: calc(100vh - 160px);
   }
 
   .header-headerstyle {
