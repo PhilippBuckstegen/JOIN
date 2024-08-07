@@ -5,7 +5,7 @@ body {
 }
 
 .main-board {
-  margin: 89px 0 0 232px;
+  margin: 0px 0 0 232px;
   padding: 80px 60px 0 70px;
   height: calc(100vh - 89px - 80px);
   display: flex;
