@@ -30,90 +30,34 @@
       <div class="sidebar"></div>
     </div>
     <div id="header-placeholder"></div>
-
     <!-- header und nav from includeHTML -->
     <section class="main-contacts">
-      <!-- <div id="addContactContainer">
-        <button id="addContactBtn" class="flexContainer">
-            Add new contact
-            <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
-        </button>
-        </div> -->
-
       <div id="contactsContainer" class="contacts-container">
         <div id="addContactContainer" class="flexContainer">
-          <button
-            id="addContactBtn"
-            class="flexContainer"
-            onclick="toggleAddContactOverlay()"
-          >
+          <button id="addContactBtn" class="flexContainer" onclick="toggleAddContactOverlay()">
             Add new contact
             <img id="personAddImg" src="./images/person_add.svg" alt="icon" />
           </button>
         </div>
         <div id="listContacts" class="list-contacts-container"></div>
-        <div class="edit-delete-add-mobile">
-          <img
-            onclick="toggleAddContactOverlay()"
-            src="../assets/icons/person_add.svg"
-            alt="add-icon-mobile"
-          />
+          <div class="edit-delete-add-mobile">
+            <img onclick="toggleAddContactOverlay()" src="../assets/icons/person_add.svg" alt="add-icon-mobile"/>
         </div>
       </div>
       <!-- render contact list -->
-
       <!-- contacts info -->
       <div id="contactInfoContainer" class="contacts-info-container">
         <div class="back-to-contact-list">
           <img
-            onclick="hideContactDetails()"
-            src="../assets/icons/arrow-left-line.svg"
-            alt="arrow-back"
-          />
+            onclick="hideContactDetails()" src="../assets/icons/arrow-left-line.svg" alt="arrow-back"/>
         </div>
         <div class="contacts-header">
           <p class="header-headline">Contacts</p>
           <div class="header-border"></div>
-          <p class="header-subheadline">Better with a team</p>
+            <p class="header-subheadline">Better with a team</p>
         </div>
-        <div
-          id="contactDetailsContainer"
-          class="contact-details-container"
-          onclick="addClassToElement('slideInBtns', 'd-none-mobile')"
-        >
+        <div id="contactDetailsContainer" class="contact-details-container" onclick="addClassToElement('slideInBtns', 'd-none-mobile')">
           <!-- render contact details -->
-          <!--  
-                <div id="ContactDetailsOverlay" class="contact-details-overlay">
-                    <div class="contact-icon-name">
-                        <div class="contact-overlay-icon contact-icon detail-name">AB</div>
-                        <div class="name-edit-delete">
-                            <span class="detail-name">NAME</span>
-                            <div class="edit-delete">
-                                <div class="edit">
-                                    <img src="/assets/icons/edit.svg" alt="icon-edit" />
-                                    <span>Edit</span>
-                                </div>
-                                <div class="delete">
-                                    <img src="/assets/icons/delete.svg" alt="icon-delete" />
-                                    <span>Delete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-info-edit">
-                        <div class="information">Contact Information</div>
-                    </div>
-
-                    <div class="contact-details-email">
-                        <b>Email</b>
-                        <a href="mailto:erika.krawotki@yahoo.de">erika.krawotki@yahoo.de</a>
-                    </div>
-                    <div class="contact-details-phone">
-                        <b>Phone</b>
-                        <a href="tel:0123-456789">0123-456789</a>
-                    </div>
-                </div>
-                -->
         </div>
         <div class="edit-delete-add-mobile" id="editDeleteAddMobile">
           <img
@@ -122,19 +66,8 @@
             alt="edit-delete-mobile"
           />
         </div>
-
         <div id="slideInBtns" class="slide-in-buttons d-none d-none-mobile">
           <!-- Mobile Buttons für add und delete werden hier gerendert -->
-          <!-- <img
-                onclick="addClassToElement('slideInBtns', 'd-none-mobile'), getDataToEdit('${index}')"
-                src="/assets/icons/edit_mobile.svg"
-                alt="edit-mobile"
-                />
-                <img
-                onclick="addClassToElement('slideInBtns', 'd-none-mobile'), deleteContact()"
-                src="/assets/icons/delete_mobile.svg"
-                alt="edit-mobile"
-                /> -->
         </div>
       </div>
     </section>
@@ -142,17 +75,9 @@
       <!--Overlay 1-->
       <div id="editOverlay" class="flexContainer none">
         <div class="editOverlaySec1 flexContainerCol">
-          <div
-            id="overlayLogoContainerEdit"
-            class="overlayLogoContainer flexContainer"
-          >
+          <div id="overlayLogoContainerEdit" class="overlayLogoContainer flexContainer">
             <img class="overlayLogo" src="./images/logo.svg" alt="logo" />
-            <img
-              onclick="toggleEditContactOverlay()"
-              id="editCloseBtnWhite"
-              src="./images/close_white.svg"
-              alt="icon"
-            />
+            <img onclick="toggleEditContactOverlay()" id="editCloseBtnWhite" src="./images/close_white.svg" alt="icon"/>
           </div>
           <div class="overlayHeaderContainer"><h1>Edit contact</h1></div>
         </div>
@@ -161,105 +86,47 @@
         </div>
       </div>
       <!--Overlay 1 End-->
-
       <!--Overlay 2 -->
       <div id="addContactOverlay" class="flexContainer none">
         <div class="addOverlaySec1 flexContainerCol">
-          <div
-            id="overlayLogoContainerAdd"
-            class="overlayLogoContainer flexContainer"
-          >
+          <div id="overlayLogoContainerAdd" class="overlayLogoContainer flexContainer">
             <img class="overlayLogo" src="./images/logo.svg" alt="logo" />
-            <img
-              onclick="toggleAddContactOverlay()"
-              id="addCloseBtnWhite"
-              src="./images/close_white.svg"
-              alt="icon"
-            />
+            <img onclick="toggleAddContactOverlay()" id="addCloseBtnWhite" src="./images/close_white.svg" alt="icon"/>
           </div>
           <div class="overlayHeaderContainer">
             <h1>Add contact</h1>
             <p>Tasks are better with a team!</p>
           </div>
         </div>
-
         <div class="addOverlaySec2 flexContainer">
           <div class="overlayAbbrContainer flexContainer">
             <div id="overlayAbbrAdd" class="flexContainer">
-              <img
-                id="overlayAbbrAddImg"
-                src="./images/person_white.svg"
-                alt=""
-              />
+              <img id="overlayAbbrAddImg" src="./images/person_white.svg" alt=""/>
             </div>
           </div>
-
           <div class="overlayFormContainer flexContainerCol">
             <div id="closeContainer" class="flexContainer">
-              <img
-                id="addCloseBtn"
-                src="./images/close.svg"
-                alt="icon"
-                onclick="toggleAddContactOverlay()"
-              />
+              <img id="addCloseBtn" src="./images/close.svg" alt="icon" onclick="toggleAddContactOverlay()"/>
             </div>
-            <form
-              id="editFormAdd"
-              action=""
-              class="flexContainerCol">
-            <div class="input-and-error">
-              <input
-                type="text"
-                id="fullNameAdd"
-                name="fullNameAdd"
-                placeholder="Name"
-                minlength="5"
-                required
-              />
-              <span id="fullNameAddErrorMessage" class="error-message no-error-visible">This field is required</span>
-            </div>
-            <div class="input-and-error">
-              <input
-                type="email"
-                id="emailAdd"
-                name="emailAdd"
-                placeholder="hans.mustermann@web.de"
-                required
-              />
-              <span id="emailAddErrorMessage" class="error-message no-error-visible">This field is required</span>
-            </div>
-            <div class="input-and-error">
-              <input
-                type="tel"
-                id="phoneAdd"
-                name="phoneAdd"
-                placeholder="+49123456789"
-                pattern="^[+][0-9]{5,20}"
-                required
-              />
-              <span id="phoneAddErrorMessage" class="error-message no-error-visible">This field is required</span>
-            </div>
-              <!-- pattern="[0-9]{15}" -->
+            <form id="editFormAdd" action="" class="flexContainerCol">
+              <div class="input-and-error">
+                <input type="text" id="fullNameAdd" name="fullNameAdd" placeholder="Name" minlength="5" required/>
+                <span id="fullNameAddErrorMessage" class="error-message no-error-visible">This field is required</span>
+              </div>
+              <div class="input-and-error">
+                <input type="email" id="emailAdd" name="emailAdd" placeholder="hans.mustermann@web.de" required/>
+                <span id="emailAddErrorMessage" class="error-message no-error-visible">This field is required</span>
+              </div>
+              <div class="input-and-error">
+                <input type="tel" id="phoneAdd" name="phoneAdd" placeholder="+49123456789" pattern="^[+][0-9]{5,20}" required/>
+                <span id="phoneAddErrorMessage" class="error-message no-error-visible">This field is required</span>
+              </div>
               <div class="overlayBtnsContainer flexContainer">
-                <button
-                  type="button"
-                  id="cancelBtn"
-                  class="overlayBtns flexContainer"
-                  onclick="toggleAddContactOverlay()"
-                >
+                <button type="button" id="cancelBtn" class="overlayBtns flexContainer" onclick="toggleAddContactOverlay()">
                   Cancel
-                  <img
-                    id="cancelImgAdd"
-                    src="./images/iconoir_cancel.svg"
-                    alt="icon"
-                  />
+                  <img id="cancelImgAdd" src="./images/iconoir_cancel.svg" alt="icon"/>
                 </button>
-                <button
-                  type="button"
-                  id="createBtn"
-                  class="overlayBtns flexContainer"
-                  onclick="validateAddInputs()"
-                >
+                <button type="button" id="createBtn" class="overlayBtns flexContainer" onclick="validateAddInputs()">
                   Create contact
                   <img id="checkImgAdd" src="./images/check.svg" alt="icon" />
                 </button>
@@ -270,7 +137,6 @@
       </div>
       <!--Overlay 2 End-->
     </section>
-
     <script src="contact_details.js"></script>
   </body>
 </html>
