@@ -1,26 +1,18 @@
 /**
- * Initializes the jQuery UI Datepicker on the input field with the ID 'datepicker'.
- */
-$(document).ready(function () {
-    $("#datepicker").datepicker(); // Initializes the Datepicker on the input field with ID 'datepicker'
-  });
-  
-
-/**
  * Initializes the jQuery UI Datepicker and sets today's date in the input field.
  */
 $(function () {
-  // Initialize the Datepicker
+  // Initialisierung des Datepickers
   $("#datepicker").datepicker({
-    dateFormat: "dd.mm.yy", // Date format
-    minDate: 0, // Prevents selection of past dates
+    dateFormat: "dd.mm.yy", // Format des Datums
+    minDate: 0, // Verhindert die Auswahl von Daten in der Vergangenheit
     onSelect: function (dateText) {
-      // Optional: Action when a date is selected
-      console.log("Selected Date: " + dateText);
+      // Optional: Aktion beim Auswählen eines Datums
+      console.log("Ausgewähltes Datum: " + dateText);
     },
   });
 
-  // Set today's date as the value of the input field
+  // Setze das heutige Datum als Wert des Eingabefelds
   const today = new Date();
   const day = String(today.getDate()).padStart(2, "0");
   const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -28,14 +20,14 @@ $(function () {
   const todayStr = `${day}.${month}.${year}`;
 
   $("#datepicker").val(todayStr);
-});
+})
 
 
 /* Alternative for Custom Month and Day Names */
 
 /**
  * Initializes the jQuery UI Datepicker, customizes month and day names, and sets today's date in the input field.
- */
+ *//*
 $(function () {
   $("#datepicker").datepicker({
     dateFormat: "dd.mm.yy", // Date format
@@ -77,7 +69,7 @@ $(function () {
   const todayStr = `${day}.${month}.${year}`;
 
   $("#datepicker").val(todayStr);
-});
+}); */
 
 
 /* Older Versions */

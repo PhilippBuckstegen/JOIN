@@ -1651,7 +1651,7 @@
     right: 30px;
     cursor: pointer;
     display: flex;
-    bottom: 82px;
+    bottom: 20px;
   }
 
   .button-animation-mobile {
@@ -1679,7 +1679,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 80px;
+    bottom: 14px;
     right: 4px;
   }
 
