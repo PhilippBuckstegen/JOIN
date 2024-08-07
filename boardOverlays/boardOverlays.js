@@ -15,22 +15,16 @@ function urgentBtnToggle() {
     urgentImg.src = "../database/images/prio_alta_white.svg";
   } else {
     urgentBtn.classList.add("whiteButtons");
-    urgentBtn.style.backgroundColor = "#fff";
-    urgentBtn.style.color = "#000";
     urgentImg.src = "../database/images/prio_alta.svg";
   }
 
   if (!urgentBtn.classList.contains("whiteButtons")) {
     mediumBtn.classList.add("whiteButtons");
-    mediumBtn.style.backgroundColor = "#fff";
-    mediumBtn.style.color = "#000";
     mediumImg.src = "../database/images/prio_media.svg";
   }
 
   if (!lowBtn.classList.contains("whiteButtons")) {
     lowBtn.classList.add("whiteButtons");
-    lowBtn.style.backgroundColor = "#fff";
-    lowBtn.style.color = "#000";
     lowImg.src = "../database/images/prio_baja.svg";
   }
 
@@ -49,22 +43,16 @@ function mediumBtnToggle() {
     mediumImg.src = "../database/images/prio_media_white.svg";
   } else {
     mediumBtn.classList.add("whiteButtons");
-    mediumBtn.style.backgroundColor = "#fff";
-    mediumBtn.style.color = "#000";
     mediumImg.src = "../database/images/prio_media.svg";
   }
 
   if (!urgentBtn.classList.contains("whiteButtons")) {
     urgentBtn.classList.add("whiteButtons");
-    urgentBtn.style.backgroundColor = "#fff";
-    urgentBtn.style.color = "#000";
     urgentImg.src = "../database/images/prio_alta.svg";
   }
 
   if (!lowBtn.classList.contains("whiteButtons")) {
     lowBtn.classList.add("whiteButtons");
-    lowBtn.style.backgroundColor = "#fff";
-    lowBtn.style.color = "#000";
     lowImg.src = "../database/images/prio_baja.svg";
   }
 
@@ -83,22 +71,16 @@ function lowBtnToggle() {
     lowImg.src = "../database/images/prio_baja_white.svg";
   } else {
     lowBtn.classList.add("whiteButtons");
-    lowBtn.style.backgroundColor = "#fff";
-    lowBtn.style.color = "#000";
     lowImg.src = "../database/images/prio_baja.svg";
   }
 
   if (!urgentBtn.classList.contains("whiteButtons")) {
     urgentBtn.classList.add("whiteButtons");
-    urgentBtn.style.backgroundColor = "#fff";
-    urgentBtn.style.color = "#000";
     urgentImg.src = "../database/images/prio_alta.svg";
   }
 
   if (!mediumBtn.classList.contains("whiteButtons")) {
     mediumBtn.classList.add("whiteButtons");
-    mediumBtn.style.backgroundColor = "#fff";
-    mediumBtn.style.color = "#000";
     mediumImg.src = "../database/images/prio_media.svg";
   }
 
