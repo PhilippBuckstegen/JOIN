@@ -15,13 +15,12 @@
     <!-- <script src="/database/templates.js"></script>
     <script src="/database/script.js"></script> -->
     <!-- <script src="contact_details.js"></script> -->
-    <script src="/sidebar/sidebarScript.js"></script>
-    <script src="/header/headerScript.js"></script>
+
     <!-- style -->
     <!-- <link rel="stylesheet" href="/database/main_contacts.css" /> -->
     <link rel="stylesheet" href="/policies/privacy.css" />
-    <link rel="stylesheet" href="/sidebar/style.css" />
-    <link rel="stylesheet" href="/header/headerStyle.css"/>
+
+
     <link rel="stylesheet" href="/header/header_style_mobile.css"/>
     <!-- <script type="module">
       import { loadHeader } from "/header/Headerscript.js";
@@ -29,12 +28,22 @@
         loadHeader();
       });
     </script> -->
+      <!-- script -->
+  <script src="../sidebar/sidebarScript.js"></script>
+  <script src="../header/Headerscript.js"></script>
+    <!-- style -->
+    <link rel="stylesheet" href="../header/headerStyle.css" />
+    <link rel="stylesheet" href="../sidebar/style.css" />
+    <link rel="shortcut icon" href="../favicon/img/favicon.png" type="image/x-icon">
   </head>
   <body>
+    <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
       <div class="sidebar"></div>
     </div>
     <div id="header-placeholder"></div>
+
+
 
     <!-- <script>
       fetch("../header/header.html")

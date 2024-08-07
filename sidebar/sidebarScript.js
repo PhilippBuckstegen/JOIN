@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => response.text())
     .then(data => {
       document.querySelector('.side-wrap').innerHTML = data;
-      addEventListeners(); // Füge Event-Listener hinzu, nachdem das HTML geladen wurde
-      highlightSelectedButton(); // Markiere den ausgewählten Button
+      addEventListeners(); 
+      highlightSelectedButton(); 
     })
     .catch(error => console.error('Error loading sidebar:', error));
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
           buttons.forEach(btn => btn.classList.remove('selected'));
           button.classList.add('selected');
 
-          // Speichern der ID des ausgewählten Buttons im localStorage
+        
           localStorage.setItem('selectedButton', button.id);
 
           setTimeout(() => {

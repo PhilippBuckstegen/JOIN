@@ -12,9 +12,22 @@
       rel="stylesheet"
     />
 
+     <!-- script -->
+  <script src="../sidebar/sidebarScript.js"></script>
+  <script src="../header/Headerscript.js"></script>
+    <!-- style -->
+    <link rel="stylesheet" href="../header/headerStyle.css" />
+    <link rel="stylesheet" href="../sidebar/style.css" />
+    <link rel="shortcut icon" href="../favicon/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="board.css" />
   </head>
   <body>
+     <!-- Sidebar wird hier dynamisch geladen -->
+     <div class="side-wrap">
+      <div class="sidebar"></div>
+    </div>
+    <div id="header-placeholder"></div>
+
     <!-- header and sidebar from includeHTML -->
     <main class="main-board">
       <header class="header-board">
