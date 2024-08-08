@@ -1,0 +1,138 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown button {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown button::after {
+    content: ' ▼';
+    float: right;
+}
+
+.dropdown button.open::after {
+    content: ' ▲';
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content label {
+    display: block;
+    padding: 8px 16px;
+}
+
+.dropdown-content label:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown.open .dropdown-content {
+    display: block;
+}
+
+.selected-contacts {
+    margin-top: 20px;
+}
+
+.dropdown button{
+    font-size: 11px;
+}
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.edit-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.edit-dropdown button {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit-dropdown button::after {
+    content: ' ▼';
+    float: right;
+}
+
+.edit-dropdown button.open::after {
+    content: ' ▲';
+}
+
+.edit-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.edit-dropdown-content label {
+    display: block;
+    padding: 8px 16px;
+}
+
+.edit-dropdown-content label:hover {
+    background-color: #f1f1f1;
+}
+
+.edit-dropdown.open .edit-dropdown-content {
+    display: block;
+}
+
+.edit-selected-contacts {
+    margin-top: 20px;
+}
+
+.edit-dropdown button{
+    font-size: 11px;
+}
+
+/* .dropdown-subtasks{
+    display: flex;
+    gap: 20px;
+    padding-top: 5px;
+    align-items: center;
+} */
+
+li{
+    position: relative;
+}
+
+.singleSubtaskButtons{
+    position: absolute;
+    right: 0;
+}
+
+.subtask{
+    width: 330px;
+}
+
+#subtaskInput{
+    width: 231px;
+    /* margin-left: 22px; */
+}
+
+#subtaskList{
+    width: 300px;
+    padding-left: 20px;
+}
+
+.sub-task-text-list{
+    width: 200px;
+    display: inline-block;
+}

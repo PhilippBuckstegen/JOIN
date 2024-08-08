@@ -3,17 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tasks.css">
     <script src="../database/script.js"></script>
     <script src="tasks.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <div><input type="text" id="newTaskTitle" placeholder="Title of tasks"></div>
-    <div><input type="text" id="newTaskDescription" placeholder="Description of Task"></div>
-    <div><input type="text" id="newTaskAssignedTo" placeholder="Assigned to user"></div>
-    <div><input type="date" id="newTaskDueDate" placeholder="01.02.2023"></div>
-    <div><input type="number" id="newTaskPriority" placeholder="Priority (0-2)"></div>
-    <div><input type="text" id="newTaskCategory" placeholder="Task Category"></div>
-    <div><input type="text" id="newTaskSubtasks" placeholder="Subtask"></div>
+<body onload="firstCall()">
+    <h2>Add New Task</h2>
+    <div class="new-task">
+        <div><input type="text" id="newTaskTitle" placeholder="Title of tasks"></div>
+        <div><input type="text" id="newTaskDescription" placeholder="Description of Task"></div>
+        <div><input type="date" id="newTaskDueDate" placeholder="01.02.2023"></div>
+        <div><input type="number" id="newTaskPriority" placeholder="Priority (0-2)"></div>
+        <div><input type="text" id="newTaskCategory" placeholder="Task Category"></div>
+        <div class="dropdown-subtasks">
+            <div class="dropdown" id="contactDropdown">
+                <button onclick="toggleDropdown()">Assigned to</button>
+                <div class="dropdown-content"></div>
+            </div>
+        </div>
+        <div class="selected-contacts" id="selectedContacts"></div>
+        <div class="subtask">
+            <span><input type="text" id="subtaskInput" placeholder="subtask"><button onclick="deleteSubtaskInputField()">Del</button><button onclick="createSubtask()">OK</button>
+            <div>
+                <ul id="subtaskList">
+                    <!-- Subtask Liste wird hier gerendert -->
+                </ul>
+            </div>
+        </div>
+        <button onclick="addNewTaskToDatabase()">AddNewTask</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2>Edit Task</h2>
+    <div class="new-task">
+        <div><input type="text" id="editTaskTitle" placeholder="Title of tasks"></div>
+        <div><input type="text" id="editTaskDescription" placeholder="Description of Task"></div>
+        <div><input type="date" id="editTaskDueDate" placeholder="01.02.2023"></div>
+        <div><input type="number" id="editTaskPriority" placeholder="Priority (0-2)"></div>
+        <div><input type="text" id="editTaskCategory" placeholder="Task Category"></div>
+        <div class="dropdown-subtasks">
+            <div class="edit-dropdown" id="editContactDropdown">
+                <button onclick="editToggleDropdown()">Assigned to</button>
+                <div class="edit-dropdown-content"></div>
+            </div>
+        </div>
+        <div class="edit-selected-contacts" id="editSelectedContacts"></div>
+        <div class="subtask">
+            <span><input type="text" id="editSubtaskInput" placeholder="subtask"><button onclick="deleteSubtaskInputField()">Del</button><button onclick="createSubtask()">OK</button>
+            <div>
+                <ul id="editSubtaskList">
+                    <!-- Subtask Liste wird hier gerendert -->
+                </ul>
+            </div>
+        </div>
+        <button onclick="addEditedTaskToDatabase()">AddNewTask</button>
+    </div>
 </body>
 </html>
