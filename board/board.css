@@ -315,3 +315,30 @@ h3 {
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .add-task {
+    display: none;
+  }
+
+  .main-board {
+    padding: 56px 18px 25px 32px;
+  }
+
+  .addTask-button {
+    padding: 10px 10px;
+    margin-right: 4px;
+  }
+
+  .h2-board {
+    font-size: 48px;
+  }
+
+  .search-input {
+    padding: 8px 20px;
+  }
+
+  .search-img {
+    padding: 8px;
+  }
+}
