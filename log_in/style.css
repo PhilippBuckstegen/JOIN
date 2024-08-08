@@ -3,3 +3,192 @@ body {
   padding: 0;
   font-family: "Inter";
 }
+
+.d-none {
+  display: none;
+}
+
+.no-error-visible {
+  visibility: hidden;
+}
+
+.main-login {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.login-signup-button {
+  color: white;
+  background-color: #2a3647;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 15px;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 700;
+  border: 1px solid #2a3647;
+}
+
+.form {
+  min-width: 40%;
+  margin: 0 4%;
+  padding: 35px 4%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 30px;
+}
+
+.form-headline {
+  width: 100%;
+  margin: 0;
+  font-size: 61px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.border-login {
+  margin-top: 24px;
+  margin-bottom: 35px;
+  width: 50%;
+  max-width: 150px;
+  height: 3px;
+  background-color: #29abe2;
+}
+
+.login-data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.data-container {
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  left: 0;
+  bottom: 24px;
+  font-size: 10px;
+  color: red;
+}
+
+input[type="email"],
+input[type="password"] {
+  margin-bottom: 45px;
+  padding: 13px 21px;
+  width: calc(100% - 42px - 2px);
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.input-email {
+  background-image: url(../assets/icons/mail.svg);
+}
+
+.input-password {
+  background-image: url(../assets/icons/lock.svg);
+}
+
+.form-remember {
+  margin-bottom: 35px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  gap: 35px;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+}
+
+.remember {
+  cursor: pointer;
+}
+
+.label-remember {
+  font-weight: 400;
+}
+
+.form-submit {
+  display: flex;
+  gap: 35px;
+}
+
+.guest-button {
+  background-color: #ffffff;
+  color: #2a3647;
+  border: 1px solid #2a3647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 15px;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.guest-button:hover {
+  background-color: #ffffff;
+  color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login-signup-button:hover {
+  background-color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#signUp {
+  font-size: 16px;
+}
+
+.p-user {
+  font-size: 18px;
+}
+
+.not-a-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  position: absolute;
+  top: 40px;
+  right: 48px;
+  z-index: 9;
+  gap: 36px;
+}
+
+.join-logo {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+  z-index: 10;
+  height: 96px;
+  width: auto;
+}

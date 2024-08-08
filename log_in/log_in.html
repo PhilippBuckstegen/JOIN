@@ -1,22 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join Log in</title>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- script -->
     <script src="../validation/validation.js"></script>
     <script src="script.js"></script>
     <!-- style -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../validation/validation.css">
-    <link rel="shortcut icon" href="../favicon/img/favicon.png" type="image/x-icon">
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="../validation/validation.css" /> -->
+    <link
+      rel="shortcut icon"
+      href="../favicon/img/favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="header-logo">
+      <img
+        id="joinLogo"
+        class="join-logo"
+        src="../assets/icons/Logo_login.svg"
+        alt="join.logo"
+      />
+    </div>
+    <div class="not-a-user">
+      <p class="p-user">Not a Join user?</p>
+      <button id="signUp" class="login-signup-button">Sign up</button>
+    </div>
+    <main class="main-login">
+      <form onsubmit=" ; return false" class="form">
+        <h1 class="form-headline">Log in</h1>
+        <div class="border-login"></div>
+        <section class="login-data">
+          <div class="data-container">
+            <input
+              id="loginEmail"
+              class="input-email"
+              type="email"
+              placeholder="Email"
+              autocomplete="email"
+              title="required"
+            />
+            <span id="loginError" class="no-error-visible error-message"
+              >Incorrect email or password.</span
+            >
+          </div>
+          <div class="data-container">
+            <input
+              id="loginPassword"
+              class="input-password"
+              type="password"
+              placeholder="Password"
+              autocomplete="current-password"
+              title="required"
+            />
+            <span id="loginError" class="no-error-visible error-message"
+              >Incorrect email or password.</span
+            >
+          </div>
+        </section>
+        <section class="form-remember">
+          <div class="checkbox">
+            <input id="formRemember" type="checkbox" class="remember" />
+            <label for="formRemember" class="label-remember">Remember me</label>
+          </div>
+        </section>
+        <section class="form-submit">
+          <button type="submit" class="login-signup-button">Log in</button>
+          <button onclick=" ; return false" class="guest-button">
+            Guest Log in
+          </button>
+        </section>
+      </form>
+    </main>
+  </body>
 </html>
