@@ -31,7 +31,7 @@
                 </ul>
             </div>
         </div>
-        <button onclick="addNewTaskToDatabase()">AddNewTask</button>
+        <button onclick="addNewTaskToDatabase()">Add new task</button>
     </div>
     <br>
     <br>
@@ -51,14 +51,14 @@
         </div>
         <div class="edit-selected-contacts" id="editSelectedContacts"></div>
         <div class="subtask">
-            <span><input type="text" id="editSubtaskInput" placeholder="subtask"><button onclick="deleteSubtaskInputField()">Del</button><button onclick="createSubtask()">OK</button>
+            <span><input type="text" id="editAreaSubtaskInput" placeholder="subtask"><button onclick="editAreaDeleteSubtaskInputField()">Del</button><button onclick="editAreaCreateSubtask(3)">OK</button>
             <div>
                 <ul id="editSubtaskList">
                     <!-- Subtask Liste wird hier gerendert -->
                 </ul>
             </div>
         </div>
-        <button onclick="addEditedTaskToDatabase()">AddNewTask</button>
+        <button onclick="storeEditedTaskData(3)">Store edited task</button>
     </div>
 </body>
 </html>

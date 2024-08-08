@@ -347,10 +347,22 @@ function loadTaskDataToEdit(i){
     document.getElementById('editTaskTitle').value = tasks[i].title;
     document.getElementById('editTaskDescription').value = tasks[i].description;;
     document.getElementById('editTaskDueDate').value = tasks[i].dueDate;;
-    document.getElementById('editTaskPriority').value = tasks[i].priority;;
+    document.getElementById('editTaskPriority').value = tasks[i].priority;
     document.getElementById('editTaskCategory').value = tasks[i].taskCategory;
     editCheckBoxesForAssignedUsers(i);
+    editAreaRenderSubtasks(i);
 }
+
+
+function storeEditedTaskData(x){
+    tasks[x].title= document.getElementById('editTaskTitle').value;
+    tasks[x].description = document.getElementById('editTaskDescription').value;
+    tasks[x].dueDate = document.getElementById('editTaskDueDate').value;
+    tasks[x].priority = document.getElementById('editTaskPriority').value;
+    tasks[x].taskCategory = document.getElementById('editTaskCategory').value;
+    tasks[x].assignedTo = editUpdateSelectedContacts();
+}
+
 
 function editRenderDropdown() {
     const dropdownContent = document.querySelector('.edit-dropdown-content');
@@ -383,6 +395,7 @@ function editUpdateSelectedContacts() {
     for (let i = 0; i < taskContacts.length; i++) {
         const checkbox = document.getElementById(`editContact_${i}`);
         if (checkbox.checked) {
+            selectedContacts.push({user : taskContacts[i].name });
             const contactDiv = document.createElement('div');
             contactDiv.textContent = taskContacts[i].name;
             selectedContactsDiv.innerHTML += `<div>${taskContacts[i].name}</div>`;
@@ -407,3 +420,72 @@ function editCheckBoxesForAssignedUsers(x){
         }
     }
 }
+
+
+function editAreaRenderSubtasks(x){
+    let listArea = document.getElementById('editSubtaskList');
+    listArea.innerHTML = "";
+    for(i=0; i < tasks[x].subtask.length; i++){
+        listArea.innerHTML += /*html*/ `
+        <li id="editSubtaskListItem${i}">
+            <span class="sub-task-text-list" id="editSubTaskTextListItem${i}">${tasks[x].subtask[i].task}</span>
+            <span id="editSingleSubTaskButtons${i}" class="singleSubtaskButtons">
+                <button onclick="editAreaEditSubtaskItem(${x},${i})">Edit</button>
+                <button onclick="editAreaDeleteSubtaskItem(${x},${i})">Delete</button>
+            <span>
+        </li>
+    `;
+    }
+}
+
+function editAreaDeleteSubtaskItem(x, i){
+    tasks[x].subtask.splice(i,1);
+    editAreaRenderSubtasks(x);
+}
+
+
+function deleteSubtaskInputField(){
+    document.getElementById('subtaskInput').value = "";
+}
+
+
+function editAreaEditSubtaskItem(x, i){
+    editAreaSetSubtaskEditModeOn(i);
+    document.getElementById(`editSingleSubTaskButtons${i}`).innerHTML = /*html*/ `
+        <button onclick="editAreaDeleteSubtaskItem(${i})">Delete</button>
+        <button onclick="editAreaStoreEditedSubtaskItem(${x},${i})">Ok</button>
+    `;
+}
+
+
+function editAreaSetSubtaskEditModeOn(i){
+    document.getElementById(`editSubTaskTextListItem${i}`).contentEditable = "true";
+    document.getElementById(`editSubtaskListItem${i}`).style.border = "1px solid black";
+}
+
+
+function editAreaSetSubtaskEditModeOff(i){
+    document.getElementById(`editSubTaskTextListItem${i}`).contentEditable = "false";
+    document.getElementById(`editSubtaskListItem${i}`).style.border = "none";
+}
+
+
+function editAreaStoreEditedSubtaskItem(x, i){
+    tasks[x].subtask[i].task = document.getElementById(`editSubTaskTextListItem${i}`).innerHTML;
+    editAreaSetSubtaskEditModeOff(i);
+    editAreaRenderSubtasks(x);
+}
+
+
+function editAreaCreateSubtask(x){
+    let subtaskText = document.getElementById('editAreaSubtaskInput').value;
+    tasks[x].subtask.push({task : subtaskText});
+    editAreaRenderSubtasks(x);
+    editDeleteSubtaskInputField();
+}
+
+function editDeleteSubtaskInputField(){
+    document.getElementById('editAreaSubtaskInput').value = "";
+}
+
+
