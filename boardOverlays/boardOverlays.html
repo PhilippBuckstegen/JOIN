@@ -23,152 +23,182 @@
         <section id="sectionContainer" class="flexContainer">
           <div id="boardOverlaysContainer">
             <!--Overlay Start-->
-            <div id="addTaskBoardOverlayContainer" class="flexContainer">
-              <div id="addTaskBoardOverlay1" class="flexContainerCol">
-                <div id="addTaskBoardOverlayForm1">
-                  <div id="taskBoardOverlayHeader">
-                    <h1 id="taskBoardHeader">Add Task</h1>
-                  </div>
-                  <div id="taskBoardOverlayForm">
-                    <div id="boardTitleContainer">
-                      <label for="boardTitle"
-                        >Title<span id="asteriskTitle" class="">*</span></label
-                      ><br />
-                      <input
-                        type="text"
-                        placeholder="Enter a title"
-                        id="boardTitle"
-                        name="boardTitle"
-                      />
-                    </div>
-                    <div id="boardDescriptionContainer">
-                      <label for="boardDescription">Description</label><br />
-                      <textarea
-                        placeholder="Enter a Description"
-                        id="boardDescription"
-                        name="boardDescription"
-                      ></textarea>
-                    </div>
-                    <div id="boardAssignedContainer">
-                      <label for="boardAssigned">Assigned to</label><br />
-                      <select id="boardAssigned" name="boardAssigned">
-                        <!--multiple-->
-                        <option value="" selected disabled hidden>
-                          Select contacts to assign
-                        </option>
-                        <option value="antonMayer">Anton Mayer</option>
-                        <option value="anjaSchulz">Anja Schulz</option>
-                        <option value="benediktZiegler">
-                          Benedikt Ziegler
-                        </option>
-                        <option value="davidEisenberg">David Eisenberg</option>
-                      </select>
+            <div id="addTaskBoardOverlayContainer" class="flexContainerCol">
+              <div id="headerXbtnContainer" class="flexContainer">
+                <div id="taskBoardOverlayHeader">
+                  <h1 id="taskBoardHeader">Add Task</h1>
+                </div>
+                <div id="xBtnContainer">
+                  <img
+                    id="xBtn"
+                    src="../database/images/close.svg"
+                    alt="icon"
+                  />
+                </div>
+              </div>
+              <div id="addTaskBoardOverlays" class="flexContainer">
+                <div id="addTaskBoardOverlay1" class="flexContainerCol">
+                  <div id="addTaskBoardOverlayForm1">
+                    <div id="taskBoardOverlayForm" class="flexContainerCol">
+                      <div id="boardTitleContainer">
+                        <label for="boardTitle"
+                          >Title<span id="asteriskTitle" class=""
+                            >*</span
+                          ></label
+                        ><br />
+                        <input
+                          type="text"
+                          placeholder="Enter a title"
+                          id="boardTitle"
+                          name="boardTitle"
+                        />
+                      </div>
+                      <div id="boardDescriptionContainer">
+                        <label for="boardDescription">Description</label><br />
+                        <textarea
+                          placeholder="Enter a Description"
+                          rows="4"
+                          cols="50"
+                          id="boardDescription"
+                          name="boardDescription"
+                        ></textarea>
+                      </div>
+                      <div id="boardAssignedContainer">
+                        <label for="boardAssigned">Assigned to</label><br />
+                        <select id="boardAssigned" name="boardAssigned">
+                          <!--multiple-->
+                          <option value="" selected disabled hidden>
+                            Select contacts to assign
+                          </option>
+                          <option value="antonMayer">Anton Mayer</option>
+                          <option value="anjaSchulz">Anja Schulz</option>
+                          <option value="benediktZiegler">
+                            Benedikt Ziegler
+                          </option>
+                          <option value="davidEisenberg">
+                            David Eisenberg
+                          </option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div id="errorMessageContainer">
+                <div id="addTaskBoardOverlay2" class="flexContainerCol">
+                  <div id="addTaskBoardOverlayForm2" class="flexContainerCol">
+                    <div id="boardDateContainer">
+                      <label for="boardDate"
+                        >Due date<span id="asteriskDate" class=""
+                          >*</span
+                        ></label
+                      >
+                      <div
+                        id="boardDateInputImgContainer"
+                        class="flexContainer"
+                      >
+                        <input
+                          type="date"
+                          data-date-format="DD  MM  YYYY"
+                          id="boardDate"
+                          name="boardDate"
+                        />
+                        <!--<img
+                          id="calendarIcon"
+                          src="../database/images/event.svg"
+                          alt="icon"
+                        />-->
+                      </div>
+                    </div>
+                    <div id="boardPriorityContainer" class="flexContainerCol">
+                      <div id="priorityHeaderContainer" class="flexContainer">
+                        <p>Prio</p>
+                      </div>
+                      <div id="priorityBtnsContainer" class="flexContainer">
+                        <button
+                          id="urgentBtn"
+                          class="priorityButtons whiteButtons flexContainer"
+                        >
+                          Urgent
+                          <img
+                            id="urgentImg"
+                            class="boardBtnIcons"
+                            src="../database/images/prio_alta.svg"
+                            alt="icon"
+                          />
+                        </button>
+                        <button
+                          id="mediumBtn"
+                          class="priorityButtons whiteButtons flexContainer"
+                        >
+                          Medium
+                          <img
+                            id="mediumImg"
+                            class="boardBtnIcons"
+                            src="../database/images/prio_media.svg"
+                            alt="icon"
+                          />
+                        </button>
+                        <button
+                          id="lowBtn"
+                          class="priorityButtons whiteButtons flexContainer"
+                        >
+                          Low
+                          <img
+                            id="lowImg"
+                            class="boardBtnIcons"
+                            src="../database/images/prio_baja.svg"
+                            alt="icon"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div id="boardCategoryContainer">
+                      <label for="boardCategory"
+                        >Category<span id="asteriskCategory" class=""
+                          >*</span
+                        ></label
+                      ><br />
+                      <select id="boardCategory" name="boardCategory">
+                        <!--multiple-->
+                        <option value="" selected disabled hidden>
+                          Select task category
+                        </option>
+                        <option value="technicalTask">Technical Task</option>
+                        <option value="userStory">User Story</option>
+                      </select>
+                    </div>
+                    <div id="boardSubtasksContainer">
+                      <label for="boardSubtasks">Subtasks</label>
+
+                      <div
+                        id="boardSubtasksInputImgContainer"
+                        class="flexContainer"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Add new subtask"
+                          id="boardSubtasks"
+                          name="boardSubtasks"
+                        />
+                        <img
+                          id="plusIcon"
+                          src="../database/images/plus.svg"
+                          alt="icon"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="errorMsgCancelCreateBtnsContainer" class="flexContainer">
+                <div id="errorMessageContainer" class="flexContainerCol">
                   <p id="inputErrorMsg" class="">
                     <span id="asteriskRed">*</span>This field is required
                   </p>
                 </div>
-              </div>
-              <div id="addTaskBoardOverlay2" class="flexContainerCol">
-                <div id="addTaskBoardOverlayForm2">
-                  <div id="boardDateContainer">
-                    <label for="boardDate"
-                      >Due date<span id="asteriskDate" class="">*</span></label
-                    >
-                    <div id="boardDateInputImgContainer" class="flexContainer">
-                      <input type="text" id="boardDate" name="boardDate" />
-                      <img
-                        id="calendarIcon"
-                        src="../database/images/event.svg"
-                        alt="icon"
-                      />
-                    </div>
-                  </div>
-                  <div id="boardPriorityContainer" class="flexContainerCol">
-                    <div id="priorityHeaderContainer" class="flexContainer">
-                      <p>Prio</p>
-                    </div>
-                    <div id="priorityBtnsContainer" class="flexContainer">
-                      <button
-                        id="urgentBtn"
-                        class="priorityButtons whiteButtons"
-                      >
-                        Urgent
-                        <img
-                          id="urgentImg"
-                          class="boardBtnIcons"
-                          src="../database/images/prio_alta.svg"
-                          alt="icon"
-                        />
-                      </button>
-                      <button
-                        id="mediumBtn"
-                        class="priorityButtons whiteButtons"
-                      >
-                        Medium
-                        <img
-                          id="mediumImg"
-                          class="boardBtnIcons"
-                          src="../database/images/prio_media.svg"
-                          alt="icon"
-                        />
-                      </button>
-                      <button id="lowBtn" class="priorityButtons whiteButtons">
-                        Low
-                        <img
-                          id="lowImg"
-                          class="boardBtnIcons"
-                          src="../database/images/prio_baja.svg"
-                          alt="icon"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                  <div id="boardCategoryContainer">
-                    <label for="boardCategory"
-                      >Category<span id="asteriskCategory" class=""
-                        >*</span
-                      ></label
-                    ><br />
-                    <select id="boardCategory" name="boardCategory">
-                      <!--multiple-->
-                      <option value="" selected disabled hidden>
-                        Select task category
-                      </option>
-                      <option value="technicalTask">Technical Task</option>
-                      <option value="userStory">User Story</option>
-                    </select>
-                  </div>
-                  <div id="boardSubtasksContainer">
-                    <label for="boardSubtasks"
-                      >Category<span id="boardSubtasks" class="">*</span></label
-                    >
-
-                    <div
-                      id="boardSubtasksInputImgContainer"
-                      class="flexContainer"
-                    >
-                      <input
-                        type="text"
-                        placeholder="Add new subtask"
-                        id="boardSubtasks"
-                        name="boardSubtasks"
-                      />
-                      <img
-                        id="plusIcon"
-                        src="../database/images/plus.svg"
-                        alt="icon"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div id="cancelCreateBtnsContainer">
+                <div id="cancelCreateBtnsContainer" class="flexContainer">
                   <button
                     id="cancelBoardOverlayBtn"
-                    class="cancelCreateButtons"
+                    class="cancelCreateButtons flexContainer"
                   >
                     Cancel
                     <img
@@ -178,7 +208,7 @@
                   </button>
                   <button
                     id="createBoardOverlayBtn"
-                    class="cancelCreateButtons"
+                    class="cancelCreateButtons flexContainer"
                   >
                     Create Task
                     <img src="../database/images/check.svg" alt="icon" />

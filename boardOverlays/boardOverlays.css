@@ -40,6 +40,7 @@
 
 body {
   width: 100%;
+  background-color: #29abe2;
   color: #000;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
@@ -106,6 +107,79 @@ body {
   height: 100vh;
 }
 
+#addTaskBoardOverlayContainer {
+  gap: 40px;
+}
+
+#xBtn {
+  cursor: pointer;
+}
+
+#addTaskBoardOverlayContainer input {
+  text-indent: 4px;
+  width: 300px;
+  padding: 8px 4px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+}
+
+#addTaskBoardOverlayContainer textarea {
+  text-indent: 4px;
+  width: 302px;
+  padding: 8px 4px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+}
+
+#addTaskBoardOverlayContainer select {
+  width: 310px;
+  padding: 8px 4px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+}
+
+#addTaskBoardOverlayContainer input::placeholder,
+#addTaskBoardOverlayContainer textarea::placeholder {
+  color: #d1d1d1;
+}
+
+#addTaskBoardOverlayContainer input::-ms-input-placeholder,
+#addTaskBoardOverlayContainer textarea::-ms-input-placeholder {
+  color: #d1d1d1;
+}
+
+#headerXbtnContainer {
+  width: 76%;
+  justify-content: space-between;
+}
+
+#addTaskBoardOverlays {
+  width: 100%;
+  justify-content: space-between;
+}
+
+#errorMsgCancelCreateBtnsContainer {
+  width: 76%;
+  justify-content: space-between;
+}
+
+#taskBoardOverlayForm {
+  gap: 22px;
+}
+
+#errorMessageContainer {
+  height: 30px;
+  justify-content: flex-end;
+}
+
+#inputErrorMsg {
+  font-size: 12px;
+}
+
+#addTaskBoardOverlayForm2 {
+  gap: 13px;
+}
+
 #boardDateInputImgContainer,
 #boardSubtasksInputImgContainer {
   position: relative;
@@ -125,9 +199,51 @@ body {
   cursor: pointer;
 }
 
+#addTaskBoardOverlayContainer input:focus,
+#addTaskBoardOverlayContainer input:active,
+#addTaskBoardOverlayContainer textarea:focus,
+#addTaskBoardOverlayContainer textarea:active,
+#addTaskBoardOverlayContainer select:focus,
+#addTaskBoardOverlayContainer select:active,
+#addTaskBoardOverlayContainer button:focus,
+#addTaskBoardOverlayContainer button:active {
+  outline: 1px solid #29abe2;
+}
+
+#boardDate::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url("../database/images/event.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  padding-left: 12px;
+  border-width: thin;
+  z-index: 999;
+}
+
+#boardAssigned,
+#boardCategory {
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  background: url("../database/images/arrow_drop_down.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  border-width: thin;
+  z-index: 999;
+}
+
 .priorityButtons {
+  gap: 6px;
   border: none;
   outline: none !important;
+  padding: 8px 16px;
+  border-radius: 6px;
 }
 
 .whiteButtons {
@@ -141,9 +257,46 @@ body {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px !important;
 }
 
+#cancelCreateBtnsContainer {
+  gap: 14px;
+}
+
+#cancelBoardOverlayBtn {
+  padding: 8px 14px;
+  background-color: #fff;
+  color: #2a3647;
+  border: 1px solid #2a3647;
+  border-radius: 8px;
+  gap: 4px;
+}
+
+#cancelBoardOverlayBtn img {
+  width: 18px;
+  height: 18px;
+}
+
+#createBoardOverlayBtn {
+  padding: 10px 14px;
+  background-color: #2a3647;
+  color: #fff;
+  border: 1px solid #2a3647;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+#createBoardOverlayBtn:hover,
+#createBoardOverlayBtn:focus {
+  background-color: #29abe2;
+  border: 1px solid #29abe2;
+}
+
+#createBoardOverlayBtn img {
+  width: 12px;
+  height: 12px;
+}
+
 @media (min-width: 1201px) {
   #addTaskBoardOverlayContainer {
-    border: 1px solid #000;
     width: 60vw;
     height: 76vh;
     background-color: #fff;
@@ -151,8 +304,7 @@ body {
   }
 
   #addTaskBoardOverlay1 {
-    border: 2px solid red;
-    border-right: 4px solid orange;
+    border-right: 1px solid #d1d1d1;
     justify-content: space-around;
     width: 50%;
     height: 100%;
@@ -168,8 +320,7 @@ body {
   }
 
   #addTaskBoardOverlay2 {
-    border: 2px solid red;
-    border-left: 4px solid orange;
+    justify-content: space-around;
     width: 50%;
     height: 100%;
   }
@@ -186,8 +337,8 @@ body {
   }
 
   #plusIcon {
-    right: 16%;
-    top: 2%;
+    right: 2%;
+    top: 18%;
     width: 20px;
     height: 20px;
   }
