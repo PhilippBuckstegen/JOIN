@@ -239,6 +239,10 @@ h3 {
   font-size: 16px;
 }
 
+.drag-area-highlight {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 1200px) {
   .board {
     flex-direction: column;

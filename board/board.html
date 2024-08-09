@@ -70,11 +70,11 @@
             />
           </div>
           <div class="slider-tasks">
-            <div id="columnToDo" class="column-content">
+            <div id="columnToDo" class="column-content" ondrop="moveTo('columnToDo')" ondragleave="removeHighlight('columnToDo')" ondragover="allowDrop(event); highlight('columnToDo')">
               <!-- render tasks here -->
               <!-- if no tasks -->
               <div class="empty-column">No tasks to do</div>
-              <div class="task">
+              <div ondragstart="startDragging()" draggable="true" class="task">
                 <div class="card-category">Design</div>
                 <h3>Webdesign</h3>
                 <span class="task-description"
@@ -129,11 +129,11 @@
             />
           </div>
           <div class="slider-tasks">
-            <div id="columnProgress" class="column-content">
+            <div id="columnProgress" class="column-content" ondrop="moveTo('columnProgress')" ondragleave="removeHighlight('columnProgress')" ondragover="allowDrop(event); highlight('columnProgress')">
               <!-- render tasks here -->
               <!-- if no tasks -->
               <div class="empty-column">No tasks in progress</div>
-              <div class="task">
+              <div ondragstart="startDragging()" draggable="true" class="task">
                 <div class="card-category">User Story</div>
                 <h3>Webdesign</h3>
                 <span class="task-description"
