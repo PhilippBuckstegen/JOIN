@@ -1,5 +1,12 @@
 "use strict";
 
+// Heiko Code added - Start
+let priority = 0; // priority States - 0=none; 1=low; 2=medium; 3=urgent
+let urgentState = false;
+let mediumState = false;
+let lowState    = false;
+// Heiko Code added - End
+
 const urgentBtn = document.getElementById("urgentBtn");
 const urgentImg = document.getElementById("urgentImg");
 const mediumBtn = document.getElementById("mediumBtn");
@@ -32,6 +39,9 @@ function urgentBtnToggle() {
     ? true
     : false;
 
+  // Heiko Code added - Start
+  evaluateUrgentState(urgentSelected);    
+  // Heiko Code added - End
   return urgentSelected;
 }
 
@@ -60,6 +70,9 @@ function mediumBtnToggle() {
     ? true
     : false;
 
+  // Heiko Code added - Start
+  evaluateMediumState(mediumSelected);  
+  // Heiko Code added - End
   return mediumSelected;
 }
 
@@ -86,7 +99,10 @@ function lowBtnToggle() {
 
   const lowSelected = !lowBtn.classList.contains("whiteButtons") ? true : false;
 
-  return lowSelected;
+  // Heiko Code added - Start
+  evaluateLowState(lowSelected);
+  // Heiko Code added - End
+  return lowSelected;                      
 }
 
 urgentBtn.addEventListener("click", urgentBtnToggle);
@@ -96,3 +112,26 @@ mediumBtn.addEventListener("click", mediumBtnToggle);
 lowBtn.addEventListener("click", lowBtnToggle);
 
 mediumBtn.click();
+
+
+// Heiko Code addded
+function evaluateUrgentState(urgentSelected){
+  mediumState = false;
+  lowState = false;
+  urgentSelected ? priority = 3 : priority = 0;
+}
+
+
+function evaluateMediumState(mediumSelected){
+  urgentState = false;
+  lowState = false;
+  mediumSelected ? priority = 2 : priority = 0;
+}
+
+
+function evaluateLowState(lowSelected){
+  urgentState = false;
+  mediumState = false;
+  lowSelected ? priority = 1 : priority = 0;
+}
+
