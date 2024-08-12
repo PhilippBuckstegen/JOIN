@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="../database/images/logo.svg" />
     <link rel="stylesheet" href="./boardOverlays.css" />
   </head>
-  <body>
+  <body onload="firstCall()">
     <div class="mainContainer">
       <header>
         <div class="flexContainer">
@@ -64,9 +64,16 @@
                         ></textarea>
                       </div>
                       <div id="boardAssignedContainer">
-                        <label for="boardAssigned">Assigned to</label><br />
-                        <select id="boardAssigned" name="boardAssigned">
-                          <!--multiple-->
+                         <!-- new dropdown start -->
+                         <div class="dropdown" id="contactDropdown">
+                          <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
+                          <div class="dropdown-content"></div>
+                      </div>
+                      <div class="selected-contacts" id="selectedContacts"></div>
+                      <!-- new dropdown end -->
+                        <!-- <label for="boardAssigned">Assigned to</label><br />
+                        <select id="boardAssigned" name="boardAssigned"> -->
+                          <!-- multiple
                           <option value="" selected disabled hidden>
                             Select contacts to assign
                           </option>
@@ -77,8 +84,8 @@
                           </option>
                           <option value="davidEisenberg">
                             David Eisenberg
-                          </option>
-                        </select>
+                          </option> -->
+                        <!-- </select> -->
                       </div>
                     </div>
                   </div>
@@ -168,22 +175,14 @@
                     </div>
                     <div id="boardSubtasksContainer">
                       <label for="boardSubtasks">Subtasks</label>
-
-                      <div
-                        id="boardSubtasksInputImgContainer"
-                        class="flexContainer"
-                      >
-                        <input
-                          type="text"
-                          placeholder="Add new subtask"
-                          id="boardSubtasks"
-                          name="boardSubtasks"
-                        />
-                        <img
-                          id="plusIcon"
-                          src="../database/images/plus.svg"
-                          alt="icon"
-                        />
+                      <div id="boardSubtasksInputImgContainer" class="flexContainer">
+                        <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
+                        <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
+                      </div>
+                      <div>
+                        <ul id="subtaskList">
+                            <!-- Subtask Liste wird hier gerendert -->
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -209,6 +208,7 @@
                   <button
                     id="createBoardOverlayBtn"
                     class="cancelCreateButtons flexContainer"
+                    onclick="addNewTaskToDatabase()"
                   >
                     Create Task
                     <img src="../database/images/check.svg" alt="icon" />
@@ -231,6 +231,8 @@
         </div>
       </footer>
     </div>
+    <script src="tasksBoard.js"></script>
+    <script src="../database/script.js"></script>
     <script src="./boardOverlays.js"></script>
   </body>
 </html>

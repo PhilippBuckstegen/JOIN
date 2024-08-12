@@ -189,7 +189,7 @@ async function addNewTaskToDatabase(){
     // sortContactsByInitials(contacts);
     // addRandomColorToJSON(contacts);
     await writeTasksToDatabase();
-    // cleanAddtaskArea();
+    cleanAddtaskArea();
     // await renderContacts();
     // showContactDetails(findLastAddedIndex(contacts));
   }
@@ -203,6 +203,7 @@ function writeNewTaskToLocalArray() {
     let addTaskCategory = document.getElementById('boardCategory');
     // let addTaskSubtask = document.getElementById('newTaskSubtasks');
     let newTask = {
+        "status" : 0,
         "title": addTaskTitle.value,
         "description": addTaskDescription.value,
         "dueDate": addTaskDueDate.value,
@@ -232,7 +233,7 @@ function renderDropdown() {
         initialsSpan.textContent = contact.initials;  // Initialen hinzufügen
 
         // Erstelle ein Text-Node für den Namen
-        const nameTextNode = document.createTextNode(` ${contact.name}`);
+        const nameTextNode = document.createTextNode(`${contact.name}`);
 
         // Füge Initialen und Namen in das gemeinsame span-Element ein
         nameSpan.appendChild(initialsSpan);
@@ -268,7 +269,11 @@ function updateSelectedContacts() {
     for (let i = 0; i < taskContacts.length; i++) {
         const checkbox = document.getElementById(`contact_${i}`);
         if (checkbox.checked) {
-            selectedContacts.push({user : taskContacts[i].name });
+            selectedContacts.push({
+                user : taskContacts[i].name,
+                initials : generateInitials(taskContacts[i].name)  // hier muss später contacts[i].initials rein!
+                },
+            );      
             const contactDiv = document.createElement('div');
             contactDiv.textContent = taskContacts[i].name;
             selectedContactsDiv.innerHTML += `<span>${taskContacts[i].initials}</span>`;
@@ -343,17 +348,18 @@ function storeEditedSubtaskItem(i){
 
 
 function cleanAddtaskArea(){
-    document.getElementById('newTaskTitle').value = "";
-    document.getElementById('newTaskDescription').value = "";
-    document.getElementById('newTaskDueDate').value = "";
-    document.getElementById('newTaskPriority').value = "";
-    document.getElementById('newTaskCategory').value = "";
-    document.getElementById('subtaskList').innerHTML = "";
-    cleanAssignedtoArea();
+    document.getElementById('boardTitle').value = "";
+    document.getElementById('boardDescription').value = "";
+    clearAssignedtoArea();
+    document.getElementById('boardDate').value = "";
+    clearPriorityStates();
+    document.getElementById('boardCategory').value = "";
+    document.getElementById('boardDate').value = "";
+    clearSubtasks();
 }
 
 
-function cleanAssignedtoArea(){
+function clearAssignedtoArea(){
     document.getElementById('selectedContacts').innerHTML = "";
     for (let i = 0; i < taskContacts.length; i++) {
         const checkbox = document.getElementById(`contact_${i}`);
@@ -361,6 +367,20 @@ function cleanAssignedtoArea(){
     }
 }
 
+
+function clearSubtasks(){
+    document.getElementById('boardSubtasks').value = "";
+    document.getElementById('subtaskList').innerHTML = "";
+    subtask = [];
+}
+
+
+function generateInitials(name) {
+    let nameParts = name.split(" ");
+    let firstNameInitial = nameParts[0] ? nameParts[0][0].toUpperCase() : "";
+    let lastNameInitial = nameParts[1] ? nameParts[1][0].toUpperCase() : "";
+    return firstNameInitial + lastNameInitial;
+}
 // *********************************************************************************************************************************************************************************
 
 

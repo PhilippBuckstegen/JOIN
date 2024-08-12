@@ -135,3 +135,19 @@ function evaluateLowState(lowSelected){
   lowSelected ? priority = 1 : priority = 0;
 }
 
+function clearPriorityStates(){
+  switch(priority){
+    case 3 :
+      urgentBtnToggle();
+      break;
+    case 2 :
+      mediumBtnToggle();
+      break;
+    case 1 :
+      lowBtnToggle();
+    break;
+    default:
+      priority = 0;
+  }
+}
+
