@@ -317,7 +317,7 @@ function sortContactsByInitials(contacts) {
  * @returns - random color code
  */
 function getRandomColor() {
-  const colors = ["#FF7A00", "#9327FF", "#6E52FF", "#FC71FF", "#FFBB2B", "#1FD7C1", "#462F8A", "#FF4646", "#00BEE8", "#FF7A00",];
+  const colors = ["#FF7A00", "#9327FF", "#6E52FF", "#FC71FF", "#FFBB2B", "#1FD7C1", "#462F8A", "#FF4646", "#00BEE8",];
   // Generate a random index based on the length of the colors array
   const randomIndex = Math.floor(Math.random() * colors.length);
   // Return the color at the randomly selected index
