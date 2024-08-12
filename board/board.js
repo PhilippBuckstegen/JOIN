@@ -1,21 +1,48 @@
-
+/**
+ * The index of the currently dragged element.
+ * @type {number}
+ */
 let currentDraggedElement;
+
+/**
+ * Timeout identifier for managing highlight removal.
+ * @type {?number}
+ */
 let highlightTimeout;
 
+/**
+ * Sets the index of the currently dragged element.
+ * @param {number} i - The index of the element being dragged.
+ * @returns {void}
+ */
 function startDragging(i) {
     currentDraggedElement = i;
 }
 
+/**
+ * Prevents the default behavior of the dragover event to allow for dropping.
+ * @param {DragEvent} ev - The drag event object.
+ * @returns {void}
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * Updates the status of the currently dragged task and re-renders the task board.
+ * @param {string} status - The new status to assign to the task.
+ * @returns {void}
+ */
 function moveTo(status) {
     tasks[currentDraggedElement]['status'] = status;
     renderTasksInBoard();
-
 }
 
+/**
+ * Highlights the element with the specified ID temporarily.
+ * @param {string} id - The ID of the element to highlight.
+ * @returns {void}
+ */
 function highlight(id) {
     let element = document.getElementById(id);
     if (highlightTimeout) {
@@ -27,6 +54,11 @@ function highlight(id) {
     }, 300);
 }
 
+/**
+ * Removes the highlight from the element with the specified ID.
+ * @param {string} id - The ID of the element to remove the highlight from.
+ * @returns {void}
+ */
 function removeHighlight(id) {
     let element = document.getElementById(id);
     element.classList.remove('drag-area-highlight');
