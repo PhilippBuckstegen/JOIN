@@ -47,6 +47,30 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
+function generateTaskHTML(element) {
+    return /*html*/`
+        <div ondragstart="startDragging(${element['id']})" draggable="true" class="task">
+            <div class="card-category">Design</div>
+            <h3>Webdesign</h3>
+            <span class="task-description">dfgdg dfgdfg, fdgdfggf, dsgf fdgdfg</span>
+            <div class="progress-container">
+                <div class="progress">
+                    <div class="progress-style"></div>
+                </div>
+                <span>0/2 Done</span>
+            </div>
+            <div class="assigned-and-prio">
+                <div class="assigned-contacts">
+                    <div class="contact-icon assigned-contact-icon">AB</div>
+                    <div class="contact-icon assigned-contact-icon">CD</div>
+                    <div class="contact-icon assigned-contact-icon">EF</div>
+                </div>
+                <img src="../assets/icons/Prio baja.svg" alt="prio" />
+            </div>
+        </div>
+    `;
+}
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -87,40 +111,58 @@ function checkTaskStatusAndRender(i) {
 
 function renderSingleTaskOverview(i, id) {
     let toDoArea = document.getElementById(id);
-        // toDoArea.innerHTML = "";
-        toDoArea.innerHTML += /*html*/ `
-            <div class="task" ondragstart="startDragging()" draggable="true">
-                <div class="card-category">${tasks[i].taskCategory}</div>
-                <h3>${tasks[i].title}</h3>
-                <span class="task-description"
-                  >${tasks[i].description}</span
-                >
-                <div id="progressContainer${i}" class="progress-container">
-
-                </div>
-                <div class="assigned-and-prio">
-                  <div class="assigned-contacts" id="assignedContacts${[i]}">
-                  </div>
-                  <img src="../assets/icons/Prio baja.svg" alt="prio" />
-                </div>
-             </div>
+    
+    toDoArea.innerHTML += /*html*/ `
+        <div class="task">
+            <div class="card-category">${tasks[i].taskCategory}</div>
+            <h3>${tasks[i].title}</h3>
+            <span class="task-description">${tasks[i].description}</span>
+            <div id="progressContainer${i}" class="progress-container"></div>
+            <div class="assigned-and-prio">
+                <div class="assigned-contacts" id="assignedContacts${i}"></div>
+                <img src="../assets/icons/Prio baja.svg" alt="prio" />
+            </div>
+        </div>
+    `;
+    
+    if ('subtask' in tasks[i]) {
+        document.getElementById(`progressContainer${i}`).innerHTML = /*html*/ `
+            <div class="progress">
+                <div class="progress-style"></div>
+            </div>
+            <span>0/${tasks[i].subtask.length} Done</span>
         `;
-        if ('subtask' in tasks[i]) { 
-            document.getElementById(`progressContainer${i}`).innerHTML = /*html*/ `
-                <div class="progress">
-                    <div class="progress-style"></div>
-                </div>
-                <span>0/${tasks[i].subtask.length} Done</span>
-            `;  
-        } else {
-            document.getElementById(`progressContainer${i}`).remove();
-        }
-        for(j = 0; j < tasks[i].assignedTo.length; j++){
-            let assignedContacts = document.getElementById(`assignedContacts${[i]}`);
-            assignedContacts.innerHTML += /*html*/ `
-                <div class="contact-icon assigned-contact-icon">${tasks[i].assignedTo[j].initials}</div>
-            `;
-        }
+    } else {
+        document.getElementById(`progressContainer${i}`).remove();
+    }
+
+    for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+        let assignedContacts = document.getElementById(`assignedContacts${i}`);
+        const contact = tasks[i].assignedTo[j];
+
+        assignedContacts.innerHTML += /*html*/ `
+            <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+        `;
+        
+        document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
+    }
+}
+
+function prepareTasks() {
+    addRandomColorToJSON(tasks.flatMap(task => task.assignedTo));
+    renderTasksInBoard();
+}
+
+function getRandomColor() {
+    const colors = ["#FF7A00", "#9327FF", "#6E52FF", "#FC71FF", "#FFBB2B", "#1FD7C1", "#462F8A", "#FF4646", "#00BEE8"];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+}
+
+function addRandomColorToJSON(object) {
+    for (let i = 0; i < object.length; i++) {
+        object[i].backgroundColor = getRandomColor();
+    }
 }
 
 
