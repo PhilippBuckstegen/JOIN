@@ -52,6 +52,7 @@ body {
   top: 50%;
   translate: -100% -50%;
   border-left: 1px solid #d1d1d1;
+  cursor: pointer;
 }
 
 .addTask-button {

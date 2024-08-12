@@ -1,3 +1,5 @@
+// Drag and Drop
+
 /**
  * The index of the currently dragged element.
  * @type {number}
@@ -74,7 +76,36 @@ function removeHighlight(id) {
     }
 }
 
-// Heiko ___________________________________
+// Seatchfield "Find Task" on Board
+
+/**
+ * Searches for tasks based on the search input and updates the task board to display only matching tasks.
+ * @returns {void}
+ */
+let searchTasks = () => {
+    let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+    let filteredTasks = tasks.filter(task =>
+        task.title.toLowerCase().includes(searchTerm) ||
+        task.description.toLowerCase().includes(searchTerm)
+    );
+    renderFilteredTasks(filteredTasks);
+};
+
+/**
+ * Renders the filtered tasks on the task board.
+ * @param {Array} filteredTasks - The array of tasks to be displayed.
+ * @returns {void}
+ */
+let renderFilteredTasks = filteredTasks => {
+    clearTaskBoard();
+    filteredTasks.forEach(task => {
+        let taskIndex = tasks.indexOf(task);
+        checkTaskStatusAndRender(taskIndex);
+    });
+};
+
+
+// Heiko ab hier ___________________________________________________________
 
 async function initialCallBoard(){
     await getTasksFromDatabase();
