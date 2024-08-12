@@ -1,3 +1,25 @@
+// function renderTasksToBoard() {
+
+    // rendern der AddTasks in ToDo
+    
+// }
+
+/* --------------------------------------------------------------
+-------------------------------------------------------------- */
+
+// let tasks = [{
+//     'id': 0,
+//     'title': 'Putzen',
+//     'category': 'toDo'
+// }, {
+//     'id': 1,
+//     'title': 'Kochen',
+//     'category': 'toDo'
+// }, {
+//     'id': 2,
+//     'title': 'Einkaufen',
+//     'category': 'inProgress'
+// }];
 
 let currentDraggedElement;
 
@@ -100,6 +122,7 @@ function renderSingleTaskOverview(i, id) {
             `;
         }
 }
+
 
 function clearTaskBoard() {
     document.getElementById('columnToDo').innerHTML = "";
