@@ -29,12 +29,18 @@ function allowDrop(ev) {
 }
 
 /**
- * Updates the status of the currently dragged task and re-renders the task board.
- * @param {string} status - The new status to assign to the task.
+ * Updates the status of the currently dragged task, moves it to the top of the category,
+ * and re-renders the task board.
+ * @param {string} status - The new status to assign to the dragged task. 
+ *                          This status determines the new category (e.g., 'ToDo', 'In Progress', 'Feedback', 'Done').
  * @returns {void}
  */
 function moveTo(status) {
-    tasks[currentDraggedElement]['status'] = status;
+    let draggedTask = tasks.splice(currentDraggedElement, 1)[0];
+    draggedTask['status'] = status;
+    tasks.unshift(draggedTask);
+    tasks = tasks.filter(task => task.status !== status).concat(tasks.filter(task => task.status === status));
+    // tasks[currentDraggedElement]['status'] = status;
     renderTasksInBoard();
 }
 
