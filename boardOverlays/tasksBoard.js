@@ -353,6 +353,7 @@ function cleanAddtaskArea(){
     clearAssignedtoArea();
     document.getElementById('boardDate').value = "";
     clearPriorityStates();
+    preSelectMediumBtn();
     document.getElementById('boardCategory').value = "";
     document.getElementById('boardDate').value = "";
     clearSubtasks();

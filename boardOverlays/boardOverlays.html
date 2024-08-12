@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="../database/images/logo.svg" />
     <link rel="stylesheet" href="./boardOverlays.css" />
   </head>
-  <body onload="firstCall()">
+  <body onload="initialCallBoardOverlays()">
     <div class="mainContainer">
       <header>
         <div class="flexContainer">
@@ -23,7 +23,7 @@
         <section id="sectionContainer" class="flexContainer">
           <div id="boardOverlaysContainer">
             <!--Overlay Start-->
-            <div id="addTaskBoardOverlayContainer" class="flexContainerCol">
+            <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol">
               <div id="headerXbtnContainer" class="flexContainer">
                 <div id="taskBoardOverlayHeader">
                   <h1 id="taskBoardHeader">Add Task</h1>
@@ -63,13 +63,13 @@
                           name="boardDescription"
                         ></textarea>
                       </div>
-                      <div id="boardAssignedContainer">
+                      <div id="boardAssignedContainer"> -->
                          <!-- new dropdown start -->
-                         <div class="dropdown" id="contactDropdown">
+                         <!-- <div class="dropdown" id="contactDropdown">
                           <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
                           <div class="dropdown-content"></div>
                       </div>
-                      <div class="selected-contacts" id="selectedContacts"></div>
+                      <div class="selected-contacts" id="selectedContacts"></div> -->
                       <!-- new dropdown end -->
                         <!-- <label for="boardAssigned">Assigned to</label><br />
                         <select id="boardAssigned" name="boardAssigned"> -->
@@ -86,7 +86,7 @@
                             David Eisenberg
                           </option> -->
                         <!-- </select> -->
-                      </div>
+                      <!-- </div>
                     </div>
                   </div>
                 </div>
@@ -107,13 +107,13 @@
                           data-date-format="DD  MM  YYYY"
                           id="boardDate"
                           name="boardDate"
-                        />
+                        /> -->
                         <!--<img
                           id="calendarIcon"
                           src="../database/images/event.svg"
                           alt="icon"
                         />-->
-                      </div>
+                      <!-- </div>
                     </div>
                     <div id="boardPriorityContainer" class="flexContainerCol">
                       <div id="priorityHeaderContainer" class="flexContainer">
@@ -123,6 +123,7 @@
                         <button
                           id="urgentBtn"
                           class="priorityButtons whiteButtons flexContainer"
+                          onclick="urgentBtnToggle()"
                         >
                           Urgent
                           <img
@@ -135,6 +136,7 @@
                         <button
                           id="mediumBtn"
                           class="priorityButtons whiteButtons flexContainer"
+                          onclick="mediumBtnToggle()"
                         >
                           Medium
                           <img
@@ -147,6 +149,7 @@
                         <button
                           id="lowBtn"
                           class="priorityButtons whiteButtons flexContainer"
+                          onclick="lowBtnToggle()"
                         >
                           Low
                           <img
@@ -164,9 +167,9 @@
                           >*</span
                         ></label
                       ><br />
-                      <select id="boardCategory" name="boardCategory">
+                      <select id="boardCategory" name="boardCategory"> -->
                         <!--multiple-->
-                        <option value="" selected disabled hidden>
+                        <!-- <option value="" selected disabled hidden>
                           Select task category
                         </option>
                         <option value="technicalTask">Technical Task</option>
@@ -180,9 +183,9 @@
                         <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
                       </div>
                       <div>
-                        <ul id="subtaskList">
+                        <ul id="subtaskList"> -->
                             <!-- Subtask Liste wird hier gerendert -->
-                        </ul>
+                        <!-- </ul>
                       </div>
                     </div>
                   </div>
@@ -215,7 +218,7 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!--Overlay End-->
           </div>
         </section>

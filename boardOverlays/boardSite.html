@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="../database/images/logo.svg" />
     <link rel="stylesheet" href="./boardSite.css" />
   </head>
-  <body onload="firstCall()">
+  <body onload="initialCallBoardSite()">
     <div class="mainContainer">
       <header>
         <div class="flexContainer">
@@ -123,6 +123,7 @@
                         <button
                           id="urgentBtn"
                           class="priorityButtons whiteButtons flexContainer"
+                          onclick="urgentBtnToggle()"
                         >
                           Urgent
                           <img
@@ -135,6 +136,7 @@
                         <button
                           id="mediumBtn"
                           class="priorityButtons whiteButtons flexContainer"
+                          onclick="mediumBtnToggle()"
                         >
                           Medium
                           <img
@@ -147,6 +149,7 @@
                         <button
                           id="lowBtn"
                           class="priorityButtons whiteButtons flexContainer"
+                          onclick="lowBtnToggle()"
                         >
                           Low
                           <img
@@ -208,7 +211,7 @@
                   <button
                     id="createBoardOverlayBtn"
                     class="cancelCreateButtons flexContainer" 
-                    onclick="addNewTaskToDatabase('0')"
+                    onclick="addNewTaskToDatabase(0)"
                   >
                     Create Task
                     <img src="../database/images/check.svg" alt="icon" />

@@ -37,14 +37,36 @@ function allowDrop(ev) {
  *                          This status determines the new category (e.g., 'ToDo', 'In Progress', 'Feedback', 'Done').
  * @returns {void}
  */
-function moveTo(status) {
+
+// Heiko - Funktion abgeändert aufgrund anderen Sortieralgoritmus, so dass in den kategorien die neuesten verschobenen Einträge oben stehen
+
+async function moveTo(status) {
+    // Status des aktuellen Tasks ändern
+    tasks[currentDraggedElement]['status'] = status;
+    // Optional: Der Task wird aus dem Array ausgeschnitten, wenn gewünscht
     let draggedTask = tasks.splice(currentDraggedElement, 1)[0];
-    draggedTask['status'] = status;
+    // Task wird wieder an den Anfang des Arrays eingefügt
     tasks.unshift(draggedTask);
-    tasks = tasks.filter(task => task.status !== status).concat(tasks.filter(task => task.status === status));
-    // tasks[currentDraggedElement]['status'] = status;
+    // Sortiere das Array so, dass die Tasks innerhalb jeder Kategorie nach dem Status geordnet sind und der neueste oben steht
+    tasksSort();
+    // UI neu rendern, um die Änderung sichtbar zu machen
+    await writeTasksToDatabase();
+    await getTasksFromDatabase();
     renderTasksInBoard();
 }
+
+
+// Sortiere das Array so, dass die Tasks innerhalb jeder Kategorie nach dem Status geordnet sind und der neueste oben steht
+function tasksSort(){
+    tasks.sort((a, b) => {
+        if (a.status !== b.status) {
+            return a.status - b.status;
+        } else {
+            return tasks.indexOf(a) - tasks.indexOf(b); // Ältere Elemente nach hinten
+        }
+    });
+}
+
 
 /**
  * Highlights the element with the specified ID temporarily.
@@ -107,13 +129,23 @@ let renderFilteredTasks = filteredTasks => {
 
 // Heiko ab hier ___________________________________________________________
 
+
+let todoTasks = [];
+let inProgressTasks = [];
+let feedbackTasks = [];
+let doneTasks = [];
+
+
 async function initialCallBoard(){
     await getTasksFromDatabase();
+    // loadCategoryArrays();
+    // updateCategoryArrays();
     prepareTasks();
 }
 
 function renderTasksInBoard() {
     clearTaskBoard();
+    renderEmptycategories(tasks);
     for (let i = 0; i < tasks.length; i++) {
         checkTaskStatusAndRender(i);
     }
@@ -128,6 +160,7 @@ function checkTaskStatusAndRender(i) {
     }
 }
 
+
 function renderSingleTaskOverview(i, id) {
     let toDoArea = document.getElementById(id);
     
@@ -139,7 +172,7 @@ function renderSingleTaskOverview(i, id) {
             <div id="progressContainer${i}" class="progress-container"></div>
             <div class="assigned-and-prio">
                 <div class="assigned-contacts" id="assignedContacts${i}"></div>
-                <img src="../assets/icons/Prio baja.svg" alt="prio" />
+                <img src="../assets/icons/Prio baja.svg" alt="prio" onclick="edit(${i})" />
             </div>
         </div>
     `;
@@ -189,4 +222,37 @@ function clearTaskBoard() {
     document.getElementById('columnProgress').innerHTML = "";
     document.getElementById('columnFeedback').innerHTML = "";
     document.getElementById('columnDone').innerHTML = "";
+}
+
+
+function countStatus(tasks) {
+    // Zähler für die verschiedenen Statuswerte initialisieren
+    let statusCounts = {
+        0: 0,
+        1: 0,
+        2: 0,
+        3: 0
+    };
+
+    // Durch die tasks iterieren und die Status zählen
+    tasks.forEach(task => {
+        if (statusCounts.hasOwnProperty(task.status)) {
+            statusCounts[task.status]++;
+        }
+    });
+
+    return statusCounts;
+}
+
+
+function renderEmptycategories(tasks){
+    let categoriesCounts = countStatus(tasks);
+    if(categoriesCounts[0] == 0){
+        document.getElementById('columnToDo').innerHTML = `<div class="empty-column">No tasks to do</div>`;}
+    if(categoriesCounts[1] == 0){
+        document.getElementById('columnProgress').innerHTML = `<div class="empty-column">No tasks in progress</div>`;}
+    if(categoriesCounts[2] == 0){
+        document.getElementById('columnFeedback').innerHTML = `<div class="empty-column">No tasks awaiting</div>`;}
+    if(categoriesCounts[3] == 0){
+        document.getElementById('columnDone').innerHTML = `<div class="empty-column">No tasks done</div>`;}
 }

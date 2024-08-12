@@ -1,6 +1,20 @@
+
+
 function initialCallBoardOverlays(){
+  renderBoardOverlays(3);
   getTasksFromDatabase();
-  renderBoardOverlays(2);
+  defineVariables();
+  preSelectMediumBtn();
+}
+
+
+function initialCallBoardSite(){
+  getTasksFromDatabase();
+  // renderBoardOverlays(2);
+  renderDropdown();
+  defineVariables();
+  // renderBoardOverlays(2);
+  preSelectMediumBtn();
 }
 
 
@@ -13,14 +27,19 @@ let mediumState = false;
 let lowState    = false;
 // Heiko Code added - End
 
-const urgentBtn = document.getElementById("urgentBtn");
-const urgentImg = document.getElementById("urgentImg");
-const mediumBtn = document.getElementById("mediumBtn");
-const mediumImg = document.getElementById("mediumImg");
-const lowBtn = document.getElementById("lowBtn");
-const lowImg = document.getElementById("lowImg");
+
+function defineVariables(){
+let urgentBtn = document.getElementById(`urgentBtn`);
+let urgentImg = document.getElementById("urgentImg");
+let mediumBtn = document.getElementById("mediumBtn");
+let mediumImg = document.getElementById("mediumImg");
+let lowBtn = document.getElementById("lowBtn");
+let lowImg = document.getElementById("lowImg");
+}
+
 
 function urgentBtnToggle() {
+  // defineVariables();
   if (urgentBtn.classList.contains("whiteButtons")) {
     urgentBtn.classList.remove("whiteButtons");
     urgentBtn.style.backgroundColor = "#FF3D00";
@@ -51,7 +70,9 @@ function urgentBtnToggle() {
   return urgentSelected;
 }
 
+
 function mediumBtnToggle() {
+  // defineVariables();
   if (mediumBtn.classList.contains("whiteButtons")) {
     mediumBtn.classList.remove("whiteButtons");
     mediumBtn.style.backgroundColor = "#FFA800";
@@ -82,7 +103,9 @@ function mediumBtnToggle() {
   return mediumSelected;
 }
 
+
 function lowBtnToggle() {
+  // defineVariables();
   if (lowBtn.classList.contains("whiteButtons")) {
     lowBtn.classList.remove("whiteButtons");
     lowBtn.style.backgroundColor = "#7AE229";
@@ -111,13 +134,14 @@ function lowBtnToggle() {
   return lowSelected;                      
 }
 
-urgentBtn.addEventListener("click", urgentBtnToggle);
 
-mediumBtn.addEventListener("click", mediumBtnToggle);
+// urgentBtn.addEventListener("click", urgentBtnToggle);
 
-lowBtn.addEventListener("click", lowBtnToggle);
+// mediumBtn.addEventListener("click", mediumBtnToggle);
 
-mediumBtn.click();
+// lowBtn.addEventListener("click", lowBtnToggle);
+
+// mediumBtn.click();
 
 
 // Heiko Code addded
@@ -157,129 +181,135 @@ function clearPriorityStates(){
   }
 }
 
-// function renderBoardOverlays(i){
-//   let boardContainer = document.getElementById('boardOverlaysContainer');
-//   boardContainer.innerHTML = /*html*/ `
-//      <div id="addTaskBoardOverlayContainer" class="flexContainerCol">
-//               <div id="headerXbtnContainer" class="flexContainer">
-//                 <div id="taskBoardOverlayHeader">
-//                   <h1 id="taskBoardHeader">Add Task</h1>
-//                 </div>
-//                 <div id="xBtnContainer">
-//                   <img id="xBtn" src="../database/images/close.svg" alt="icon"/>
-//                 </div>
-//               </div>
-//               <div id="addTaskBoardOverlays" class="flexContainer">
-//                 <div id="addTaskBoardOverlay1" class="flexContainerCol">
-//                   <div id="addTaskBoardOverlayForm1">
-//                     <div id="taskBoardOverlayForm" class="flexContainerCol">
-//                       <div id="boardTitleContainer">
-//                         <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
-//                         <br />
-//                         <input type="text" placeholder="Enter a title" id="boardTitle" name="boardTitle"/>
-//                       </div>
-//                       <div id="boardDescriptionContainer">
-//                         <label for="boardDescription">Description</label><br />
-//                         <textarea placeholder="Enter a Description" rows="4" cols="50" id="boardDescription" name="boardDescription"></textarea>
-//                       </div>
-//                       <div id="boardAssignedContainer">
-//                          <!-- new dropdown start -->
-//                          <div class="dropdown" id="contactDropdown">
-//                           <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
-//                           <div class="dropdown-content"></div>
-//                       </div>
-//                       <div class="selected-contacts" id="selectedContacts"></div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//                 <div id="addTaskBoardOverlay2" class="flexContainerCol">
-//                   <div id="addTaskBoardOverlayForm2" class="flexContainerCol">
-//                     <div id="boardDateContainer">
-//                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
-//                       <div id="boardDateInputImgContainer" class="flexContainer">
-//                         <input type="date" data-date-format="DD  MM  YYYY" id="boardDate" name="boardDate"/>
-//                         <!--<img
-//                           id="calendarIcon"
-//                           src="../database/images/event.svg"
-//                           alt="icon"
-//                         />-->
-//                       </div>
-//                     </div>
-//                     <div id="boardPriorityContainer" class="flexContainerCol">
-//                       <div id="priorityHeaderContainer" class="flexContainer">
-//                         <p>Prio</p>
-//                       </div>
-//                       <div id="priorityBtnsContainer" class="flexContainer">
-//                         <button id="urgentBtn" class="priorityButtons whiteButtons flexContainer">
-//                           Urgent
-//                           <img id="urgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
-//                         </button>
-//                         <button id="mediumBtn" class="priorityButtons whiteButtons flexContainer">
-//                           Medium
-//                           <img id="mediumImg" class="boardBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>
-//                         </button>
-//                         <button id="lowBtn" class="priorityButtons whiteButtons flexContainer">
-//                           Low
-//                           <img id="lowImg" class="boardBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>
-//                         </button>
-//                       </div>
-//                     </div>
-//                     <div id="boardCategoryContainer">
-//                       <label for="boardCategory">Category<span id="asteriskCategory" class="">*</span></label>
-//                       <br />
-//                       <select id="boardCategory" name="boardCategory">
-//                         <!--multiple-->
-//                         <option value="" selected disabled hidden>
-//                           Select task category
-//                         </option>
-//                         <option value="technicalTask">Technical Task</option>
-//                         <option value="userStory">User Story</option>
-//                       </select>
-//                     </div>
-//                     <div id="boardSubtasksContainer">
-//                       <label for="boardSubtasks">Subtasks</label>
-//                       <div id="boardSubtasksInputImgContainer" class="flexContainer">
-//                         <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
-//                         <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
-//                       </div>
-//                       <div>
-//                         <ul id="subtaskList">
-//                             <!-- Subtask Liste wird hier gerendert -->
-//                         </ul>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//               <div id="errorMsgCancelCreateBtnsContainer" class="flexContainer">
-//                 <div id="errorMessageContainer" class="flexContainerCol">
-//                   <p id="inputErrorMsg" class="">
-//                     <span id="asteriskRed">*</span>This field is required
-//                   </p>
-//                 </div>
-//                 <div id="cancelCreateBtnsContainer" class="flexContainer">
-//                   <button
-//                     id="cancelBoardOverlayBtn"
-//                     class="cancelCreateButtons flexContainer"
-//                   >
-//                     Cancel
-//                     <img
-//                       src="../database/images/iconoir_cancel.svg"
-//                       alt="icon"
-//                     />
-//                   </button>
-//                   <button
-//                     id="createBoardOverlayBtn"
-//                     class="cancelCreateButtons flexContainer"
-//                     onclick="addNewTaskToDatabase(${i})"
-//                   >
-//                     Create Task
-//                     <img src="../database/images/check.svg" alt="icon" />
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//   `;
-//   renderDropdown();
-// }
+
+function preSelectMediumBtn(){
+  mediumBtnToggle();
+}
+
+
+function renderBoardOverlays(i){
+  let boardContainer = document.getElementById('boardOverlaysContainer');
+  boardContainer.innerHTML = /*html*/ `
+     <div id="addTaskBoardOverlayContainer" class="flexContainerCol">
+              <div id="headerXbtnContainer" class="flexContainer">
+                <div id="taskBoardOverlayHeader">
+                  <h1 id="taskBoardHeader">Add Task</h1>
+                </div>
+                <div id="xBtnContainer">
+                  <img id="xBtn" src="../database/images/close.svg" alt="icon"/>
+                </div>
+              </div>
+              <div id="addTaskBoardOverlays" class="flexContainer">
+                <div id="addTaskBoardOverlay1" class="flexContainerCol">
+                  <div id="addTaskBoardOverlayForm1">
+                    <div id="taskBoardOverlayForm" class="flexContainerCol">
+                      <div id="boardTitleContainer">
+                        <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
+                        <br />
+                        <input type="text" placeholder="Enter a title" id="boardTitle" name="boardTitle"/>
+                      </div>
+                      <div id="boardDescriptionContainer">
+                        <label for="boardDescription">Description</label><br />
+                        <textarea placeholder="Enter a Description" rows="4" cols="50" id="boardDescription" name="boardDescription"></textarea>
+                      </div>
+                      <div id="boardAssignedContainer">
+                         <!-- new dropdown start -->
+                         <div class="dropdown" id="contactDropdown">
+                          <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
+                          <div class="dropdown-content"></div>
+                      </div>
+                      <div class="selected-contacts" id="selectedContacts"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="addTaskBoardOverlay2" class="flexContainerCol">
+                  <div id="addTaskBoardOverlayForm2" class="flexContainerCol">
+                    <div id="boardDateContainer">
+                      <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
+                      <div id="boardDateInputImgContainer" class="flexContainer">
+                        <input type="date" data-date-format="DD  MM  YYYY" id="boardDate" name="boardDate"/>
+                        <!--<img
+                          id="calendarIcon"
+                          src="../database/images/event.svg"
+                          alt="icon"
+                        />-->
+                      </div>
+                    </div>
+                    <div id="boardPriorityContainer" class="flexContainerCol">
+                      <div id="priorityHeaderContainer" class="flexContainer">
+                        <p>Prio</p>
+                      </div>
+                      <div id="priorityBtnsContainer" class="flexContainer">
+                        <button id="urgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="urgentBtnToggle()">
+                          Urgent
+                          <img id="urgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
+                        </button>
+                        <button id="mediumBtn" class="priorityButtons whiteButtons flexContainer" onclick="mediumBtnToggle()">
+                          Medium
+                          <img id="mediumImg" class="boardBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>
+                        </button>
+                        <button id="lowBtn" class="priorityButtons whiteButtons flexContainer" onclick="lowBtnToggle()">
+                          Low
+                          <img id="lowImg" class="boardBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>
+                        </button>
+                      </div>
+                    </div>
+                    <div id="boardCategoryContainer">
+                      <label for="boardCategory">Category<span id="asteriskCategory" class="">*</span></label>
+                      <br />
+                      <select id="boardCategory" name="boardCategory">
+                        <!--multiple-->
+                        <option value="" selected disabled hidden>
+                          Select task category
+                        </option>
+                        <option value="technicalTask">Technical Task</option>
+                        <option value="userStory">User Story</option>
+                      </select>
+                    </div>
+                    <div id="boardSubtasksContainer">
+                      <label for="boardSubtasks">Subtasks</label>
+                      <div id="boardSubtasksInputImgContainer" class="flexContainer">
+                        <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
+                        <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
+                      </div>
+                      <div>
+                        <ul id="subtaskList">
+                            <!-- Subtask Liste wird hier gerendert -->
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="errorMsgCancelCreateBtnsContainer" class="flexContainer">
+                <div id="errorMessageContainer" class="flexContainerCol">
+                  <p id="inputErrorMsg" class="">
+                    <span id="asteriskRed">*</span>This field is required
+                  </p>
+                </div>
+                <div id="cancelCreateBtnsContainer" class="flexContainer">
+                  <button
+                    id="cancelBoardOverlayBtn"
+                    class="cancelCreateButtons flexContainer"
+                  >
+                    Cancel
+                    <img
+                      src="../database/images/iconoir_cancel.svg"
+                      alt="icon"
+                    />
+                  </button>
+                  <button
+                    id="createBoardOverlayBtn"
+                    class="cancelCreateButtons flexContainer"
+                    onclick="addNewTaskToDatabase(${i})"
+                  >
+                    Create Task
+                    <img src="../database/images/check.svg" alt="icon" />
+                  </button>
+                </div>
+              </div>
+            </div>
+  `;
+  renderDropdown();
+}
