@@ -83,8 +83,6 @@
               <!-- render tasks here -->
               <!-- if no tasks -->
               <div class="empty-column">No tasks to do</div>
-            
-              
             </div>
           </div>
         </article>
@@ -108,7 +106,6 @@
               <!-- render tasks here -->
               <!-- if no tasks -->
               <div class="empty-column">No tasks in progress</div>
-             
             </div>
           </div>
         </article>
@@ -122,11 +119,16 @@
             />
           </div>
           <div class="slider-tasks">
-            <div id="columnFeedback" class="column-content">
+            <div
+              id="columnFeedback"
+              class="column-content"
+              ondrop="moveTo(2)"
+              ondragleave="removeHighlight('columnFeedback')"
+              ondragover="allowDrop(event); highlight('columnFeedback')"
+            >
               <!-- render tasks here -->
               <!-- if no tasks -->
               <div class="empty-column">No tasks awaiting</div>
-             
             </div>
           </div>
         </article>
@@ -135,11 +137,16 @@
             <h2 class="column-headline">Done</h2>
           </div>
           <div class="slider-tasks">
-            <div id="columnDone" class="column-content">
+            <div
+              id="columnDone"
+              class="column-content"
+              ondrop="moveTo(0)"
+              ondragleave="removeHighlight('columnDone')"
+              ondragover="allowDrop(event); highlight('columnDone')"
+            >
               <!-- render tasks here -->
               <!-- if no tasks -->
               <div class="empty-column">No tasks done</div>
-              
             </div>
           </div>
         </article>
