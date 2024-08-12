@@ -182,9 +182,9 @@ async function writeTasksToDatabase() {
   }
   
 
-async function addNewTaskToDatabase(){
+async function addNewTaskToDatabase(state){
     // setAllPrevousItemsLastAddedFalse(contacts);
-    writeNewTaskToLocalArray();
+    writeNewTaskToLocalArray(state);
     // toggleAddContactOverlay()
     // sortContactsByInitials(contacts);
     // addRandomColorToJSON(contacts);
@@ -194,7 +194,7 @@ async function addNewTaskToDatabase(){
     // showContactDetails(findLastAddedIndex(contacts));
   }
 
-function writeNewTaskToLocalArray() {
+function writeNewTaskToLocalArray(state) {
     let addTaskTitle = document.getElementById('boardTitle');
     let addTaskDescription = document.getElementById('boardDescription');
     // let addTaskAssignedTo = document.getElementById('newTaskAssignedTo');
@@ -203,7 +203,7 @@ function writeNewTaskToLocalArray() {
     let addTaskCategory = document.getElementById('boardCategory');
     // let addTaskSubtask = document.getElementById('newTaskSubtasks');
     let newTask = {
-        "status" : 0,
+        "status" : state,
         "title": addTaskTitle.value,
         "description": addTaskDescription.value,
         "dueDate": addTaskDueDate.value,
