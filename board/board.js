@@ -1,92 +1,42 @@
-// function renderTasksToBoard() {
-
-    // rendern der AddTasks in ToDo
-    
-// }
-
-/* --------------------------------------------------------------
--------------------------------------------------------------- */
-
-// let tasks = [{
-//     'id': 0,
-//     'title': 'Putzen',
-//     'category': 'toDo'
-// }, {
-//     'id': 1,
-//     'title': 'Kochen',
-//     'category': 'toDo'
-// }, {
-//     'id': 2,
-//     'title': 'Einkaufen',
-//     'category': 'inProgress'
-// }];
 
 let currentDraggedElement;
+let highlightTimeout;
 
-function updateHTML() {
-    let toDo = tasks.filter(t => t['category'] === 'toDo');
-
-    document.getElementById('columnToDo').innerHTML = '';
-
-    for (let index = 0; index < toDo.length; index++) {
-        const element = toDo[index];
-        document.getElementById('columnToDo').innerHTML += generateTaskHTML(element);
-    }
-
-    let inProgress = tasks.filter(t => t['category'] === 'inProgress');
-
-    document.getElementById('columnProgress').innerHTML = '';
-
-    for (let index = 0; index < inProgress.length; index++) {
-        const element = inProgress[index];
-        document.getElementById('columnProgress').innerHTML += generateTaskHTML(element);
-    }
-}
-
-function startDragging(id) {
-    currentDraggedElement = id;
-}
-
-function generateTaskHTML(element) {
-    return /*html*/`
-        <div ondragstart="startDragging(${element['id']})" draggable="true" class="task">
-            <div class="card-category">Design</div>
-            <h3>Webdesign</h3>
-            <span class="task-description">dfgdg dfgdfg, fdgdfggf, dsgf fdgdfg</span>
-            <div class="progress-container">
-                <div class="progress">
-                    <div class="progress-style"></div>
-                </div>
-                <span>0/2 Done</span>
-            </div>
-            <div class="assigned-and-prio">
-                <div class="assigned-contacts">
-                    <div class="contact-icon assigned-contact-icon">AB</div>
-                    <div class="contact-icon assigned-contact-icon">CD</div>
-                    <div class="contact-icon assigned-contact-icon">EF</div>
-                </div>
-                <img src="../assets/icons/Prio baja.svg" alt="prio" />
-            </div>
-        </div>
-    `;
+function startDragging(i) {
+    currentDraggedElement = i;
 }
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
-    tasks[currentDraggedElement]['category'] = category;
-    updateHTML();
+function moveTo(status) {
+    tasks[currentDraggedElement]['status'] = status;
+    renderTasksInBoard();
+
 }
 
 function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
+    let element = document.getElementById(id);
+    if (highlightTimeout) {
+        clearTimeout(highlightTimeout);
+    }
+    element.classList.add('drag-area-highlight');
+    highlightTimeout = setTimeout(() => {
+        element.classList.remove('drag-area-highlight');
+    }, 300);
 }
 
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
+    let element = document.getElementById(id);
+    element.classList.remove('drag-area-highlight');
+    if (highlightTimeout) {
+        clearTimeout(highlightTimeout);
+        highlightTimeout = null;
+    }
 }
+
+// Heiko ___________________________________
 
 async function initialCallBoard(){
     await getTasksFromDatabase();
@@ -113,7 +63,7 @@ function renderSingleTaskOverview(i, id) {
     let toDoArea = document.getElementById(id);
     
     toDoArea.innerHTML += /*html*/ `
-        <div class="task">
+        <div class="task" draggable="true" ondragstart="startDragging(${i})">
             <div class="card-category">${tasks[i].taskCategory}</div>
             <h3>${tasks[i].title}</h3>
             <span class="task-description">${tasks[i].description}</span>
@@ -164,7 +114,6 @@ function addRandomColorToJSON(object) {
         object[i].backgroundColor = getRandomColor();
     }
 }
-
 
 function clearTaskBoard() {
     document.getElementById('columnToDo').innerHTML = "";
