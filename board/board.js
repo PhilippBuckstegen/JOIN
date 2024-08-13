@@ -114,6 +114,28 @@ let renderFilteredTasks = (filteredTasks) => {
   });
 };
 
+/**
+ * This function adds a specific class to an specific element
+ * 
+ * @param {element} elementId - element to add class to
+ * @param {string} className  - class which should be added to element
+ */
+function addClassToElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.add(className);
+} 
+
+/**
+ * This function removes a specific class from an specific element
+ * 
+ * @param {element} elementId - element to remove class from
+ * @param {string} className  - class which should be removed from element
+ */
+function removeClassFromElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.remove(className);
+}
+
 // Heiko ab hier ___________________________________________________________
 
 let todoTasks = [];

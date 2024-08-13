@@ -4,6 +4,20 @@ body {
   font-family: "Inter";
 }
 
+.d-none {
+  display: none;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 998;
+}
+
 .main-board {
   margin: 0px 0 0 232px;
   padding: 80px 60px 0 70px;

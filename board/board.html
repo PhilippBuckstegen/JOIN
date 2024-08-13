@@ -17,11 +17,14 @@
     <script src="../header/Headerscript.js"></script>
     <script src="board.js"></script>
     <script src="../boardOverlays/tasksBoard.js"></script>
+    <script src="../boardOverlays/boardOverlays.js"></script>
     <script src="../database/script.js"></script>
+    <script src="../calendar/script.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="../sidebar/style.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
+    <link rel="stylesheet" href="../boardOverlays/boardOverlays.css" />
     <link
       rel="shortcut icon"
       href="../favicon/img/favicon.png"
@@ -37,6 +40,202 @@
     <div id="header-placeholder"></div>
 
     <!-- header and sidebar from includeHTML -->
+    <!-- Overlay start -->
+    <div id="addTaskBoardOverlayContainer" class="flexContainerCol none">
+      <div id="headerXbtnContainer" class="flexContainer">
+        <div id="taskBoardOverlayHeader">
+          <h1 id="taskBoardHeader">Add Task</h1>
+        </div>
+        <div id="xBtnContainer" class="none">
+          <img id="xBtn" src="../database/images/close.svg" alt="icon" />
+        </div>
+      </div>
+      <div id="addTaskBoardOverlays" class="flexContainer">
+        <div id="addTaskBoardOverlay1" class="flexContainerCol">
+          <div id="addTaskBoardOverlayForm1">
+            <div id="taskBoardOverlayForm" class="flexContainerCol">
+              <div id="boardTitleContainer">
+                <label for="boardTitle"
+                  >Title<span id="asteriskTitle" class="">*</span></label
+                ><br />
+                <input
+                  type="text"
+                  placeholder="Enter a title"
+                  id="boardTitle"
+                  name="boardTitle"
+                />
+              </div>
+              <div id="boardDescriptionContainer">
+                <label for="boardDescription">Description</label><br />
+                <textarea
+                  placeholder="Enter a Description"
+                  rows="4"
+                  cols="50"
+                  id="boardDescription"
+                  name="boardDescription"
+                ></textarea>
+              </div>
+              <div id="boardAssignedContainer">
+                <!-- new dropdown start -->
+                <div class="dropdown" id="contactDropdown">
+                  <button class="dropdown-button" onclick="toggleDropdown()">
+                    Assigned to
+                  </button>
+                  <div class="dropdown-content"></div>
+                </div>
+                <div class="selected-contacts" id="selectedContacts"></div>
+                <!-- new dropdown end -->
+                <!-- <label for="boardAssigned">Assigned to</label><br />
+                <select id="boardAssigned" name="boardAssigned"> -->
+                <!-- multiple
+                  <option value="" selected disabled hidden>
+                    Select contacts to assign
+                  </option>
+                  <option value="antonMayer">Anton Mayer</option>
+                  <option value="anjaSchulz">Anja Schulz</option>
+                  <option value="benediktZiegler">
+                    Benedikt Ziegler
+                  </option>
+                  <option value="davidEisenberg">
+                    David Eisenberg
+                  </option> -->
+                <!-- </select> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="addTaskBoardOverlay2" class="flexContainerCol">
+          <div id="addTaskBoardOverlayForm2" class="flexContainerCol">
+            <div id="boardDateContainer">
+              <label for="boardDate"
+                >Due date<span id="asteriskDate" class="">*</span></label
+              >
+              <div id="boardDateInputImgContainer" class="flexContainer">
+                <input
+                  type="date"
+                  data-date-format="DD  MM  YYYY"
+                  id="boardDate"
+                  name="boardDate"
+                  onclick="setMinDateToToday('boardDate')"
+                />
+                <!--<img
+                  id="calendarIcon"
+                  src="../database/images/event.svg"
+                  alt="icon"
+                />-->
+              </div>
+            </div>
+            <div id="boardPriorityContainer" class="flexContainerCol">
+              <div id="priorityHeaderContainer" class="flexContainer">
+                <p class="prio">Prio</p>
+              </div>
+              <div id="priorityBtnsContainer" class="flexContainer">
+                <button
+                  id="urgentBtn"
+                  class="priorityButtons whiteButtons flexContainer"
+                  onclick="urgentBtnToggle()"
+                >
+                  Urgent
+                  <img
+                    id="urgentImg"
+                    class="boardBtnIcons"
+                    src="../database/images/prio_alta.svg"
+                    alt="icon"
+                  />
+                </button>
+                <button
+                  id="mediumBtn"
+                  class="priorityButtons whiteButtons flexContainer"
+                  onclick="mediumBtnToggle()"
+                >
+                  Medium
+                  <img
+                    id="mediumImg"
+                    class="boardBtnIcons"
+                    src="../database/images/prio_media.svg"
+                    alt="icon"
+                  />
+                </button>
+                <button
+                  id="lowBtn"
+                  class="priorityButtons whiteButtons flexContainer"
+                  onclick="lowBtnToggle()"
+                >
+                  Low
+                  <img
+                    id="lowImg"
+                    class="boardBtnIcons"
+                    src="../database/images/prio_baja.svg"
+                    alt="icon"
+                  />
+                </button>
+              </div>
+            </div>
+            <div id="boardCategoryContainer">
+              <label for="boardCategory"
+                >Category<span id="asteriskCategory" class="">*</span></label
+              ><br />
+              <select id="boardCategory" name="boardCategory">
+                <!--multiple-->
+                <option value="" selected disabled hidden>
+                  Select task category
+                </option>
+                <option value="technicalTask">Technical Task</option>
+                <option value="userStory">User Story</option>
+              </select>
+            </div>
+            <div id="boardSubtasksContainer">
+              <label for="boardSubtasks">Subtasks</label>
+              <div id="boardSubtasksInputImgContainer" class="flexContainer">
+                <input
+                  type="text"
+                  placeholder="Add new subtask"
+                  id="boardSubtasks"
+                  name="boardSubtasks"
+                />
+                <img
+                  id="plusIcon"
+                  src="../database/images/plus.svg"
+                  alt="icon"
+                  onclick="createSubtask()"
+                />
+              </div>
+              <div>
+                <ul id="subtaskList">
+                  <!-- Subtask Liste wird hier gerendert -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="errorMsgCancelCreateBtnsContainer" class="flexContainer">
+        <div id="errorMessageContainer" class="flexContainerCol">
+          <p id="inputErrorMsg" class="">
+            <span id="asteriskRed">*</span>This field is required
+          </p>
+        </div>
+        <div id="cancelCreateBtnsContainer" class="flexContainer">
+          <button
+            onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"
+            id="cancelBoardOverlayBtn"
+            class="cancelCreateButtons flexContainer"
+          >
+            Cancel
+            <img src="../database/images/iconoir_cancel.svg" alt="icon" />
+          </button>
+          <button
+            id="createBoardOverlayBtn"
+            class="cancelCreateButtons flexContainer"
+            onclick="addNewTaskToDatabase(0)"
+          >
+            Create Task
+            <img src="../database/images/check.svg" alt="icon" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Overlay end -->
     <main class="main-board">
       <header class="header-board">
         <div class="headline-board">
@@ -50,13 +249,17 @@
               type="text"
               placeholder="Find Task"
             />
-            <img onclick="searchTasks()"
+            <img
+              onclick="searchTasks()"
               class="search-img"
               src="../assets/icons/search.svg"
               alt="search"
             />
           </div>
-          <button class="addTask-button">
+          <button
+            onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
+            class="addTask-button"
+          >
             <p class="add-task">Add Task</p>
             <img src="../assets/icons/add.svg" alt="add" />
           </button>
@@ -67,6 +270,7 @@
           <div class="column-board-header">
             <h2 class="column-headline">To do</h2>
             <img
+              onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
               class="plus-button"
               src="../assets/icons/plus button.svg"
               alt="add task"
@@ -90,6 +294,7 @@
           <div class="column-board-header">
             <h2 class="column-headline">In progress</h2>
             <img
+              onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
               class="plus-button"
               src="../assets/icons/plus button.svg"
               alt="add task"
@@ -113,6 +318,7 @@
           <div class="column-board-header">
             <h2 class="column-headline">Await feedback</h2>
             <img
+              onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
               class="plus-button"
               src="../assets/icons/plus button.svg"
               alt="add task"
