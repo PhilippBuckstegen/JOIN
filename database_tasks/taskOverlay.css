@@ -1,0 +1,131 @@
+.none {
+  display: none;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexContainerStart {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flexContainerColStart {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.currentUserTaskOverlays {
+  padding: 20px;
+  position: fixed;
+  top: 10%;
+  left: calc(20% + 420px);
+  background-color: #fff;
+  width: 420px;
+  height: 80vh;
+  border: 1px solid #000;
+  border-radius: 20px;
+}
+
+.taskTypeContainers {
+  justify-content: space-between !important;
+}
+
+.taskTypes {
+  background-color: #0038ff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+#contactCloseBtn {
+  cursor: pointer;
+}
+
+.contactTitles {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.dateContainers {
+  gap: 10px;
+}
+
+.dueDatePars {
+  color: #2a3647;
+}
+
+.priorityContainers {
+  gap: 10px;
+}
+
+.priorityPars {
+  color: #2a3647;
+}
+
+.contactPriorities {
+  gap: 10px;
+}
+
+.overlayBtnIcons {
+  width: 14px;
+  height: 14px;
+}
+
+.assignPars {
+  color: #2a3647;
+}
+
+.subtasksPars {
+  color: #2a3647;
+}
+
+.deleteEditBtnsContainers {
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+#deleteBtnContacts {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  gap: 4px;
+}
+
+#deleteImgContacts {
+  width: 18px;
+  height: 18px;
+}
+
+#editBtnContacts {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  gap: 4px;
+}
+
+#editImgContacts {
+  width: 18px;
+  height: 18px;
+}
