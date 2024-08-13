@@ -1,6 +1,6 @@
 // Globale Variablem
 const BASE_URL = "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/";
-let contacts = {};
+let contacts = [];
 let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
 
 

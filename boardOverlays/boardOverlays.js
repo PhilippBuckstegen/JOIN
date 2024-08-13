@@ -1,15 +1,18 @@
 
 
-function initialCallBoardOverlays(){
+async function initialCallBoardOverlays(){
+  await getContactsFromDatabase();
+  await getTasksFromDatabase();
   renderBoardOverlays(3);
-  getTasksFromDatabase();
   defineVariables();
   preSelectMediumBtn();
+  renderDropdown();
 }
 
 
-function initialCallBoardSite(){
-  getTasksFromDatabase();
+async function initialCallBoardSite(){
+ await getContactsFromDatabase();
+ await getTasksFromDatabase();
   // renderBoardOverlays(2);
   renderDropdown();
   defineVariables();
@@ -311,5 +314,5 @@ function renderBoardOverlays(i){
               </div>
             </div>
   `;
-  renderDropdown();
+  // renderDropdown();
 }

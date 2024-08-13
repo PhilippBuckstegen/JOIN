@@ -220,7 +220,9 @@ function writeNewTaskToLocalArray(state) {
 function renderDropdown() {
     const dropdownContent = document.querySelector('.dropdown-content');
 
-    taskContacts.forEach((contact, index) => {
+    // taskContacts.forEach((contact, index) => {
+        
+    contacts.forEach((contact, index) => {
         // Erstelle ein label-Element
         const label = document.createElement('label');
 
@@ -230,6 +232,8 @@ function renderDropdown() {
 
         // Erstelle ein span-Element für die Initialen
         const initialsSpan = document.createElement('span');
+        initialsSpan.className = "initials-dropdown";
+        initialsSpan.id = `initials${index}`;
         initialsSpan.textContent = contact.initials;  // Initialen hinzufügen
 
         // Erstelle ein Text-Node für den Namen
@@ -251,6 +255,7 @@ function renderDropdown() {
 
         // Füge das label zum Dropdown-Inhalt hinzu
         dropdownContent.appendChild(label);
+        document.getElementById(`initials${index}`).style.backgroundColor = `${contact.backgroundColor}`;
     });
 }
 
@@ -266,17 +271,24 @@ function updateSelectedContacts() {
     const selectedContactsDiv = document.getElementById('selectedContacts');
     selectedContactsDiv.innerHTML = '';  // Clear previous selections
     const selectedContacts = [];
-    for (let i = 0; i < taskContacts.length; i++) {
+    // for (let i = 0; i < taskContacts.length; i++) {
+        for (let i = 0; i < contacts.length; i++) {
         const checkbox = document.getElementById(`contact_${i}`);
         if (checkbox.checked) {
             selectedContacts.push({
-                user : taskContacts[i].name,
-                initials : generateInitials(taskContacts[i].name)  // hier muss später contacts[i].initials rein!
+                // user : taskContacts[i].name,
+                // initials : generateInitials(taskContacts[i].name)  // hier muss später contacts[i].initials rein!
+                // },
+                user : contacts[i].name,
+                initials : contacts[i].initials,  // hier muss später contacts[i].initials rein!
+                backgroundColor : contacts[i].backgroundColor,
                 },
             );      
             const contactDiv = document.createElement('div');
-            contactDiv.textContent = taskContacts[i].name;
-            selectedContactsDiv.innerHTML += `<span>${taskContacts[i].initials}</span>`;
+            // contactDiv.textContent = taskContacts[i].name;
+            // selectedContactsDiv.innerHTML += `<span>${taskContacts[i].initials}</span>`;
+            contactDiv.textContent = contacts[i].name;
+            selectedContactsDiv.innerHTML += `<span>${contacts[i].initials}</span>`;
         }
     }
     return selectedContacts;
