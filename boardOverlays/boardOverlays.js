@@ -1,5 +1,4 @@
 
-
 async function initialCallBoardOverlays(){
   await getContactsFromDatabase();
   await getTasksFromDatabase();
@@ -8,7 +7,6 @@ async function initialCallBoardOverlays(){
   preSelectMediumBtn();
   renderDropdown();
 }
-
 
 async function initialCallBoardSite(){
  await getContactsFromDatabase();

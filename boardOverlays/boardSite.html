@@ -3,11 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Task Overlay</title>
-    <link rel="icon" type="image/x-icon" href="../database/images/logo.svg" />
+    <title>Add Task</title>
+    <link
+      rel="shortcut icon"
+      href="../favicon/img/favicon.png"
+      type="image/x-icon"
+    />
+    <script src="../sidebar/sidebarScript.js"></script>
+    <script src="../header/Headerscript.js"></script>
+    <script src="../calendar/script.js"></script>
+    <script src="./tasksBoard.js"></script>
+    <script src="./boardOverlays.js"></script>
+    <script src="../database/script.js"></script>
+
     <link rel="stylesheet" href="./boardSite.css" />
+    <link rel="stylesheet" href="../header/headerStyle.css" />
+    <link rel="stylesheet" href="../sidebar/style.css" />
+    <link rel="stylesheet" href="../header/header_style_mobile.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body onload="initialCallBoardSite()">
+    <!-- Sidebar wird hier dynamisch geladen -->
+    <div class="side-wrap">
+      <div class="sidebar"></div>
+    </div>
+    <div id="header-placeholder"></div>
+    <!-- header and sidebar from includeHTML -->
+
     <div class="mainContainer">
       <header>
         <div class="flexContainer">
@@ -19,7 +47,7 @@
         </div>
       </header>
 
-      <main>
+      <main class="main-content">
         <section id="sectionContainer" class="flexContainer">
           <div id="boardOverlaysContainer">
             <!--Overlay Start-->
@@ -64,16 +92,24 @@
                         ></textarea>
                       </div>
                       <div id="boardAssignedContainer">
-                      <!-- new dropdown start -->
+                        <!-- new dropdown start -->
                         <div class="dropdown" id="contactDropdown">
-                          <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
+                          <button
+                            class="dropdown-button"
+                            onclick="toggleDropdown()"
+                          >
+                            Assigned to
+                          </button>
                           <div class="dropdown-content"></div>
-                      </div>
-                      <div class="selected-contacts" id="selectedContacts"></div>
-                      <!-- new dropdown end -->
+                        </div>
+                        <div
+                          class="selected-contacts"
+                          id="selectedContacts"
+                        ></div>
+                        <!-- new dropdown end -->
                         <!-- <label for="boardAssigned">Assigned to</label><br />
                         <select id="boardAssigned" name="boardAssigned"> -->
-                          <!-- multiple
+                        <!-- multiple
                           <option value="" selected disabled hidden>
                             Select contacts to assign
                           </option>
@@ -107,6 +143,7 @@
                           data-date-format="DD  MM  YYYY"
                           id="boardDate"
                           name="boardDate"
+                          onclick="setMinDateToToday('boardDate')"
                         />
                         <!--<img
                           id="calendarIcon"
@@ -117,7 +154,7 @@
                     </div>
                     <div id="boardPriorityContainer" class="flexContainerCol">
                       <div id="priorityHeaderContainer" class="flexContainer">
-                        <p>Prio</p>
+                        <p class="prio">Prio</p>
                       </div>
                       <div id="priorityBtnsContainer" class="flexContainer">
                         <button
@@ -178,15 +215,28 @@
                     </div>
                     <div id="boardSubtasksContainer">
                       <label for="boardSubtasks">Subtasks</label>
-                        <div id="boardSubtasksInputImgContainer" class="flexContainer">
-                          <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
-                          <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
-                        </div>
-                        <div>
-                          <ul id="subtaskList">
-                              <!-- Subtask Liste wird hier gerendert -->
-                          </ul>
-                        </div>
+                      <div
+                        id="boardSubtasksInputImgContainer"
+                        class="flexContainer"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Add new subtask"
+                          id="boardSubtasks"
+                          name="boardSubtasks"
+                        />
+                        <img
+                          id="plusIcon"
+                          src="../database/images/plus.svg"
+                          alt="icon"
+                          onclick="createSubtask()"
+                        />
+                      </div>
+                      <div>
+                        <ul id="subtaskList">
+                          <!-- Subtask Liste wird hier gerendert -->
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -210,7 +260,7 @@
                   </button>
                   <button
                     id="createBoardOverlayBtn"
-                    class="cancelCreateButtons flexContainer" 
+                    class="cancelCreateButtons flexContainer"
                     onclick="addNewTaskToDatabase(0)"
                   >
                     Create Task

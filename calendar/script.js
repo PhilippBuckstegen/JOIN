@@ -1,45 +1,19 @@
 /**
- * Initializes the jQuery UI Datepicker and sets today's date in the input field.
+ * Sets the minimum selectable date for the date input field to today's date.
+ * @param {string} inputId - The ID of the date input field.
+ * @returns {void}
  */
-$(function () {
-  $("#datepicker").datepicker({
-    dateFormat: "dd.mm.yy",
-    minDate: 0,
-    onSelect: function (dateText) {
-      console.log("Ausgewähltes Datum: " + dateText);
-    },
-  });
-
+const setMinDateToToday = (inputId) => {
   const today = new Date();
-  const day = String(today.getDate()).padStart(2, "0");
-  const month = String(today.getMonth() + 1).padStart(2, "0");
   const year = today.getFullYear();
-  const todayStr = `${day}.${month}.${year}`;
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const todayDate = `${year}-${month}-${day}`;
 
-  $("#datepicker").val(todayStr);
-})
+  const dateInput = document.getElementById(inputId);
+    if (dateInput) {
+        dateInput.setAttribute('min', todayDate);
+    }  
+};
 
-
-/**
- * Restricts the date so you can't pick dates in the past.
- * @param {string} inputID - The ID of the input field that will be checked.
- *//*
-function setMinDate(inputID) {
-    const minDate = getCurrentDateAsString();
-    document.getElementById(inputID).setAttribute("min", minDate);
-  } */
-  
-  /**
-   * Gets the current date.
-   * @returns {string} current date as 'YYYY-MM-DD'.
-   *//*
-  function getCurrentDateAsString() {
-    const dateToday = new Date();
-    const month = (dateToday.getMonth() + 1).toString().padStart(2, "0");
-    const day = dateToday.getDate().toString().padStart(2, "0");
-    const year = dateToday.getFullYear();
-  
-    return `${year}-${month}-${day}`;
-  } */
-  
-  
+setMinDateToToday('boardDate');
