@@ -121,13 +121,6 @@ let inProgressTasks = [];
 let feedbackTasks = [];
 let doneTasks = [];
 
-<<<<<<< Updated upstream
-async function initialCallBoard() {
-  await getTasksFromDatabase();
-  // loadCategoryArrays();
-  // updateCategoryArrays();
-  prepareTasks();
-=======
 
 async function initialCallBoard(){
     await getContactsFromDatabase();
@@ -135,7 +128,6 @@ async function initialCallBoard(){
     // loadCategoryArrays();
     // updateCategoryArrays();
     renderTasksInBoard();
->>>>>>> Stashed changes
 }
 
 function renderTasksInBoard() {
@@ -204,34 +196,6 @@ function renderSingleTaskOverview(i, id) {
   }
 }
 
-<<<<<<< Updated upstream
-function prepareTasks() {
-  addRandomColorToJSON(tasks.flatMap((task) => task.assignedTo));
-  renderTasksInBoard();
-}
-
-function getRandomColor() {
-  const colors = [
-    "#FF7A00",
-    "#9327FF",
-    "#6E52FF",
-    "#FC71FF",
-    "#FFBB2B",
-    "#1FD7C1",
-    "#462F8A",
-    "#FF4646",
-    "#00BEE8",
-  ];
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
-}
-
-function addRandomColorToJSON(object) {
-  for (let i = 0; i < object.length; i++) {
-    object[i].backgroundColor = getRandomColor();
-  }
-}
-=======
 // function prepareTasks() {
 //     addRandomColorToJSON(tasks.flatMap(task => task.assignedTo));
 //     renderTasksInBoard();
@@ -248,7 +212,6 @@ function addRandomColorToJSON(object) {
 //         object[i].backgroundColor = getRandomColor();
 //     }
 // }
->>>>>>> Stashed changes
 
 function clearTaskBoard() {
   document.getElementById("columnToDo").innerHTML = "";
