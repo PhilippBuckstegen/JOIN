@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tasks.css">
+    <link rel="stylesheet" href="./taskOverlay.css">
     <script src="../database/script.js"></script>
     <script src="tasks.js"></script>
     <title>Document</title>
 </head>
 <body onload="firstCall()">
+ 
     <h2>Add New Task</h2>
     <div class="new-task">
         <div><input type="text" id="newTaskTitle" placeholder="Title of tasks"></div>
@@ -60,63 +62,8 @@
         </div>
         <button onclick="storeEditedTaskData(3)">Store edited task</button>
     </div>
-    <section id="taskOverlaySection" class="none">
-        <div id="currentUserTaskOverlay" class="flexContainerCol">
-          <div id="taskTypeContainer" class="flexContainer">
-            <div id="taskType"><!--Hier wird der Type hingefügt--></div>
-            <div>
-              <img
-                id="contactCloseBtn"
-                src="../database/images/close.svg"
-                alt="icon"
-              />
-            </div>
-          </div>
-          <div id="titleContainer">
-            <p id="contactTitle">Kochwelt Page & Recipe Recommender</p>
-          </div>
-          <div id="taskContainer">
-            <p id="contactTask">Build start page with recipe recommendation.</p>
-          </div>
-          <div id="dateContainer" class="flexContainer">
-            <div><p id="dueDatePar">Due date:</p></div>
-            <div><p id="contactDate">10/05/2023</p></div>
-          </div>
-          <div id="priorityContainer" class="flexContainer">
-            <div><p id="priorityPar">Priority:</p></div>
-            <div><p id="contactPriority">Medium =</p></div>
-          </div>
-          <div id="assignContainer" class="flexContainerCol">
-            <div><p id="assignPar">Assigned To:</p></div>
-            <div id="assignContactsContainer" class="flexContainer">
-              <!--Hier werden die Kontakte hingefügt-->
-            </div>
-          </div>
-          <div id="subtasksContainer" class="flexContainerCol">
-            <div><p id="subtasksPar">Subtasks</p></div>
-            <div id="subtasksContactsContainer">
-              <!--Hier werden die Subtasks hingefügt-->
-            </div>
-          </div>
-          <div id="deleteEditBtnsContainer" class="flexContainer">
-            <button id="deleteBtnContacts" class="flexContainer">
-              <img
-                id="deleteImgContacts"
-                src="../database/images/delete.svg"
-                alt="icon"
-              />
-              Delete
-            </button>
-            <button id="editBtnContacts" class="flexContainer">
-              <img
-                id="editImgContacts"
-                src="../database/images//edit.svg"
-                alt="icon"
-              />
-              Edit
-            </button>
-          </div>
-        </div>
-      </section>
+    <section id="taskOverlaySection" class="flexContainer">
+    </section>
+    <script src="./taskOverlay.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 "use strict";
 
+/*
 const taskOverlaySection = document.getElementById("taskOverlaySection");
 const taskType = document.getElementById("taskType");
 const contactTitle = document.getElementById("contactTitle");
@@ -22,16 +23,18 @@ function displayCurrentUserTask() {
   assignContactsContainer.innerHTML = setContacts();
   subtasksContactsContainer.innerHTML = setSubTasks();
 }
+  */
+
+const taskOverlaySection = document.getElementById("taskOverlaySection");
 
 function generateTask() {
   let currentTaskOverlay = "";
+
   for (let i = 0; i < 1; i++) {
     currentTaskOverlay += /*HTML*/ `
-            <div id="currentUserTaskOverlay${i}" class="currentUserTaskOverlays">
-          <div id="taskTypeContainer${i}" class="taskTypeContainers flexContainer">
-            <div id="taskType${i}" class="taskTypes">${
-      tasks[i].taskCategory
-    }</div>
+            <div id="currentUserTaskOverlay" class="currentUserTaskOverlays">
+          <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
+            <div id="taskType" class="taskTypes">${tasks[i].taskCategory}</div>
             <div>
               <img
                 id="contactCloseBtn"
@@ -40,39 +43,45 @@ function generateTask() {
               />
             </div>
           </div>
-          <div id="titleContainer${i}" class="titleContainers">
-            <p id="contactTitle${i}" class="contactTitles">${tasks[i].title}</p>
+          <div id="titleContainer" class="titleContainers">
+            <p id="contactTitle" class="contactTitles">${tasks[i].title}</p>
           </div>
-          <div id="taskContainer${i}" class="taskContainers">
-            <p id="contactTask${i}" class="contactTasks">${
-      tasks[i].description
-    }</p>
+          <div id="taskContainer" class="taskContainers">
+            <p id="contactTask" class="contactTasks">${tasks[i].description}</p>
           </div>
-          <div id="dateContainer${i}" class="dateContainers flexContainerStart">
-            <div><p id="dueDatePar${i}" class="dueDatePars">Due date:</p></div>
-            <div><p id="contactDate${i}" class="contactDates">${
-      tasks[i].dueDate
-    }</p></div>
+          <div id="dateContainer" class="dateContainers flexContainerStart">
+            <div><p id="dueDatePar" class="dueDatePars">Due date:</p></div>
+            <div><p id="contactDate" class="contactDates">${
+              tasks[i].dueDate
+            }</p></div>
           </div>
-          <div id="priorityContainer${i}" class="priorityContainers flexContainerStart">
-            <div><p id="priorityPar${i}" class="priorityPars">Priority:</p></div>
-            <div id="contactPriority${i}" class="contactPriorities flexContainer">${setPriority(
-      tasks[i].priority
-    )}</div>
+          <div id="priorityContainer" class="priorityContainers flexContainerStart">
+            <div><p id="priorityPar" class="priorityPars">Priority:</p></div>
+            <div id="contactPriority" class="contactPriorities flexContainer">${setPriority(
+              tasks[i].priority
+            )}</div>
           </div>
-          <div id="assignContainer${i}" class="assignContainers flexContainerStart">
-            <div><p id="assignPar${i}" class="assignPars">Assigned To:</p></div>
-            <div id="assignContactsContainer${i}" class="assignContactsContainers flexContainerStart">
-            
+          <div id="assignContainer" class="assignContainers flexContainerColStart">
+            <div><p id="assignPar" class="assignPars">Assigned To:</p></div>
+            <div id="assignContactsContainer" class="assignContactsContainers flexContainerColStart">
+              
+              /* hard coded */
+              <div id="assignContact" class="assignContacts flexContainerStart">
+                <div id="bgColor">EM</div>
+                <div><p>Emmanuel Mauer</p></div>
+              </div>
+              /* hard coded */
+
+            </div>
+
+          </div>
+          <div id="subtasksContainer" class="subtasksContainers flexContainerColStart">
+            <div class="flexContainerStart"><p id="subtasksPar" class="subtasksPars">Subtasks</p></div>
+            <div id="subtasksContactsContainer" class="subtasksContactsContainers flexContainerColStart">
+            ${setSubtasks(tasks[i].subtask)}
             </div>
           </div>
-          <div id="subtasksContainer${i}" class="subtasksContainers flexContainerStart">
-            <div><p id="subtasksPar${i}" class="subtasksPars">Subtasks</p></div>
-            <div id="subtasksContactsContainer${i}" class="subtasksContactsContainers">
-            
-            </div>
-          </div>
-          <div id="deleteEditBtnsContainer${i}" class="deleteEditBtnsContainers flexContainerStart">
+          <div id="deleteEditBtnsContainer" class="deleteEditBtnsContainers flexContainerStart">
             <button id="deleteBtnContacts" class="flexContainer">
               <img
                 id="deleteImgContacts"
@@ -92,13 +101,16 @@ function generateTask() {
           </div>
         </div>`;
   }
+
   taskOverlaySection.innerHTML = currentTaskOverlay;
+  let subtaskboxes = document.getElementsByClassName("subtaskboxes");
+  checkSubtask(subtaskboxes);
 }
 
 setTimeout(function () {
   console.log(tasks);
   generateTask();
-}, 1000);
+}, 2000);
 
 function setPriority(priority) {
   if (priority === 0) {
@@ -130,4 +142,39 @@ function setPriority(priority) {
   }
 }
 
-function setAssign(assign) {}
+function setSubtasks(subtasks) {
+  let subtasksSubContainer = "";
+  for (let i = 0; i < subtasks.length; i++) {
+    subtasksSubContainer += /* HTML */ `
+      <div id="subContainer${i}" class="subContainers flexContainer">
+        <input
+          type="checkbox"
+          id="checkbox${i}"
+          class="subtaskboxes"
+          name="checkbox${i}"
+          value="subtask${i}"
+        />
+        <label
+          for="checkbox${i}"
+          id="checkboxLabel${i}"
+          class="subtaskboxesLabels"
+          >${subtasks[i].task}</label
+        >
+      </div>
+    `;
+  }
+
+  return subtasksSubContainer;
+}
+
+function checkSubtask(subtaskboxes) {
+  for (let i = 0; i < subtaskboxes.length; i++) {
+    subtaskboxes[i].addEventListener("click", function () {
+      if (!subtaskboxes[i].classList.contains("checkboxChecked")) {
+        subtaskboxes[i].classList.add("checkboxChecked");
+      } else {
+        subtaskboxes[i].classList.remove("checkboxChecked");
+      }
+    });
+  }
+}

@@ -34,15 +34,24 @@
   align-items: center;
 }
 
+#bgColor {
+  background-color: #1fd7c1;
+  color: #fff;
+  padding: 8px 6px;
+  border-radius: 100%;
+}
+
 .currentUserTaskOverlays {
-  padding: 20px;
+  border: 1px solid #000;
+}
+
+.currentUserTaskOverlays {
+  padding: 30px;
   position: fixed;
   top: 10%;
-  left: calc(20% + 420px);
   background-color: #fff;
   width: 420px;
-  height: 80vh;
-  border: 1px solid #000;
+  height: 600px;
   border-radius: 20px;
 }
 
@@ -91,12 +100,51 @@
   height: 14px;
 }
 
+.assignContainers {
+  align-items: flex-start;
+}
+
 .assignPars {
   color: #2a3647;
 }
 
+.assignContactsContainers {
+  align-items: flex-start;
+}
+
+.assignContacts {
+  gap: 10px;
+}
+
+.subtasksContainers {
+  align-items: flex-start;
+}
+
 .subtasksPars {
   color: #2a3647;
+}
+
+.subtasksContactsContainers {
+  align-items: flex-start;
+}
+
+.subContainers {
+  gap: 12px;
+}
+
+.subtaskboxes {
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.subtaskboxes::before {
+  content: url("../database/images/unchecked_button.svg");
+  transform: scale(0.8);
+}
+
+.checkboxChecked::before {
+  content: url("../database/images/checked_button.svg");
+  transform: scale(0.8);
 }
 
 .deleteEditBtnsContainers {
@@ -128,4 +176,69 @@
 #editImgContacts {
   width: 18px;
   height: 18px;
+}
+
+@media (min-width: 1201px) {
+  .currentUserTaskOverlays {
+    padding: 30px;
+    position: fixed;
+    top: 10%;
+    background-color: #fff;
+    width: 420px;
+    height: 600px;
+    border: 1px solid #000;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .currentUserTaskOverlays {
+    padding: 30px;
+    position: fixed;
+    top: 10%;
+    background-color: #fff;
+    width: 420px;
+    height: 600px;
+    border: 1px solid #000;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .currentUserTaskOverlays {
+    padding: 30px;
+    position: fixed;
+    top: 10%;
+    background-color: #fff;
+    width: 420px;
+    height: 600px;
+    border: 1px solid #000;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  .currentUserTaskOverlays {
+    padding: 20px;
+    position: fixed;
+    top: 10%;
+    background-color: #fff;
+    width: 400px;
+    height: 600px;
+    border: 1px solid #000;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .currentUserTaskOverlays {
+    padding: 10px;
+    position: fixed;
+    top: 10%;
+    background-color: #fff;
+    width: 80vw;
+    height: 80vh;
+    border: 1px solid #000;
+    border-radius: 20px;
+  }
 }
