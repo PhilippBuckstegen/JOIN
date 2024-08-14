@@ -1,159 +1,3 @@
-let taskContacts = [
-    {
-      "backgroundColor": "#6E52FF",
-      "email": "anna.mueller@example.com",
-      "initials": "AM",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Anna Müller",
-      "phone": "+49151123456987"
-    },
-    {
-      "backgroundColor": "#FC71FF",
-      "email": "anette.svenson@internet.swe",
-      "initials": "AS",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Anette Svenson",
-      "phone": "+4585452587"
-    },
-    {
-      "backgroundColor": "#9327FF",
-      "email": "bernd.seiler@beispiel.de",
-      "initials": "BS",
-      "lastAdded": false,
-      "lastEdited": true,
-      "name": "Bernd Seiler",
-      "phone": "+151818182619"
-    },
-    {
-      "background-color": "#651445",
-      "backgroundColor": "#1FD7C1",
-      "email": "franz.meier@gmx.net",
-      "initials": "FM",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Franz Meier",
-      "phone": "+4916518158181"
-    },
-    {
-      "backgroundColor": "#FF4646",
-      "email": "franz.mustermann@web.de",
-      "initials": "FM",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Franz Mustermann",
-      "phone": "+49245584254"
-    },
-    {
-      "backgroundColor": "#462F8A",
-      "email": "hans.mustermann@web.de",
-      "initials": "HM",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Hans Mustermann",
-      "phone": "+4924558753286"
-    },
-    {
-      "backgroundColor": "#9327FF",
-      "email": "heinz.schmitz@arcor.de",
-      "initials": "HS",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Heinz Schmitz",
-      "phone": "+49219181808"
-    },
-    {
-      "backgroundColor": "#FC71FF",
-      "email": "julia.koch@example.com",
-      "initials": "JK",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Julia Koch",
-      "phone": "+4915990123456"
-    },
-    {
-      "backgroundColor": "#FF7A00",
-      "email": "laura.fischer@example.com",
-      "initials": "LF",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Laura Fischer",
-      "phone": "+4915334567890"
-    },
-    {
-      "backgroundColor": "#9327FF",
-      "email": "lisa.wagner@example.com",
-      "initials": "LW",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Lisa Wagner",
-      "phone": "+4915556789012"
-    },
-    {
-      "backgroundColor": "#462F8A",
-      "email": "michael.bauer@example.com",
-      "initials": "MB",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Michael Bauer",
-      "phone": "+4915110234567"
-    },
-    {
-      "backgroundColor": "#9327FF",
-      "email": "max.schmidt@example.com",
-      "initials": "MS",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Max Schmidt",
-      "phone": "+4915223456789"
-    },
-    {
-      "backgroundColor": "#00BEE8",
-      "email": "maria.hoffmann@example.com",
-      "initials": "M",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": " Maria Hoffmann",
-      "phone": "+4915778901234"
-    },
-    {
-      "backgroundColor": "#6E52FF",
-      "email": "natalie.imbruglia@web.de",
-      "initials": "NI",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Natalie Imbruglia",
-      "phone": "+45854524565"
-    },
-    {
-      "backgroundColor": "#FF4646",
-      "email": "peter.weber@example.com",
-      "initials": "PW",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Peter Weber",
-      "phone": "+4915445678901"
-    },
-    {
-      "backgroundColor": "#9327FF",
-      "email": "reiner.steinberg@arcor.com",
-      "initials": "RS",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Reiner Steinberg",
-      "phone": "+51812158618"
-    },
-    {
-      "backgroundColor": "#FF7A00",
-      "email": "thomas.becker@example.com",
-      "initials": "TB",
-      "lastAdded": false,
-      "lastEdited": false,
-      "name": "Thomas Becker",
-      "phone": "+4915667890123"
-    }
-  ];
 
 let tasks = [];
 let subtask = [];
@@ -183,13 +27,14 @@ async function writeTasksToDatabase() {
   
 
 async function addNewTaskToDatabase(state){
-    // setAllPrevousItemsLastAddedFalse(contacts);
     writeNewTaskToLocalArray(state);
     // toggleAddContactOverlay()
     // sortContactsByInitials(contacts);
     // addRandomColorToJSON(contacts);
     await writeTasksToDatabase();
     cleanAddtaskArea();
+    addClassToElement('addTaskBoardOverlayContainer', 'none');
+    renderTasksInBoard();
     // await renderContacts();
     // showContactDetails(findLastAddedIndex(contacts));
   }
@@ -288,7 +133,10 @@ function updateSelectedContacts() {
             // contactDiv.textContent = taskContacts[i].name;
             // selectedContactsDiv.innerHTML += `<span>${taskContacts[i].initials}</span>`;
             contactDiv.textContent = contacts[i].name;
-            selectedContactsDiv.innerHTML += `<span>${contacts[i].initials}</span>`;
+            selectedContactsDiv.innerHTML += `
+            <span class="initials-dropdown" id="selectedInitials${i}">${contacts[i].initials}</span>
+            `;
+            document.getElementById(`selectedInitials${i}`).style.backgroundColor = `${contacts[i].backgroundColor}`;
         }
     }
     return selectedContacts;
@@ -374,7 +222,7 @@ function cleanAddtaskArea(){
 
 function clearAssignedtoArea(){
     document.getElementById('selectedContacts').innerHTML = "";
-    for (let i = 0; i < taskContacts.length; i++) {
+    for (let i = 0; i < contacts.length; i++) {
         const checkbox = document.getElementById(`contact_${i}`);
         checkbox.checked = false;
     }

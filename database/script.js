@@ -81,7 +81,7 @@ async function storeEditedData(i) {
   // event.preventDefault();
   setAllPrevousItemsLastEditedFalse(contacts)
   writeEditedValueFieldsToContacts(i)
-  addRandomColorToJSON(contacts);
+  // addRandomColorToJSON(contacts);
   sortContactsByInitials(contacts);
   await writeContactsToDatabase();
   await getContactsFromDatabase();
@@ -174,7 +174,7 @@ function addNewContact() {
   writeNewContactToLocalArray();
   toggleAddContactOverlay()
   sortContactsByInitials(contacts);
-  addRandomColorToJSON(contacts);
+  // addRandomColorToJSON(contacts);
   await writeContactsToDatabase();
   await renderContacts();
   showContactDetails(findLastAddedIndex(contacts));
@@ -194,6 +194,7 @@ function writeNewContactToLocalArray(){
     "phone": addPhone.value,
     "initials": generateInitials(addName.value),
     "lastAdded" : true,
+    "backgroundColor" : getRandomColor(),
   }
   contacts.push(newContact);
 }
@@ -263,7 +264,7 @@ function findLastEditedIndex(objects) {
 async function deleteContact(i) {
   contacts.splice(i, 1);
   sortContactsByInitials(contacts);
-  addRandomColorToJSON(contacts);
+  // addRandomColorToJSON(contacts); // Heiko rausgenommen wegen Farbe wird nur random beim erstellen zugewiesen
   await writeContactsToDatabase();
   await renderContacts();
   document.getElementById("contactDetailsContainer").innerHTML = renderDeleteContactMessageHTML();
@@ -324,17 +325,20 @@ function getRandomColor() {
   return colors[randomIndex];
 }
 
+// Start - Heiko rausgenommen wegen Farbe wird nur random beim erstellen zugewiesen
 
-/**
- * This function adds the random color to the local JSON Array
- * 
- * @param {JSON} object - name of local JSON Object where background-color should be added
- */
-function addRandomColorToJSON(object){
-  for(i = 0; i < object.length; i++){
-    object[i].backgroundColor = getRandomColor(); 
-  }
-}
+// /**
+//  * This function adds the random color to the local JSON Array
+//  * 
+//  * @param {JSON} object - name of local JSON Object where background-color should be added
+//  */
+// function addRandomColorToJSON(object){
+//   for(i = 0; i < object.length; i++){
+//     object[i].backgroundColor = getRandomColor(); 
+//   }
+// }
+
+// Ende - Heiko rausgenommen wegen Farbe wird nur random beim erstellen zugewiesen
 
 
 /**

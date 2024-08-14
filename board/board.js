@@ -182,7 +182,7 @@ function renderSingleTaskOverview(i, id) {
 
   toDoArea.innerHTML += /*html*/ `
         <div class="task" draggable="true" ondragstart="startDragging(${i})">
-            <div class="card-category">${tasks[i].taskCategory}</div>
+            <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
             <h3>${tasks[i].title}</h3>
             <span class="task-description">${tasks[i].description}</span>
             <div id="progressContainer${i}" class="progress-container"></div>
@@ -192,7 +192,7 @@ function renderSingleTaskOverview(i, id) {
             </div>
         </div>
     `;
-
+  addBackgroundColorToCategory(i); // Heiko eingefügt für Kategoriefarben
   if ("subtask" in tasks[i]) {
     document.getElementById(`progressContainer${i}`).innerHTML = /*html*/ `
             <div class="progress">
@@ -218,22 +218,6 @@ function renderSingleTaskOverview(i, id) {
   }
 }
 
-// function prepareTasks() {
-//     addRandomColorToJSON(tasks.flatMap(task => task.assignedTo));
-//     renderTasksInBoard();
-// }
-
-// function getRandomColor() {
-//     const colors = ["#FF7A00", "#9327FF", "#6E52FF", "#FC71FF", "#FFBB2B", "#1FD7C1", "#462F8A", "#FF4646", "#00BEE8"];
-//     const randomIndex = Math.floor(Math.random() * colors.length);
-//     return colors[randomIndex];
-// }
-
-// function addRandomColorToJSON(object) {
-//     for (let i = 0; i < object.length; i++) {
-//         object[i].backgroundColor = getRandomColor();
-//     }
-// }
 
 function clearTaskBoard() {
   document.getElementById("columnToDo").innerHTML = "";
@@ -285,6 +269,18 @@ function renderEmptycategories(tasks) {
   }
 }
 
+function openTaskOverlayWithCategoryPreset(x){
+   removeClassFromElement('addTaskBoardOverlayContainer', 'none');
+   renderBoardOverlays(x);
+   preSelectMediumBtn();
+}
+
+
+
+
+
+
+
 // Setze alle Spalten auf die gleiche höhe
 function adjustColumnHeights() {
   let columns = document.querySelectorAll(".column-content");
@@ -320,3 +316,9 @@ function resetColumnHeights() {
 
 document.addEventListener("dragend", resetColumnHeights);
 document.addEventListener("drop", resetColumnHeights);
+
+// Heiko - Funktion für Farben der Category zugefügt
+function addBackgroundColorToCategory(i){
+  let categoryContainer = document.getElementById(`cardCategory${i}`);
+  tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
+}

@@ -891,6 +891,8 @@ body {
   min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  max-height: 250px;
+  overflow-y: auto;
 }
 
 .dropdown-content label {
@@ -937,12 +939,11 @@ body {
   padding-top: 10px;
   display: flex;
   justify-content: flex-start;
-  gap: 10px;
+  /* gap: 10px; */
 }
 
 .label-initials {
   display: flex;
-  gap: 5px;
   gap: 5px;
   align-items: center;
 }
@@ -956,4 +957,5 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 5px;
+  color: white;
 }

@@ -5,7 +5,7 @@ async function initialCallBoardOverlays(){
   renderBoardOverlays(3);
   defineVariables();
   preSelectMediumBtn();
-  renderDropdown();
+  // renderDropdown(); Heiko auskommentiert - wird am Ende vom render tasks aufgerufen
 }
 
 async function initialCallBoardSite(){
@@ -189,15 +189,16 @@ function preSelectMediumBtn(){
 
 
 function renderBoardOverlays(i){
-  let boardContainer = document.getElementById('boardOverlaysContainer');
+  let boardContainer = document.getElementById('addTaskBoardOverlayContainer');
   boardContainer.innerHTML = /*html*/ `
-     <div id="addTaskBoardOverlayContainer" class="flexContainerCol">
+     <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
               <div id="headerXbtnContainer" class="flexContainer">
                 <div id="taskBoardOverlayHeader">
                   <h1 id="taskBoardHeader">Add Task</h1>
                 </div>
                 <div id="xBtnContainer">
-                  <img id="xBtn" src="../database/images/close.svg" alt="icon"/>
+                  <img id="xBtn" src="../database/images/close.svg" alt="icon"
+                  onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"/>
                 </div>
               </div>
               <div id="addTaskBoardOverlays" class="flexContainer">
@@ -229,7 +230,7 @@ function renderBoardOverlays(i){
                     <div id="boardDateContainer">
                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
                       <div id="boardDateInputImgContainer" class="flexContainer">
-                        <input type="date" data-date-format="DD  MM  YYYY" id="boardDate" name="boardDate"/>
+                        <input type="date" data-date-format="DD  MM  YYYY" id="boardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
                         <!--<img
                           id="calendarIcon"
                           src="../database/images/event.svg"
@@ -264,8 +265,8 @@ function renderBoardOverlays(i){
                         <option value="" selected disabled hidden>
                           Select task category
                         </option>
-                        <option value="technicalTask">Technical Task</option>
-                        <option value="userStory">User Story</option>
+                        <option value="Technical Task">Technical Task</option>
+                        <option value="User Story">User Story</option>
                       </select>
                     </div>
                     <div id="boardSubtasksContainer">
@@ -291,6 +292,7 @@ function renderBoardOverlays(i){
                 </div>
                 <div id="cancelCreateBtnsContainer" class="flexContainer">
                   <button
+                    onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"
                     id="cancelBoardOverlayBtn"
                     class="cancelCreateButtons flexContainer"
                   >
@@ -310,7 +312,7 @@ function renderBoardOverlays(i){
                   </button>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
   `;
-  // renderDropdown();
+  renderDropdown();
 }
