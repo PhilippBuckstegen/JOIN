@@ -110,7 +110,7 @@ function generateTask() {
 setTimeout(function () {
   console.log(tasks);
   generateTask();
-}, 2000);
+}, 100);
 
 function setPriority(priority) {
   if (priority === 0) {
@@ -144,7 +144,7 @@ function setPriority(priority) {
 
 function setSubtasks(subtasks) {
   let subtasksSubContainer = "";
-  for (let i = 0; i < subtasks.length; i++) {
+  for (let i = 0; i < subtask.length; i++) {
     subtasksSubContainer += /* HTML */ `
       <div id="subContainer${i}" class="subContainers flexContainer">
         <input
