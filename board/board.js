@@ -322,3 +322,4 @@ function addBackgroundColorToCategory(i){
   let categoryContainer = document.getElementById(`cardCategory${i}`);
   tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
 }
+
