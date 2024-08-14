@@ -30,7 +30,7 @@ const taskOverlaySection = document.getElementById("taskOverlaySection");
 function generateTask() {
   let currentTaskOverlay = "";
 
-  for (let i = 0; i < 1; i++) {
+  for (let i = 1; i < 2; i++) {
     currentTaskOverlay += /*HTML*/ `
             <div id="currentUserTaskOverlay" class="currentUserTaskOverlays">
           <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
@@ -110,7 +110,7 @@ function generateTask() {
 setTimeout(function () {
   console.log(tasks);
   generateTask();
-}, 100);
+}, 500);
 
 function setPriority(priority) {
   if (priority === 0) {
@@ -144,27 +144,30 @@ function setPriority(priority) {
 
 function setSubtasks(subtasks) {
   let subtasksSubContainer = "";
-  for (let i = 0; i < subtask.length; i++) {
-    subtasksSubContainer += /* HTML */ `
-      <div id="subContainer${i}" class="subContainers flexContainer">
-        <input
-          type="checkbox"
-          id="checkbox${i}"
-          class="subtaskboxes"
-          name="checkbox${i}"
-          value="subtask${i}"
-        />
-        <label
-          for="checkbox${i}"
-          id="checkboxLabel${i}"
-          class="subtaskboxesLabels"
-          >${subtasks[i].task}</label
-        >
-      </div>
-    `;
+  if (subtasks) {
+    for (let i = 0; i < subtasks.length; i++) {
+      subtasksSubContainer += /* HTML */ `
+        <div id="subContainer${i}" class="subContainers flexContainer">
+          <input
+            type="checkbox"
+            id="checkbox${i}"
+            class="subtaskboxes"
+            name="checkbox${i}"
+            value="subtask${i}"
+          />
+          <label
+            for="checkbox${i}"
+            id="checkboxLabel${i}"
+            class="subtaskboxesLabels"
+            >${subtasks[i].task}</label
+          >
+        </div>
+      `;
+    }
+    return subtasksSubContainer;
+  } else {
+    return "";
   }
-
-  return subtasksSubContainer;
 }
 
 function checkSubtask(subtaskboxes) {
