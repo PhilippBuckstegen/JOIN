@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../sidebar/style.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <link rel="stylesheet" href="../boardOverlays/boardOverlays.css" />
+    <link rel="stylesheet" href="../database_tasks/taskOverlay.css">
     <link
       rel="shortcut icon"
       href="../favicon/img/favicon.png"
@@ -40,6 +41,8 @@
     <div id="header-placeholder"></div>
 
     <!-- header and sidebar from includeHTML -->
+    <section id="taskOverlaySection" class="flexContainer none">
+    </section>
     <!-- Overlay start -->
     <div id="addTaskBoardOverlayContainer" class="flexContainerCol none">
       <!-- Start - Heiko auskommentiert, da der Teil gerendert wird! -->
@@ -394,5 +397,7 @@
         </article>
       </section>
     </main>
+    <script src="../database_tasks/taskOverlay.js"></script>
+
   </body>
 </html>

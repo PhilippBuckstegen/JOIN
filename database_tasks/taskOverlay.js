@@ -25,18 +25,20 @@ function displayCurrentUserTask() {
 }
   */
 
-const taskOverlaySection = document.getElementById("taskOverlaySection");
+//const taskOverlaySection = document.getElementById("taskOverlaySection");
+//taskOverlaySection.innerHTML = currentTaskOverlay;
 
-function generateTask() {
+function generateTask(i) {
+  removeClassFromElement('taskOverlaySection', 'none')
   let currentTaskOverlay = "";
 
-  for (let i = 1; i < 2; i++) {
-    currentTaskOverlay += /*HTML*/ `
+  //for (let i = 1; i < 2; i++) {
+    currentTaskOverlay = /*HTML*/ `
             <div id="currentUserTaskOverlay" class="currentUserTaskOverlays">
           <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
             <div id="taskType" class="taskTypes">${tasks[i].taskCategory}</div>
             <div>
-              <img
+              <img onclick="addClassToElement('taskOverlaySection', 'none')"
                 id="contactCloseBtn"
                 src="../database/images/close.svg"
                 alt="icon"
@@ -100,9 +102,12 @@ function generateTask() {
             </button>
           </div>
         </div>`;
-  }
 
-  taskOverlaySection.innerHTML = currentTaskOverlay;
+  const taskOverlaySection = document.getElementById("taskOverlaySection");
+  if (taskOverlaySection) {
+    taskOverlaySection.innerHTML = currentTaskOverlay;
+  }
+  
   let subtaskboxes = document.getElementsByClassName("subtaskboxes");
   checkSubtask(subtaskboxes);
 }

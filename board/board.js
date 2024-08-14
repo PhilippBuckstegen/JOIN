@@ -181,7 +181,7 @@ function renderSingleTaskOverview(i, id) {
   let toDoArea = document.getElementById(id);
 
   toDoArea.innerHTML += /*html*/ `
-        <div class="task" draggable="true" ondragstart="startDragging(${i})">
+        <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
             <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
             <h3>${tasks[i].title}</h3>
             <span class="task-description">${tasks[i].description}</span>
