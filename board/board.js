@@ -175,44 +175,52 @@ function renderSingleTaskOverview(i, id) {
   let toDoArea = document.getElementById(id);
 
   toDoArea.innerHTML += /*html*/ `
-        <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
-            <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
-            <h3>${tasks[i].title}</h3>
-            <span class="task-description">${tasks[i].description}</span>
-            <div id="progressContainer${i}" class="progress-container"></div>
-            <div class="assigned-and-prio">
-                <div class="assigned-contacts" id="assignedContacts${i}"></div>
-                <img src="../assets/icons/Prio baja.svg" alt="prio" onclick="edit(${i})" />
-            </div>
-        </div>
-    `;
-  addBackgroundColorToCategory(i); // Heiko eingefügt für Kategoriefarben
-  if ("subtask" in tasks[i]) {
-    document.getElementById(`progressContainer${i}`).innerHTML = /*html*/ `
-            <div class="progress">
-                <div class="progress-style"></div>
-            </div>
-            <span><span id="progressLowValue${i}">0</span>/${tasks[i].subtask.length} Done</span>
-        `;
-      document.getElementById(`progressLowValue${i}`).innerHTML = countLowProgressValue(i);
+      <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
+          <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+          <h3>${tasks[i].title}</h3>
+          <span class="task-description">${tasks[i].description}</span>
+          <div id="progressContainer${i}" class="progress-container"></div>
+          <div class="assigned-and-prio">
+              <div class="assigned-contacts" id="assignedContacts${i}"></div>
+              <img src="../assets/icons/Prio baja.svg" alt="prio" onclick="edit(${i})" />
+          </div>
+      </div>
+  `;
+
+  addBackgroundColorToCategory(i); // Farbe für Kategorie setzen
+
+  // Überprüfen, ob "subtask" definiert ist, bevor darauf zugegriffen wird
+  if (tasks[i].subtask && tasks[i].subtask.length > 0) {
+      let completedSubtasks = countLowProgressValue(i);
+      let totalSubtasks = tasks[i].subtask.length;
+      let progressPercentage = (completedSubtasks / totalSubtasks) * 100;
+
+      document.getElementById(`progressContainer${i}`).innerHTML = /*html*/ `
+          <div class="progress">
+              <div class="progress-style" style="width: ${progressPercentage}%"></div>
+          </div>
+          <span><span id="progressLowValue${i}">${completedSubtasks}</span>/${totalSubtasks} Done</span>
+      `;
   } else {
-    document.getElementById(`progressContainer${i}`).remove();
+      document.getElementById(`progressContainer${i}`).remove();
   }
 
+  // Kontakte rendern
   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
-    let assignedContacts = document.getElementById(`assignedContacts${i}`);
-    const contact = tasks[i].assignedTo[j];
+      let assignedContacts = document.getElementById(`assignedContacts${i}`);
+      const contact = tasks[i].assignedTo[j];
 
-    assignedContacts.innerHTML += /*html*/ `
-            <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
-        `;
+      assignedContacts.innerHTML += /*html*/ `
+          <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+      `;
 
-    document.getElementById(
-      `assignedContactIcon${i}_${j}`
-    ).style.backgroundColor = contact.backgroundColor;
+      document.getElementById(
+          `assignedContactIcon${i}_${j}`
+      ).style.backgroundColor = contact.backgroundColor;
   }
-  
 }
+
+
 
 
 function clearTaskBoard() {

@@ -156,19 +156,15 @@ body {
   cursor: pointer;
   box-shadow: 0px 0px 14px 3px #0000000a;
   z-index: 9;
-  /* Heiko zugefügt */
-  /* height: fit-content;  */
 }
 
-/* bg-color rendern */
 .card-category {
   color: white;
   border-radius: 8px;
-  padding: 4px 25px 4px 25px;
+  padding: 4px 25px;
   margin-bottom: 20px;
   font-size: 16px;
   font-weight: 400;
-  /* background-color: green; */
 }
 
 h3 {
@@ -232,7 +228,6 @@ h3 {
   justify-content: center;
 }
 
-/* bg-color rendern */
 .assigned-contact-icon {
   min-width: 35px;
   height: 35px;
@@ -305,7 +300,6 @@ h3 {
   }
 
   .task {
-    /* width: 75%; */
     width: 260px;
     box-sizing: border-box;
     flex: 0 0 auto;
