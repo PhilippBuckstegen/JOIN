@@ -133,6 +133,7 @@ function setSubtasks(i) {
 // Heiko Code ab hier
 
 function renderAssignedNames(i){
+  if(tasks[i].assignedTo){
   for(let j = 0; j < tasks[i].assignedTo.length; j++){
     document.getElementById('assignContactsContainer').innerHTML += /*html*/`
        <div id='assignedContactsDetail${j}'>
@@ -144,6 +145,7 @@ function renderAssignedNames(i){
     `;
     document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
   }
+}
 }
 
 

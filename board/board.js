@@ -213,6 +213,7 @@ function renderSingleTaskOverview(i, id) {
       document.getElementById(`progressContainer${i}`).remove();
   }
 
+  if(tasks[i].assignedTo){
   // Kontakte rendern
   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
       let assignedContacts = document.getElementById(`assignedContacts${i}`);
@@ -222,10 +223,11 @@ function renderSingleTaskOverview(i, id) {
           <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
       `;
 
-      document.getElementById(
-          `assignedContactIcon${i}_${j}`
-      ).style.backgroundColor = contact.backgroundColor;
+    document.getElementById(
+      `assignedContactIcon${i}_${j}`
+    ).style.backgroundColor = contact.backgroundColor;
   }
+}
 }
 
 
