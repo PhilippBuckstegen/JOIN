@@ -54,7 +54,7 @@ function generateTask(i) {
               />
               Delete
             </button>
-            <button id="editBtnContacts" class="flexContainer">
+            <button id="editBtnContacts" class="flexContainer" onclick="generateEditView(${i})">
               <img
                 id="editImgContacts"
                 src="../database/images//edit.svg"
@@ -175,4 +175,108 @@ async function closeAndStore(){
   await getTasksFromDatabase();
   renderTasksInBoard();
   addClassToElement('taskOverlaySection', 'none');
+}
+
+
+function generateEditView(i){
+  removeClassFromElement('taskOverlaySection', 'none')
+  // document.getElementById("taskOverlaySection").innerHTML =  "";
+  document.getElementById("currentUserTaskOverlay").innerHTML = /*HTML*/ `
+     <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
+              <div id="headerXbtnContainer" class="flexContainer">
+                <div id="taskBoardOverlayHeader">
+                  <h1 id="taskBoardHeader">Edit Task</h1>
+                </div>
+                <div id="xBtnContainer">
+                  <img id="xBtn" src="../database/images/close.svg" alt="icon"
+                  onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"/>
+                </div>
+              </div>
+              <div id="taskBoardOverlayForm" class="flexContainerCol">
+                      <div id="boardTitleContainer">
+                        <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
+                        <br />
+                        <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
+                      </div>
+                      <div id="boardDescriptionContainer">
+                        <label for="boardDescription">Description</label><br />
+                        <textarea placeholder="Enter a Description" rows="4" cols="50" id="editBoardDescription" name="boardDescription"></textarea>
+                      </div>
+                      <div id="boardDateContainer">
+                      <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
+                      <div id="boardDateInputImgContainer" class="flexContainer">
+                        <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
+                        <!--<img
+                          id="calendarIcon"
+                          src="../database/images/event.svg"
+                          alt="icon"
+                        />-->
+                      </div>
+                    </div>
+                    <div id="boardPriorityContainer" class="flexContainerCol">
+                      <div id="priorityHeaderContainer" class="flexContainer">
+                        <p>Prio</p>
+                      </div>
+                      <div id="priorityBtnsContainer" class="flexContainer">
+                        <button id="editUrgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="urgentBtnToggle()">
+                          Urgent
+                          <img id="urgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
+                        </button>
+                        <button id="editMediumBtn" class="priorityButtons whiteButtons flexContainer" onclick="mediumBtnToggle()">
+                          Medium
+                          <img id="mediumImg" class="boardBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>
+                        </button>
+                        <button id="editLowBtn" class="priorityButtons whiteButtons flexContainer" onclick="lowBtnToggle()">
+                          Low
+                          <img id="lowImg" class="boardBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>
+                        </button>
+                      </div>
+                    </div>
+                      <div id="boardAssignedContainer">
+                         <!-- new dropdown start -->
+                         <div class="dropdown" id="contactDropdown">
+                          <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
+                          <div class="dropdown-content"></div>
+                      </div>
+                      <div class="selected-contacts" id="selectedContacts"></div>
+                      </div>
+                    </div>
+                    <div id="boardSubtasksContainer">
+                      <label for="boardSubtasks">Subtasks</label>
+                      <div id="boardSubtasksInputImgContainer" class="flexContainer">
+                        <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
+                        <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
+                      </div>
+                      <div>
+                        <ul id="subtaskList">
+                            <!-- Subtask Liste wird hier gerendert -->
+                        </ul>
+                      </div>
+                    </div>
+`;
+renderDropdown();
+loadDataToEdit(i);
+}
+
+function loadDataToEdit(i){
+    document.getElementById('editBoardTitle').value = tasks[i].title;
+    document.getElementById('editBoardDescription').value = tasks[i].description;
+    document.getElementById('editBoardDate').value = tasks[i].dueDate;
+    loadAndSetPriorityToEdit(i);
+}
+
+
+function loadAndSetPriorityToEdit(i){
+  let urgentBtn = document.getElementById(`editUrgentBtn`);
+  let mediumBtn = document.getElementById("editMediumBtn");
+  let lowBtn = document.getElementById("editLowBtn");
+  switch (tasks[i].priority){
+    case 3 : urgentBtnToggle();
+    break;
+    case 2 : mediumBtnToggle();
+    break;
+    case 1 : lowBtnToggle();
+    break;
+    default:
+  }
 }
