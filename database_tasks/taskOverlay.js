@@ -264,13 +264,11 @@ function loadDataToEdit(i){
     document.getElementById('editBoardDescription').value = tasks[i].description;
     document.getElementById('editBoardDate').value = tasks[i].dueDate;
     loadAndSetPriorityToEdit(i);
+    tasks[i].assignedTo = editCheckBoxesForAssignedUsers(i);
 }
 
 
 function loadAndSetPriorityToEdit(i){
-  // let editUrgentBtn = document.getElementById(`editUrgentBtn`);
-  // let editMediumBtn = document.getElementById("editMediumBtn");
-  // let editLowBtn = document.getElementById("editLowBtn");
   switch (tasks[i].priority){
     case 3 : editUrgentBtnToggle(i);
     break;
@@ -389,4 +387,23 @@ function editVariablesPriorityButtons(){
   let editMediumImg = document.getElementById("editMediumImg");
   let editLowBtn = document.getElementById("editLowBtn");
   let editLowImg = document.getElementById("editLowImg");
+}
+
+
+function editCheckBoxesForAssignedUsers(x) {
+  const selectedContactsDiv = document.getElementById("selectedContacts");
+  selectedContactsDiv.innerHTML = ""; // Clear previous selections
+  for (let i = 0; i < contacts.length; i++) {
+    const checkbox = document.getElementById(`contact_${i}`);
+    checkbox.checked = false;
+    for (let j = 0; j < tasks[x].assignedTo.length; j++) {
+      if (tasks[x].assignedTo[j].user === checkbox.value) {
+        checkbox.checked = true;
+        const contactDiv = document.createElement("div");
+        contactDiv.textContent = tasks[x].assignedTo[j].user;
+        selectedContactsDiv.innerHTML += `<span id="editShowAssignedContacts${j}" class="initials-dropdown">${tasks[x].assignedTo[j].initials}</span>`;
+        document.getElementById(`editShowAssignedContacts${j}`).style.backgroundColor = tasks[x].assignedTo[j].backgroundColor;
+      }
+    }
+  }
 }
