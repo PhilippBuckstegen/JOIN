@@ -77,10 +77,16 @@
 .contactTitles {
   font-size: 40px;
   font-weight: 700;
+  margin: 8px 0;
 }
 
 .dateContainers {
   gap: 10px;
+  margin-bottom: 8px;
+}
+
+.taskContainers {
+  margin-bottom: 8px;
 }
 
 .dueDatePars {
@@ -106,6 +112,7 @@
 
 .assignContainers {
   align-items: flex-start;
+  margin-top: 24px;
 }
 
 .assignPars {
@@ -125,10 +132,12 @@
 
 .subtasksContainers {
   align-items: flex-start;
+  margin: 24px 0;
 }
 
 .subtasksPars {
   color: #2a3647;
+  margin-bottom: 10px;
 }
 
 .subtasksContactsContainers {
@@ -157,6 +166,7 @@
 .deleteEditBtnsContainers {
   justify-content: flex-end;
   gap: 10px;
+  position: relative;
 }
 
 #deleteBtnContacts {
@@ -189,7 +199,7 @@
 @media (min-width: 1201px) {
   .currentUserTaskOverlays {
     padding: 30px;
-    position: fixed;
+    position: absolute;
     top: 10%;
     background-color: #fff;
     width: 420px;
@@ -201,7 +211,7 @@
 @media (max-width: 1200px) {
   .currentUserTaskOverlays {
     padding: 30px;
-    position: fixed;
+    position: absolute;
     top: 10%;
     background-color: #fff;
     width: 420px;
@@ -214,7 +224,7 @@
 @media (max-width: 900px) {
   .currentUserTaskOverlays {
     padding: 30px;
-    position: fixed;
+    position: absolute;
     top: 10%;
     background-color: #fff;
     width: 420px;
@@ -226,7 +236,7 @@
 @media (max-width: 680px) {
   .currentUserTaskOverlays {
     padding: 20px;
-    position: fixed;
+    position: absolute;
     top: 10%;
     background-color: #fff;
     width: 400px;
@@ -238,7 +248,7 @@
 @media (max-width: 480px) {
   .currentUserTaskOverlays {
     padding: 10px;
-    position: fixed;
+    position: absolute;
     top: 10%;
     background-color: #fff;
     width: 80vw;
