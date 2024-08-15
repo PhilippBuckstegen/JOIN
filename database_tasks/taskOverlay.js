@@ -46,7 +46,7 @@ function generateTask(i) {
             </div>
           </div>
           <div id="deleteEditBtnsContainer" class="deleteEditBtnsContainers flexContainerStart">
-            <button id="deleteBtnContacts" class="flexContainer">
+            <button id="deleteBtnContacts" class="flexContainer" onclick="deleteSingleTask(${i})">
               <img
                 id="deleteImgContacts"
                 src="../database/images/delete.svg"
@@ -418,6 +418,7 @@ function editVariablesPriorityButtons(){
 
 
 function editCheckBoxesForAssignedUsers(x) {
+  if(tasks[x].assignedTo){
   const selectedContactsDiv = document.getElementById("selectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
   for (let i = 0; i < contacts.length; i++) {
@@ -433,6 +434,7 @@ function editCheckBoxesForAssignedUsers(x) {
       }
     }
   }
+}
 }
 
 
@@ -457,4 +459,13 @@ function editRenderSubtasks(x) {
   });
   }
 }
+}
+
+
+async function deleteSingleTask(i){
+  tasks.splice(i,1);
+  addClassToElement('taskOverlaySection', 'none');
+  await writeTasksToDatabase();
+  await getTasksFromDatabase();
+  renderTasksInBoard();
 }
