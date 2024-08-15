@@ -184,7 +184,10 @@ function renderSingleTaskOverview(i, id) {
 
   toDoArea.innerHTML += /*html*/ `
       <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
-          <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+          <div class="category-headline">
+            <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+            <img src="../assets/icons/moveTo.svg" alt="moveTo">
+          </div>
           <h3>${tasks[i].title}</h3>
           <span class="task-description">${tasks[i].description}</span>
           <div id="progressContainer${i}" class="progress-container"></div>

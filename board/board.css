@@ -263,6 +263,13 @@ h3 {
   display: flex
 }
 
+.category-headline {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @media (max-width: 1200px) {
   .board {
     flex-direction: column;
