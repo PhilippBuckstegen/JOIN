@@ -291,26 +291,26 @@ function editToggleDropdown() {
 }
 
 function editUpdateSelectedContacts() {
-    const selectedContactsDiv = document.getElementById('editSelectedContacts');
-    selectedContactsDiv.innerHTML = '';  // Clear previous selections
+    // const selectedContactsDiv = document.getElementById('selectedContacts');
+    // selectedContactsDiv.innerHTML = '';  // Clear previous selections
     const selectedContacts = [];
-    for (let i = 0; i < taskContacts.length; i++) {
-        const checkbox = document.getElementById(`editContact_${i}`);
+    for (let i = 0; i < contacts.length; i++) {
+        const checkbox = document.getElementById(`contact_${i}`);
         if (checkbox.checked) {
-            selectedContacts.push({user : taskContacts[i].name });
-            const contactDiv = document.createElement('div');
-            contactDiv.textContent = taskContacts[i].name;
-            selectedContactsDiv.innerHTML += `<div>${taskContacts[i].name}</div>`;
+            selectedContacts.push({user : contacts[i].name });
+            // const contactDiv = document.createElement('div');
+            // contactDiv.textContent = contacts[i].name;
+            // selectedContactsDiv.innerHTML += `<div>${contacts[i].name}</div>`;
         }
     }
     return selectedContacts;
 }
 
 function editCheckBoxesForAssignedUsers(x){
-    const selectedContactsDiv = document.getElementById('editSelectedContacts');
+    const selectedContactsDiv = document.getElementById('selectedContacts');
     selectedContactsDiv.innerHTML = '';  // Clear previous selections
         for(i = 0; i < taskContacts.length; i++){
-        const checkbox = document.getElementById(`editContact_${i}`);
+        const checkbox = document.getElementById(`contact_${i}`);
         checkbox.checked = false;
         for(j = 0; j < tasks[x].assignedTo.length; j++){
         if(tasks[x].assignedTo[j].user === checkbox.value){

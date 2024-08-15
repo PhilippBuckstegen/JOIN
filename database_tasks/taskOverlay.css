@@ -256,3 +256,9 @@
     border-radius: 20px;
   }
 }
+
+/* Heiko eingefügt zum testen für Speicherbutton vom Edit Feld */
+.store-edited-data-button{
+  display: flex;
+  justify-content: flex-end;
+}

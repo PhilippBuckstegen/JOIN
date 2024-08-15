@@ -192,7 +192,7 @@ function generateEditView(i){
                 </div>
                 <div id="xBtnContainer">
                   <img id="xBtn" src="../database/images/close.svg" alt="icon"
-                  onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"/>
+                  onclick="addClassToElement('taskOverlaySection', 'none')"/>
                 </div>
               </div>
               <div id="taskBoardOverlayForm" class="flexContainerCol">
@@ -256,9 +256,15 @@ function generateEditView(i){
                         </ul>
                       </div>
                     </div>
+                    <!-- Start - Heiko eingefügt zum testen -->
+                    <div class="store-edited-data-button">
+                      <button onclick="storeEditedData(${i})">OK</button>
+                    </div>
+                    <!-- Ende - Heiko eingefügt zum testen -->
 `;
 renderDropdown();
 loadDataToEdit(i);
+editRenderSubtasks(i);
 }
 
 function loadDataToEdit(i){
@@ -266,7 +272,26 @@ function loadDataToEdit(i){
     document.getElementById('editBoardDescription').value = tasks[i].description;
     document.getElementById('editBoardDate').value = tasks[i].dueDate;
     loadAndSetPriorityToEdit(i);
-    tasks[i].assignedTo = editCheckBoxesForAssignedUsers(i);
+    editCheckBoxesForAssignedUsers(i);
+}
+
+
+function storeEditedData(i){
+   tasks[i].title = document.getElementById('editBoardTitle').value;
+   tasks[i].description = document.getElementById('editBoardDescription').value;
+   tasks[i].dueDate = document.getElementById('editBoardDate').value;
+   //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+   tasks[i].assignedTo = updateSelectedContacts();
+   tasks[i].subtask = subtask;
+   closeWindowWriteEditedDataToDatabase();
+}
+
+
+async function closeWindowWriteEditedDataToDatabase(){
+  addClassToElement('taskOverlaySection', 'none');
+  await writeTasksToDatabase();
+  await getTasksFromDatabase();
+  renderTasksInBoard();
 }
 
 
@@ -408,4 +433,28 @@ function editCheckBoxesForAssignedUsers(x) {
       }
     }
   }
+}
+
+
+function editRenderSubtasks(x) {
+  if(tasks[x].subtask){
+  let listArea = document.getElementById("subtaskList");
+  subtask = [];
+  listArea.innerHTML = "";
+  for (let i = 0; i < tasks[x].subtask.length; i++) {
+    listArea.innerHTML += /*html*/ `
+        <li id="subtaskListItem${i}">
+            <span class="sub-task-text-list" id="subTaskTextListItem${i}">${tasks[x].subtask[i].task}</span>
+            <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons">
+                <button onclick="editSubtaskItem(${i})">Edit</button>
+                <button onclick="deleteSubtaskItem(${i})">Delete</button>
+            <span>
+        </li>
+    `;
+    subtask.push({ 
+        task: tasks[x].subtask[i].task,
+        status : tasks[x].subtask[i].status,
+  });
+  }
+}
 }
