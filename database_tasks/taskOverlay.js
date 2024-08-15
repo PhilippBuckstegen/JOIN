@@ -76,7 +76,7 @@ function generateTask(i) {
 function setPriority(priority) {
   if (priority === 0) {
     return /* HTML */ `<p id="noPriorityPar">Keine Priorität</p>`;
-  } else if (priority === 1) {
+  } else if (priority === 3) {
     return /* HTML */ ` <p id="urgentPar">Urgent</p>
       <img
         id="urgentImg"
