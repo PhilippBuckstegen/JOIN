@@ -186,7 +186,7 @@ function renderSingleTaskOverview(i, id) {
       <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
           <div class="category-headline">
             <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
-            <div id="slideInMenu" class="slide-in-menu d-none">Move Task to</div>
+            <div id="slideInMenu" class="slide-in-menu d-none"></div>
             <img onclick="openTaskMenu(event, ${i})" src="../assets/icons/moveTo.svg" alt="moveTo">
           </div>
           <h3>${tasks[i].title}</h3>
@@ -359,8 +359,6 @@ async function moveTaskToCategory(taskIndex, newCategory) {
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
-
-  // hier noch menü Schließen funktion
 }
 
 function getCategoryStatus(category) {
@@ -378,6 +376,7 @@ function openTaskMenu(event, index){
   removeClassFromElement('slideInMenu', 'd-none')
   let slideInMenu = document.getElementById('slideInMenu');
   slideInMenu.innerHTML = /*html*/`
+    <div>Move Task to</div>
     <div onclick="moveTaskToCategory(${index}, 'ToDo') addClassToElement('slideInMenu', 'd-none')">ToDo</div>
     <div onclick="moveTaskToCategory(${index}, 'In Progress') addClassToElement('slideInMenu', 'd-none')">In Progress</div>
     <div onclick="moveTaskToCategory(${index}, 'Feedback') addClassToElement('slideInMenu', 'd-none')">Feedback</div>
