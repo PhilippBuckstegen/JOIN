@@ -171,10 +171,11 @@ function writeClickToVariable(i,j){
 
 
 async function closeAndStore(){
+  addClassToElement('taskOverlaySection', 'none');
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
-  addClassToElement('taskOverlaySection', 'none');
+  // addClassToElement('taskOverlaySection', 'none');
 }
 
 
