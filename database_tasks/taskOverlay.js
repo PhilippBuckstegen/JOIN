@@ -219,17 +219,17 @@ function generateEditView(i){
                         <p>Prio</p>
                       </div>
                       <div id="priorityBtnsContainer" class="flexContainer">
-                        <button id="editUrgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="urgentBtnToggle()">
+                        <button id="editUrgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="editUrgentBtnToggle(${i})">
                           Urgent
-                          <img id="urgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
+                          <img id="editUrgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
                         </button>
-                        <button id="editMediumBtn" class="priorityButtons whiteButtons flexContainer" onclick="mediumBtnToggle()">
+                        <button id="editMediumBtn" class="priorityButtons whiteButtons flexContainer" onclick="editMediumBtnToggle(${i})">
                           Medium
-                          <img id="mediumImg" class="boardBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>
+                          <img id="editMediumImg" class="boardBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>
                         </button>
-                        <button id="editLowBtn" class="priorityButtons whiteButtons flexContainer" onclick="lowBtnToggle()">
+                        <button id="editLowBtn" class="priorityButtons whiteButtons flexContainer" onclick="editLowBtnToggle(${i})">
                           Low
-                          <img id="lowImg" class="boardBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>
+                          <img id="editLowImg" class="boardBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>
                         </button>
                       </div>
                     </div>
@@ -268,16 +268,125 @@ function loadDataToEdit(i){
 
 
 function loadAndSetPriorityToEdit(i){
-  let urgentBtn = document.getElementById(`editUrgentBtn`);
-  let mediumBtn = document.getElementById("editMediumBtn");
-  let lowBtn = document.getElementById("editLowBtn");
+  // let editUrgentBtn = document.getElementById(`editUrgentBtn`);
+  // let editMediumBtn = document.getElementById("editMediumBtn");
+  // let editLowBtn = document.getElementById("editLowBtn");
   switch (tasks[i].priority){
-    case 3 : urgentBtnToggle();
+    case 3 : editUrgentBtnToggle(i);
     break;
-    case 2 : mediumBtnToggle();
+    case 2 : editMediumBtnToggle(i);
     break;
-    case 1 : lowBtnToggle();
+    case 1 : editLowBtnToggle(i);
     break;
     default:
   }
+}
+
+function editLowBtnToggle(i) {
+  editVariablesPriorityButtons()
+  if (editLowBtn.classList.contains("whiteButtons")) {
+    editLowBtn.classList.remove("whiteButtons");
+    editLowBtn.style.backgroundColor = "#7AE229";
+    editLowBtn.style.color = "#fff";
+    editLowImg.src = "../database/images/prio_baja_white.svg";
+  } else {
+    editLowBtn.classList.add("whiteButtons");
+    editLowImg.src = "../database/images/prio_baja.svg";
+  }
+
+  if (!editUrgentBtn.classList.contains("whiteButtons")) {
+    editUrgentBtn.classList.add("whiteButtons");
+    editUrgentImg.src = "../database/images/prio_alta.svg";
+  }
+
+  if (!editMediumBtn.classList.contains("whiteButtons")) {
+    editMediumBtn.classList.add("whiteButtons");
+    editMediumImg.src = "../database/images/prio_media.svg";
+  }
+
+  const lowSelected = !editLowBtn.classList.contains("whiteButtons") ? true : false;
+
+  // Heiko Code added - Start
+  evaluateLowState(lowSelected);
+  tasks[i].priority = priority;   
+  // Heiko Code added - End
+  return lowSelected;                      
+}
+
+
+function editUrgentBtnToggle(i) {
+  editVariablesPriorityButtons()
+  if (editUrgentBtn.classList.contains("whiteButtons")) {
+    editUrgentBtn.classList.remove("whiteButtons");
+    editUrgentBtn.style.backgroundColor = "#FF3D00";
+    editUrgentBtn.style.color = "#fff";
+    editUrgentImg.src = "../database/images/prio_alta_white.svg";
+  } else {
+    editUrgentBtn.classList.add("whiteButtons");
+    editUrgentImg.src = "../database/images/prio_alta.svg";
+  }
+
+  if (!editUrgentBtn.classList.contains("whiteButtons")) {
+    editMediumBtn.classList.add("whiteButtons");
+    editMediumImg.src = "../database/images/prio_media.svg";
+  }
+
+  if (!editLowBtn.classList.contains("whiteButtons")) {
+    editLowBtn.classList.add("whiteButtons");
+    editLowImg.src = "../database/images/prio_baja.svg";
+  }
+
+  const urgentSelected = !editUrgentBtn.classList.contains("whiteButtons")
+    ? true
+    : false;
+
+  // Heiko Code added - Start
+  evaluateUrgentState(urgentSelected);
+  tasks[i].priority = priority;    
+  // Heiko Code added - End
+  return urgentSelected;
+}
+
+
+function editMediumBtnToggle(i) {
+  editVariablesPriorityButtons()
+  if (editMediumBtn.classList.contains("whiteButtons")) {
+    editMediumBtn.classList.remove("whiteButtons");
+    editMediumBtn.style.backgroundColor = "#FFA800";
+    editMediumBtn.style.color = "#fff";
+    editMediumImg.src = "../database/images/prio_media_white.svg";
+  } else {
+    editMediumBtn.classList.add("whiteButtons");
+    editMediumImg.src = "../database/images/prio_media.svg";
+  }
+
+  if (!editUrgentBtn.classList.contains("whiteButtons")) {
+    editUrgentBtn.classList.add("whiteButtons");
+    editUrgentImg.src = "../database/images/prio_alta.svg";
+  }
+
+  if (!editLowBtn.classList.contains("whiteButtons")) {
+    editLowBtn.classList.add("whiteButtons");
+    editLowImg.src = "../database/images/prio_baja.svg";
+  }
+
+  const mediumSelected = !editMediumBtn.classList.contains("whiteButtons")
+    ? true
+    : false;
+
+  // Heiko Code added - Start
+  evaluateMediumState(mediumSelected);
+  tasks[i].priority = priority;   
+  // Heiko Code added - End
+  return mediumSelected;
+}
+
+
+function editVariablesPriorityButtons(){
+  let editUrgentBtn = document.getElementById(`editUrgentBtn`);
+  let editUrgentImg = document.getElementById("editurgentImg");
+  let editMediumBtn = document.getElementById("editMediumBtn");
+  let editMediumImg = document.getElementById("editMediumImg");
+  let editLowBtn = document.getElementById("editLowBtn");
+  let editLowImg = document.getElementById("editLowImg");
 }
