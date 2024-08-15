@@ -114,6 +114,9 @@
 
 .assignContactsContainers {
   align-items: flex-start;
+  /* Heiko zugefügt */
+  margin: 6px 0px;
+  gap: 5px;
 }
 
 .assignContacts {

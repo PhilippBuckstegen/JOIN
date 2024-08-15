@@ -263,7 +263,10 @@ function updateSelectedContacts() {
 
 function createSubtask() {
   let subtaskText = document.getElementById("subtaskInput").value;
-  subtask.push({ task: subtaskText });
+  subtask.push({ 
+          task: subtaskText,
+          status : 0,
+   });
   renderSubtasks();
   deleteSubtaskInputField();
 }

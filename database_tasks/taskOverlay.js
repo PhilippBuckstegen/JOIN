@@ -1,44 +1,15 @@
 "use strict";
 
-/*
-const taskOverlaySection = document.getElementById("taskOverlaySection");
-const taskType = document.getElementById("taskType");
-const contactTitle = document.getElementById("contactTitle");
-const contactTask = document.getElementById("contactTitle");
-const contactDate = document.getElementById("contactTitle");
-const contactPriority = document.getElementById("contactPriority");
-const assignContactsContainer = document.getElementById(
-  "assignContactsContainer"
-);
-const subtasksContactsContainer = document.getElementById(
-  "subtasksContactsContainer"
-);
-
-function displayCurrentUserTask() {
-  taskType.textContent = tasks[0].taskCategory;
-  contactTitle.textContent = tasks[0].title;
-  contactTask.textContent = tasks[0].description;
-  contactDate.textContent = tasks[0].dueDate;
-  contactPriority.innerHTML = setPriority();
-  assignContactsContainer.innerHTML = setContacts();
-  subtasksContactsContainer.innerHTML = setSubTasks();
-}
-  */
-
-//const taskOverlaySection = document.getElementById("taskOverlaySection");
-//taskOverlaySection.innerHTML = currentTaskOverlay;
-
 function generateTask(i) {
   removeClassFromElement('taskOverlaySection', 'none')
   let currentTaskOverlay = "";
+  currentTaskOverlay = /*HTML*/ `
 
-  //for (let i = 1; i < 2; i++) {
-    currentTaskOverlay = /*HTML*/ `
-            <div id="currentUserTaskOverlay" class="currentUserTaskOverlays">
+        <div id="currentUserTaskOverlay" class="currentUserTaskOverlays">
           <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
             <div id="taskType" class="taskTypes">${tasks[i].taskCategory}</div>
             <div>
-              <img onclick="addClassToElement('taskOverlaySection', 'none')"
+              <img onclick="closeAndStore()"
                 id="contactCloseBtn"
                 src="../database/images/close.svg"
                 alt="icon"
@@ -66,21 +37,12 @@ function generateTask(i) {
           <div id="assignContainer" class="assignContainers flexContainerColStart">
             <div><p id="assignPar" class="assignPars">Assigned To:</p></div>
             <div id="assignContactsContainer" class="assignContactsContainers flexContainerColStart">
-              
-              /* hard coded */
               <div id="assignContact" class="assignContacts flexContainerStart">
-                <div id="bgColor">EM</div>
-                <div><p>Emmanuel Mauer</p></div>
-              </div>
-              /* hard coded */
-
+              <!-- Assigened to wird hierein gerendert -->
             </div>
-
           </div>
-          <div id="subtasksContainer" class="subtasksContainers flexContainerColStart">
-            <div class="flexContainerStart"><p id="subtasksPar" class="subtasksPars">Subtasks</p></div>
-            <div id="subtasksContactsContainer" class="subtasksContactsContainers flexContainerColStart">
-            ${setSubtasks(tasks[i].subtask)}
+            <div id="subtasksContainer" class="subtasksContainers flexContainerColStart">
+            <!-- Subtasks werden hierein gerendert -->
             </div>
           </div>
           <div id="deleteEditBtnsContainer" class="deleteEditBtnsContainers flexContainerStart">
@@ -106,16 +68,10 @@ function generateTask(i) {
   const taskOverlaySection = document.getElementById("taskOverlaySection");
   if (taskOverlaySection) {
     taskOverlaySection.innerHTML = currentTaskOverlay;
+    renderAssignedNames(i);
   }
-  
-  let subtaskboxes = document.getElementsByClassName("subtaskboxes");
-  checkSubtask(subtaskboxes);
+  setSubtasks(i);
 }
-
-setTimeout(function () {
-  console.log(tasks);
-  generateTask();
-}, 500);
 
 function setPriority(priority) {
   if (priority === 0) {
@@ -147,42 +103,76 @@ function setPriority(priority) {
   }
 }
 
-function setSubtasks(subtasks) {
-  let subtasksSubContainer = "";
-  if (subtasks) {
-    for (let i = 0; i < subtasks.length; i++) {
-      subtasksSubContainer += /* HTML */ `
-        <div id="subContainer${i}" class="subContainers flexContainer">
-          <input
-            type="checkbox"
-            id="checkbox${i}"
-            class="subtaskboxes"
-            name="checkbox${i}"
-            value="subtask${i}"
-          />
-          <label
-            for="checkbox${i}"
-            id="checkboxLabel${i}"
-            class="subtaskboxesLabels"
-            >${subtasks[i].task}</label
-          >
-        </div>
-      `;
+function setSubtasks(i) {
+  if (tasks[i].subtask) {
+    document.getElementById('subtasksContainer').innerHTML = /*html*/`
+    <div class="flexContainerStart"><p id="subtasksPar" class="subtasksPars">Subtasks</p></div>
+    <div id="subtasksContactsContainer" class="subtasksContactsContainers flexContainerColStart"></div>
+    `;
+    for (let j = 0; j < tasks[i].subtask.length; j++) {
+      document.getElementById('subtasksContactsContainer').innerHTML += /* HTML */ `
+          <div id="subContainer" class="subContainers flexContainer">
+            <input
+              type="checkbox"
+              id="checkboxSubtask${j}"
+              class="subtaskboxes"
+              name="checkbox${j}"
+              value="subtask${j}"
+              onclick="writeClickToVariable(${i}, ${j})"
+            />
+            <div class="subtaskboxesLabels">
+              ${tasks[i].subtask[j].task}
+            </div>
+          </div>
+        `;       
+        presetCheckboxes(i,j);
     }
-    return subtasksSubContainer;
-  } else {
-    return "";
   }
 }
 
-function checkSubtask(subtaskboxes) {
-  for (let i = 0; i < subtaskboxes.length; i++) {
-    subtaskboxes[i].addEventListener("click", function () {
-      if (!subtaskboxes[i].classList.contains("checkboxChecked")) {
-        subtaskboxes[i].classList.add("checkboxChecked");
-      } else {
-        subtaskboxes[i].classList.remove("checkboxChecked");
-      }
-    });
+// Heiko Code ab hier
+
+function renderAssignedNames(i){
+  for(let j = 0; j < tasks[i].assignedTo.length; j++){
+    document.getElementById('assignContactsContainer').innerHTML += /*html*/`
+       <div id='assignedContactsDetail${j}'>
+          <span class="label-initials">
+            <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
+            ${tasks[i].assignedTo[j].user}
+          </span>
+       </div>
+    `;
+    document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
   }
+}
+
+
+function presetCheckboxes(i,j) {
+  let presetCheckboxes = document.getElementById(`checkboxSubtask${j}`);
+    if (tasks[i].subtask[j].status == 1){
+        presetCheckboxes.classList.add("checkboxChecked");
+      } else {
+        presetCheckboxes.checked = false;
+        presetCheckboxes.classList.remove("checkboxChecked");
+      }
+};
+
+
+function writeClickToVariable(i,j){
+  let actCheckbox = document.getElementById(`checkboxSubtask${j}`);
+  if (!actCheckbox.classList.contains("checkboxChecked")) {
+      actCheckbox.classList.add("checkboxChecked");
+      tasks[i].subtask[j].status = 1;
+  } else {
+      actCheckbox.classList.remove("checkboxChecked");
+      tasks[i].subtask[j].status = 0;
+  }
+}
+
+
+async function closeAndStore(){
+  await writeTasksToDatabase();
+  await getTasksFromDatabase();
+  renderTasksInBoard();
+  addClassToElement('taskOverlaySection', 'none');
 }

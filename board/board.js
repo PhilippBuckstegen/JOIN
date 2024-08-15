@@ -198,8 +198,9 @@ function renderSingleTaskOverview(i, id) {
             <div class="progress">
                 <div class="progress-style"></div>
             </div>
-            <span>0/${tasks[i].subtask.length} Done</span>
+            <span><span id="progressLowValue${i}">0</span>/${tasks[i].subtask.length} Done</span>
         `;
+      document.getElementById(`progressLowValue${i}`).innerHTML = countLowProgressValue(i);
   } else {
     document.getElementById(`progressContainer${i}`).remove();
   }
@@ -216,6 +217,7 @@ function renderSingleTaskOverview(i, id) {
       `assignedContactIcon${i}_${j}`
     ).style.backgroundColor = contact.backgroundColor;
   }
+  
 }
 
 
@@ -276,9 +278,17 @@ function openTaskOverlayWithCategoryPreset(x){
 }
 
 
-
-
-
+function countLowProgressValue(i) {
+    if(tasks[i].subtask){
+    let count = 0;
+    for (let j = 0; j < tasks[i].subtask.length; j++) {
+      if (tasks[i].subtask[j].status === 1) {
+        count++;
+      }
+    }
+    return count;
+  }
+}
 
 
 // Setze alle Spalten auf die gleiche höhe
