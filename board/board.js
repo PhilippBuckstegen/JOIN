@@ -41,27 +41,21 @@ function allowDrop(ev) {
 // Heiko - Funktion abgeändert aufgrund anderen Sortieralgoritmus, so dass in den kategorien die neuesten verschobenen Einträge oben stehen
 
 async function moveTo(status) {
-  // Status des aktuellen Tasks ändern
   tasks[currentDraggedElement]["status"] = status;
-  // Optional: Der Task wird aus dem Array ausgeschnitten, wenn gewünscht
   let draggedTask = tasks.splice(currentDraggedElement, 1)[0];
-  // Task wird wieder an den Anfang des Arrays eingefügt
   tasks.unshift(draggedTask);
-  // Sortiere das Array so, dass die Tasks innerhalb jeder Kategorie nach dem Status geordnet sind und der neueste oben steht
   tasksSort();
-  // UI neu rendern, um die Änderung sichtbar zu machen
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
 }
 
-// Sortiere das Array so, dass die Tasks innerhalb jeder Kategorie nach dem Status geordnet sind und der neueste oben steht
 function tasksSort() {
   tasks.sort((a, b) => {
     if (a.status !== b.status) {
       return a.status - b.status;
     } else {
-      return tasks.indexOf(a) - tasks.indexOf(b); // Ältere Elemente nach hinten
+      return tasks.indexOf(a) - tasks.indexOf(b);
     }
   });
 }
