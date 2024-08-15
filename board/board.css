@@ -255,6 +255,14 @@ h3 {
   background-color: rgba(0, 0, 0, 0.08);
 }
 
+.priority-image.hidden {
+  display: none;
+}
+
+.priority-image {
+  display: flex
+}
+
 @media (max-width: 1200px) {
   .board {
     flex-direction: column;

@@ -130,13 +130,10 @@ function removeClassFromElement(elementId, className) {
   element.classList.remove(className);
 }
 
-// Heiko ab hier ___________________________________________________________
-
 let todoTasks = [];
 let inProgressTasks = [];
 let feedbackTasks = [];
 let doneTasks = [];
-
 
 async function initialCallBoard(){
     await getContactsFromDatabase();
@@ -171,8 +168,19 @@ function checkTaskStatusAndRender(i) {
   }
 }
 
+let priorityImages = {
+  0: '',
+  1: '../assets/icons/Prio baja.svg',
+  2: '../assets/icons/Prio media.svg',
+  3: '../assets/icons/Prio alta.svg'
+};
+
 function renderSingleTaskOverview(i, id) {
   let toDoArea = document.getElementById(id);
+
+  let task = tasks[i];
+  let priorityImage = priorityImages[task.priority];
+  let priorityImageClass = task.priority === 0 ? 'priority-image hidden' : 'priority-image';
 
   toDoArea.innerHTML += /*html*/ `
       <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
@@ -182,7 +190,7 @@ function renderSingleTaskOverview(i, id) {
           <div id="progressContainer${i}" class="progress-container"></div>
           <div class="assigned-and-prio">
               <div class="assigned-contacts" id="assignedContacts${i}"></div>
-              <img src="../assets/icons/Prio baja.svg" alt="prio" onclick="edit(${i})" />
+              <img src="${priorityImage}" class="${priorityImageClass}" alt="prio" onclick="edit(${i})" />
           </div>
       </div>
   `;
