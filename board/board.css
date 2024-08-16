@@ -5,7 +5,7 @@ body {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .backdrop {
@@ -253,6 +253,28 @@ h3 {
 
 .drag-area-highlight {
   background-color: rgba(0, 0, 0, 0.08);
+}
+
+.priority-image.hidden {
+  display: none;
+}
+
+.priority-image {
+  display: flex
+}
+
+.category-headline {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.slide-in-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 }
 
 @media (max-width: 1200px) {
