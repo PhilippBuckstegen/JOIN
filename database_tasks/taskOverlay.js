@@ -280,7 +280,12 @@ function storeEditedData(i){
    tasks[i].title = document.getElementById('editBoardTitle').value;
    tasks[i].description = document.getElementById('editBoardDescription').value;
    tasks[i].dueDate = document.getElementById('editBoardDate').value;
-   //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+   //  priority wird direkt aus Button Funktion in den Local Array geschrieben //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+    //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+     //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+      //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+       //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+        //  priority wird direkt aus Button Funktion in den Local Array geschrieben
    tasks[i].assignedTo = updateSelectedContacts();
    tasks[i].subtask = subtask;
    closeWindowWriteEditedDataToDatabase();
