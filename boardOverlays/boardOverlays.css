@@ -137,8 +137,7 @@
   border-radius: 8px;
 }
 
-#addTaskBoardOverlayContainer select,
-#addTaskBoardOverlayContainer .dropdown-button {
+#addTaskBoardOverlayContainer select {
   background-color: #fff;
   width: 310px;
   padding: 8px 4px;
@@ -201,7 +200,6 @@
 #addTaskBoardOverlayContainer input,
 #addTaskBoardOverlayContainer textarea,
 #addTaskBoardOverlayContainer select,
-#addTaskBoardOverlayContainer .dropdown-button,
 #addTaskBoardOverlayContainer button,
 #calendarIcon,
 #plusIcon {
@@ -214,8 +212,6 @@
 #addTaskBoardOverlayContainer textarea:active,
 #addTaskBoardOverlayContainer select:focus,
 #addTaskBoardOverlayContainer select:active,
-#addTaskBoardOverlayContainer .dropdown-button:focus,
-#addTaskBoardOverlayContainer .dropdown-button:active,
 #addTaskBoardOverlayContainer button:focus,
 #addTaskBoardOverlayContainer button:active {
   outline: 1px solid #29abe2;
@@ -461,8 +457,7 @@
     border-radius: 8px;
   }
 
-  #addTaskBoardOverlayContainer select,
-  #addTaskBoardOverlayContainer .dropdown-button {
+  #addTaskBoardOverlayContainer select {
     width: 230px;
     padding: 8px 4px;
     border: 1px solid #d1d1d1;
@@ -592,8 +587,7 @@
     border-radius: 8px;
   }
 
-  #addTaskBoardOverlayContainer select,
-  #addTaskBoardOverlayContainer .dropdown-button {
+  #addTaskBoardOverlayContainer select {
     width: 310px;
     padding: 8px 4px;
     border: 1px solid #d1d1d1;
@@ -738,8 +732,7 @@
     border-radius: 8px;
   }
 
-  #addTaskBoardOverlayContainer select,
-  #addTaskBoardOverlayContainer .dropdown-button {
+  #addTaskBoardOverlayContainer select {
     width: 290px;
     padding: 8px 4px;
     border: 1px solid #d1d1d1;

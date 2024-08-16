@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="../sidebar/style.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
-    <link rel="stylesheet" href="../database_tasks/taskOverlay.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -94,17 +93,14 @@
                       </div>
                       <div id="boardAssignedContainer">
                         <!-- new dropdown start -->
-
                         <div class="dropdown" id="contactDropdown">
-                          <label for="boardAssigned">Assigned to</label><br />
                           <button
                             class="dropdown-button"
                             onclick="toggleDropdown()"
-                          ></button>
-                          <div
-                            class="dropdown-content"
-                            id="dropdownListContent"
-                          ></div>
+                          >
+                            Assigned to
+                          </button>
+                          <div class="dropdown-content"></div>
                         </div>
                         <div
                           class="selected-contacts"
@@ -177,7 +173,7 @@
                         <button
                           id="mediumBtn"
                           class="priorityButtons whiteButtons flexContainer"
-                          onclick=" mediumBtnToggle()"
+                          onclick="mediumBtnToggle()"
                         >
                           Medium
                           <img
@@ -233,20 +229,6 @@
                           id="plusIcon"
                           src="../database/images/plus.svg"
                           alt="icon"
-                          onclick="decideSubtask()"
-                        />
-                        <img
-                          id="closeIcon"
-                          class="none"
-                          src="../database/images/close.svg"
-                          alt="icon"
-                          onclick="cancelSubtask()"
-                        />
-                        <img
-                          class="none"
-                          id="checkIcon"
-                          src="../database/images/check_blue.svg"
-                          alt="icon"
                           onclick="createSubtask()"
                         />
                       </div>
@@ -269,9 +251,8 @@
                   <button
                     id="cancelBoardOverlayBtn"
                     class="cancelCreateButtons flexContainer"
-                    onclick="clearInputFields()"
                   >
-                    Clear
+                    Cancel
                     <img
                       src="../database/images/iconoir_cancel.svg"
                       alt="icon"
