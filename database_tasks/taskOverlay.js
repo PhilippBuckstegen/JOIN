@@ -7,7 +7,7 @@ function generateTask(i) {
 
         <div id="currentUserTaskOverlay" class="currentUserTaskOverlays">
           <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
-            <div id="taskType" class="taskTypes">${tasks[i].taskCategory}</div>
+            <div id="taskType${i}" class="taskTypes">${tasks[i].taskCategory}</div>
             <div>
               <img onclick="closeAndStore()"
                 id="contactCloseBtn"
@@ -69,9 +69,17 @@ function generateTask(i) {
   if (taskOverlaySection) {
     taskOverlaySection.innerHTML = currentTaskOverlay;
     renderAssignedNames(i);
+    //addBackgroundColorToCategory(i);
   }
   setSubtasks(i);
 }
+
+/*
+function addBackgroundColorToCategory(i){
+  let categoryContainer = document.getElementById(`taskType${i}`);
+  tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
+}
+*/
 
 function setPriority(priority) {
   if (priority === 0) {
