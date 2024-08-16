@@ -130,13 +130,10 @@ function removeClassFromElement(elementId, className) {
   element.classList.remove(className);
 }
 
-// Heiko ab hier ___________________________________________________________
-
 let todoTasks = [];
 let inProgressTasks = [];
 let feedbackTasks = [];
 let doneTasks = [];
-
 
 async function initialCallBoard(){
     await getContactsFromDatabase();
@@ -171,18 +168,33 @@ function checkTaskStatusAndRender(i) {
   }
 }
 
+let priorityImages = {
+  0: '',
+  1: '../assets/icons/Prio baja.svg',
+  2: '../assets/icons/Prio media.svg',
+  3: '../assets/icons/Prio alta.svg'
+};
+
 function renderSingleTaskOverview(i, id) {
   let toDoArea = document.getElementById(id);
 
+  let task = tasks[i];
+  let priorityImage = priorityImages[task.priority];
+  let priorityImageClass = task.priority === 0 ? 'priority-image hidden' : 'priority-image';
+
   toDoArea.innerHTML += /*html*/ `
       <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
-          <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+          <div class="category-headline">
+            <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+            <div id="slideInMenu${i}" class="slide-in-menu d-none"></div>
+            <img onclick="openTaskMenu(event, ${i})" src="../assets/icons/moveTo.svg" alt="moveTo">
+          </div>
           <h3>${tasks[i].title}</h3>
           <span class="task-description">${tasks[i].description}</span>
           <div id="progressContainer${i}" class="progress-container"></div>
           <div class="assigned-and-prio">
               <div class="assigned-contacts" id="assignedContacts${i}"></div>
-              <img src="../assets/icons/Prio baja.svg" alt="prio" onclick="edit(${i})" />
+              <img src="${priorityImage}" class="${priorityImageClass}" alt="prio" onclick="edit(${i})" />
           </div>
       </div>
   `;
@@ -205,6 +217,7 @@ function renderSingleTaskOverview(i, id) {
       document.getElementById(`progressContainer${i}`).remove();
   }
 
+  if(tasks[i].assignedTo){
   // Kontakte rendern
   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
       let assignedContacts = document.getElementById(`assignedContacts${i}`);
@@ -214,10 +227,11 @@ function renderSingleTaskOverview(i, id) {
           <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
       `;
 
-      document.getElementById(
-          `assignedContactIcon${i}_${j}`
-      ).style.backgroundColor = contact.backgroundColor;
+    document.getElementById(
+      `assignedContactIcon${i}_${j}`
+    ).style.backgroundColor = contact.backgroundColor;
   }
+}
 }
 
 
@@ -335,3 +349,47 @@ function addBackgroundColorToCategory(i){
   tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
 }
 
+// Move Task in Category by Click
+async function moveTaskToCategory(taskIndex, newCategory) {
+  let newStatus = getCategoryStatus(newCategory);  
+  tasks[taskIndex].status = newStatus;
+  let movedTask = tasks.splice(taskIndex, 1)[0];
+  tasks.unshift(movedTask);
+  tasksSort();
+  await writeTasksToDatabase();
+  await getTasksFromDatabase();
+  renderTasksInBoard();
+}
+
+function getCategoryStatus(category) {
+  switch (category) {
+    case 'ToDo': return 0;
+    case 'In Progress': return 1;
+    case 'Feedback': return 2;
+    case 'Done': return 3;
+    default: return -1;
+  }
+}
+
+function openTaskMenu(event, index){
+  event.stopPropagation();
+  removeClassFromElement(`slideInMenu${index}`, 'd-none')
+  let slideInMenu = document.getElementById(`slideInMenu${index}`);
+  slideInMenu.innerHTML = /*html*/`
+    <div>Move Task to</div>
+    <div onclick="moveTaskToCategory(${index}, 'ToDo') addClassToElement('slideInMenu', 'd-none')">ToDo</div>
+    <div onclick="moveTaskToCategory(${index}, 'In Progress') addClassToElement('slideInMenu', 'd-none')">In Progress</div>
+    <div onclick="moveTaskToCategory(${index}, 'Feedback') addClassToElement('slideInMenu', 'd-none')">Feedback</div>
+    <div onclick="moveTaskToCategory(${index}, 'Done') addClassToElement('slideInMenu', 'd-none')">Done</div>
+  `;
+}
+
+function addClassToElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.add(className);
+}
+
+function removeClassFromElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.remove(className);
+}
