@@ -48,7 +48,7 @@ function generateTask(i) {
           </div>
           </div>
           <div id="deleteEditBtnsContainer" class="deleteEditBtnsContainers flexContainerStart">
-            <button id="deleteBtnContacts" class="flexContainer" onclick="deleteSingleTask(${i})">
+            <button id="deleteBtnContacts" class="flexContainer">
               <img
                 id="deleteImgContacts"
                 src="../database/images/delete.svg"
@@ -78,7 +78,7 @@ function generateTask(i) {
 function setPriority(priority) {
   if (priority === 0) {
     return /* HTML */ `<p id="noPriorityPar">Keine Priorität</p>`;
-  } else if (priority === 3) {
+  } else if (priority === 1) {
     return /* HTML */ ` <p id="urgentPar">Urgent</p>
       <img
         id="urgentImg"
@@ -134,9 +134,9 @@ function setSubtasks(i) {
 
 // Heiko Code ab hier
 
-function renderAssignedNames(i){
-  for(let j = 0; j < tasks[i].assignedTo.length; j++){
-    document.getElementById('assignContactsContainer').innerHTML += /*html*/`
+function renderAssignedNames(i) {
+  for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+    document.getElementById("assignContactsContainer").innerHTML += /*html*/ `
        <div id='assignedContactsDetail${j}'>
           <span class="label-initials">
             <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
@@ -144,7 +144,8 @@ function renderAssignedNames(i){
           </span>
        </div>
     `;
-    document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
+    document.getElementById(`initialsDropdown${j}`).style.backgroundColor =
+      tasks[i].assignedTo[j].backgroundColor;
   }
 }
 
@@ -181,17 +182,106 @@ async function closeAndStore() {
 function generateEditView(i) {
   removeClassFromElement("taskOverlaySection", "none");
   // document.getElementById("taskOverlaySection").innerHTML =  "";
+  document.getElementById("currentUserTaskOverlay").innerHTML =  `
+  <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
+  <div id="headerXbtnContainer" class="flexContainer">
+    <div id="taskBoardOverlayHeader">
+      <h1 id="taskBoardHeader">Edit Task</h1>
+    </div>
+    <div id="xBtnContainer">
+      <img id="xBtn" src="../database/images/close.svg" alt="icon"
+      onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"/>
+    </div>
+  </div>
+  <div id="taskBoardOverlayForm" class="flexContainerCol">
+          <div id="boardTitleContainer">
+            <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
+            <br />
+            <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
+          </div>
+          <div id="boardDescriptionContainer">
+            <label for="boardDescription">Description</label><br />
+            <textarea placeholder="Enter a Description" rows="4" cols="50" id="editBoardDescription" name="boardDescription"></textarea>
+          </div>
+          <div id="boardDateContainer">
+          <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
+          <div id="boardDateInputImgContainer" class="flexContainer">
+            <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
+            <!--<img
+              id="calendarIcon"
+              src="../database/images/event.svg"
+              alt="icon"
+            />-->
+          </div>
+        </div>
+        <div id="boardPriorityContainer" class="flexContainerCol">
+          <div id="priorityHeaderContainer" class="flexContainer">
+            <p>Prio</p>
+          </div>
+          <div id="priorityBtnsContainer" class="flexContainer">
+            <button id="editUrgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="editUrgentBtnToggle(${i})">
+              Urgent
+              <img id="editUrgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
+            </button>
+            <button id="editMediumBtn" class="priorityButtons whiteButtons flexContainer" onclick="editMediumBtnToggle(${i})">
+              Medium
+              <img id="editMediumImg" class="boardBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>
+            </button>
+            <button id="editLowBtn" class="priorityButtons whiteButtons flexContainer" onclick="editLowBtnToggle(${i})">
+              Low
+              <img id="editLowImg" class="boardBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>
+            </button>
+          </div>
+        </div>
+          <div id="boardAssignedContainer">
+             <!-- new dropdown start -->
+             <div class="dropdown" id="contactDropdown">
+              <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
+              <div class="dropdown-content"></div>
+          </div>
+          <div class="selected-contacts" id="selectedContacts"></div>
+          </div>
+        </div>
+        <div id="boardSubtasksContainer">
+          <label for="boardSubtasks">Subtasks</label>
+          <div id="boardSubtasksInputImgContainer" class="flexContainer">
+            <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
+            <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
+          </div>
+          <div>
+            <ul id="subtaskList">
+                <!-- Subtask Liste wird hier gerendert -->
+            </ul>
+          </div>
+        </div>
+`;
+renderDropdown();
+loadDataToEdit(i);
+}
+*/
+
+function hideOverlayTaskUser() {
+  document.getElementById("currentUserTaskOverlay").classList.add("none");
+}
+
+function generateEditView(i) {
+  removeClassFromElement("taskOverlaySection", "none");
+  // document.getElementById("taskOverlaySection").innerHTML =  "";
+  document.getElementById("currentUserTaskOverlay").style.justifyContent =
+    "center";
+  document.getElementById("currentUserTaskOverlay").style.alignItems =
+    "space-between";
   document.getElementById("currentUserTaskOverlay").innerHTML = /*HTML*/ `
      <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
-              <div id="headerXbtnContainer" class="flexContainer">
-                <div id="taskBoardOverlayHeader">
-                  <h1 id="taskBoardHeader">Edit Task</h1>
-                </div>
+      <!--<div id="xBtnTaskBoardContainer" class=flexContainerCol>-->
+     <div id="XbtnContainerEdit" class="flexContainer">
                 <div id="xBtnContainer">
-                  <img id="xBtn" src="../database/images/close.svg" alt="icon"
-                  onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"/>
+                  <img id="xBtnEdit" src="../database/images/close.svg" alt="icon"
+                  onclick="addClassToElement('addTaskBoardOverlayContainer', 'none');hideOverlayTaskUser();"/>
                 </div>
               </div>
+      <div id="TaskBoardContainer" class="flexContainerCol">
+             
               <div id="taskBoardOverlayForm" class="flexContainerCol">
                       <div id="boardTitleContainer">
                         <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
@@ -213,11 +303,11 @@ function generateEditView(i) {
                         />-->
                       </div>
                     </div>
-                    <div id="boardPriorityContainer" class="flexContainerCol">
+                    <div id="boardPriorityContainer" class="boardPriorityContainers flexContainerCol">
                       <div id="priorityHeaderContainer" class="flexContainer">
                         <p>Prio</p>
                       </div>
-                      <div id="priorityBtnsContainer" class="flexContainer">
+                      <div id="priorityBtnsContainer" class="priorityBtnsContainers flexContainer">
                         <button id="editUrgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="editUrgentBtnToggle(${i})">
                           Urgent
                           <img id="editUrgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
@@ -234,38 +324,82 @@ function generateEditView(i) {
                     </div>
                       <div id="boardAssignedContainer">
                          <!-- new dropdown start -->
-                         <div class="dropdown" id="contactDropdown">
-                          <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
+                         <div class="dropdown flexContainerCol" id="contactDropdown">
+                          <span id="assignSpan" class="flexContainerStart">Assigned to</span>
+                          <button class="dropdown-button" id="dropdownButton" onclick="toggleDropdown()"></button>
                           <div class="dropdown-content"></div>
                       </div>
-                      <div class="selected-contacts" id="selectedContacts"></div>
+                      <div class="selected-contacts flexContainerStart" id="selectedContacts"></div>
                       </div>
                     </div>
-                    <div id="boardSubtasksContainer">
-                      <label for="boardSubtasks">Subtasks</label>
+                      <!--<div id="boardSubtasksContainer">
+                       <label for="boardSubtasks">Subtasks</label>
                       <div id="boardSubtasksInputImgContainer" class="flexContainer">
                         <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
                         <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
+                       </div>
+                       <div>
+                        <ul id="subtaskList">
+                             Subtask Liste wird hier gerendert 
+                         </ul>
+                       </div>-->
+                       <div id="boardSubtasksContainer" class="flexContainerColStart">
+                      <label for="boardSubtasks">Subtasks</label>
+                      <div
+                        id="boardSubtasksInputImgContainer"
+                        class="flexContainer"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Add new subtask"
+                          id="boardSubtasks"
+                          name="boardSubtasks"
+                        />
+                        <img
+                          id="plusIcon"
+                          src="../database/images/plus.svg"
+                          alt="icon"
+                          onclick="decideSubtask()"
+                        />
+                        <img
+                          id="closeIcon"
+                          class="none"
+                          src="../database/images/close.svg"
+                          alt="icon"
+                          onclick="cancelSubtask()"
+                        />
+                        <img
+                          class="none"
+                          id="checkIcon"
+                          src="../database/images/check_blue.svg"
+                          alt="icon"
+                          onclick="createSubtask()"
+                        />
                       </div>
                       <div>
                         <ul id="subtaskList">
-                            <!-- Subtask Liste wird hier gerendert -->
+                          <!-- Subtask Liste wird hier gerendert -->
                         </ul>
                       </div>
                     </div>
+                  </div>
+<!--</div>-->
+                  <div id="okBtnContainer" class="flexContainer">
+                    <button id="okBtn" class="flexContainer">Ok <img id="okImg" src="../database/images/check.svg" alt="icon"></button>
+                  </div>
+                  
+                    </div>
 `;
-renderDropdown();
-loadDataToEdit(i);
-editRenderSubtasks(i);
+  renderDropdown();
+  loadDataToEdit(i);
 }
-*/
 
-function loadDataToEdit(i){
-    document.getElementById('editBoardTitle').value = tasks[i].title;
-    document.getElementById('editBoardDescription').value = tasks[i].description;
-    document.getElementById('editBoardDate').value = tasks[i].dueDate;
-    loadAndSetPriorityToEdit(i);
-    tasks[i].assignedTo = editCheckBoxesForAssignedUsers(i);
+function loadDataToEdit(i) {
+  document.getElementById("editBoardTitle").value = tasks[i].title;
+  document.getElementById("editBoardDescription").value = tasks[i].description;
+  document.getElementById("editBoardDate").value = tasks[i].dueDate;
+  loadAndSetPriorityToEdit(i);
+  tasks[i].assignedTo = editCheckBoxesForAssignedUsers(i);
 }
 
 function loadAndSetPriorityToEdit(i) {
@@ -392,7 +526,6 @@ function editVariablesPriorityButtons() {
 }
 
 function editCheckBoxesForAssignedUsers(x) {
-  if(tasks[x].assignedTo){
   const selectedContactsDiv = document.getElementById("selectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
   for (let i = 0; i < contacts.length; i++) {

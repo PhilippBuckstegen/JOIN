@@ -373,7 +373,6 @@ function editToggleDropdown() {
 }
 
 function editUpdateSelectedContacts() {
-<<<<<<< HEAD
   const selectedContactsDiv = document.getElementById("editSelectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
   const selectedContacts = [];
@@ -384,25 +383,11 @@ function editUpdateSelectedContacts() {
       const contactDiv = document.createElement("div");
       contactDiv.textContent = taskContacts[i].name;
       selectedContactsDiv.innerHTML += `<div>${taskContacts[i].name}</div>`;
-=======
-    // const selectedContactsDiv = document.getElementById('selectedContacts');
-    // selectedContactsDiv.innerHTML = '';  // Clear previous selections
-    const selectedContacts = [];
-    for (let i = 0; i < contacts.length; i++) {
-        const checkbox = document.getElementById(`contact_${i}`);
-        if (checkbox.checked) {
-            selectedContacts.push({user : contacts[i].name });
-            // const contactDiv = document.createElement('div');
-            // contactDiv.textContent = contacts[i].name;
-            // selectedContactsDiv.innerHTML += `<div>${contacts[i].name}</div>`;
-        }
->>>>>>> 66527a05f72d750116c8b4e5f649ea1cc94aa21f
     }
   }
   return selectedContacts;
 }
 
-<<<<<<< HEAD
 function editCheckBoxesForAssignedUsers(x) {
   const selectedContactsDiv = document.getElementById("editSelectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
@@ -416,22 +401,6 @@ function editCheckBoxesForAssignedUsers(x) {
         contactDiv.textContent = taskContacts[i].name;
         selectedContactsDiv.innerHTML += `<div>${taskContacts[i].name}</div>`;
       }
-=======
-function editCheckBoxesForAssignedUsers(x){
-    const selectedContactsDiv = document.getElementById('selectedContacts');
-    selectedContactsDiv.innerHTML = '';  // Clear previous selections
-        for(i = 0; i < taskContacts.length; i++){
-        const checkbox = document.getElementById(`contact_${i}`);
-        checkbox.checked = false;
-        for(j = 0; j < tasks[x].assignedTo.length; j++){
-        if(tasks[x].assignedTo[j].user === checkbox.value){
-            checkbox.checked = true;
-            const contactDiv = document.createElement('div');
-            contactDiv.textContent = taskContacts[i].name;
-            selectedContactsDiv.innerHTML += `<div>${taskContacts[i].name}</div>`;
-        }
-        }
->>>>>>> 66527a05f72d750116c8b4e5f649ea1cc94aa21f
     }
   }
 }
