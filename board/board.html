@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="../sidebar/style.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <link rel="stylesheet" href="../boardOverlays/boardOverlays.css" />
-    <link rel="stylesheet" href="../database_tasks/taskOverlay.css">
+    <link rel="stylesheet" href="../database_tasks/taskOverlay.css" />
+    <link rel="stylesheet" href="../boardOverlays/boardSite.css" />
     <link
       rel="shortcut icon"
       href="../favicon/img/favicon.png"
@@ -41,8 +42,7 @@
     <div id="header-placeholder"></div>
 
     <!-- header and sidebar from includeHTML -->
-    <section id="taskOverlaySection" class="flexContainer none">
-    </section>
+    <section id="taskOverlaySection" class="flexContainer none"></section>
     <!-- Overlay start -->
     <div id="addTaskBoardOverlayContainer" class="flexContainerCol none">
       <!-- Start - Heiko auskommentiert, da der Teil gerendert wird! -->
@@ -80,18 +80,18 @@
                 ></textarea>
               </div>
               <div id="boardAssignedContainer"> -->
-                <!-- new dropdown start -->
-                <!-- <div class="dropdown" id="contactDropdown">
+      <!-- new dropdown start -->
+      <!-- <div class="dropdown" id="contactDropdown">
                   <button class="dropdown-button" onclick="toggleDropdown()">
                     Assigned to
                   </button>
                   <div class="dropdown-content"></div>
                 </div>
                 <div class="selected-contacts" id="selectedContacts"></div> -->
-                <!-- new dropdown end -->
-                <!-- <label for="boardAssigned">Assigned to</label><br />
+      <!-- new dropdown end -->
+      <!-- <label for="boardAssigned">Assigned to</label><br />
                 <select id="boardAssigned" name="boardAssigned"> -->
-                <!-- multiple
+      <!-- multiple
                   <option value="" selected disabled hidden>
                     Select contacts to assign
                   </option>
@@ -103,8 +103,8 @@
                   <option value="davidEisenberg">
                     David Eisenberg
                   </option> -->
-                <!-- </select> -->
-              <!-- </div>
+      <!-- </select> -->
+      <!-- </div>
             </div>
           </div>
         </div>
@@ -122,12 +122,12 @@
                   name="boardDate"
                   onclick="setMinDateToToday('boardDate')"
                 /> -->
-                <!--<img
+      <!--<img
                   id="calendarIcon"
                   src="../database/images/event.svg"
                   alt="icon"
                 />-->
-              <!-- </div>
+      <!-- </div>
             </div>
             <div id="boardPriorityContainer" class="flexContainerCol">
               <div id="priorityHeaderContainer" class="flexContainer">
@@ -180,8 +180,8 @@
                 >Category<span id="asteriskCategory" class="">*</span></label
               ><br />
               <select id="boardCategory" name="boardCategory"> -->
-                <!--multiple-->
-                <!-- <option value="" selected disabled hidden>
+      <!--multiple-->
+      <!-- <option value="" selected disabled hidden>
                   Select task category
                 </option>
                 <option value="Technical Task">Technical Task</option>
@@ -206,8 +206,8 @@
               </div>
               <div>
                 <ul id="subtaskList"> -->
-                  <!-- Subtask Liste wird hier gerendert -->
-                <!-- </ul>
+      <!-- Subtask Liste wird hier gerendert -->
+      <!-- </ul>
               </div>
             </div>
           </div>
@@ -238,8 +238,8 @@
           </button>
         </div>
       </div> -->
-       <!-- Ende - Heiko auskommentiert -->
-    </div> 
+      <!-- Ende - Heiko auskommentiert -->
+    </div>
     <!-- Overlay end -->
     <main class="main-board">
       <header class="header-board">
@@ -268,10 +268,10 @@
           > -->
           <!-- Start -  Heiko neu eingefügt -->
           <button
-          onclick="openTaskOverlayWithCategoryPreset(0)"
-          class="addTask-button"
+            onclick="openTaskOverlayWithCategoryPreset(0)"
+            class="addTask-button"
           >
-          <!-- Ende -  Heiko neu eingefügt -->
+            <!-- Ende -  Heiko neu eingefügt -->
             <p class="add-task">Add Task</p>
             <img src="../assets/icons/add.svg" alt="add" />
           </button>
@@ -288,14 +288,14 @@
               src="../assets/icons/plus button.svg"
               alt="add task"
             /> -->
-             <!-- Start -  Heiko neu eingefügt -->
+            <!-- Start -  Heiko neu eingefügt -->
             <img
-            onclick="openTaskOverlayWithCategoryPreset(0)"
-            class="plus-button"
-            src="../assets/icons/plus button.svg"
-            alt="add task"
-          />
-          <!-- Ende -  Heiko neu eingefügt -->
+              onclick="openTaskOverlayWithCategoryPreset(0)"
+              class="plus-button"
+              src="../assets/icons/plus button.svg"
+              alt="add task"
+            />
+            <!-- Ende -  Heiko neu eingefügt -->
           </div>
           <div class="slider-tasks">
             <div
@@ -321,14 +321,14 @@
               src="../assets/icons/plus button.svg"
               alt="add task"
             /> -->
-             <!-- Start -  Heiko neu eingefügt -->
-             <img
-             onclick="openTaskOverlayWithCategoryPreset(1)"
-             class="plus-button"
-             src="../assets/icons/plus button.svg"
-             alt="add task"
-           />
-           <!-- Ende -  Heiko neu eingefügt -->
+            <!-- Start -  Heiko neu eingefügt -->
+            <img
+              onclick="openTaskOverlayWithCategoryPreset(1)"
+              class="plus-button"
+              src="../assets/icons/plus button.svg"
+              alt="add task"
+            />
+            <!-- Ende -  Heiko neu eingefügt -->
           </div>
           <div class="slider-tasks">
             <div
@@ -356,12 +356,12 @@
             /> -->
             <!-- Start -  Heiko neu eingefügt -->
             <img
-            onclick="openTaskOverlayWithCategoryPreset(2)"
-            class="plus-button"
-            src="../assets/icons/plus button.svg"
-            alt="add task"
-          />
-          <!-- Ende -  Heiko neu eingefügt -->
+              onclick="openTaskOverlayWithCategoryPreset(2)"
+              class="plus-button"
+              src="../assets/icons/plus button.svg"
+              alt="add task"
+            />
+            <!-- Ende -  Heiko neu eingefügt -->
           </div>
           <div class="slider-tasks">
             <div
@@ -398,6 +398,5 @@
       </section>
     </main>
     <script src="../database_tasks/taskOverlay.js"></script>
-
   </body>
 </html>
