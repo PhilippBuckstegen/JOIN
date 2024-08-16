@@ -176,7 +176,15 @@ function renderSingleTaskOverview(i, id) {
 
   toDoArea.innerHTML += /*html*/ `
       <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
+<<<<<<< HEAD
           <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+=======
+          <div class="category-headline">
+            <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+            <div id="slideInMenu" class="slide-in-menu d-none"></div>
+            <img onclick="openTaskMenu(event, ${i})" src="../assets/icons/moveTo.svg" alt="moveTo">
+          </div>
+>>>>>>> parent of 66527a0 (Update board.js)
           <h3>${tasks[i].title}</h3>
           <span class="task-description">${tasks[i].description}</span>
           <div id="progressContainer${i}" class="progress-container"></div>
@@ -335,3 +343,50 @@ function addBackgroundColorToCategory(i){
   tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
 }
 
+<<<<<<< HEAD
+=======
+// Move Task in Category by Click
+async function moveTaskToCategory(taskIndex, newCategory) {
+  let newStatus = getCategoryStatus(newCategory);  
+  tasks[taskIndex].status = newStatus;
+  let movedTask = tasks.splice(taskIndex, 1)[0];
+  tasks.unshift(movedTask);
+  tasksSort();
+  await writeTasksToDatabase();
+  await getTasksFromDatabase();
+  renderTasksInBoard();
+}
+
+function getCategoryStatus(category) {
+  switch (category) {
+    case 'ToDo': return 0;
+    case 'In Progress': return 1;
+    case 'Feedback': return 2;
+    case 'Done': return 3;
+    default: return -1;
+  }
+}
+
+function openTaskMenu(event, index){
+  event.stopPropagation();
+  removeClassFromElement('slideInMenu', 'd-none')
+  let slideInMenu = document.getElementById('slideInMenu');
+  slideInMenu.innerHTML = /*html*/`
+    <div>Move Task to</div>
+    <div onclick="moveTaskToCategory(${index}, 'ToDo') addClassToElement('slideInMenu', 'd-none')">ToDo</div>
+    <div onclick="moveTaskToCategory(${index}, 'In Progress') addClassToElement('slideInMenu', 'd-none')">In Progress</div>
+    <div onclick="moveTaskToCategory(${index}, 'Feedback') addClassToElement('slideInMenu', 'd-none')">Feedback</div>
+    <div onclick="moveTaskToCategory(${index}, 'Done') addClassToElement('slideInMenu', 'd-none')">Done</div>
+  `;
+}
+
+function addClassToElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.add(className);
+}
+
+function removeClassFromElement(elementId, className) {
+  let element = document.getElementById(elementId);
+  element.classList.remove(className);
+}
+>>>>>>> parent of 66527a0 (Update board.js)
