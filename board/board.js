@@ -198,7 +198,6 @@ function renderSingleTaskOverview(i, id) {
           </div>
       </div>
   `;
-
   addBackgroundColorToCategory(i); // Farbe für Kategorie setzen
 
   // Überprüfen, ob "subtask" definiert ist, bevor darauf zugegriffen wird
@@ -216,24 +215,60 @@ function renderSingleTaskOverview(i, id) {
   } else {
       document.getElementById(`progressContainer${i}`).remove();
   }
+ renderAssignedNamesOverview(i)
+//   if(tasks[i].assignedTo){
+//     let limit = 4;
+//   // Kontakte rendern
+//   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+//       let assignedContacts = document.getElementById(`assignedContacts${i}`);
+//       const contact = tasks[i].assignedTo[j];
+//       assignedContacts.innerHTML += /*html*/ `
+//           <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+//       `;
 
+//     document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
+//   }
+// }
+}
+
+
+// Heiko neu eingefügt
+function renderAssignedNamesOverview(i){
+  let limit = 3;
   if(tasks[i].assignedTo){
-  // Kontakte rendern
+    if(tasks[i].assignedTo.length <= limit){
   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
       let assignedContacts = document.getElementById(`assignedContacts${i}`);
       const contact = tasks[i].assignedTo[j];
-
       assignedContacts.innerHTML += /*html*/ `
           <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
       `;
-
-    document.getElementById(
-      `assignedContactIcon${i}_${j}`
-    ).style.backgroundColor = contact.backgroundColor;
+    document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
+      }
+    } else {
+    for(let j = 0; j < limit; j++){
+      // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+        let assignedContacts = document.getElementById(`assignedContacts${i}`);
+        const contact = tasks[i].assignedTo[j];
+        assignedContacts.innerHTML += /*html*/ `
+            <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+        `;
+        document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
+      // } 
+    }
+    renderAssignedNamesGreaterThanLimitOverview(i, limit);
   }
 }
 }
 
+
+function renderAssignedNamesGreaterThanLimitOverview(i, limit){
+  let assignedContacts = document.getElementById(`assignedContacts${i}`);
+        assignedContacts.innerHTML += /*html*/ `
+            <div id="assignedContactIcon${i}_${limit}" class="contact-icon assigned-contact-icon">+${calculateRestOfAssigendToGreaterThanLimit(i, limit)}</div>
+        `;
+    document.getElementById(`assignedContactIcon${i}_${limit}`).style.backgroundColor = "#301934"; 
+}
 
 
 

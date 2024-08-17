@@ -141,19 +141,54 @@ function setSubtasks(i) {
 // Heiko Code ab hier
 
 function renderAssignedNames(i){
+  let limit = 4;
   if(tasks[i].assignedTo){
-  for(let j = 0; j < tasks[i].assignedTo.length; j++){
-    document.getElementById('assignContactsContainer').innerHTML += /*html*/`
-       <div id='assignedContactsDetail${j}'>
+    if(tasks[i].assignedTo.length <= limit){
+      for(let j = 0; j < tasks[i].assignedTo.length; j++){
+        document.getElementById('assignContactsContainer').innerHTML += /*html*/`
+          <div id='assignedContactsDetail${j}'>
+            <span class="label-initials">
+              <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
+              ${tasks[i].assignedTo[j].user}
+            </span>
+        </div>
+      `;
+    document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
+    }
+  } else {
+    for(let j = 0; j < limit; j++){
+      document.getElementById('assignContactsContainer').innerHTML += /*html*/`
+        <div id='assignedContactsDetail${j}'>
           <span class="label-initials">
             <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
             ${tasks[i].assignedTo[j].user}
           </span>
-       </div>
+      </div>
     `;
-    document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
+  document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor; 
   }
+  renderAssignedNamesGreaterThanLimit(i, limit);
 }
+}
+}
+
+
+function renderAssignedNamesGreaterThanLimit(i, limit){
+    document.getElementById('assignContactsContainer').innerHTML += /*html*/`
+       <div id='assignedContactsDetail${limit}'>
+          <span class="label-initials">
+            <span class="initials-dropdown" id='initialsDropdown${limit}'>+${calculateRestOfAssigendToGreaterThanLimit(i, limit)}</span>
+            further users
+          </span>
+       </div>
+       `;
+      document.getElementById(`initialsDropdown${limit}`).style.backgroundColor = "#301934"; 
+}
+
+
+function calculateRestOfAssigendToGreaterThanLimit(i, limit){
+  let restOfAssignedUsers = tasks[i].assignedTo.length - limit;
+  return restOfAssignedUsers; 
 }
 
 
@@ -452,6 +487,7 @@ function editCheckBoxesForAssignedUsers(x) {
 
 
 function editRenderSubtasks(x) {
+  subtask = [];
   if(tasks[x].subtask){
   let listArea = document.getElementById("subtaskList");
   subtask = [];
@@ -471,6 +507,7 @@ function editRenderSubtasks(x) {
         status : tasks[x].subtask[i].status,
   });
   }
+
 }
 }
 

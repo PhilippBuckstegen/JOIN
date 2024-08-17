@@ -309,15 +309,15 @@ function editUpdateSelectedContacts() {
 function editCheckBoxesForAssignedUsers(x){
     const selectedContactsDiv = document.getElementById('selectedContacts');
     selectedContactsDiv.innerHTML = '';  // Clear previous selections
-        for(i = 0; i < taskContacts.length; i++){
+        for(i = 0; i < contacts.length; i++){
         const checkbox = document.getElementById(`contact_${i}`);
         checkbox.checked = false;
         for(j = 0; j < tasks[x].assignedTo.length; j++){
         if(tasks[x].assignedTo[j].user === checkbox.value){
             checkbox.checked = true;
             const contactDiv = document.createElement('div');
-            contactDiv.textContent = taskContacts[i].name;
-            selectedContactsDiv.innerHTML += `<div>${taskContacts[i].name}</div>`;
+            contactDiv.textContent = contacts[i].name;
+            selectedContactsDiv.innerHTML += `<div>${contacts[i].name}</div>`;
         }
         }
     }
