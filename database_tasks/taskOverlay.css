@@ -48,6 +48,8 @@
 */
 
 .currentUserTaskOverlays {
+  justify-content: space-between !important;
+  align-items: flex-start;
   padding: 30px;
   position: fixed;
   top: 10%;
@@ -58,8 +60,13 @@
   z-index: 999;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.6);
 }
-
+.userTaskOverlayParts {
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .taskTypeContainers {
+  width: 100%;
   justify-content: space-between !important;
 }
 
@@ -123,7 +130,7 @@
   align-items: flex-start;
   /* Heiko zugefügt */
   margin: 6px 0px;
-  gap: 5px;
+  gap: 20px;
 }
 
 .assignContacts {
@@ -165,6 +172,7 @@
 
 .deleteEditBtnsContainers {
   justify-content: flex-end;
+  width: 100%;
   gap: 10px;
   position: relative;
 }
@@ -195,6 +203,160 @@
   height: 18px;
 }
 
+/* generateEditView Design Start */
+
+#XbtnContainerEdit {
+  width: 100%;
+  justify-content: flex-end;
+  z-index: 999;
+}
+
+#TaskBoardContainer {
+  width: 100%;
+  gap: 20px;
+  overflow-y: scroll;
+}
+
+#taskBoardOverlayForm {
+  width: 100%;
+  justify-content: center;
+}
+
+#headerXbtnContainer {
+  width: 100%;
+}
+
+#xBtnEdit,
+#editUrgentBtn,
+#editMediumBtn,
+#editLowBtn {
+  cursor: pointer;
+}
+
+#editBoardTitle {
+  width: 360px;
+  padding: 5px 0;
+  text-indent: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+}
+
+#editBoardTitle:focus,
+#editBoardTitle:active {
+  outline: 1px solid #29abe2;
+}
+
+#editBoardDescription {
+  width: 360px;
+  padding: 4px 0;
+  text-indent: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+}
+
+#editBoardDescription:focus,
+#editBoardDescription:active {
+  outline: 1px solid #29abe2;
+}
+
+#editBoardDate {
+  width: 360px;
+  padding: 4px 0;
+  text-indent: 4px;
+  border-radius: 8px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+}
+
+#editBoardDate:focus,
+#editBoardDate:active {
+  outline: 1px solid #29abe2;
+}
+
+.priorityBtnsContainers {
+  width: 360px;
+  justify-content: space-between !important;
+}
+
+#boardAssignedContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#assignSpan {
+  width: 100%;
+}
+
+.dropdown {
+  gap: 6px;
+}
+
+#dropdownButton {
+  width: 360px;
+}
+#dropdownButton:focus,
+#dropdownButton:active {
+  outline: 1px solid #29abe2;
+}
+
+#boardSubtasksContainer {
+  width: 100%;
+  gap: 10px;
+}
+
+#boardSubtasks {
+  color: #000 !important;
+  width: 360px;
+  padding: 8px 0;
+  text-indent: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+}
+
+#boardSubtasks:focus,
+#boardSubtasks:active {
+  outline: 1px solid #29abe2;
+}
+
+.subtaskListItems {
+  width: 340px;
+}
+
+#okBtnContainer {
+  justify-content: flex-end;
+  width: 400px;
+}
+
+#okBtn {
+  font-size: 16px;
+  cursor: pointer;
+  gap: 6px;
+  color: #fff;
+  background-color: #2a3647;
+  border: 1px solid #2a3647;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+#okBtn:hover {
+  background-color: #29abe2;
+  border: 1px solid #29abe2;
+}
+
+#okImg {
+  width: 14px;
+  height: 14px;
+}
+
+.selected-contacts {
+  width: 360px;
+}
+
+/* generateEditView Design End */
 
 @media (min-width: 1201px) {
   .currentUserTaskOverlays {
@@ -203,7 +365,7 @@
     top: 10%;
     background-color: #fff;
     width: 420px;
-    height: 600px;
+    height: 680px;
     border-radius: 20px;
   }
 }
@@ -217,7 +379,6 @@
     width: 420px;
     height: 600px;
     border-radius: 20px;
-
   }
 }
 
@@ -258,7 +419,7 @@
 }
 
 /* Heiko eingefügt zum testen für Speicherbutton vom Edit Feld */
-.store-edited-data-button{
+.store-edited-data-button {
   display: flex;
   justify-content: flex-end;
 }
