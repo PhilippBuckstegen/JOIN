@@ -163,7 +163,7 @@ body {
 }
 
 .subtaskListItems {
-  width: 300px !important;
+  width: 280px !important;
 }
 
 #addTaskBoardOverlayContainer input::placeholder,
@@ -549,6 +549,19 @@ body {
     height: 20px;
   }
 
+  #closeIcon {
+    right: 12%;
+    top: 14%;
+  }
+
+  #checkIcon {
+    right: 4%;
+    top: 24%;
+    width: 18px;
+    border-left: 1px solid #d1d1d1 !important;
+    padding-left: 4px;
+  }
+
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -565,19 +578,6 @@ body {
 
   .subtaskListItems {
     width: 280px !important;
-  }
-
-  #closeIcon {
-    right: 12%;
-    top: 14%;
-  }
-
-  #checkIcon {
-    right: 4%;
-    top: 24%;
-    width: 18px;
-    border-left: 1px solid #d1d1d1 !important;
-    padding-left: 4px;
   }
 }
 
@@ -648,10 +648,6 @@ body {
   }
 
   #boardSubtasksContainer {
-    width: 220px !important;
-  }
-
-  .subtaskListItems {
     width: 220px !important;
   }
 
@@ -727,13 +723,6 @@ body {
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -750,6 +739,13 @@ body {
 
   .subtaskListItems {
     width: 200px !important;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
   }
 
   #closeIcon {
@@ -809,10 +805,6 @@ body {
   }
 
   #boardSubtasksContainer {
-    width: 300px !important;
-  }
-
-  .subtaskListItems {
     width: 300px !important;
   }
 
@@ -903,13 +895,6 @@ body {
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -926,6 +911,13 @@ body {
 
   .subtaskListItems {
     width: 280px !important;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
   }
 
   #closeIcon {
@@ -985,10 +977,6 @@ body {
 
   #boardSubtasksContainer {
     width: 284px !important;
-  }
-
-  .subtaskListItems {
-    width: 260px !important;
   }
 
   #addTaskBoardOverlayContainer select,
@@ -1078,13 +1066,6 @@ body {
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -1101,6 +1082,13 @@ body {
 
   .subtaskListItems {
     width: 260px !important;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
   }
 
   #closeIcon {

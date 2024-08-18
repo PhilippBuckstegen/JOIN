@@ -1,5 +1,4 @@
-
-async function initialCallBoardOverlays(){
+async function initialCallBoardOverlays() {
   await getContactsFromDatabase();
   await getTasksFromDatabase();
   renderBoardOverlays(3);
@@ -8,9 +7,9 @@ async function initialCallBoardOverlays(){
   // renderDropdown(); Heiko auskommentiert - wird am Ende vom render tasks aufgerufen
 }
 
-async function initialCallBoardSite(){
- await getContactsFromDatabase();
- await getTasksFromDatabase();
+async function initialCallBoardSite() {
+  await getContactsFromDatabase();
+  await getTasksFromDatabase();
   // renderBoardOverlays(2);
   renderDropdown();
   defineVariables();
@@ -18,26 +17,23 @@ async function initialCallBoardSite(){
   preSelectMediumBtn();
 }
 
-
-"use strict";
+("use strict");
 
 // Heiko Code added - Start
 let priority = 0; // priority States - 0=none; 1=low; 2=medium; 3=urgent
 let urgentState = false;
 let mediumState = false;
-let lowState    = false;
+let lowState = false;
 // Heiko Code added - End
 
-
-function defineVariables(){
-let urgentBtn = document.getElementById(`urgentBtn`);
-let urgentImg = document.getElementById("urgentImg");
-let mediumBtn = document.getElementById("mediumBtn");
-let mediumImg = document.getElementById("mediumImg");
-let lowBtn = document.getElementById("lowBtn");
-let lowImg = document.getElementById("lowImg");
+function defineVariables() {
+  let urgentBtn = document.getElementById(`urgentBtn`);
+  let urgentImg = document.getElementById("urgentImg");
+  let mediumBtn = document.getElementById("mediumBtn");
+  let mediumImg = document.getElementById("mediumImg");
+  let lowBtn = document.getElementById("lowBtn");
+  let lowImg = document.getElementById("lowImg");
 }
-
 
 function urgentBtnToggle() {
   // defineVariables();
@@ -66,11 +62,10 @@ function urgentBtnToggle() {
     : false;
 
   // Heiko Code added - Start
-  evaluateUrgentState(urgentSelected);    
+  evaluateUrgentState(urgentSelected);
   // Heiko Code added - End
   return urgentSelected;
 }
-
 
 function mediumBtnToggle() {
   // defineVariables();
@@ -99,11 +94,10 @@ function mediumBtnToggle() {
     : false;
 
   // Heiko Code added - Start
-  evaluateMediumState(mediumSelected);  
+  evaluateMediumState(mediumSelected);
   // Heiko Code added - End
   return mediumSelected;
 }
-
 
 function lowBtnToggle() {
   // defineVariables();
@@ -132,9 +126,8 @@ function lowBtnToggle() {
   // Heiko Code added - Start
   evaluateLowState(lowSelected);
   // Heiko Code added - End
-  return lowSelected;                      
+  return lowSelected;
 }
-
 
 // urgentBtn.addEventListener("click", urgentBtnToggle);
 
@@ -144,52 +137,47 @@ function lowBtnToggle() {
 
 // mediumBtn.click();
 
-
 // Heiko Code addded
-function evaluateUrgentState(urgentSelected){
+function evaluateUrgentState(urgentSelected) {
   mediumState = false;
   lowState = false;
-  urgentSelected ? priority = 3 : priority = 0;
+  urgentSelected ? (priority = 3) : (priority = 0);
 }
 
-
-function evaluateMediumState(mediumSelected){
+function evaluateMediumState(mediumSelected) {
   urgentState = false;
   lowState = false;
-  mediumSelected ? priority = 2 : priority = 0;
+  mediumSelected ? (priority = 2) : (priority = 0);
 }
 
-
-function evaluateLowState(lowSelected){
+function evaluateLowState(lowSelected) {
   urgentState = false;
   mediumState = false;
-  lowSelected ? priority = 1 : priority = 0;
+  lowSelected ? (priority = 1) : (priority = 0);
 }
 
-function clearPriorityStates(){
-  switch(priority){
-    case 3 :
+function clearPriorityStates() {
+  switch (priority) {
+    case 3:
       urgentBtnToggle();
       break;
-    case 2 :
+    case 2:
       mediumBtnToggle();
       break;
-    case 1 :
+    case 1:
       lowBtnToggle();
-    break;
+      break;
     default:
       priority = 0;
   }
 }
 
-
-function preSelectMediumBtn(){
+function preSelectMediumBtn() {
   mediumBtnToggle();
 }
 
-
-function renderBoardOverlays(i){
-  let boardContainer = document.getElementById('addTaskBoardOverlayContainer');
+function renderBoardOverlays(i) {
+  let boardContainer = document.getElementById("addTaskBoardOverlayContainer");
   boardContainer.innerHTML = /*html*/ `
      <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
               <div id="headerXbtnContainer" class="flexContainer">
@@ -217,7 +205,8 @@ function renderBoardOverlays(i){
                       <div id="boardAssignedContainer">
                          <!-- new dropdown start -->
                          <div class="dropdown" id="contactDropdown">
-                          <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
+                         <label for="boardAssigned">Assigned to</label><br />
+                          <button class="dropdown-button" onclick="toggleDropdown()"></button>
                           <div class="dropdown-content"></div>
                       </div>
                       <div class="selected-contacts" id="selectedContacts"></div>
@@ -272,8 +261,32 @@ function renderBoardOverlays(i){
                     <div id="boardSubtasksContainer">
                       <label for="boardSubtasks">Subtasks</label>
                       <div id="boardSubtasksInputImgContainer" class="flexContainer">
-                        <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
-                        <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
+                      <input
+                          type="text"
+                          placeholder="Add new subtask"
+                          id="boardSubtasks"
+                          name="boardSubtasks"
+                        />
+                        <img
+                          id="plusIcon"
+                          src="../database/images/plus.svg"
+                          alt="icon"
+                          onclick="decideSubtask()"
+                        />
+                        <img
+                          id="closeIcon"
+                          class="none"
+                          src="../database/images/close.svg"
+                          alt="icon"
+                          onclick="cancelSubtask()"
+                        />
+                        <img
+                          class="none"
+                          id="checkIcon"
+                          src="../database/images/check_blue.svg"
+                          alt="icon"
+                          onclick="createSubtask()"
+                        />
                       </div>
                       <div>
                         <ul id="subtaskList">
@@ -292,7 +305,7 @@ function renderBoardOverlays(i){
                 </div>
                 <div id="cancelCreateBtnsContainer" class="flexContainer">
                   <button
-                    onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"
+                    onclick="addClassToElement('addTaskBoardOverlayContainer', 'none');clearInputFields();"
                     id="cancelBoardOverlayBtn"
                     class="cancelCreateButtons flexContainer"
                   >
@@ -300,6 +313,7 @@ function renderBoardOverlays(i){
                     <img
                       src="../database/images/iconoir_cancel.svg"
                       alt="icon"
+                      
                     />
                   </button>
                   <button
