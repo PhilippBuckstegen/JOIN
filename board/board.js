@@ -323,6 +323,7 @@ function renderEmptycategories(tasks) {
 }
 
 function openTaskOverlayWithCategoryPreset(x){
+   subtask = [];
    removeClassFromElement('addTaskBoardOverlayContainer', 'none');
    renderBoardOverlays(x);
    preSelectMediumBtn();
