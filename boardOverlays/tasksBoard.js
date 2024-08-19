@@ -119,6 +119,12 @@ function toggleDropdown() {
   }
 }
 
+
+function cancelEditArea(){
+  document.getElementById("currentUserTaskOverlay").innerHTML = "";
+  addClassToElement('taskOverlaySection', 'none')
+}
+
 function updateSelectedContacts() {
   const selectedContactsDiv = document.getElementById("selectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
@@ -313,20 +319,20 @@ function storeEditedTaskData(x) {
   tasks[x].assignedTo = editUpdateSelectedContacts();
 }
 
-function editRenderDropdown() {
-  const dropdownContent = document.querySelector(".edit-dropdown-content");
-  for (let i = 0; i < taskContacts.length; i++) {
-    const contact = taskContacts[i];
-    const label = document.createElement("label");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = `editContact_${i}`;
-    checkbox.value = contact.name;
-    label.appendChild(checkbox);
-    label.appendChild(document.createTextNode(contact.name));
-    dropdownContent.appendChild(label);
-  }
-}
+// function editRenderDropdown() {
+//   const dropdownContent = document.querySelector(".edit-dropdown-content");
+//   for (let i = 0; i < taskContacts.length; i++) {
+//     const contact = taskContacts[i];
+//     const label = document.createElement("label");
+//     const checkbox = document.createElement("input");
+//     checkbox.type = "checkbox";
+//     checkbox.id = `editContact_${i}`;
+//     checkbox.value = contact.name;
+//     label.appendChild(checkbox);
+//     label.appendChild(document.createTextNode(contact.name));
+//     dropdownContent.appendChild(label);
+//   }
+// }
 
 function editToggleDropdown() {
   const dropdown = document.getElementById("editContactDropdown");

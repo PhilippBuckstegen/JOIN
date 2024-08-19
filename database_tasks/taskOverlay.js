@@ -225,12 +225,14 @@ function writeClickToVariable(i, j) {
 }
 
 async function closeAndStore() {
+  // forceToCloseDropdown();
   addClassToElement("taskOverlaySection", "none");
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
   // addClassToElement('taskOverlaySection', 'none');
 }
+
 
 function generateEditView(i) {
   removeClassFromElement("taskOverlaySection", "none");
@@ -239,9 +241,13 @@ function generateEditView(i) {
      <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
               <div id="headerXbtnContainerCur" class="flexContainer">
                 
-                <div id="xBtnContainer">
+                <!-- <div id="xBtnContainer">
                   <img id="xBtn" src="../database/images/close.svg" alt="icon"
                   onclick="addClassToElement('taskOverlaySection', 'none')"/>
+                </div> -->
+                <div id="xBtnContainer">
+                  <img id="xBtn" src="../database/images/close.svg" alt="icon"
+                  onclick="cancelEditArea()"/>
                 </div>
               </div>
               <div id="taskBoardOverlayForm" class="flexContainerCol">
