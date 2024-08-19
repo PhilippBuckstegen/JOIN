@@ -477,3 +477,8 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.edit-inputs-title-mid{
+  display: flex;
+  flex-direction: column;
+}

@@ -247,7 +247,10 @@ function generateEditView(i) {
               <div id="taskBoardOverlayForm" class="flexContainerCol">
                       <div id="boardTitleContainer" class="flexContainerColStart">
                         <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
-                        <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
+                        <div class="edit-inputs-title-mid">
+                          <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
+                          <span id="boardTitleErrorMessage" class="error-message no-error-visible">This field is required</span>
+                        </div>
                       </div>
                       <div id="boardDescriptionContainer" class="flexContainerColStart">
                         <label for="boardDescription">Description</label>
@@ -257,6 +260,7 @@ function generateEditView(i) {
                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
                       <div id="boardDateInputImgContainer" class="flexContainer">
                         <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
+                        <span id="boardDateErrorMessage" class="error-message no-error-visible">This field is required</span>
                         <!--<img
                           id="calendarIcon"
                           src="../database/images/event.svg"
