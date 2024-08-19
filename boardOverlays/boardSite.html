@@ -15,12 +15,15 @@
     <script src="./tasksBoard.js"></script>
     <script src="../database/script.js"></script>
     <script src="./boardOverlays.js"></script>
+    <script src="../validation/validation.js"></script>
+
 
     <link rel="stylesheet" href="./boardSite.css" />
     <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="../sidebar/style.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <link rel="stylesheet" href="../database_tasks/taskOverlay.css" />
+    <link rel="stylesheet" href="../validation/validation.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,17 +73,10 @@
                   <div id="addTaskBoardOverlayForm1">
                     <div id="taskBoardOverlayForm" class="flexContainerCol">
                       <div id="boardTitleContainer">
-                        <label for="boardTitle"
-                          >Title<span id="asteriskTitle" class=""
-                            >*</span
-                          ></label
-                        ><br />
-                        <input
-                          type="text"
-                          placeholder="Enter a title"
-                          id="boardTitle"
-                          name="boardTitle"
-                        />
+                        <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
+                        <!-- <br/> Heiko auskommentiert-->
+                        <input type="text" placeholder="Enter a title" id="boardTitle" name="boardTitle"/>
+                        <span id="boardTitleErrorMessage" class="error-message no-error-visible">This field is required</span>
                       </div>
                       <div id="boardDescriptionContainer">
                         <label for="boardDescription">Description</label><br />
@@ -142,13 +138,8 @@
                         id="boardDateInputImgContainer"
                         class="flexContainer"
                       >
-                        <input
-                          type="date"
-                          data-date-format="DD  MM  YYYY"
-                          id="boardDate"
-                          name="boardDate"
-                          onclick="setMinDateToToday('boardDate')"
-                        />
+                        <input type="date" data-date-format="DD  MM  YYYY" id="boardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
+                        <span id="boardDateErrorMessage" class="error-message no-error-visible">This field is required</span>
                         <!--<img
                           id="calendarIcon"
                           src="../database/images/event.svg"
@@ -216,6 +207,7 @@
                         <option value="Technical Task">Technical Task</option>
                         <option value="User Story">User Story</option>
                       </select>
+                      <span id="boardCategoryErrorMessage" class="error-message no-error-visible">This field is required</span>
                     </div>
                     <div id="boardSubtasksContainer">
                       <label for="boardSubtasks">Subtasks</label>
@@ -280,11 +272,12 @@
                   <button
                     id="createBoardOverlayBtn"
                     class="cancelCreateButtons flexContainer"
-                    onclick="addNewTaskToDatabase(0)"
+                    onclick="validateAddTask(0, 0)"
                   >
                     Create Task
                     <img src="../database/images/check.svg" alt="icon" />
                   </button>
+                  <!-- onclick="addNewTaskToDatabase(0)" -->
                 </div>
               </div>
             </div>

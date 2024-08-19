@@ -1,5 +1,5 @@
 
-// **** Validation!!! ****
+// **** Validation!!! For Contacts****
 
 function validateAddInputs(){
     resetInputDataErrors(`fullNameAdd`, `emailAdd`, `phoneAdd`);
@@ -117,4 +117,82 @@ function validateAddInputs(){
     document.getElementById(`${id3}ErrorMessage`).classList.add('no-error-visible');
   }
   
+
+  // **** Validation!!! For Tasks****
+
+  function validateAddTask(y, overlay){
+    resetInputDataErrors(`boardTitle`, `boardDate`, `boardCategory`);
+    let validTitle = validateTitle(`boardTitle`);
+    let validDate = validateDate(`boardDate`);
+    let validCategory = validateCategory(`boardCategory`);
+    if(validTitle && validDate && validCategory){
+      addNewTaskToDatabase(y, overlay);
+    }
+  }
+
+   function validateTitle(id){
+    let isValid = true;
+    let inputToCheck = document.getElementById(`${id}`);
+    let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+    isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+    return isValid;
+  }
+
+
+  function validateDate(id){
+    let isValid = true;
+    let inputToCheck = document.getElementById(`${id}`);
+    let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+    isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+    if (isValid === true){
+      isValid = checkIfDateHasValidFormat(isValid, inputToCheck, errorMessage);
+    }
+    if (isValid === true){
+      isValid = checkIfDateIsInPresent(isValid, inputToCheck, errorMessage);
+    }
+    return isValid;
+  }
+
+
+  function validateCategory(id){
+    let isValid = true;
+    let inputToCheck = document.getElementById(`${id}`);
+    let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+    isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+    return isValid;
+  }
+
+
+  function checkIfDateHasValidFormat(isValid, inputToCheck, errorMessage){
+    const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+    if (!dateRegex.test(inputToCheck.value)) {
+      inputToCheck.style.border = "1px solid red";
+      errorMessage.classList.remove('no-error-visible');
+      errorMessage.innerHTML = "This field requires DD.MM.YYYY format";
+      isValid = false;
+    }
+    return isValid;
+  }
+
+
+  function checkIfDateIsInPresent(isValid, inputToCheck, errorMessage){
+    const [year, month, day] = inputToCheck.value.split('-').map(Number);
+    const inputDateObj = new Date(year, month - 1, day);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    if (inputDateObj < currentDate) {
+      inputToCheck.style.border = "1px solid red";
+      errorMessage.classList.remove('no-error-visible');
+      errorMessage.innerHTML = "No past date allowed.";
+      isValid = false;
+    }
+    return isValid;
+  }
+
+
+
+
+
   
+
+

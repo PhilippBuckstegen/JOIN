@@ -195,8 +195,9 @@ function renderBoardOverlays(i) {
                     <div id="taskBoardOverlayForm" class="flexContainerCol">
                       <div id="boardTitleContainer">
                         <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
-                        <br />
+                        <!-- <br /> Heiko auskommentiert-->
                         <input type="text" placeholder="Enter a title" id="boardTitle" name="boardTitle"/>
+                        <span id="boardTitleErrorMessage" class="error-message no-error-visible">This field is required</span>
                       </div>
                       <div id="boardDescriptionContainer">
                         <label for="boardDescription">Description</label><br />
@@ -220,6 +221,7 @@ function renderBoardOverlays(i) {
                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
                       <div id="boardDateInputImgContainer" class="flexContainer">
                         <input type="date" data-date-format="DD  MM  YYYY" id="boardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
+                        <span id="boardDateErrorMessage" class="error-message no-error-visible">This field is required</span>
                         <!--<img
                           id="calendarIcon"
                           src="../database/images/event.svg"
@@ -257,6 +259,7 @@ function renderBoardOverlays(i) {
                         <option value="Technical Task">Technical Task</option>
                         <option value="User Story">User Story</option>
                       </select>
+                      <span id="boardCategoryErrorMessage" class="error-message no-error-visible">This field is required</span>
                     </div>
                     <div id="boardSubtasksContainer">
                       <label for="boardSubtasks">Subtasks</label>
@@ -319,7 +322,7 @@ function renderBoardOverlays(i) {
                   <button
                     id="createBoardOverlayBtn"
                     class="cancelCreateButtons flexContainer"
-                    onclick="addNewTaskToDatabase(${i})"
+                    onclick="validateAddTask(${i}, ${1})"
                   >
                     Create Task
                     <img src="../database/images/check.svg" alt="icon" />

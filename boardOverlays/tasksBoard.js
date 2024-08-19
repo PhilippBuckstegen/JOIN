@@ -30,18 +30,21 @@ async function writeTasksToDatabase() {
   // await getContactsFromDatabase();
 }
 
-async function addNewTaskToDatabase(state) {
+async function addNewTaskToDatabase(state, overlay) {
   writeNewTaskToLocalArray(state);
+  await writeTasksToDatabase();
   // toggleAddContactOverlay()
   // sortContactsByInitials(contacts);
   // addRandomColorToJSON(contacts);
-  await writeTasksToDatabase();
   cleanAddtaskArea();
-  addClassToElement("addTaskBoardOverlayContainer", "none");
-  renderTasksInBoard();
+  if (overlay === 1){
+    addClassToElement("addTaskBoardOverlayContainer", "none");
+    renderTasksInBoard();
+  }
   // await renderContacts();
   // showContactDetails(findLastAddedIndex(contacts));
 }
+
 
 function writeNewTaskToLocalArray(state) {
   let addTaskTitle = document.getElementById("boardTitle");

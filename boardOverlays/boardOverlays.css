@@ -203,6 +203,8 @@
 #boardDateInputImgContainer,
 #boardSubtasksInputImgContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 #calendarIcon,
@@ -1176,3 +1178,19 @@
   margin-right: 5px;
   color: white;
 }
+
+/* Heiko testweise zugefügt */
+
+#boardDescriptionContainer{
+  margin-top: -14px !important;
+}
+
+#boardPriorityContainer{
+  margin-top: -14px !important;
+}
+
+#boardTitleContainer{
+  display: flex;
+  flex-direction: column;
+}
+

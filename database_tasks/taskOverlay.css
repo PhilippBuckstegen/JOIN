@@ -305,6 +305,8 @@
 #boardSubtasksContainer {
   width: 100%;
   gap: 10px;
+  /* Heiko eingefügt */
+  margin-top: -14px !important;
 }
 
 #boardSubtasks {

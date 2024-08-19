@@ -211,6 +211,9 @@ body {
 #boardDateInputImgContainer,
 #boardSubtasksInputImgContainer {
   position: relative;
+  /* Heiko zugefügt */
+  display: flex;
+  flex-direction: column;
 }
 
 #calendarIcon,
@@ -1208,4 +1211,19 @@ body {
   align-items: center;
   margin-right: 5px;
   color: white;
+}
+
+
+/* Heiko zugefügt */
+#boardDescriptionContainer{
+  margin-top: -14px !important;
+}
+
+#boardPriorityContainer{
+  margin-top: -14px !important;
+}
+
+#boardTitleContainer{
+  display: flex;
+  flex-direction: column;
 }
