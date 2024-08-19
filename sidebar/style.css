@@ -4,6 +4,7 @@ body {
 .button-sidebar.selected, .police-button.selected {
   background-color: #091931;
   color: white;
+  border-radius: 10px;
 }
 
 .side-wrap {
@@ -51,6 +52,7 @@ body {
 .button-sidebar img {
   width: 30px;
   height: 30px;
+ 
 }
 
 .button-sidebar p {
@@ -82,6 +84,7 @@ body {
 .button-sidebar:hover {
   color: white;
   background-color: #29abe2;
+
 }
 
 .police-button:hover {
@@ -133,10 +136,13 @@ body {
     gap: 0;
   }
 
+ 
   .button-sidebar, .police-button {
     width: auto;
     flex-direction: column;
     gap: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .button-sidebar img, .police-button img {
