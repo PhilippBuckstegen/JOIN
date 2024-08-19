@@ -37,14 +37,13 @@ async function addNewTaskToDatabase(state, overlay) {
   // sortContactsByInitials(contacts);
   // addRandomColorToJSON(contacts);
   cleanAddtaskArea();
-  if (overlay === 1){
+  if (overlay === 1) {
     addClassToElement("addTaskBoardOverlayContainer", "none");
     renderTasksInBoard();
   }
   // await renderContacts();
   // showContactDetails(findLastAddedIndex(contacts));
 }
-
 
 function writeNewTaskToLocalArray(state) {
   let addTaskTitle = document.getElementById("boardTitle");
@@ -375,13 +374,15 @@ function editAreaRenderSubtasks(x) {
   listArea.innerHTML = "";
   for (i = 0; i < tasks[x].subtask.length; i++) {
     listArea.innerHTML += /*html*/ `
-        <li id="editSubtaskListItem${i}">
+        <li id="editSubtaskListItem${i}" class="subtaskListItems flexContainer">
             <span class="sub-task-text-list" id="editSubTaskTextListItem${i}">${tasks[x].subtask[i].task}</span>
-            <span id="editSingleSubTaskButtons${i}" class="singleSubtaskButtons">
-                <button onclick="editAreaEditSubtaskItem(${x},${i})">Edit</button>
-                <button onclick="editAreaDeleteSubtaskItem(${x},${i})">Delete</button>
-            <span>
+            <span id="editSingleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">
+                  <img id="editSubtaskIcon" class="hidden" onclick="editAreaEditSubtaskItem(${x},${i})" src="../database/images/edit.svg" alt="icon">
+                  <img id="binSubtaskIcon" class="hidden" onclick="editAreaDeleteSubtaskItem(${x},${i})" src="../database/images/delete.svg" alt="icon">
+              <span>
         </li>
+
+
     `;
   }
 }

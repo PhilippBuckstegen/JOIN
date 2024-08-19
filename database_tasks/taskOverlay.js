@@ -555,9 +555,10 @@ function editRenderSubtasks(x) {
       listArea.innerHTML += /*html*/ `
         <li id="subtaskListItem${i}">
             <span class="sub-task-text-list" id="subTaskTextListItem${i}">${tasks[x].subtask[i].task}</span>
-            <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons">
-                <button onclick="editSubtaskItem(${i})">Edit</button>
-                <button onclick="deleteSubtaskItem(${i})">Delete</button>
+            <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">
+                  <img id="editSubtaskIcon" class="hidden" onclick="editSubtaskItem(${i})" src="../database/images/edit.svg" alt="icon">
+                  <img id="binSubtaskIcon" class="hidden" onclick="deleteSubtaskItem(${i})" src="../database/images/delete.svg" alt="icon">
+              <span>
             <span>
         </li>
     `;
