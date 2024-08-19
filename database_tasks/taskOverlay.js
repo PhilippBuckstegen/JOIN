@@ -404,7 +404,8 @@ function storeEditedData(i) {
 }
 
 async function closeWindowWriteEditedDataToDatabase() {
-  addClassToElement("taskOverlaySection", "none");
+  // addClassToElement("taskOverlaySection", "none");
+  cancelEditArea();
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
