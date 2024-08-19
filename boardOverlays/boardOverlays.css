@@ -22,7 +22,7 @@
   font-style: normal;
 }
 
-textarea{
+textarea {
   font-family: inter;
 }
 .regularRaleway {
@@ -1108,15 +1108,20 @@ textarea{
   content: " ▲";
 }
 
+#contactDropdown {
+  position: relative;
+}
+
 .dropdown-content {
   display: none;
   width: 100%;
   position: absolute;
+  top: 64px;
   background-color: #f9f9f9;
   min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  max-height: 250px;
+  max-height: 200px !important;
   overflow-y: auto;
 }
 
@@ -1187,16 +1192,15 @@ textarea{
 
 /* Heiko testweise zugefügt */
 
-#boardDescriptionContainer{
+#boardDescriptionContainer {
   margin-top: -14px !important;
 }
 
-#boardPriorityContainer{
+#boardPriorityContainer {
   margin-top: -14px !important;
 }
 
-#boardTitleContainer{
+#boardTitleContainer {
   display: flex;
   flex-direction: column;
 }
-

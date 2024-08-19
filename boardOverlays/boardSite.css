@@ -145,7 +145,7 @@ body {
   border-radius: 8px;
 }
 
-textarea{
+textarea {
   font-family: inter;
 }
 
@@ -1220,17 +1220,16 @@ textarea{
   color: white;
 }
 
-
 /* Heiko zugefügt */
-#boardDescriptionContainer{
+#boardDescriptionContainer {
   margin-top: -14px !important;
 }
 
-#boardPriorityContainer{
+#boardPriorityContainer {
   margin-top: -14px !important;
 }
 
-#boardTitleContainer{
+#boardTitleContainer {
   display: flex;
   flex-direction: column;
 }

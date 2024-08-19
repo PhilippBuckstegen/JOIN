@@ -64,11 +64,38 @@
   z-index: 999;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.6);
 }
+
 .userTaskOverlayParts {
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
+  overflow-y: scroll;
 }
+
+.userTaskOverlayParts::-webkit-scrollbar {
+  width: 8px;
+}
+
+.userTaskOverlayParts::-webkit-scrollbar-button {
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.userTaskOverlayParts::-webkit-scrollbar-button:end:increment {
+  background-image: url(../database/images/arrow_bottom.svg);
+}
+
+.userTaskOverlayParts::-webkit-scrollbar-button:start:decrement {
+  background-image: url(../database/images/arrow_top.svg);
+}
+
+.userTaskOverlayParts::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: #a8a8a8;
+  border-radius: 18px;
+}
+
 .taskTypeContainers {
   width: 100%;
   justify-content: space-between !important;
@@ -214,7 +241,8 @@
 #editSubtaskIcon,
 #binSubtaskIcon,
 #binSubtaskDeleteIcon,
-#tickSubtaskCheckIcon {
+#tickSubtaskCheckIcon,
+#checkIcon {
   cursor: pointer !important;
 }
 
@@ -481,7 +509,7 @@
   justify-content: flex-end;
 }
 
-.edit-inputs-title-mid{
+.edit-inputs-title-mid {
   display: flex;
   flex-direction: column;
 }

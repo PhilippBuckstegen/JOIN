@@ -6,8 +6,8 @@ function generateTask(i) {
   currentTaskOverlay = /*HTML*/ `
 
         <div id="currentUserTaskOverlay" class="currentUserTaskOverlays flexContainerColStart">
-          <div id="userTaskOverlayPart" class="userTaskOverlayParts">
-          <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
+
+        <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
             <div id="taskType${i}" class="taskTypes">${
     tasks[i].taskCategory
   }</div>
@@ -19,6 +19,8 @@ function generateTask(i) {
               />
             </div>
           </div>
+          <div id="userTaskOverlayPart" class="userTaskOverlayParts">
+        
           <div id="titleContainer" class="titleContainers">
             <p id="contactTitle" class="contactTitles">${tasks[i].title}</p>
           </div>
@@ -78,12 +80,12 @@ function generateTask(i) {
   setSubtasks(i);
 }
 
-
-function addBackgroundColorToCategoryDetail(i){
+function addBackgroundColorToCategoryDetail(i) {
   let categoryContainer = document.getElementById(`taskType${i}`);
-  tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
+  tasks[i].taskCategory == "Technical Task"
+    ? (categoryContainer.style.backgroundColor = "#1fd7c1")
+    : (categoryContainer.style.backgroundColor = "#0038ff");
 }
-
 
 function setPriority(priority) {
   if (priority === 0) {
@@ -232,7 +234,6 @@ async function closeAndStore() {
   renderTasksInBoard();
   // addClassToElement('taskOverlaySection', 'none');
 }
-
 
 function generateEditView(i) {
   removeClassFromElement("taskOverlaySection", "none");
