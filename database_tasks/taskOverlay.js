@@ -290,7 +290,7 @@ function generateEditView(i) {
                     <div id="boardAssignedContainer" class="flexContainerCol">
                         <!-- new dropdown start -->
 
-                        <div id="contactDropdownCur" class="dropdown flexContainerColStart" >
+                        <div id="contactDropdown" class="contactDropdownCur dropdown flexContainerColStart" >
                           <label for="boardAssigned">Assigned to</label>
                           <button id="dropdownBtn"
                             class="dropdown-button"

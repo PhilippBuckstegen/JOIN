@@ -271,7 +271,7 @@
   justify-content: space-between;
 }
 
-#contactDropdownCur {
+.contactDropdownCur {
   width: 360px;
   align-items: flex-start;
 }
