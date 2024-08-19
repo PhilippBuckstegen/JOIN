@@ -73,17 +73,17 @@ function generateTask(i) {
   if (taskOverlaySection) {
     taskOverlaySection.innerHTML = currentTaskOverlay;
     renderAssignedNames(i);
-    //addBackgroundColorToCategory(i);
+    addBackgroundColorToCategoryDetail(i);
   }
   setSubtasks(i);
 }
 
-/*
-function addBackgroundColorToCategory(i){
+
+function addBackgroundColorToCategoryDetail(i){
   let categoryContainer = document.getElementById(`taskType${i}`);
   tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
 }
-*/
+
 
 function setPriority(priority) {
   if (priority === 0) {
