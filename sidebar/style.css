@@ -141,8 +141,6 @@ body {
     width: auto;
     flex-direction: column;
     gap: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
   }
 
   .button-sidebar img, .police-button img {
@@ -150,7 +148,7 @@ body {
   }
 
   .button-sidebar p, .police-button p {
-    width: auto;
+    width: 65px;
     text-align: center;
   }
 
@@ -164,5 +162,13 @@ body {
 
   .sizeP {
     font-size: 12px;
+  }
+
+  .button-sidebar.selected, .police-button.selected{
+    height: 80px;
+  }
+  .button-sidebar:hover{
+    height: 80px;
+    border-radius: 10px;
   }
 }
