@@ -368,7 +368,7 @@ textarea {
 }
 
 .subtaskListItemsContainers::before {
-  content: "•";
+  content: "•" !important;
 }
 
 .subtaskListItems:hover {
