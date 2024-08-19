@@ -116,6 +116,13 @@ function validateAddInputs(){
     document.getElementById(`${id2}ErrorMessage`).classList.add('no-error-visible');
     document.getElementById(`${id3}ErrorMessage`).classList.add('no-error-visible');
   }
+
+  function resetEditInputDataErrors(id1, id2){
+    document.getElementById(`${id1}`).style.border = "1px solid #d1d1d1";
+    document.getElementById(`${id2}`).style.border = "1px solid #d1d1d1";
+    document.getElementById(`${id1}ErrorMessage`).classList.add('no-error-visible');
+    document.getElementById(`${id2}ErrorMessage`).classList.add('no-error-visible');
+  }
   
 
   // **** Validation!!! For Tasks****
@@ -127,6 +134,16 @@ function validateAddInputs(){
     let validCategory = validateCategory(`boardCategory`);
     if(validTitle && validDate && validCategory){
       addNewTaskToDatabase(y, overlay);
+    }
+  }
+
+
+  function validateEditTask(y){
+    resetEditInputDataErrors(`editBoardTitle`, `editBoardDate`);
+    let validEditTitle = validateTitle(`editBoardTitle`);
+    let validEditDate = validateDate(`editBoardDate`);
+    if(validEditTitle && validEditDate){
+      storeEditedData(y);
     }
   }
 

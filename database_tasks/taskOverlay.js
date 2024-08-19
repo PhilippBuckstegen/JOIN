@@ -241,11 +241,6 @@ function generateEditView(i) {
   document.getElementById("currentUserTaskOverlay").innerHTML = /*HTML*/ `
      <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
               <div id="headerXbtnContainerCur" class="flexContainer">
-                
-                <!-- <div id="xBtnContainer">
-                  <img id="xBtn" src="../database/images/close.svg" alt="icon"
-                  onclick="addClassToElement('taskOverlaySection', 'none')"/>
-                </div> -->
                 <div id="xBtnContainer">
                   <img id="xBtn" src="../database/images/close.svg" alt="icon"
                   onclick="cancelEditArea()"/>
@@ -256,7 +251,7 @@ function generateEditView(i) {
                         <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
                         <div class="edit-inputs-title-mid">
                           <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
-                          <span id="boardTitleErrorMessage" class="error-message no-error-visible">This field is required</span>
+                          <span id="editBoardTitleErrorMessage" class="error-message no-error-visible">This field is required</span>
                         </div>
                       </div>
                       <div id="boardDescriptionContainer" class="flexContainerColStart">
@@ -267,7 +262,7 @@ function generateEditView(i) {
                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
                       <div id="boardDateInputImgContainer" class="flexContainer">
                         <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
-                        <span id="boardDateErrorMessage" class="error-message no-error-visible">This field is required</span>
+                        <span id="editBoardDateErrorMessage" class="error-message no-error-visible">This field is required</span>
                         <!--<img
                           id="calendarIcon"
                           src="../database/images/event.svg"
@@ -317,15 +312,6 @@ function generateEditView(i) {
                           id="selectedContacts"
                         ></div>
                       </div>
-
-
-
-
-
-
-                
-
-
                     <div id="boardSubtasksContainerCur" class="flexContainerColStart">
                       <label for="boardSubtasks">Subtasks</label>
                       <div
@@ -372,7 +358,7 @@ function generateEditView(i) {
 
                     <!-- Start - Heiko eingefügt zum testen -->
                     <div id="okBtnCurContainer" class="store-edited-data-button flexContainer">
-                      <button id="okBtnCur" onclick="storeEditedData(${i})">OK</button>
+                      <button id="okBtnCur" onclick="validateEditTask(${i})">OK</button>
                     </div>
                     <!-- Ende - Heiko eingefügt zum testen -->
 `;
