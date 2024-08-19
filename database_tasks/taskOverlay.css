@@ -2,6 +2,10 @@
   display: none;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .flexContainer {
   display: flex;
   flex-direction: row;
@@ -205,6 +209,19 @@
 
 /* generateEditView Design Start */
 
+#closeIcon,
+#plusIcon,
+#editSubtaskIcon,
+#binSubtaskIcon,
+#binSubtaskDeleteIcon,
+#tickSubtaskCheckIcon {
+  cursor: pointer !important;
+}
+
+.subtaskListCur .subtaskListItems {
+  width: 350px !important;
+}
+
 #XbtnContainerEdit {
   width: 100%;
   justify-content: flex-end;
@@ -222,8 +239,9 @@
   justify-content: center;
 }
 
-#headerXbtnContainer {
-  width: 100%;
+#headerXbtnContainerCur {
+  width: 100% !important;
+  justify-content: flex-end;
 }
 
 #xBtnEdit,
@@ -231,6 +249,40 @@
 #editMediumBtn,
 #editLowBtn {
   cursor: pointer;
+}
+
+#boardTitleContainer,
+#boardDescriptionContainer,
+#boardDateContainer,
+#boardPriorityContainerCur,
+#boardAssignedContainer,
+#contactDropdown,
+#boardSubtasksContainerCur {
+  gap: 10px !important;
+  align-items: flex-start;
+}
+
+#boardPriorityContainerCur {
+  width: 360px;
+}
+
+#priorityBtnsContainer {
+  width: 100%;
+  justify-content: space-between;
+}
+
+#contactDropdownCur {
+  width: 360px;
+  align-items: flex-start;
+}
+
+#selectedContacts {
+  width: 360px;
+  gap: 2px;
+}
+
+#dropdownBtn {
+  padding: 7px 10px;
 }
 
 #editBoardTitle {
@@ -302,8 +354,8 @@
   outline: 1px solid #29abe2;
 }
 
-#boardSubtasksContainer {
-  width: 100%;
+#boardSubtasksContainerCur {
+  width: 360px;
   gap: 10px;
   /* Heiko eingefügt */
   margin-top: -14px !important;
@@ -328,12 +380,12 @@
   width: 340px;
 }
 
-#okBtnContainer {
+#okBtnCurContainer {
   justify-content: flex-end;
   width: 400px;
 }
 
-#okBtn {
+#okBtnCur {
   font-size: 16px;
   cursor: pointer;
   gap: 6px;
@@ -344,12 +396,12 @@
   padding: 10px 14px;
 }
 
-#okBtn:hover {
+#okBtnCur:hover {
   background-color: #29abe2;
   border: 1px solid #29abe2;
 }
 
-#okImg {
+#okImgCur {
   width: 14px;
   height: 14px;
 }

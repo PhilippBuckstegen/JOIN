@@ -237,26 +237,23 @@ function generateEditView(i) {
   // document.getElementById("taskOverlaySection").innerHTML =  "";
   document.getElementById("currentUserTaskOverlay").innerHTML = /*HTML*/ `
      <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
-              <div id="headerXbtnContainer" class="flexContainer">
-                <div id="taskBoardOverlayHeader">
-                  <h1 id="taskBoardHeader">Edit Task</h1>
-                </div>
+              <div id="headerXbtnContainerCur" class="flexContainer">
+                
                 <div id="xBtnContainer">
                   <img id="xBtn" src="../database/images/close.svg" alt="icon"
                   onclick="addClassToElement('taskOverlaySection', 'none')"/>
                 </div>
               </div>
               <div id="taskBoardOverlayForm" class="flexContainerCol">
-                      <div id="boardTitleContainer">
+                      <div id="boardTitleContainer" class="flexContainerColStart">
                         <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
-                        <br />
                         <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
                       </div>
-                      <div id="boardDescriptionContainer">
-                        <label for="boardDescription">Description</label><br />
+                      <div id="boardDescriptionContainer" class="flexContainerColStart">
+                        <label for="boardDescription">Description</label>
                         <textarea placeholder="Enter a Description" rows="4" cols="50" id="editBoardDescription" name="boardDescription"></textarea>
                       </div>
-                      <div id="boardDateContainer">
+                      <div id="boardDateContainer" class="flexContainerColStart">
                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
                       <div id="boardDateInputImgContainer" class="flexContainer">
                         <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
@@ -267,7 +264,7 @@ function generateEditView(i) {
                         />-->
                       </div>
                     </div>
-                    <div id="boardPriorityContainer" class="flexContainerCol">
+                    <div id="boardPriorityContainerCur" class="flexContainerCol">
                       <div id="priorityHeaderContainer" class="flexContainer">
                         <p>Prio</p>
                       </div>
@@ -286,30 +283,85 @@ function generateEditView(i) {
                         </button>
                       </div>
                     </div>
-                      <div id="boardAssignedContainer">
-                         <!-- new dropdown start -->
-                         <div class="dropdown" id="contactDropdown">
-                          <button class="dropdown-button" onclick="toggleDropdown()">Assigned to</button>
-                          <div class="dropdown-content"></div>
+
+
+                
+
+                    <div id="boardAssignedContainer" class="flexContainerCol">
+                        <!-- new dropdown start -->
+
+                        <div id="contactDropdownCur" class="dropdown flexContainerColStart" >
+                          <label for="boardAssigned">Assigned to</label>
+                          <button id="dropdownBtn"
+                            class="dropdown-button"
+                            onclick="toggleDropdown()"
+                          ></button>
+                          <div
+                            class="dropdown-content"
+                            id="dropdownListContent"
+                          ></div>
+                        </div>
+                        <div
+                          class="selected-contacts flexContainerStart"
+                          id="selectedContacts"
+                        ></div>
                       </div>
-                      <div class="selected-contacts" id="selectedContacts"></div>
-                      </div>
-                    </div>
-                    <div id="boardSubtasksContainer" class="flexContainerCol">
+
+
+
+
+
+
+                
+
+
+                    <div id="boardSubtasksContainerCur" class="flexContainerColStart">
                       <label for="boardSubtasks">Subtasks</label>
-                      <div id="boardSubtasksInputImgContainer" class="flexContainer">
-                        <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
-                        <img id="plusIcon" src="../database/images/plus.svg" alt="icon" onclick="createSubtask()"/>
+                      <div
+                        id="boardSubtasksInputImgContainer"
+                        class="flexContainer"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Add new subtask"
+                          id="boardSubtasks"
+                          name="boardSubtasks"
+                        />
+                        <img
+                          id="plusIcon"
+                          src="../database/images/plus.svg"
+                          alt="icon"
+                          onclick="decideSubtask()"
+                        />
+                        <img
+                          id="closeIcon"
+                          class="none"
+                          src="../database/images/close.svg"
+                          alt="icon"
+                          onclick="cancelSubtask()"
+                        />
+                        <img
+                          class="none"
+                          id="checkIcon"
+                          src="../database/images/check_blue.svg"
+                          alt="icon"
+                          onclick="createSubtask()"
+                        />
                       </div>
                       <div>
-                        <ul id="subtaskList">
-                            <!-- Subtask Liste wird hier gerendert -->
+                        <ul id="subtaskList" class="subtaskListCur">
+                          <!-- Subtask Liste wird hier gerendert -->
                         </ul>
                       </div>
                     </div>
+
+
+
+
+
                     <!-- Start - Heiko eingefügt zum testen -->
-                    <div class="store-edited-data-button">
-                      <button onclick="storeEditedData(${i})">OK</button>
+                    <div id="okBtnCurContainer" class="store-edited-data-button flexContainer">
+                      <button id="okBtnCur" onclick="storeEditedData(${i})">OK</button>
                     </div>
                     <!-- Ende - Heiko eingefügt zum testen -->
 `;
