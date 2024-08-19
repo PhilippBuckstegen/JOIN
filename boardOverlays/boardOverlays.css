@@ -137,12 +137,25 @@
   border-radius: 8px;
 }
 
-#addTaskBoardOverlayContainer select {
+#addTaskBoardOverlayContainer select,
+#addTaskBoardOverlayContainer .dropdown-button {
   background-color: #fff;
   width: 310px;
   padding: 8px 4px;
   border: 1px solid #d1d1d1;
   border-radius: 8px;
+}
+
+#selectedContacts {
+  width: 300px;
+}
+
+#boardSubtasksContainer {
+  width: 300px !important;
+}
+
+.subtaskListItems {
+  width: 280px !important;
 }
 
 #addTaskBoardOverlayContainer input::placeholder,
@@ -156,7 +169,7 @@
 }
 
 #headerXbtnContainer {
-  width: 70%;
+  width: 74% !important;
   justify-content: space-between;
 }
 
@@ -190,16 +203,21 @@
 #boardDateInputImgContainer,
 #boardSubtasksInputImgContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 #calendarIcon,
-#plusIcon {
+#plusIcon,
+#closeIcon,
+#checkIcon {
   position: absolute;
 }
 
 #addTaskBoardOverlayContainer input,
 #addTaskBoardOverlayContainer textarea,
 #addTaskBoardOverlayContainer select,
+#addTaskBoardOverlayContainer .dropdown-button,
 #addTaskBoardOverlayContainer button,
 #calendarIcon,
 #plusIcon {
@@ -212,6 +230,8 @@
 #addTaskBoardOverlayContainer textarea:active,
 #addTaskBoardOverlayContainer select:focus,
 #addTaskBoardOverlayContainer select:active,
+#addTaskBoardOverlayContainer .dropdown-button:focus,
+#addTaskBoardOverlayContainer .dropdown-button:active,
 #addTaskBoardOverlayContainer button:focus,
 #addTaskBoardOverlayContainer button:active {
   outline: 1px solid #29abe2;
@@ -302,6 +322,91 @@
   height: 12px;
 }
 
+.prio {
+  font-size: 16px;
+}
+
+#subtaskList {
+  margin-top: 6px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.subtaskList {
+  list-style-type: none !important;
+}
+.subtaskListItems {
+  cursor: default !important;
+  justify-content: space-between !important;
+  border: none !important;
+  outline: none;
+  padding: 2px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  list-style-type: none !important;
+}
+
+.editCurrentSubtask {
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  border-bottom: 1px solid #29abe2 !important;
+}
+
+.editCurrentSubtask:hover {
+  background-color: #fff !important;
+}
+
+.subtaskListItemsContainers {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.subtaskListItemsContainers::before {
+  content: "•";
+}
+
+.subtaskListItems:hover {
+  cursor: pointer;
+  background-color: #ececec;
+}
+
+.subtaskListItems:hover .hidden {
+  visibility: visible;
+}
+
+.singleSubtaskButtons {
+  gap: 4px;
+}
+
+#editSubtaskIcon {
+  border-right: 1px solid #d1d1d1;
+  padding-right: 4px;
+}
+
+#editSubtaskIcon,
+#binSubtaskIcon {
+  width: 20px;
+  height: 20px;
+}
+
+#binSubtaskDeleteIcon {
+  width: 18px;
+  height: 18px;
+}
+
+#tickSubtaskCheckIcon {
+  width: 14px;
+  height: 14px;
+  border-left: 1px solid #d1d1d1 !important;
+  padding-left: 4px;
+}
+
+.sub-task-text-list {
+  cursor: text !important;
+  border: none !important;
+  outline: none !important;
+}
+
 @media (min-width: 1201px) {
   #addTaskBoardOverlayContainer {
     width: 80vw;
@@ -343,13 +448,6 @@
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -362,6 +460,30 @@
   .boardBtnIcons {
     width: 16px;
     height: 16px;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #closeIcon {
+    right: 12%;
+    top: 20%;
+    width: 22px;
+    height: 22px;
+    padding-right: 4px;
+  }
+
+  #checkIcon {
+    right: 5%;
+    top: 24%;
+    width: 16px;
+    height: 16px;
+    border-left: 1px solid #d1d1d1 !important;
+    padding-left: 6px;
   }
 }
 
@@ -406,13 +528,6 @@
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -425,6 +540,30 @@
   .boardBtnIcons {
     width: 16px;
     height: 16px;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #closeIcon {
+    right: 12%;
+    top: 14%;
+  }
+
+  #checkIcon {
+    right: 4%;
+    top: 24%;
+    width: 18px;
+    border-left: 1px solid #d1d1d1 !important;
+    padding-left: 4px;
+  }
+
+  .subtaskListItems {
+    width: 280px !important;
   }
 }
 
@@ -457,7 +596,20 @@
     border-radius: 8px;
   }
 
-  #addTaskBoardOverlayContainer select {
+  #selectedContacts {
+    width: 220px;
+  }
+
+  #boardSubtasksContainer {
+    width: 220px !important;
+  }
+
+  .subtaskListItems {
+    width: 220px !important;
+  }
+
+  #addTaskBoardOverlayContainer select,
+  #addTaskBoardOverlayContainer .dropdown-button {
     width: 230px;
     padding: 8px 4px;
     border: 1px solid #d1d1d1;
@@ -530,13 +682,6 @@
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -549,6 +694,34 @@
   .boardBtnIcons {
     width: 16px;
     height: 16px;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #closeIcon {
+    right: 14%;
+    top: 20%;
+    width: 20px;
+    height: 20px;
+    padding-right: 2px;
+  }
+
+  #checkIcon {
+    right: 5%;
+    top: 24%;
+    width: 16px;
+    height: 16px;
+    border-left: 1px solid #d1d1d1 !important;
+    padding-left: 4px;
+  }
+
+  .subtaskListItems {
+    width: 200px !important;
   }
 }
 
@@ -587,7 +760,16 @@
     border-radius: 8px;
   }
 
-  #addTaskBoardOverlayContainer select {
+  #selectedContacts {
+    width: 300px;
+  }
+
+  #boardSubtasksContainer {
+    width: 300px !important;
+  }
+
+  #addTaskBoardOverlayContainer select,
+  #addTaskBoardOverlayContainer .dropdown-button {
     width: 310px;
     padding: 8px 4px;
     border: 1px solid #d1d1d1;
@@ -675,13 +857,6 @@
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -694,6 +869,33 @@
   .boardBtnIcons {
     width: 16px;
     height: 16px;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #closeIcon {
+    right: 12%;
+    top: 20%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #checkIcon {
+    right: 5%;
+    top: 24%;
+    width: 16px;
+    height: 16px;
+    border-left: 1px solid #d1d1d1 !important;
+    padding-left: 4px;
+  }
+
+  .subtaskListItems {
+    width: 280px !important;
   }
 }
 
@@ -732,7 +934,20 @@
     border-radius: 8px;
   }
 
-  #addTaskBoardOverlayContainer select {
+  #selectedContacts {
+    width: 280px;
+  }
+
+  #boardSubtasksContainer {
+    width: 284px !important;
+  }
+
+  .subtaskListItems {
+    width: 260px !important;
+  }
+
+  #addTaskBoardOverlayContainer select,
+  #addTaskBoardOverlayContainer .dropdown-button {
     width: 290px;
     padding: 8px 4px;
     border: 1px solid #d1d1d1;
@@ -820,13 +1035,6 @@
     height: 20px;
   }
 
-  #plusIcon {
-    right: 2%;
-    top: 18%;
-    width: 20px;
-    height: 20px;
-  }
-
   #priorityHeaderContainer {
     justify-content: flex-start;
     width: 100%;
@@ -839,6 +1047,33 @@
   .boardBtnIcons {
     width: 16px;
     height: 16px;
+  }
+
+  #plusIcon {
+    right: 2%;
+    top: 18%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #closeIcon {
+    right: 12%;
+    top: 20%;
+    width: 20px;
+    height: 20px;
+  }
+
+  #checkIcon {
+    right: 5%;
+    top: 24%;
+    width: 16px;
+    height: 16px;
+    border-left: 1px solid #d1d1d1 !important;
+    padding-left: 4px;
+  }
+
+  .subtaskListItems {
+    width: 260px !important;
   }
 }
 
@@ -943,3 +1178,19 @@
   margin-right: 5px;
   color: white;
 }
+
+/* Heiko testweise zugefügt */
+
+#boardDescriptionContainer{
+  margin-top: -14px !important;
+}
+
+#boardPriorityContainer{
+  margin-top: -14px !important;
+}
+
+#boardTitleContainer{
+  display: flex;
+  flex-direction: column;
+}
+

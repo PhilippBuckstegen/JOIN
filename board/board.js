@@ -183,7 +183,7 @@ function renderSingleTaskOverview(i, id) {
   let priorityImageClass = task.priority === 0 ? 'priority-image hidden' : 'priority-image';
 
   toDoArea.innerHTML += /*html*/ `
-      <div onclick="generateTask(${i})" class="task" draggable="true" ondragstart="startDragging(${i})">
+      <div onclick="generateTask(${i})" id="task${i}" class="task" draggable="true" ondragstart="startDragging(${i})">
           <div class="category-headline">
             <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
          <div id="slideInMenu${i}" class="slide-in-menu d-none"></div>
@@ -198,7 +198,6 @@ function renderSingleTaskOverview(i, id) {
           </div>
       </div>
   `;
-
   addBackgroundColorToCategory(i); // Farbe für Kategorie setzen
 
   // Überprüfen, ob "subtask" definiert ist, bevor darauf zugegriffen wird
@@ -216,24 +215,60 @@ function renderSingleTaskOverview(i, id) {
   } else {
       document.getElementById(`progressContainer${i}`).remove();
   }
+ renderAssignedNamesOverview(i)
+//   if(tasks[i].assignedTo){
+//     let limit = 4;
+//   // Kontakte rendern
+//   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+//       let assignedContacts = document.getElementById(`assignedContacts${i}`);
+//       const contact = tasks[i].assignedTo[j];
+//       assignedContacts.innerHTML += /*html*/ `
+//           <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+//       `;
 
+//     document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
+//   }
+// }
+}
+
+
+// Heiko neu eingefügt
+function renderAssignedNamesOverview(i){
+  let limit = 3;
   if(tasks[i].assignedTo){
-  // Kontakte rendern
+    if(tasks[i].assignedTo.length <= limit){
   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
       let assignedContacts = document.getElementById(`assignedContacts${i}`);
       const contact = tasks[i].assignedTo[j];
-
       assignedContacts.innerHTML += /*html*/ `
           <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
       `;
-
-    document.getElementById(
-      `assignedContactIcon${i}_${j}`
-    ).style.backgroundColor = contact.backgroundColor;
+    document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
+      }
+    } else {
+    for(let j = 0; j < limit; j++){
+      // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+        let assignedContacts = document.getElementById(`assignedContacts${i}`);
+        const contact = tasks[i].assignedTo[j];
+        assignedContacts.innerHTML += /*html*/ `
+            <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+        `;
+        document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
+      // } 
+    }
+    renderAssignedNamesGreaterThanLimitOverview(i, limit);
   }
 }
 }
 
+
+function renderAssignedNamesGreaterThanLimitOverview(i, limit){
+  let assignedContacts = document.getElementById(`assignedContacts${i}`);
+        assignedContacts.innerHTML += /*html*/ `
+            <div id="assignedContactIcon${i}_${limit}" class="contact-icon assigned-contact-icon">+${calculateRestOfAssigendToGreaterThanLimit(i, limit)}</div>
+        `;
+    document.getElementById(`assignedContactIcon${i}_${limit}`).style.backgroundColor = "#301934"; 
+}
 
 
 
@@ -349,9 +384,76 @@ function addBackgroundColorToCategory(i){
   tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
 }
 
-// Move Task in Category by Click
-async function moveTaskToCategory(taskIndex, newCategory) {
-  let newStatus = getCategoryStatus(newCategory);  
+/**
+ * This function opens the task menu and positions it at the top right of the task element.
+ * @param {MouseEvent} event - The event object from the click event.
+ * @param {number} index - The index of the task in the tasks array.
+ */
+function openTaskMenu(event, index) {
+  event.stopPropagation();
+  event.preventDefault();
+  closeDropdownMenus();
+
+  let slideInMenu = document.getElementById(`slideInMenu${index}`);
+  if (!slideInMenu) {
+    console.error(`Slide-in menu for task ${index} not found`);
+    return;
+  }
+  slideInMenu.classList.remove('d-none');
+  slideInMenu.classList.add('slide-in-menu-active');
+
+  let currentStatus = tasks[index].status;
+  let filteredStatuses = [0, 1, 2, 3].filter(status => status !== currentStatus);
+  slideInMenu.innerHTML = '<div class="move-task">Move Task to</div>';
+  filteredStatuses.forEach(status => {
+    let categoryName = getCategoryName(status);
+    slideInMenu.innerHTML += `<div class="move-task-to" onclick="moveTaskToCategory(${index}, ${status}); closeDropdownMenus();">${categoryName}</div>`;
+  });
+  document.querySelectorAll('.task').forEach(task => {
+    if (task.id !== `task${index}`) {
+      task.style.pointerEvents = 'none';
+    }
+  });
+
+  let closeMenuHandler = event => {
+    if (!slideInMenu.contains(event.target)) {
+      closeDropdownMenus();
+      document.removeEventListener('click', closeMenuHandler);
+    }
+  };
+  document.addEventListener('click', closeMenuHandler);
+  slideInMenu.addEventListener('click', event => event.stopPropagation());
+}
+
+/**
+ * This function closes all open dropdown menus by adding the d-none class.
+ */
+function closeDropdownMenus() {
+  document.querySelectorAll('.slide-in-menu').forEach(menu => {
+    menu.classList.add('d-none');
+    menu.classList.remove('slide-in-menu-active');
+  });
+  document.querySelectorAll('.task').forEach(task => {
+    task.style.pointerEvents = 'auto';
+  });
+}
+
+/**
+ * This function returns the category name based on the status number.
+ * @param {number} status - The status number (0-3).
+ * @returns {string} - The category name.
+ */
+function getCategoryName(status) {
+  let categories = ['To do', 'In progress', 'Await feedback', 'Done'];
+  return categories[status] || '';
+}
+
+/**
+ * This function moves a task to a new category based on the status number.
+ * @param {number} taskIndex - The index of the task in the tasks array.
+ * @param {number} newStatus - The new status number (0-3).
+ */
+async function moveTaskToCategory(taskIndex, newStatus) {
   tasks[taskIndex].status = newStatus;
   let movedTask = tasks.splice(taskIndex, 1)[0];
   tasks.unshift(movedTask);
@@ -359,29 +461,6 @@ async function moveTaskToCategory(taskIndex, newCategory) {
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
-}
-
-function getCategoryStatus(category) {
-  switch (category) {
-    case 'ToDo': return 0;
-    case 'In Progress': return 1;
-    case 'Feedback': return 2;
-    case 'Done': return 3;
-    default: return -1;
-  }
-}
-
-function openTaskMenu(event, index){
-  event.stopPropagation();
-  removeClassFromElement(`slideInMenu${index}`, 'd-none')
-  let slideInMenu = document.getElementById(`slideInMenu${index}`);
-  slideInMenu.innerHTML = /*html*/`
-    <div>Move Task to</div>
-    <div onclick="moveTaskToCategory(${index}, 'ToDo') addClassToElement('slideInMenu', 'd-none')">ToDo</div>
-    <div onclick="moveTaskToCategory(${index}, 'In Progress') addClassToElement('slideInMenu', 'd-none')">In Progress</div>
-    <div onclick="moveTaskToCategory(${index}, 'Feedback') addClassToElement('slideInMenu', 'd-none')">Feedback</div>
-    <div onclick="moveTaskToCategory(${index}, 'Done') addClassToElement('slideInMenu', 'd-none')">Done</div>
-  `;
 }
 
 function addClassToElement(elementId, className) {

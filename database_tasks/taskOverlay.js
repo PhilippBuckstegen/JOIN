@@ -1,13 +1,16 @@
 "use strict";
 
 function generateTask(i) {
-  removeClassFromElement('taskOverlaySection', 'none')
+  removeClassFromElement("taskOverlaySection", "none");
   let currentTaskOverlay = "";
   currentTaskOverlay = /*HTML*/ `
 
-        <div id="currentUserTaskOverlay" class="currentUserTaskOverlays">
+        <div id="currentUserTaskOverlay" class="currentUserTaskOverlays flexContainerColStart">
+          <div id="userTaskOverlayPart" class="userTaskOverlayParts">
           <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
-            <div id="taskType" class="taskTypes">${tasks[i].taskCategory}</div>
+            <div id="taskType${i}" class="taskTypes">${
+    tasks[i].taskCategory
+  }</div>
             <div>
               <img onclick="closeAndStore()"
                 id="contactCloseBtn"
@@ -45,6 +48,7 @@ function generateTask(i) {
             <!-- Subtasks werden hierein gerendert -->
             </div>
           </div>
+          </div>
           <div id="deleteEditBtnsContainer" class="deleteEditBtnsContainers flexContainerStart">
             <button id="deleteBtnContacts" class="flexContainer" onclick="deleteSingleTask(${i})">
               <img
@@ -69,9 +73,17 @@ function generateTask(i) {
   if (taskOverlaySection) {
     taskOverlaySection.innerHTML = currentTaskOverlay;
     renderAssignedNames(i);
+    //addBackgroundColorToCategory(i);
   }
   setSubtasks(i);
 }
+
+/*
+function addBackgroundColorToCategory(i){
+  let categoryContainer = document.getElementById(`taskType${i}`);
+  tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
+}
+*/
 
 function setPriority(priority) {
   if (priority === 0) {
@@ -105,84 +117,123 @@ function setPriority(priority) {
 
 function setSubtasks(i) {
   if (tasks[i].subtask) {
-    document.getElementById('subtasksContainer').innerHTML = /*html*/`
+    document.getElementById("subtasksContainer").innerHTML = /*html*/ `
     <div class="flexContainerStart"><p id="subtasksPar" class="subtasksPars">Subtasks</p></div>
     <div id="subtasksContactsContainer" class="subtasksContactsContainers flexContainerColStart"></div>
     `;
     for (let j = 0; j < tasks[i].subtask.length; j++) {
-      document.getElementById('subtasksContactsContainer').innerHTML += /* HTML */ `
-          <div id="subContainer" class="subContainers flexContainer">
-            <input
-              type="checkbox"
-              id="checkboxSubtask${j}"
-              class="subtaskboxes"
-              name="checkbox${j}"
-              value="subtask${j}"
-              onclick="writeClickToVariable(${i}, ${j})"
-            />
-            <div class="subtaskboxesLabels">
-              ${tasks[i].subtask[j].task}
-            </div>
-          </div>
-        `;       
-        presetCheckboxes(i,j);
+      document.getElementById(
+        "subtasksContactsContainer"
+      ).innerHTML += /* HTML */ `
+        <div id="subContainer" class="subContainers flexContainer">
+          <input
+            type="checkbox"
+            id="checkboxSubtask${j}"
+            class="subtaskboxes"
+            name="checkbox${j}"
+            value="subtask${j}"
+            onclick="writeClickToVariable(${i}, ${j})"
+          />
+          <div class="subtaskboxesLabels">${tasks[i].subtask[j].task}</div>
+        </div>
+      `;
+      presetCheckboxes(i, j);
     }
   }
 }
 
 // Heiko Code ab hier
 
-function renderAssignedNames(i){
-  if(tasks[i].assignedTo){
-  for(let j = 0; j < tasks[i].assignedTo.length; j++){
-    document.getElementById('assignContactsContainer').innerHTML += /*html*/`
-       <div id='assignedContactsDetail${j}'>
+function renderAssignedNames(i) {
+  let limit = 4;
+  if (tasks[i].assignedTo) {
+    if (tasks[i].assignedTo.length <= limit) {
+      for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+        document.getElementById(
+          "assignContactsContainer"
+        ).innerHTML += /*html*/ `
+          <div id='assignedContactsDetail${j}'>
+            <span class="label-initials">
+              <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
+              ${tasks[i].assignedTo[j].user}
+            </span>
+        </div>
+      `;
+        document.getElementById(`initialsDropdown${j}`).style.backgroundColor =
+          tasks[i].assignedTo[j].backgroundColor;
+      }
+    } else {
+      for (let j = 0; j < limit; j++) {
+        document.getElementById(
+          "assignContactsContainer"
+        ).innerHTML += /*html*/ `
+        <div id='assignedContactsDetail${j}'>
           <span class="label-initials">
             <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
             ${tasks[i].assignedTo[j].user}
           </span>
-       </div>
+      </div>
     `;
-    document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
+        document.getElementById(`initialsDropdown${j}`).style.backgroundColor =
+          tasks[i].assignedTo[j].backgroundColor;
+      }
+      renderAssignedNamesGreaterThanLimit(i, limit);
+    }
   }
 }
+
+function renderAssignedNamesGreaterThanLimit(i, limit) {
+  document.getElementById("assignContactsContainer").innerHTML += /*html*/ `
+       <div id='assignedContactsDetail${limit}'>
+          <span class="label-initials">
+            <span class="initials-dropdown" id='initialsDropdown${limit}'>+${calculateRestOfAssigendToGreaterThanLimit(
+    i,
+    limit
+  )}</span>
+            further users
+          </span>
+       </div>
+       `;
+  document.getElementById(`initialsDropdown${limit}`).style.backgroundColor =
+    "#301934";
 }
 
+function calculateRestOfAssigendToGreaterThanLimit(i, limit) {
+  let restOfAssignedUsers = tasks[i].assignedTo.length - limit;
+  return restOfAssignedUsers;
+}
 
-function presetCheckboxes(i,j) {
+function presetCheckboxes(i, j) {
   let presetCheckboxes = document.getElementById(`checkboxSubtask${j}`);
-    if (tasks[i].subtask[j].status == 1){
-        presetCheckboxes.classList.add("checkboxChecked");
-      } else {
-        presetCheckboxes.checked = false;
-        presetCheckboxes.classList.remove("checkboxChecked");
-      }
-};
+  if (tasks[i].subtask[j].status == 1) {
+    presetCheckboxes.classList.add("checkboxChecked");
+  } else {
+    presetCheckboxes.checked = false;
+    presetCheckboxes.classList.remove("checkboxChecked");
+  }
+}
 
-
-function writeClickToVariable(i,j){
+function writeClickToVariable(i, j) {
   let actCheckbox = document.getElementById(`checkboxSubtask${j}`);
   if (!actCheckbox.classList.contains("checkboxChecked")) {
-      actCheckbox.classList.add("checkboxChecked");
-      tasks[i].subtask[j].status = 1;
+    actCheckbox.classList.add("checkboxChecked");
+    tasks[i].subtask[j].status = 1;
   } else {
-      actCheckbox.classList.remove("checkboxChecked");
-      tasks[i].subtask[j].status = 0;
+    actCheckbox.classList.remove("checkboxChecked");
+    tasks[i].subtask[j].status = 0;
   }
 }
 
-
-async function closeAndStore(){
-  addClassToElement('taskOverlaySection', 'none');
+async function closeAndStore() {
+  addClassToElement("taskOverlaySection", "none");
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
   // addClassToElement('taskOverlaySection', 'none');
 }
 
-
-function generateEditView(i){
-  removeClassFromElement('taskOverlaySection', 'none')
+function generateEditView(i) {
+  removeClassFromElement("taskOverlaySection", "none");
   // document.getElementById("taskOverlaySection").innerHTML =  "";
   document.getElementById("currentUserTaskOverlay").innerHTML = /*HTML*/ `
      <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
@@ -244,7 +295,7 @@ function generateEditView(i){
                       <div class="selected-contacts" id="selectedContacts"></div>
                       </div>
                     </div>
-                    <div id="boardSubtasksContainer">
+                    <div id="boardSubtasksContainer" class="flexContainerCol">
                       <label for="boardSubtasks">Subtasks</label>
                       <div id="boardSubtasksInputImgContainer" class="flexContainer">
                         <input type="text" placeholder="Add new subtask" id="boardSubtasks" name="boardSubtasks"/>
@@ -262,58 +313,58 @@ function generateEditView(i){
                     </div>
                     <!-- Ende - Heiko eingefügt zum testen -->
 `;
-renderDropdown();
-loadDataToEdit(i);
-editRenderSubtasks(i);
+  renderDropdown();
+  loadDataToEdit(i);
+  editRenderSubtasks(i);
 }
 
-function loadDataToEdit(i){
-    document.getElementById('editBoardTitle').value = tasks[i].title;
-    document.getElementById('editBoardDescription').value = tasks[i].description;
-    document.getElementById('editBoardDate').value = tasks[i].dueDate;
-    loadAndSetPriorityToEdit(i);
-    editCheckBoxesForAssignedUsers(i);
+function loadDataToEdit(i) {
+  document.getElementById("editBoardTitle").value = tasks[i].title;
+  document.getElementById("editBoardDescription").value = tasks[i].description;
+  document.getElementById("editBoardDate").value = tasks[i].dueDate;
+  loadAndSetPriorityToEdit(i);
+  editCheckBoxesForAssignedUsers(i);
 }
 
-
-function storeEditedData(i){
-   tasks[i].title = document.getElementById('editBoardTitle').value;
-   tasks[i].description = document.getElementById('editBoardDescription').value;
-   tasks[i].dueDate = document.getElementById('editBoardDate').value;
-   //  priority wird direkt aus Button Funktion in den Local Array geschrieben //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-    //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-     //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-      //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-       //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-        //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-   tasks[i].assignedTo = updateSelectedContacts();
-   tasks[i].subtask = subtask;
-   closeWindowWriteEditedDataToDatabase();
+function storeEditedData(i) {
+  tasks[i].title = document.getElementById("editBoardTitle").value;
+  tasks[i].description = document.getElementById("editBoardDescription").value;
+  tasks[i].dueDate = document.getElementById("editBoardDate").value;
+  //  priority wird direkt aus Button Funktion in den Local Array geschrieben //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
+  tasks[i].assignedTo = updateSelectedContacts();
+  tasks[i].subtask = subtask;
+  closeWindowWriteEditedDataToDatabase();
 }
 
-
-async function closeWindowWriteEditedDataToDatabase(){
-  addClassToElement('taskOverlaySection', 'none');
+async function closeWindowWriteEditedDataToDatabase() {
+  addClassToElement("taskOverlaySection", "none");
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
 }
 
-
-function loadAndSetPriorityToEdit(i){
-  switch (tasks[i].priority){
-    case 3 : editUrgentBtnToggle(i);
-    break;
-    case 2 : editMediumBtnToggle(i);
-    break;
-    case 1 : editLowBtnToggle(i);
-    break;
+function loadAndSetPriorityToEdit(i) {
+  switch (tasks[i].priority) {
+    case 3:
+      editUrgentBtnToggle(i);
+      break;
+    case 2:
+      editMediumBtnToggle(i);
+      break;
+    case 1:
+      editLowBtnToggle(i);
+      break;
     default:
   }
 }
 
 function editLowBtnToggle(i) {
-  editVariablesPriorityButtons()
+  editVariablesPriorityButtons();
   if (editLowBtn.classList.contains("whiteButtons")) {
     editLowBtn.classList.remove("whiteButtons");
     editLowBtn.style.backgroundColor = "#7AE229";
@@ -334,18 +385,19 @@ function editLowBtnToggle(i) {
     editMediumImg.src = "../database/images/prio_media.svg";
   }
 
-  const lowSelected = !editLowBtn.classList.contains("whiteButtons") ? true : false;
+  const lowSelected = !editLowBtn.classList.contains("whiteButtons")
+    ? true
+    : false;
 
   // Heiko Code added - Start
   evaluateLowState(lowSelected);
-  tasks[i].priority = priority;   
+  tasks[i].priority = priority;
   // Heiko Code added - End
-  return lowSelected;                      
+  return lowSelected;
 }
 
-
 function editUrgentBtnToggle(i) {
-  editVariablesPriorityButtons()
+  editVariablesPriorityButtons();
   if (editUrgentBtn.classList.contains("whiteButtons")) {
     editUrgentBtn.classList.remove("whiteButtons");
     editUrgentBtn.style.backgroundColor = "#FF3D00";
@@ -372,14 +424,13 @@ function editUrgentBtnToggle(i) {
 
   // Heiko Code added - Start
   evaluateUrgentState(urgentSelected);
-  tasks[i].priority = priority;    
+  tasks[i].priority = priority;
   // Heiko Code added - End
   return urgentSelected;
 }
 
-
 function editMediumBtnToggle(i) {
-  editVariablesPriorityButtons()
+  editVariablesPriorityButtons();
   if (editMediumBtn.classList.contains("whiteButtons")) {
     editMediumBtn.classList.remove("whiteButtons");
     editMediumBtn.style.backgroundColor = "#FFA800";
@@ -406,13 +457,12 @@ function editMediumBtnToggle(i) {
 
   // Heiko Code added - Start
   evaluateMediumState(mediumSelected);
-  tasks[i].priority = priority;   
+  tasks[i].priority = priority;
   // Heiko Code added - End
   return mediumSelected;
 }
 
-
-function editVariablesPriorityButtons(){
+function editVariablesPriorityButtons() {
   let editUrgentBtn = document.getElementById(`editUrgentBtn`);
   let editUrgentImg = document.getElementById("editurgentImg");
   let editMediumBtn = document.getElementById("editMediumBtn");
@@ -421,35 +471,36 @@ function editVariablesPriorityButtons(){
   let editLowImg = document.getElementById("editLowImg");
 }
 
-
 function editCheckBoxesForAssignedUsers(x) {
-  if(tasks[x].assignedTo){
-  const selectedContactsDiv = document.getElementById("selectedContacts");
-  selectedContactsDiv.innerHTML = ""; // Clear previous selections
-  for (let i = 0; i < contacts.length; i++) {
-    const checkbox = document.getElementById(`contact_${i}`);
-    checkbox.checked = false;
-    for (let j = 0; j < tasks[x].assignedTo.length; j++) {
-      if (tasks[x].assignedTo[j].user === checkbox.value) {
-        checkbox.checked = true;
-        const contactDiv = document.createElement("div");
-        contactDiv.textContent = tasks[x].assignedTo[j].user;
-        selectedContactsDiv.innerHTML += `<span id="editShowAssignedContacts${j}" class="initials-dropdown">${tasks[x].assignedTo[j].initials}</span>`;
-        document.getElementById(`editShowAssignedContacts${j}`).style.backgroundColor = tasks[x].assignedTo[j].backgroundColor;
+  if (tasks[x].assignedTo) {
+    const selectedContactsDiv = document.getElementById("selectedContacts");
+    selectedContactsDiv.innerHTML = ""; // Clear previous selections
+    for (let i = 0; i < contacts.length; i++) {
+      const checkbox = document.getElementById(`contact_${i}`);
+      checkbox.checked = false;
+      for (let j = 0; j < tasks[x].assignedTo.length; j++) {
+        if (tasks[x].assignedTo[j].user === checkbox.value) {
+          checkbox.checked = true;
+          const contactDiv = document.createElement("div");
+          contactDiv.textContent = tasks[x].assignedTo[j].user;
+          selectedContactsDiv.innerHTML += `<span id="editShowAssignedContacts${j}" class="initials-dropdown">${tasks[x].assignedTo[j].initials}</span>`;
+          document.getElementById(
+            `editShowAssignedContacts${j}`
+          ).style.backgroundColor = tasks[x].assignedTo[j].backgroundColor;
+        }
       }
     }
   }
 }
-}
-
 
 function editRenderSubtasks(x) {
-  if(tasks[x].subtask){
-  let listArea = document.getElementById("subtaskList");
   subtask = [];
-  listArea.innerHTML = "";
-  for (let i = 0; i < tasks[x].subtask.length; i++) {
-    listArea.innerHTML += /*html*/ `
+  if (tasks[x].subtask) {
+    let listArea = document.getElementById("subtaskList");
+    subtask = [];
+    listArea.innerHTML = "";
+    for (let i = 0; i < tasks[x].subtask.length; i++) {
+      listArea.innerHTML += /*html*/ `
         <li id="subtaskListItem${i}">
             <span class="sub-task-text-list" id="subTaskTextListItem${i}">${tasks[x].subtask[i].task}</span>
             <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons">
@@ -458,18 +509,17 @@ function editRenderSubtasks(x) {
             <span>
         </li>
     `;
-    subtask.push({ 
+      subtask.push({
         task: tasks[x].subtask[i].task,
-        status : tasks[x].subtask[i].status,
-  });
+        status: tasks[x].subtask[i].status,
+      });
+    }
   }
 }
-}
 
-
-async function deleteSingleTask(i){
-  tasks.splice(i,1);
-  addClassToElement('taskOverlaySection', 'none');
+async function deleteSingleTask(i) {
+  tasks.splice(i, 1);
+  addClassToElement("taskOverlaySection", "none");
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
