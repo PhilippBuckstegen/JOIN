@@ -240,19 +240,16 @@ function generateEditView(i) {
   // document.getElementById("taskOverlaySection").innerHTML =  "";
   document.getElementById("currentUserTaskOverlay").innerHTML = /*HTML*/ `
      <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
-              <div id="headerXbtnContainerCur" class="flexContainer">
+             
                 
-                <!-- <div id="xBtnContainer">
-                  <img id="xBtn" src="../database/images/close.svg" alt="icon"
-                  onclick="addClassToElement('taskOverlaySection', 'none')"/>
-                </div> -->
-                <div id="xBtnContainer">
+             
+                <div id="xBtnContainer" class="xBtnContainerEdit flexContainer">
                   <img id="xBtn" src="../database/images/close.svg" alt="icon"
                   onclick="cancelEditArea()"/>
                 </div>
-              </div>
-              <div id="taskBoardOverlayForm" class="flexContainerCol">
-                      <div id="boardTitleContainer" class="flexContainerColStart">
+         
+              <div id="taskBoardOverlayForm" class="taskBoardOverlayFormEdit flexContainerCol">
+                      <div id="boardTitleContainer" class="boardTitleContainerEdit flexContainerColStart">
                         <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
                         <div class="edit-inputs-title-mid">
                           <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
@@ -319,13 +316,6 @@ function generateEditView(i) {
                       </div>
 
 
-
-
-
-
-                
-
-
                     <div id="boardSubtasksContainerCur" class="flexContainerColStart">
                       <label for="boardSubtasks">Subtasks</label>
                       <div
@@ -366,14 +356,16 @@ function generateEditView(i) {
                       </div>
                     </div>
 
-
-
-
-
-                    <!-- Start - Heiko eingefügt zum testen -->
-                    <div id="okBtnCurContainer" class="store-edited-data-button flexContainer">
+                    
+</div>
+<div id="okBtnCurContainer" class="store-edited-data-button flexContainer">
                       <button id="okBtnCur" onclick="storeEditedData(${i})">OK</button>
                     </div>
+
+                  
+
+                    <!-- Start - Heiko eingefügt zum testen -->
+                    
                     <!-- Ende - Heiko eingefügt zum testen -->
 `;
   renderDropdown();
@@ -565,7 +557,7 @@ function editRenderSubtasks(x) {
     listArea.innerHTML = "";
     for (let i = 0; i < tasks[x].subtask.length; i++) {
       listArea.innerHTML += /*html*/ `
-        <li id="subtaskListItem${i}">
+        <li id="subtaskListItem${i}" class="subtaskListItems flexContainer">
             <span class="sub-task-text-list" id="subTaskTextListItem${i}">${tasks[x].subtask[i].task}</span>
             <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">
                   <img id="editSubtaskIcon" class="hidden" onclick="editSubtaskItem(${i})" src="../database/images/edit.svg" alt="icon">

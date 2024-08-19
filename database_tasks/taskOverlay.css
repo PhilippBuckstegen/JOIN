@@ -65,6 +65,11 @@
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.6);
 }
 
+.xBtnContainerEdit {
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .userTaskOverlayParts {
   width: 100%;
   justify-content: flex-start;
@@ -72,25 +77,34 @@
   overflow-y: scroll;
 }
 
-.userTaskOverlayParts::-webkit-scrollbar {
+.taskBoardOverlayFormEdit {
+  overflow-y: scroll;
+}
+
+.userTaskOverlayParts::-webkit-scrollbar,
+.taskBoardOverlayFormEdit::-webkit-scrollbar {
   width: 8px;
 }
 
-.userTaskOverlayParts::-webkit-scrollbar-button {
+.userTaskOverlayParts::-webkit-scrollbar-button,
+.taskBoardOverlayFormEdit::-webkit-scrollbar-button {
   background-size: 8px 8px;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.userTaskOverlayParts::-webkit-scrollbar-button:end:increment {
+.userTaskOverlayParts::-webkit-scrollbar-button:end:increment,
+.taskBoardOverlayFormEdit::-webkit-scrollbar-button:end:increment {
   background-image: url(../database/images/arrow_bottom.svg);
 }
 
-.userTaskOverlayParts::-webkit-scrollbar-button:start:decrement {
+.userTaskOverlayParts::-webkit-scrollbar-button:start:decrement,
+.taskBoardOverlayFormEdit::-webkit-scrollbar-button:start:decrement {
   background-image: url(../database/images/arrow_top.svg);
 }
 
-.userTaskOverlayParts::-webkit-scrollbar-thumb {
+.userTaskOverlayParts::-webkit-scrollbar-thumb,
+.taskBoardOverlayFormEdit::-webkit-scrollbar-thumb {
   cursor: pointer;
   background-color: #a8a8a8;
   border-radius: 18px;
@@ -267,9 +281,10 @@
   justify-content: center;
 }
 
-#headerXbtnContainerCur {
+#taskOverlayContainerCur {
   width: 100% !important;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 #xBtnEdit,
