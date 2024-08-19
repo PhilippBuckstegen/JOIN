@@ -299,7 +299,7 @@ function generateEditView(i) {
                           <button id="dropdownBtn"
                             class="dropdown-button"
                             onclick="toggleDropdown()"
-                          ></button>
+                          >Select contacts to assign</button>
                           <div
                             class="dropdown-content"
                             id="dropdownListContent"

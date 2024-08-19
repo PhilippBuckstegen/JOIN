@@ -283,6 +283,9 @@
 
 #dropdownBtn {
   padding: 7px 10px;
+  text-align: left;
+  font-size: 16px;
+  text-indent: 4px;
 }
 
 #editBoardTitle {
