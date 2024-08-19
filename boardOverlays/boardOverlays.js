@@ -207,7 +207,7 @@ function renderBoardOverlays(i) {
                          <!-- new dropdown start -->
                          <div class="dropdown" id="contactDropdown">
                          <label for="boardAssigned">Assigned to</label><br />
-                          <button class="dropdown-button" onclick="toggleDropdown()"></button>
+                          <button class="dropdown-button" onclick="toggleDropdown()">Select contacts to assign</button>
                           <div class="dropdown-content"></div>
                       </div>
                       <div class="selected-contacts" id="selectedContacts"></div>

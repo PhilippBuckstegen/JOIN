@@ -145,6 +145,10 @@ body {
   border-radius: 8px;
 }
 
+textarea{
+  font-family: inter;
+}
+
 #addTaskBoardOverlayContainer select,
 #addTaskBoardOverlayContainer .dropdown-button {
   background-color: #fff;
@@ -152,6 +156,9 @@ body {
   padding: 8px 4px;
   border: 1px solid #d1d1d1;
   border-radius: 8px;
+  text-align: left;
+  font-size: 16px;
+  text-indent: 4px;
 }
 
 #selectedContacts {
