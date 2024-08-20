@@ -311,7 +311,20 @@ body {
   }
 }
 
-@media (max-width: 420px){
-  
+@media (max-width: 415px) {
+  .sum-content-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .sum-content {
+    justify-content: center;
+  }
+
+  .deadline-priority,
+  .upcomming-deadline {
+    padding: 10px;
+  }
 }
 
