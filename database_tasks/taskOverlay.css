@@ -462,6 +462,29 @@
   width: 100%;
 }
 
+#editBoardDate::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url("../database/images/event.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 12px;
+  height: 12px;
+  padding-right: 16px;
+  border-width: thin;
+  z-index: 999;
+}
+
+#editBoardDate::-webkit-calendar-picker-indicator {
+  width: 12px;
+  height: 12px;
+  padding-left: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
 /* generateEditView Design End */
 
 @media (min-width: 1201px) {
