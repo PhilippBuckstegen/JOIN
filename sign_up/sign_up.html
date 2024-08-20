@@ -23,7 +23,7 @@
       type="image/x-icon"
     />
   </head>
-  <body>
+  <body onload="loadEventListeners()">
     <div id="contentWrapper" class="flexContainer">
       <div id="headerLogoContainer" class="headerLogo flexContainer">
         <img
@@ -47,8 +47,8 @@
                 autocomplete="name"
                 title="required"
               />
-              <span id="loginError" class="no-error-visible error-message"
-                >Incorrect email or password.</span
+              <span id="signUpNameErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
               >
             </div>
             <div class="dataContainer">
@@ -60,8 +60,8 @@
                 autocomplete="email"
                 title="required"
               />
-              <span id="loginError" class="no-error-visible error-message"
-                >Incorrect email or password.</span
+              <span id="signUpEmailErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
               >
             </div>
             <div class="dataContainer">
@@ -73,8 +73,8 @@
                 autocomplete="currentPassword"
                 title="required"
               />
-              <span id="loginError" class="no-error-visible error-message"
-                >Incorrect email or password.</span
+              <span id="signUpPasswordErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
               >
             </div>
             <div class="dataContainer">
@@ -86,8 +86,8 @@
                 autocomplete="currentConfirmPassword"
                 title="required"
               />
-              <span id="loginError" class="no-error-visible error-message"
-                >Incorrect email or password.</span
+              <span id="signUpPassword2ErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
               >
             </div>
           </section>
@@ -102,10 +102,13 @@
                 >I accept the
                 <span id="privacyPolicySpan">Privacy Policy</span></label
               >
+              <span id="checkboxPrivacyPolicyErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
+              >
             </div>
           </section>
           <section class="formSubmit">
-            <button id="signUpBtn" type="submit" class="signUpBtn">
+            <button id="signUpBtn" type="submit" class="signUpBtn" disabled>
               Sign Up
             </button>
           </section>

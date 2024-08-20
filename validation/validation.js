@@ -1,4 +1,8 @@
-
+let signUpUserValid = false;
+let signUpEmailValid = false;
+let signUpPasswordValid = false;
+let signUpPasswordTwoValid = false;
+let signUpPrivacyPolicy = false;
 // **** Validation!!! For Contacts****
 
 function validateAddInputs(){
@@ -122,6 +126,11 @@ function validateAddInputs(){
     document.getElementById(`${id1}ErrorMessage`).classList.add('no-error-visible');
     document.getElementById(`${id2}ErrorMessage`).classList.add('no-error-visible');
   }
+
+  function resetSingleInputError(id){
+    document.getElementById(`${id}`).style.border = "1px solid #d1d1d1";
+    document.getElementById(`${id}ErrorMessage`).classList.add('no-error-visible');
+  }
   
 
   // **** Validation!!! For Tasks****
@@ -205,10 +214,230 @@ function validateAddInputs(){
     return isValid;
   }
 
+// **** Validation!!! For Login ****
+
+// Validation For Login Event-Listeners
 
 
 
+function validateSignUp(){
+  resetInputDataErrors(`signUpName`, `signUpEmail`, `signUpPassword`, `signUpPassword2`, `checkboxPrivacyPolicy`);
+  let validSignUpUserName = validateUserName(`signUpName`);
+  let validSignUpEmail = validateEmail(`signUpEmail`);
+  let validSignUpPassword = validatePassword(`signUpPassword`);
+  let validSignUpPassword2 = validatePassword2(`signUpPassword2`);
+  let validSignUpPrivacy = validatePolicy('checkboxPrivacyPolicy');
+  if(validSignUpUserName && validSignUpEmail && validSignUpPassword && validSignUpPassword2 && validSignUpPrivacy){
+    // addNewTaskToDatabase(y, overlay);
+  }
+}
 
-  
 
+function validateUserName(id){
+  let isValid = true;
+  let inputToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+  if (isValid === true){
+    isValid = checkIfFieldContainsNumbers(isValid, inputToCheck, errorMessage);
+  }
+  if (isValid === true){
+    isValid = checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage);
+  }
+  return isValid;
+}
+
+
+function validatePassword(id){
+  let isValid = true;
+  let inputToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+  if (isValid === true){
+    isValid = checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage);
+  }
+  if (isValid === true){
+    isValid = checkIfFieldContainsNoNumbers(isValid, inputToCheck, errorMessage);
+  }
+  if (isValid === true){
+    isValid = checkIfFieldContainsCapitalLetters(isValid, inputToCheck, errorMessage);
+  }
+  if (isValid === true){
+    isValid = checkIfFieldContainsSmallLetters(isValid, inputToCheck, errorMessage);
+  }
+  if (isValid === true){
+    isValid =  checkIfFieldContainsSpecialCharacter(isValid, inputToCheck, errorMessage);
+  }
+  return isValid;
+}
+
+function validatePassword2(id1, id2){
+  let isValid = true;
+  let inputToCheck = document.getElementById(`${id1}`);
+  let referenceInput = document.getElementById(`${id2}`);
+  let errorMessage =  document.getElementById(`${id1}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+  if (isValid === true){
+    isValid = checkIfPasswordTwoFitsPasswordOne(isValid, inputToCheck, referenceInput, errorMessage);
+  }
+  return isValid;
+}
+
+
+function validateCheckbox(id){
+  let isValid = true;
+  let inputToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkStatusOfCheckbox(isValid, inputToCheck, errorMessage);
+  return isValid;
+}
+
+
+function checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage){
+  if (inputToCheck.value.trim().length < 6) {
+    inputToCheck.style.border = "1px solid red";
+    errorMessage.classList.remove('no-error-visible');
+    errorMessage.innerHTML = "This field requires at least 6 characters";
+    isValid = false;
+  }
+  return isValid;
+}
+
+function checkIfFieldContainsNoNumbers(isValid, inputToCheck, errorMessage){
+  const numberRegex = /\d/;
+  if (!numberRegex.test(inputToCheck.value)) {
+    inputToCheck.style.border = "1px solid red";
+    errorMessage.classList.remove('no-error-visible');
+    errorMessage.innerHTML = "This field requires at least one number";
+    isValid = false;
+  }
+  return isValid;
+}
+
+function checkIfFieldContainsCapitalLetters(isValid, inputToCheck, errorMessage){
+  const dateRegex = /[A-Z]/;
+  if (!dateRegex.test(inputToCheck.value)) {
+    inputToCheck.style.border = "1px solid red";
+    errorMessage.classList.remove('no-error-visible');
+    errorMessage.innerHTML = "This field requires at least one capital character";
+    isValid = false;
+  }
+  return isValid;
+}
+
+
+function checkIfFieldContainsSmallLetters(isValid, inputToCheck, errorMessage){
+  const dateRegex = /[a-z]/;
+  if (!dateRegex.test(inputToCheck.value)) {
+    inputToCheck.style.border = "1px solid red";
+    errorMessage.classList.remove('no-error-visible');
+    errorMessage.innerHTML = "This field requires at least one small character";
+    isValid = false;
+  }
+  return isValid;
+}
+
+
+function checkIfFieldContainsSpecialCharacter(isValid, inputToCheck, errorMessage){
+  const dateRegex = /[!@#$%^&*(),.?":{}|<>]/;
+  if (!dateRegex.test(inputToCheck.value)) {
+    inputToCheck.style.border = "1px solid red";
+    errorMessage.classList.remove('no-error-visible');
+    errorMessage.innerHTML = "This field requires at least one special character";
+    isValid = false;
+  }
+  return isValid;
+}
+
+
+function checkIfPasswordTwoFitsPasswordOne(isValid, inputToCheck, inputReference, errorMessage){
+  if (inputToCheck.value !== inputReference.value) {
+    inputToCheck.style.border = "1px solid red";
+    errorMessage.classList.remove('no-error-visible');
+    errorMessage.innerHTML = "Confirm password does not fit password";
+    isValid = false;
+  }
+  return isValid;
+}
+
+
+function checkStatusOfCheckbox(isValid, inputToCheck, errorMessage){
+  if(inputToCheck.checked == true){
+    isValid = true;
+  } else {
+  isValid = false;
+}
+  return isValid;
+}
+
+
+function loadEventListeners(){
+signUpUserNameEventListener(`signUpName`);
+signUpEmailEventListener(`signUpEmail`);
+signUpPasswordEventListener(`signUpPassword`);
+signUpPasswordTwoEventListener(`signUpPassword2`, `signUpPassword`);
+signUpCheckboxEventListener(`checkboxPrivacyPolicy`);
+}
+
+
+function signUpUserNameEventListener(id){
+  let signUpUserName = document.getElementById(`${id}`);  
+  signUpUserName.addEventListener('blur', function(event) {
+  signUpUserValid = validateUserName(id);
+  checkSignUpConditionsTrue();
+  });  
+  signUpUserName.addEventListener('focus', function(event) {
+  resetSingleInputError(id);
+});
+} 
+
+function signUpEmailEventListener(id){
+  let signUpUserName = document.getElementById(`${id}`);  
+  signUpUserName.addEventListener('blur', function(event) {
+  signUpEmailValid = validateEmail(id);
+  checkSignUpConditionsTrue();
+  });  
+  signUpUserName.addEventListener('focus', function(event) {
+  resetSingleInputError(id);
+});
+} 
+
+function signUpPasswordEventListener(id){
+  let signUpUserName = document.getElementById(`${id}`);  
+  signUpUserName.addEventListener('blur', function(event) {
+    signUpPasswordValid = validatePassword(id);
+    checkSignUpConditionsTrue();
+  });  
+  signUpUserName.addEventListener('focus', function(event) {
+  resetSingleInputError(id);
+});
+} 
+
+
+function signUpPasswordTwoEventListener(id1, id2){
+  let signUpPasswordTwo= document.getElementById(`${id1}`);  
+  signUpPasswordTwo.addEventListener('blur', function(event) {
+    signUpPasswordTwoValid = validatePassword2(id1, id2);
+    checkSignUpConditionsTrue();
+  });  
+  signUpPasswordTwo.addEventListener('focus', function(event) {
+  resetSingleInputError(id1);
+});
+} 
+
+
+function signUpCheckboxEventListener(id){
+  let signUpCheckbox = document.getElementById(`${id}`);  
+  signUpCheckbox.addEventListener('change', function(event) {
+    signUpPrivacyPolicy = validateCheckbox(id);
+    checkSignUpConditionsTrue();
+  });  
+}
+
+function checkSignUpConditionsTrue(){
+  if(signUpUserValid && signUpEmailValid && signUpPasswordValid && signUpPasswordTwoValid && signUpPrivacyPolicy){
+    document.getElementById(`signUpBtn`).disabled = false;
+    document.getElementById('signUpBtn').classList.remove('signUpBtn-disabled');
+  }
+}
 

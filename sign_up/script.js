@@ -23,3 +23,6 @@ function acceptPrivacyPolicy() {
     return 0;
   }
 }
+
+// Heiko zugefügt
+document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
