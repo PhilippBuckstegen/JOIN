@@ -174,7 +174,7 @@ body {
 .sum-content-boardtasks {
   min-height: calc(110px - 50px);
   height: clamp(60px, 22vh, 300px);
-  width: clamp(60px, 15vw, 500px);
+  /*width: clamp(60px, 15vw, 500px);*/
   padding: 25px;
   border-radius: 30px;
   background-color: white;
@@ -187,26 +187,26 @@ body {
 }
 
 .grid4 {
-    grid-column: 1 / 3;
+  grid-column: 1 / 3;
 }
 
 .grid5 {
-    grid-column: 3 / 5;
+  grid-column: 3 / 5;
 }
 
 .grid6 {
-    grid-column: 5 / 7;
+  grid-column: 5 / 7;
 }
 
 .tasks-in-board {
-    font-size: 21px;
-    font-weight: 400;
+  font-size: 21px;
+  font-weight: 400;
 }
 
 .tasks-summary {
-    font-size: 64px;
-    font-weight: 600;
-    margin: 0;
+  font-size: 64px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .summary-greeting {
@@ -228,3 +228,90 @@ body {
     padding-bottom: 20px;
   }
 }
+
+@media (max-width: 1200px) {
+  .summary-greeting {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .sum-header-headline {
+    font-size: 54px;
+    width: auto;
+  }
+
+  .sum-header-subheadline {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-summary {
+    margin-left: 0;
+    height: calc(100vh - 160px);
+    min-height: calc(100vh - 160px);
+    padding: 20px 40px 0 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sum-header-headline {
+    width: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .sum-header {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .sum-header-border {
+    width: 80px;
+    height: 0;
+    margin: 12px 0;
+    border: 2px solid #29abe2;
+  }
+
+  .sum-header-headline,
+  .sum-count-todo,
+  .tasks-summary {
+    font-size: 48px;
+  }
+
+  .sum-header-subheadline {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .p-todo,
+  .tasks-in-board {
+    font-size: 16px;
+  }
+
+  .sum-content-categories,
+  .sum-content-deadlines,
+  .sum-content-boardtasks {
+    height: clamp(60px, 18vh, 260px);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-summary {
+    padding: 16px 18px;
+  }
+
+  .sum-header-headline {
+    font-size: 42px;
+  }
+
+  .sum-header-subheadline {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px){
+  
+}
+

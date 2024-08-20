@@ -344,7 +344,7 @@ h3 {
   }
 
   .main-board {
-    padding: 80px 0px 0 44px;
+    padding: 80px 0px 0 40px;
     overflow-x: hidden;
     margin-left: 0;
     height: calc(100vh - 240px);
@@ -388,6 +388,10 @@ h3 {
   .slider-tasks::-webkit-scrollbar {
     display: none;
   }
+
+  .addTask-button {
+    margin-right: 30px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -401,7 +405,7 @@ h3 {
 
   .addTask-button {
     padding: 10px 10px;
-    margin-right: 4px;
+    margin-right: 22px;
   }
 
   .h2-board {
@@ -414,5 +418,9 @@ h3 {
 
   .search-img {
     padding: 8px;
+  }
+
+  .column-board-header {
+    padding: 0;
   }
 }
