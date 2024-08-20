@@ -18,7 +18,6 @@ function validateAddInputs(){
     let validEmail = validateEmail(`email`);
     let validPhone = validatePhone(`phone`);
     if(validName && validEmail && validPhone){
-      // addNewContactToDatabase();
       storeEditedData(i);
     }
   }
