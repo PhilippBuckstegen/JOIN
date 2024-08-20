@@ -310,7 +310,7 @@ function generateEditView(i) {
                           ></div>
                         </div>
                         <div
-                          class="selectedContactsEdit selected-contacts flexContainerStart"
+                          class="selected-contacts-edit flexContainerStart"
                           id="selectedContacts"
                         ></div>
                       </div>
@@ -540,15 +540,59 @@ function editCheckBoxesForAssignedUsers(x) {
           checkbox.checked = true;
           const contactDiv = document.createElement("div");
           contactDiv.textContent = tasks[x].assignedTo[j].user;
-          selectedContactsDiv.innerHTML += `<span id="editShowAssignedContacts${j}" class="initials-dropdown">${tasks[x].assignedTo[j].initials}</span>`;
-          document.getElementById(
-            `editShowAssignedContacts${j}`
-          ).style.backgroundColor = tasks[x].assignedTo[j].backgroundColor;
+          // selectedContactsDiv.innerHTML += `<span id="editShowAssignedContacts${j}" class="initials-dropdown">${tasks[x].assignedTo[j].initials}</span>`;
+          // document.getElementById(
+          //   `editShowAssignedContacts${j}`
+          // ).style.backgroundColor = tasks[x].assignedTo[j].backgroundColor;
         }
       }
     }
+    renderAssignedNamesEditView(x);
   }
 }
+
+function renderAssignedNamesEditView(x){
+  let limit = 3;
+  if(tasks[x].assignedTo){
+    if(tasks[x].assignedTo.length <= limit){
+  for (let j = 0; j < tasks[x].assignedTo.length; j++) {
+      let assignedContacts = document.getElementById(`selectedContacts`);
+      const contact = tasks[x].assignedTo[j];
+      assignedContacts.innerHTML += /*html*/ `
+          <span id="editShowAssignedContacts${j}" class="contact-icon assigned-contact-icon">${tasks[x].assignedTo[j].initials}</span>
+      `;
+    document.getElementById(`editShowAssignedContacts${j}`).style.backgroundColor = contact.backgroundColor;
+      }
+    } else {
+    for(let j = 0; j < limit; j++){
+      // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+        let assignedContacts = document.getElementById(`selectedContacts`);
+        const contact = tasks[x].assignedTo[j];
+        assignedContacts.innerHTML += /*html*/ `
+            <span id="editShowAssignedContacts${j}" class="contact-icon assigned-contact-icon">${tasks[x].assignedTo[j].initials}</span>
+        `;
+        document.getElementById(`editShowAssignedContacts${j}`).style.backgroundColor = contact.backgroundColor;
+      // } 
+    }
+    renderAssignedNamesEditGreaterThanLimit(x, limit);
+  }
+}
+}
+
+function renderAssignedNamesEditGreaterThanLimit(x, limit){
+  let assignedContacts = document.getElementById(`selectedContacts`);
+        assignedContacts.innerHTML += /*html*/ `
+            <div id="editShowAssignedContacts${limit}" class="contact-icon assigned-contact-icon">+${calculateRestOfAssigendToGreaterThanLimit(x, limit)}</div>
+        `;
+    document.getElementById(`editShowAssignedContacts${limit}`).style.backgroundColor = "#301934"; 
+}
+
+
+
+// function calculateRestOfSelectedToGreaterThanLimit(selectedContacts, limit) {
+//   let restOfAssignedUsers = selectedContacts.length - limit;
+//   return restOfAssignedUsers;
+// }
 
 function editRenderSubtasks(x) {
   subtask = [];

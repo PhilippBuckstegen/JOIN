@@ -162,7 +162,7 @@ textarea {
 }
 
 #selectedContacts {
-  width: 300px;
+  width: 310px;
 }
 
 #boardSubtasksContainer {
@@ -1196,7 +1196,7 @@ textarea {
 }
 
 .selected-contacts {
-  padding-top: 10px;
+  /* padding-top: 10px; */
   display: flex;
   justify-content: flex-start;
   /* gap: 10px; */
@@ -1232,4 +1232,23 @@ textarea {
 #boardTitleContainer {
   display: flex;
   flex-direction: column;
+}
+
+.contact-icon {
+  color: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.assigned-contact-icon {
+  min-width: 35px;
+  height: 35px;
+  border: 1px solid white;
+  background-color: orange;
+}
+
+.assigned-contact-icon:not(:first-child) {
+  margin-left: -6px;
 }

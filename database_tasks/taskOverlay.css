@@ -317,10 +317,11 @@
   align-items: flex-start;
 }
 
-#selectedContacts {
-  width: 360px;
+/* Heiko rausgenommen */
+/* #selectedContacts {
+  width: 310px; 
   gap: 2px;
-}
+} */
 
 #dropdownBtn {
   padding: 7px 10px;
@@ -450,9 +451,10 @@
   height: 14px;
 }
 
-.selected-contacts {
+/* Heiko rausgenommen */
+/* .selected-contacts {
   width: 360px;
-}
+} */
 
 #xBtnContainerEdit {
   width: 100%;
@@ -521,6 +523,9 @@
     height: 600px;
     border-radius: 20px;
   }
+  .selectedContacts{
+    width: 230px !important;
+  }
 }
 
 @media (max-width: 680px) {
@@ -532,6 +537,9 @@
     width: 400px;
     height: 600px;
     border-radius: 20px;
+  }
+  #selectedContacts{
+    width: 310px;
   }
 }
 
@@ -604,6 +612,10 @@
     font-size: 14px;
     padding: 8px 12px;
   }
+
+  /* .selectedContacts{
+    width: 290px !important;
+  } */
 }
 
 /* Heiko eingefügt zum testen für Speicherbutton vom Edit Feld */

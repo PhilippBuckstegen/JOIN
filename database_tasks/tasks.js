@@ -222,8 +222,10 @@ function writeNewTaskToLocalArray() {
 // Dropdown User List und Checkbox
 function renderDropdown() {
   const dropdownContent = document.querySelector(".dropdown-content");
-  for (let i = 0; i < taskContacts.length; i++) {
-    const contact = taskContacts[i];
+  // for (let i = 0; i < taskContacts.length; i++) {
+    for (let i = 0; i < contacts.length; i++) {
+    // const contact = taskContacts[i];
+    const contact = contacts[i];
     const label = document.createElement("label");
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -243,21 +245,70 @@ function toggleDropdown() {
   }
 }
 
-function updateSelectedContacts() {
-  const selectedContactsDiv = document.getElementById("selectedContacts");
-  selectedContactsDiv.innerHTML = ""; // Clear previous selections
-  const selectedContacts = [];
-  for (let i = 0; i < taskContacts.length; i++) {
-    const checkbox = document.getElementById(`contact_${i}`);
-    if (checkbox.checked) {
-      selectedContacts.push({ user: taskContacts[i].name });
-      const contactDiv = document.createElement("div");
-      contactDiv.textContent = taskContacts[i].name;
-      selectedContactsDiv.innerHTML += `<div>${taskContacts[i].name}</div>`;
-    }
-  }
-  return selectedContacts;
-}
+// function updateSelectedContacts() {
+//   const selectedContactsDiv = document.getElementById("selectedContacts");
+//   selectedContactsDiv.innerHTML = ""; // Clear previous selections
+//   const selectedContacts = [];
+//   // for (let i = 0; i < taskContacts.length; i++) {
+//     for (let i = 0; i < contacts.length; i++) {
+//     const checkbox = document.getElementById(`contact_${i}`);
+//     if (checkbox.checked) {
+//       // selectedContacts.push({ user: taskContacts[i].name });
+//       selectedContacts.push({ user: contacts[i].name });
+//       const contactDiv = document.createElement("div");
+//       // contactDiv.textContent = taskContacts[i].name;
+//       contactDiv.textContent = contacts[i].name;
+//       // selectedContactsDiv.innerHTML += `<div>${contacts[i].name}</div>`;
+//     }
+//   }
+//   renderSelectedNames(selectedContacts);
+//   return selectedContacts;
+// }
+
+
+// function renderSelectedNames(selectedContacts){
+//   let limit = 3;
+//   if(selectedContacts.length > 0){
+//     if(selectedContacts.length <= limit){
+//     for (let j = 0; j < selectedContacts.length; j++) {
+//       let selectedContactsArea = document.getElementById(`selectedContacts`);
+//       const contact = selectedContacts[j];
+//       selectedContactsArea.innerHTML += /*html*/ `
+//           <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+//       `;
+//     document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
+//       }
+//     } else {
+//     for(let j = 0; j < limit; j++){
+//       // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+//         let assignedContacts = document.getElementById(`selectedContacts${i}`);
+//         const contact = selectedContacts[j];
+//         assignedContacts.innerHTML += /*html*/ `
+//              <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
+//         `;
+//         document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
+//       // } 
+//     }
+//     renderSelectedNamesGreaterThanLimitOverview(limit);
+//   }
+// }
+// }
+
+
+// function renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit){
+//   let assignedContacts = document.getElementById(`selctedContacts${i}`);
+//         assignedContacts.innerHTML += /*html*/ `
+//             <div id="selectedContactIcon${limit}" class="contact-icon assigned-contact-icon">+${calculateRestOfAssigendToGreaterThanLimit(selectedContacts, limit)}</div>
+//         `;
+//     document.getElementById(`selectedContactIcon${limit}`).style.backgroundColor = "#301934"; 
+// }
+
+
+// function calculateRestOfSelecetdToGreaterThanLimit(selectedContacts, limit) {
+//   let restOfAssignedUsers = selectedContacts.length - limit;
+//   return restOfAssignedUsers;
+// }
+
 
 // Subtasks Liste
 

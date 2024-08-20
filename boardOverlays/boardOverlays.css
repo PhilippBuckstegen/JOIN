@@ -152,8 +152,13 @@ textarea {
   text-indent: 4px;
 }
 
-#selectedContacts {
-  width: 300px;
+/* Heiko rausgenommen */
+/* #selectedContacts {
+  width: 310px;
+} */
+
+.selected-contacts-edit {
+  width: 360px !important;
 }
 
 #boardSubtasksContainer {
@@ -602,8 +607,8 @@ textarea {
     border-radius: 8px;
   }
 
-  #selectedContacts {
-    width: 220px;
+  .selected-contacts {
+    width: 230px;
   }
 
   #boardSubtasksContainer {
@@ -728,6 +733,10 @@ textarea {
 
   .subtaskListItems {
     width: 200px !important;
+  }
+
+  .selected-contacts{
+    width: 230px !important;
   }
 }
 
@@ -902,6 +911,10 @@ textarea {
 
   .subtaskListItems {
     width: 280px !important;
+  }
+
+  .selected-contacts{
+    width: 310px !important;
   }
 }
 
@@ -1081,6 +1094,14 @@ textarea {
   .subtaskListItems {
     width: 260px !important;
   }
+
+  .selected-contacts {
+    width: 290px !important;
+  }
+
+  .selected-contacts-edit {
+    width: 220px !important;
+  }
 }
 
 /* ************************************************************************************************************************************************* */
@@ -1166,7 +1187,8 @@ textarea {
 }
 
 .selected-contacts {
-  padding-top: 10px;
+  width: 310px;
+  /* padding-top: 10px; */
   display: flex;
   justify-content: flex-start;
   /* gap: 10px; */

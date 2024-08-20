@@ -134,27 +134,71 @@ function updateSelectedContacts() {
     const checkbox = document.getElementById(`contact_${i}`);
     if (checkbox.checked) {
       selectedContacts.push({
-        // user : taskContacts[i].name,
-        // initials : generateInitials(taskContacts[i].name)  // hier muss später contacts[i].initials rein!
-        // },
         user: contacts[i].name,
-        initials: contacts[i].initials, // hier muss später contacts[i].initials rein!
+        initials: contacts[i].initials, 
         backgroundColor: contacts[i].backgroundColor,
       });
-      const contactDiv = document.createElement("div");
-      // contactDiv.textContent = taskContacts[i].name;
-      // selectedContactsDiv.innerHTML += `<span>${taskContacts[i].initials}</span>`;
-      contactDiv.textContent = contacts[i].name;
-      selectedContactsDiv.innerHTML += `
-            <span class="initials-dropdown" id="selectedInitials${i}">${contacts[i].initials}</span>
-            `;
-      document.getElementById(
-        `selectedInitials${i}`
-      ).style.backgroundColor = `${contacts[i].backgroundColor}`;
-    }
+    //   const contactDiv = document.createElement("div");
+    //   contactDiv.textContent = contacts[i].name;
+    //   selectedContactsDiv.innerHTML += `
+    //         <span class="initials-dropdown" id="selectedInitials${i}">${contacts[i].initials}</span>
+    //         `;
+    //   document.getElementById(
+    //     `selectedInitials${i}`
+    //   ).style.backgroundColor = `${contacts[i].backgroundColor}`;
+    // }
   }
-  return selectedContacts;
+  // renderSelectedNames(selectedContacts);
+  // return selectedContacts;
 }
+renderSelectedNames(selectedContacts);
+return selectedContacts;
+}
+
+function renderSelectedNames(selectedContacts){
+  let limit = 3;
+  if(selectedContacts.length > 0){
+    if(selectedContacts.length <= limit){
+    for (let j = 0; j < selectedContacts.length; j++) {
+      let selectedContactsArea = document.getElementById(`selectedContacts`);
+      const contact = selectedContacts[j];
+      selectedContactsArea.innerHTML += /*html*/ `
+          <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${selectedContacts[j].initials}</div>
+      `;
+    document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
+      }
+    } else {
+    for(let j = 0; j < limit; j++){
+      // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
+        let selectedContactsArea = document.getElementById(`selectedContacts`);
+        const contact = selectedContacts[j];
+        selectedContactsArea.innerHTML += /*html*/ `
+             <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${selectedContacts[j].initials}</div>
+        `;
+        document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
+      // } 
+    }
+    renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit);
+  }
+}
+}
+
+
+function renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit){
+  let selectedContactsArea = document.getElementById(`selectedContacts`);
+    selectedContactsArea.innerHTML += /*html*/ `
+            <div id="selectedContactIcon${limit}" class="contact-icon assigned-contact-icon">+${calculateRestOfSelectedToGreaterThanLimit(selectedContacts, limit)}</div>
+        `;
+    document.getElementById(`selectedContactIcon${limit}`).style.backgroundColor = "#301934"; 
+}
+
+
+function calculateRestOfSelectedToGreaterThanLimit(selectedContacts, limit) {
+  let restOfAssignedUsers = selectedContacts.length - limit;
+  return restOfAssignedUsers;
+}
+
+
 
 // Subtasks Liste
 
