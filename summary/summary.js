@@ -63,14 +63,11 @@ function getNumberOfUrgentTasks() {
 }
 
 function getNextDueDate() {
-    let currentDate = new Date(); // Aktuelles Datum
+    let currentDate = new Date();
     let upcomingTasks = tasks.filter(task => new Date(task.dueDate) > currentDate);
     upcomingTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
     return upcomingTasks.length > 0 ? upcomingTasks[0].dueDate : null;
 }
-
-// Die nächste Deadline ermitteln
-const nextDueDate = getNextDueDate();
 
 function renderSummary() {
     document.getElementById('tasksInBoard').innerHTML = tasks.length;
