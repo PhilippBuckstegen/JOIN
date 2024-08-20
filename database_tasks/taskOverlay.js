@@ -243,7 +243,7 @@ function generateEditView(i) {
              
                 
              
-                <div id="xBtnContainer" class="xBtnContainerEdit flexContainer">
+                <div id="xBtnContainerEdit" class="flexContainer">
                   <img id="xBtn" src="../database/images/close.svg" alt="icon"
                   onclick="cancelEditArea()"/>
                 </div>
@@ -256,11 +256,11 @@ function generateEditView(i) {
                           <span id="boardTitleErrorMessage" class="error-message no-error-visible">This field is required</span>
                         </div>
                       </div>
-                      <div id="boardDescriptionContainer" class="flexContainerColStart">
+                      <div id="boardDescriptionContainer" class="boardDescriptionContainerEdit flexContainerColStart">
                         <label for="boardDescription">Description</label>
                         <textarea placeholder="Enter a Description" rows="4" cols="50" id="editBoardDescription" name="boardDescription"></textarea>
                       </div>
-                      <div id="boardDateContainer" class="flexContainerColStart">
+                      <div id="boardDateContainer" class="boardDateContainerEdit flexContainerColStart">
                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
                       <div id="boardDateInputImgContainer" class="flexContainer">
                         <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
@@ -272,11 +272,11 @@ function generateEditView(i) {
                         />-->
                       </div>
                     </div>
-                    <div id="boardPriorityContainerCur" class="flexContainerCol">
+                    <div id="boardPriorityContainerCur" class="boardPriorityContainerEdit flexContainerCol">
                       <div id="priorityHeaderContainer" class="flexContainer">
                         <p>Prio</p>
                       </div>
-                      <div id="priorityBtnsContainer" class="flexContainer">
+                      <div id="priorityBtnsContainer" class="priorityBtnsContainerEdit flexContainer">
                         <button id="editUrgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="editUrgentBtnToggle(${i})">
                           Urgent
                           <img id="editUrgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
@@ -295,7 +295,7 @@ function generateEditView(i) {
 
                 
 
-                    <div id="boardAssignedContainer" class="flexContainerCol">
+                    <div id="boardAssignedContainer" class="boardAssignedContainerEdit flexContainerCol">
                         <!-- new dropdown start -->
 
                         <div id="contactDropdown" class="contactDropdownCur dropdown flexContainerColStart" >
@@ -310,13 +310,13 @@ function generateEditView(i) {
                           ></div>
                         </div>
                         <div
-                          class="selected-contacts flexContainerStart"
+                          class="selectedContactsEdit selected-contacts flexContainerStart"
                           id="selectedContacts"
                         ></div>
                       </div>
 
 
-                    <div id="boardSubtasksContainerCur" class="flexContainerColStart">
+                    <div id="boardSubtasksContainerCur" class="boardSubtasksContainerEdit flexContainerColStart">
                       <label for="boardSubtasks">Subtasks</label>
                       <div
                         id="boardSubtasksInputImgContainer"
@@ -558,7 +558,7 @@ function editRenderSubtasks(x) {
     listArea.innerHTML = "";
     for (let i = 0; i < tasks[x].subtask.length; i++) {
       listArea.innerHTML += /*html*/ `
-        <li id="subtaskListItem${i}" class="subtaskListItems flexContainer">
+        <li id="subtaskListItem${i}" class="subtaskListItems subtaskListItemsEdit flexContainer">
             
             <div id="subTaskTextListItem${i}" class="sub-task-text-list subtaskListItemsContainers flexContainer"><span class="sub-task-text-list" id="subTaskTextListItem${i}">${tasks[x].subtask[i].task}</span></div>
             <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">

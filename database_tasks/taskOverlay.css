@@ -65,11 +65,6 @@
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.6);
 }
 
-.xBtnContainerEdit {
-  justify-content: flex-end;
-  width: 100%;
-}
-
 .userTaskOverlayParts {
   width: 100%;
   justify-content: flex-start;
@@ -264,10 +259,13 @@
   width: 350px !important;
 }
 
-#XbtnContainerEdit {
-  width: 100%;
+#xBtnContainerEdit {
   justify-content: flex-end;
-  z-index: 999;
+  width: 100%;
+}
+
+.dropdown-button {
+  font-size: 14px !important;
 }
 
 #TaskBoardContainer {
@@ -456,6 +454,14 @@
   width: 360px;
 }
 
+#xBtnContainerEdit {
+  width: 100%;
+}
+
+#okBtnCurContainer {
+  width: 100%;
+}
+
 /* generateEditView Design End */
 
 @media (min-width: 1201px) {
@@ -515,6 +521,65 @@
     width: 80vw;
     height: 80vh;
     border-radius: 20px;
+  }
+
+  .taskBoardOverlayFormEdit input,
+  .taskBoardOverlayFormEdit textarea {
+    width: 220px !important;
+  }
+  .contactDropdownCur {
+    width: 220px !important;
+  }
+
+  #subtaskList .subtaskListItemsEdit {
+    width: 180px !important;
+  }
+
+  .selectedContactsEdit {
+    width: 220px !important;
+  }
+
+  .boardTitleContainerEdit {
+    width: 220px !important;
+  }
+
+  .boardDescriptionContainerEdit {
+    width: 220px !important;
+  }
+
+  .boardDateContainerEdit {
+    width: 220px !important;
+  }
+
+  .boardPriorityContainerEdit {
+    width: 220px !important;
+  }
+
+  .priorityBtnsContainerEdit {
+    gap: 8px !important;
+  }
+
+  .priorityBtnsContainerEdit button {
+    font-size: 12px !important;
+    padding: 6px 8px;
+  }
+
+  .priorityBtnsContainerEdit img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .boardAssignedContainerEdit {
+    width: 220px !important;
+  }
+
+  .boardSubtasksContainerEdit {
+    width: 220px !important;
+  }
+
+  #okBtnCur {
+    font-size: 14px;
+    padding: 8px 12px;
   }
 }
 
