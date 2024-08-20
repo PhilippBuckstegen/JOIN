@@ -1,22 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join Sign up</title>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- script -->
     <script src="../validation/validation.js"></script>
-    <script src="script.js"></script>
+
     <!-- style -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../validation/validation.css">
-    <link rel="shortcut icon" href="../favicon/img/favicon.png" type="image/x-icon">
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../validation/validation.css" />
+    <link
+      rel="shortcut icon"
+      href="../favicon/img/favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div id="contentWrapper" class="flexContainer">
+      <div id="headerLogoContainer" class="headerLogo flexContainer">
+        <img
+          id="joinLogo"
+          class="joinLogo"
+          src="../assets/icons/Logo_login.svg"
+          alt="join.logo"
+        />
+      </div>
+      <main class="mainSignUp">
+        <form id="signUpForm" onsubmit=" ; return false" class="form">
+          <h1 class="formHeadline">Sign up</h1>
+          <div class="borderSignUp"></div>
+          <section class="signUpData">
+            <div class="dataContainer">
+              <input
+                id="signUpName"
+                class="inputName"
+                type="text"
+                placeholder="Name"
+                autocomplete="name"
+                title="required"
+              />
+              <span id="loginError" class="no-error-visible error-message"
+                >Incorrect email or password.</span
+              >
+            </div>
+            <div class="dataContainer">
+              <input
+                id="signUpEmail"
+                class="inputEmail"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+                title="required"
+              />
+              <span id="loginError" class="no-error-visible error-message"
+                >Incorrect email or password.</span
+              >
+            </div>
+            <div class="dataContainer">
+              <input
+                id="signUpPassword"
+                class="inputPassword"
+                type="password"
+                placeholder="Password"
+                autocomplete="currentPassword"
+                title="required"
+              />
+              <span id="loginError" class="no-error-visible error-message"
+                >Incorrect email or password.</span
+              >
+            </div>
+            <div class="dataContainer">
+              <input
+                id="signUpPassword2"
+                class="inputPassword"
+                type="password"
+                placeholder="Confirm Password"
+                autocomplete="currentConfirmPassword"
+                title="required"
+              />
+              <span id="loginError" class="no-error-visible error-message"
+                >Incorrect email or password.</span
+              >
+            </div>
+          </section>
+          <section class="formPrivacyPolicy flexContainer">
+            <div class="checkbox flexContainer">
+              <input
+                id="checkboxPrivacyPolicy"
+                type="checkbox"
+                class="checkboxPrivacyPolicy checkboxUnchecked"
+              />
+              <label for="formPrivacyPolicy" class="labelPrivacyPolicy"
+                >I accept the
+                <span id="privacyPolicySpan">Privacy Policy</span></label
+              >
+            </div>
+          </section>
+          <section class="formSubmit">
+            <button id="signUpBtn" type="submit" class="signUpBtn">
+              Sign Up
+            </button>
+          </section>
+        </form>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>

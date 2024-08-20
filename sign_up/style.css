@@ -3,3 +3,261 @@ body {
   padding: 0;
   font-family: "Inter";
 }
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-none {
+  display: none;
+}
+
+.no-error-visible {
+  visibility: hidden;
+}
+
+#contentWrapper {
+  background-color: #f5f5f5;
+  height: 100vh;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.mainSignUp {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 33.33%;
+}
+
+#signUpBtn {
+  color: white;
+  background-color: #2a3647;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 700;
+  border: 1px solid #2a3647;
+}
+
+#signUpForm {
+  width: 90%;
+}
+
+.form {
+  min-width: 40%;
+  margin: 0 4%;
+  padding: 35px 4%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 30px;
+}
+
+.formHeadline {
+  width: 100%;
+  margin: 0;
+  font-size: 61px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.borderSignUp {
+  margin-top: 24px;
+  margin-bottom: 35px;
+  width: 50%;
+  max-width: 150px;
+  height: 3px;
+  background-color: #29abe2;
+}
+
+.signUpData {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dataContainer {
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  left: 0;
+  bottom: 24px;
+  font-size: 10px;
+  color: red;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  margin-bottom: 45px;
+  padding: 13px 21px;
+  width: calc(100% - 42px - 2px);
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.inputName {
+  background-image: url(../database/images/personSU.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.inputEmail {
+  background-image: url(../database/images/mailSU.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.inputPassword {
+  background-image: url(../database/images/lockSU.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.formPrivacyPolicy {
+  margin-bottom: 35px;
+  width: 100%;
+}
+
+.checkbox {
+  gap: 10px;
+}
+
+.checkboxPrivacyPolicy {
+  cursor: pointer;
+}
+
+.formPrivacyPolicy {
+  font-weight: 400;
+}
+
+.formSubmit {
+  display: flex;
+  gap: 35px;
+}
+
+#signUpBtn:hover {
+  background-color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#signUp {
+  font-size: 16px;
+}
+
+.p-user {
+  font-size: 18px;
+}
+
+.not-a-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  position: absolute;
+  top: 40px;
+  right: 48px;
+  z-index: 9;
+  gap: 36px;
+}
+
+#headerLogoContainer {
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 90%;
+  width: 33.33%;
+}
+
+#joinLogo {
+  height: 96px;
+  width: auto;
+  padding-top: 20px;
+  padding-left: 50px;
+}
+
+#checkboxPrivacyPolicy {
+  cursor: pointer;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+}
+
+.checkboxUnchecked::before {
+  content: url("../database/images/unchecked_button.svg");
+  transform: scale(0.8);
+}
+
+.checkboxChecked::before {
+  content: url("../database/images/checked_button.svg");
+  transform: scale(0.8);
+}
+
+.labelPrivacyPolicy {
+  font-size: 14px;
+}
+
+#privacyPolicySpan {
+  color: #29abe2;
+}
+
+#privacyPolicySpan:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #29abe2;
+}
+
+@media (min-width: 1201px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 680px) {
+}
+
+@media (max-width: 480px) {
+  #contentWrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 15%;
+  }
+
+  .mainSignUp {
+    height: 60%;
+  }
+}
