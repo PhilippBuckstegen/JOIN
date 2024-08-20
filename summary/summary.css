@@ -3,6 +3,10 @@
   font-family: "Inter";
 }
 
+body {
+  overflow: hidden;
+}
+
 .main-summary {
   background-color: #f5f5f5;
   min-height: calc(100vh - 89px);
@@ -203,6 +207,19 @@
     font-size: 64px;
     font-weight: 600;
     margin: 0;
+}
+
+.summary-greeting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.p-greeting {
+  margin: 0;
+  font-size: 47px;
+  font-weight: 500;
 }
 
 @media (max-height: 950px) {

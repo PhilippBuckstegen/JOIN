@@ -7,6 +7,10 @@
     <!-- script -->
     <script src="../sidebar/sidebarScript.js"></script>
     <script src="../header/Headerscript.js"></script>
+    <script src="../database_tasks/tasks.js"></script>
+    <script src="../board/board.js"></script>
+    <script src="../database/script.js"></script>
+    <script src="./summary.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
@@ -25,7 +29,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body onload="initSummary()">
     <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
       <div class="sidebar"></div>
@@ -47,7 +51,7 @@
               alt="pen"
             />
             <div class="todo">
-              <span id="sumCountTodo" class="sum-count-todo">2</span>
+              <span id="sumCountTodo" class="sum-count-todo"></span>
               <p class="p-todo">To-do</p>
             </div>
           </div>
@@ -58,7 +62,7 @@
               alt="check"
             />
             <div class="todo">
-              <span id="sumCountTodo" class="sum-count-todo">2</span>
+              <span id="sumCountDone" class="sum-count-todo">2</span>
               <p class="p-todo">Done</p>
             </div>
           </div>
@@ -81,7 +85,7 @@
             </div>
           </div>
           <div class="sum-content-boardtasks hover grid4">
-            <p id="tasksInBoard" class="tasks-summary">18</p>
+            <p id="tasksInBoard" class="tasks-summary"></p>
             <p class="tasks-in-board">Tasks in Board</p>
           </div>
           <div class="sum-content-boardtasks hover grid5">
@@ -92,6 +96,9 @@
             <p id="tasksFeedback" class="tasks-summary">5</p>
             <p class="tasks-in-board">Awaiting Feedback</p>
           </div>
+        </div>
+        <div id="summaryGreeting" class="summary-greeting">
+          <!-- render Greeting -->
         </div>
       </div>
     </main>
