@@ -31,31 +31,7 @@ async function renderGreeting() {
         <p id="greeting" class="p-greeting">${timeOfDay}</p>    
     `
 }
-/*
-function getNumberOfTasksByStatus0() {
-    let filteredStatus0 = tasks.filter(task => task.status === 0);
-    filteredStatus0 = filteredStatus0.length;
-    return filteredStatus0;
-}
 
-function getNumberOfTasksByStatus3() {
-    let filteredStatus3 = tasks.filter(task => task.status === 3);
-    filteredStatus3 = filteredStatus3.length;
-    return filteredStatus3;
-}
-
-function getNumberOfTasksByStatus1() {
-    let filteredStatus1 = tasks.filter(task => task.status === 1);
-    filteredStatus1 = filteredStatus1.length;
-    return filteredStatus1;
-}
-
-function getNumberOfTasksByStatus2() {
-    let filteredStatus2 = tasks.filter(task => task.status === 2);
-    filteredStatus2 = filteredStatus2.length;
-    return filteredStatus2;
-}
-*/
 function getNumberOfTasksByStatus(status) {
     let filteredStatus = tasks.filter(task => task.status === status);
     return filteredStatus.length;
