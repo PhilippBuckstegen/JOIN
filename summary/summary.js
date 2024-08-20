@@ -5,7 +5,6 @@ async function initSummary() {
     renderGreeting();
 }
 
-
 let timeOfDay
 
 function renderTimeOfDay() {
