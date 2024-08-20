@@ -31,7 +31,7 @@ async function renderGreeting() {
         <p id="greeting" class="p-greeting">${timeOfDay}</p>    
     `
 }
-
+/*
 function getNumberOfTasksByStatus0() {
     let filteredStatus0 = tasks.filter(task => task.status === 0);
     filteredStatus0 = filteredStatus0.length;
@@ -55,6 +55,11 @@ function getNumberOfTasksByStatus2() {
     filteredStatus2 = filteredStatus2.length;
     return filteredStatus2;
 }
+*/
+function getNumberOfTasksByStatus(status) {
+    let filteredStatus = tasks.filter(task => task.status === status);
+    return filteredStatus.length;
+}
 
 function getNumberOfUrgentTasks() {
     let urgentTasks = tasks.filter(task => task.priority === 3);
@@ -71,10 +76,10 @@ function getNextDueDate() {
 
 function renderSummary() {
     document.getElementById('tasksInBoard').innerHTML = tasks.length;
-    document.getElementById('sumCountTodo').innerHTML = getNumberOfTasksByStatus0();
-    document.getElementById('sumCountDone').innerHTML = getNumberOfTasksByStatus3();
-    document.getElementById('tasksInProgress').innerHTML = getNumberOfTasksByStatus1();
-    document.getElementById('tasksFeedback').innerHTML = getNumberOfTasksByStatus2();
+    document.getElementById('sumCountTodo').innerHTML = getNumberOfTasksByStatus(0);
+    document.getElementById('sumCountDone').innerHTML = getNumberOfTasksByStatus(3);
+    document.getElementById('tasksInProgress').innerHTML = getNumberOfTasksByStatus(1);
+    document.getElementById('tasksFeedback').innerHTML = getNumberOfTasksByStatus(2);
     document.getElementById('sumCountUrgent').innerHTML = getNumberOfUrgentTasks();
     document.getElementById('deadlineDate').innerHTML = getNextDueDate();
 }
