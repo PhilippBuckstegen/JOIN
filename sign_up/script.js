@@ -99,4 +99,23 @@ async function storeNewUser(){
   writeNewUserToLocalArray();
   await writeUsersToDatabase();
   await getUsersFromDatabase();
+  clearSignUpInputFields();
+  signUpUserValid = false;
+  signUpEmailValid = false;
+  signUpPasswordValid = false;
+  signUpPasswordTwoValid = false;
+  signUpPrivacyPolicy = false;
+  checkSignUpConditionsTrue();
+}
+
+function clearSignUpInputFields(){
+  document.getElementById("signUpName").value = "";
+  document.getElementById("signUpEmail").value = "";
+  document.getElementById("signUpPassword").value = "";
+  document.getElementById("signUpPassword2").value = "";
+  resetSingleInputError("signUpName");
+  resetSingleInputError("signUpEmail");
+  resetSingleInputError("signUpPassword");
+  resetSingleInputError("signUpPassword2");
+  acceptPrivacyPolicy();
 }

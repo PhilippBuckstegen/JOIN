@@ -2,6 +2,7 @@ let loggedInUser = [];
 
 async function firstLoadLogin(){
     await getUsersFromDatabase();
+    clearLoginInputFields();
 }
 
 function loginUser(enteredUserEmail, enteredUserPassword) {
@@ -24,12 +25,16 @@ function loginUser(enteredUserEmail, enteredUserPassword) {
 // let loginUsername = "user2";
 // let loginPassword = "pass2";
 
+function logIn(){
+    checkLoginData();
+    clearLoginInputFields();
+}
 
 function checkLoginData(){
     let enteredUserEmail = document.getElementById('loginEmail').value;
     let enteredUserPassword = document.getElementById('loginPassword').value;
     let loggedInData = loginUser(enteredUserEmail, enteredUserPassword);
-    loggedInUser.push(loggedInData);
+    loggedInUser[0] = loggedInData;
 
 if (loggedInUser) {
     console.log("Login erfolgreich:", loggedInUser);
@@ -37,3 +42,11 @@ if (loggedInUser) {
     console.log("Login fehlgeschlagen: Benutzername oder Passwort ist falsch.");
 }
 }
+
+
+function clearLoginInputFields(){
+    document.getElementById("loginEmail").value = "";
+    document.getElementById("loginPassword").value = "";
+    resetSingleInputError("loginEmail");
+    resetSingleInputError("loginPassword");
+  }
