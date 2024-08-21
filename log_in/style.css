@@ -192,3 +192,10 @@ input[type="password"] {
   height: 96px;
   width: auto;
 }
+
+
+/* Heiko zugefügt */
+.loginBtn-disabled {
+  background-color: grey !important;
+  pointer-events: none !important;
+}

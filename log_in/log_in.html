@@ -60,7 +60,7 @@
               placeholder="Email"
               autocomplete="email"
               title="required" 
-              onblur="validateEmail('loginEmail')" onfocus="resetSingleInputError('loginEmail')"
+              onblur="validateLoginEmail('loginEmail')" onfocus="resetSingleInputError('loginEmail')"
             />
             <span id="loginEmailErrorMessage" class="no-error-visible error-message"
               >This field is required.</span
@@ -88,10 +88,8 @@
           </div>
         </section>
         <section class="form-submit">
-          <button type="submit" class="login-signup-button" onclick="logIn()">Log in</button>
-          <button onclick=" ; return false" class="guest-button">
-            Guest Log in
-          </button>
+          <button id="loginButton" type="submit" class="login-signup-button" onclick="logIn()" disabled>Log in</button>
+          <button onclick="guestLogin(); return false" class="guest-button">Guest Log in</button>
         </section>
       </form>
     </main>

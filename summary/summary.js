@@ -1,6 +1,7 @@
 
 async function initSummary() {
     await getTasksFromDatabase();
+    getCurrentUserFromLocalStorage(); //Heiko zugefügt
     renderSummary();
     renderGreeting();
 }
@@ -30,7 +31,8 @@ async function renderGreeting() {
     mobileGreeting.innerHTML = '';
     greetings.innerHTML = '';
 
-    if (loggedInAsGuest()) {
+    // if (loggedInAsGuest()) {
+    if (loggedInUser == 0) {
         renderGreetingGuest();
     } else {
         renderGreetingUser();
@@ -55,11 +57,13 @@ function renderGreetingUser() {
     let mobileGreeting = document.getElementById('mobileGreeting');
     mobileGreeting.innerHTML = /*html*/`
         <p class="mobile-overlay-greeting">${timeOfDay},</p>
-        <p class="mobile-greeting-user">User Beispiel</p>
+        <!-- <p class="mobile-greeting-user">User Beispiel</p> -->
+        <p class="mobile-greeting-user">${loggedInUser[0].name}</p>
     `   
     greetings.innerHTML = /*html*/`
         <p id="greeting" class="p-greeting">${timeOfDay},</p>
-        <p class="greeting-user">User Beispiel</p>
+        <!-- <p class="greeting-user">User Beispiel</p> -->
+        <p class="greeting-user">${loggedInUser[0].name}</p>
     `
 }
 

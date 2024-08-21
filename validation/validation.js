@@ -3,6 +3,8 @@ let signUpEmailValid = false;
 let signUpPasswordValid = false;
 let signUpPasswordTwoValid = false;
 let signUpPrivacyPolicy = false;
+let loginEmailValid = false;
+let loginPasswordValid = false;
 // **** Validation!!! For Contacts****
 
 function validateAddInputs(){
@@ -466,12 +468,39 @@ function checkSignUpConditionsTrue(){
 
 // Validation Login
 
+function validateLoginEmail(id){
+  let isValid = true;
+  let emailToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, emailToCheck, errorMessage);
+  if (isValid === true){
+    isValid = checkIfFieldContainsAtSign(isValid, emailToCheck, errorMessage);
+  }
+  loginEmailValid = isValid;
+  checkLoginConditionsTrue();
+  return isValid;
+}
+
+
 function validateLoginPassword(id){
   let isValid = true;
   let inputToCheck = document.getElementById(`${id}`);
   let errorMessage =  document.getElementById(`${id}ErrorMessage`);
   isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+  loginPasswordValid = isValid;
+  checkLoginConditionsTrue();
   return isValid;
+}
+
+
+function checkLoginConditionsTrue(){
+  if(loginEmailValid && loginPasswordValid){
+    document.getElementById(`loginButton`).disabled = false;
+    document.getElementById('loginButton').classList.remove('loginBtn-disabled');
+  } else{
+    document.getElementById(`loginButton`).disabled = true;
+    document.getElementById('loginButton').classList.add('loginBtn-disabled');
+  }
 }
 
 

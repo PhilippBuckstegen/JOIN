@@ -78,19 +78,10 @@ function acceptPrivacyPolicy() {
 }
 
 // Start - Heiko zugefügt
-// document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
 
 function loadSignUpEventListeners(){
-    // const signUpButton = document.getElementById("signUpBtn");
-    // // Event listener für den  sign-up button
-    // signUpButton.addEventListener("click", function () {
-    //   const targetUrl = signUpButton.getAttribute("data-target");
-    //   window.location.href = targetUrl;
-    // });
-    // Event Listener Checkbox
     const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
     checkboxPrivacyPolicy.addEventListener("click", acceptPrivacyPolicy);
-    // Klasse SignUp Button zuweisen
     document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
 }
 
