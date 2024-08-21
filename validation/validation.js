@@ -466,5 +466,13 @@ function checkSignUpConditionsTrue(){
 
 // Validation Login
 
+function validateLoginPassword(id){
+  let isValid = true;
+  let inputToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+  return isValid;
+}
+
 
 

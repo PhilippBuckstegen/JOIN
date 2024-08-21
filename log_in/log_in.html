@@ -48,7 +48,8 @@
               type="email"
               placeholder="Email"
               autocomplete="email"
-              title="required" onblur="validateEmail('loginEmail')" onfocus="resetSingleInputError('loginEmail')"
+              title="required" 
+              onblur="validateEmail('loginEmail')" onfocus="resetSingleInputError('loginEmail')"
             />
             <span id="loginEmailErrorMessage" class="no-error-visible error-message"
               >This field is required.</span
@@ -62,6 +63,7 @@
               placeholder="Password"
               autocomplete="current-password"
               title="required"
+              onblur="validateLoginPassword('loginPassword')" onfocus="resetSingleInputError('loginPassword')"
             />
             <span id="loginPasswordErrorMessage" class="no-error-visible error-message"
               >This field is required.</span
