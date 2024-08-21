@@ -93,3 +93,10 @@ function loadSignUpEventListeners(){
     // Klasse SignUp Button zuweisen
     document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
 }
+
+
+async function storeNewUser(){
+  writeNewUserToLocalArray();
+  await writeUsersToDatabase();
+  await getUsersFromDatabase();
+}
