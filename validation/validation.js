@@ -48,6 +48,7 @@ function validateAddInputs(){
       isValid = checkIfFieldContainsAtSign(isValid, emailToCheck, errorMessage);
     }
     signUpEmailValid = isValid;
+    checkSignUpConditionsTrue();
     return isValid;
   }
   
@@ -243,6 +244,7 @@ function validateUserName(id){
     isValid = checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage);
   }
   signUpUserValid = isValid;
+  checkSignUpConditionsTrue();
   return isValid;
 }
 
@@ -268,6 +270,7 @@ function validatePassword(id){
     isValid =  checkIfFieldContainsSpecialCharacter(isValid, inputToCheck, errorMessage);
   }
   signUpPasswordValid = isValid;
+  checkSignUpConditionsTrue();
   return isValid;
 }
 
@@ -281,6 +284,7 @@ function validatePassword2(id1, id2){
     isValid = checkIfPasswordTwoFitsPasswordOne(isValid, inputToCheck, referenceInput, errorMessage);
   }
   signUpPasswordTwoValid = isValid;
+  checkSignUpConditionsTrue();
   return isValid;
 }
 
