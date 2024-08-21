@@ -25,7 +25,11 @@ function renderTimeOfDay() {
 async function renderGreeting() {    
     renderTimeOfDay();
 
-    let greetings = document.getElementById('summaryGreeting');    
+    let greetings = document.getElementById('summaryGreeting');
+    let mobileGreeting = document.getElementById('mobileGreeting');
+    mobileGreeting.innerHTML = /*html*/`
+        <p class="mobile-overlay-greeting">${timeOfDay}</p>
+    `   
     greetings.innerHTML = /*html*/`
         <p id="greeting" class="p-greeting">${timeOfDay}</p>    
     `
