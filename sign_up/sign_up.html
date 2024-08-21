@@ -13,7 +13,6 @@
     />
     <!-- script -->
     <script src="../validation/validation.js"></script>
-    <script src="../database/script.js"></script>
 
     <!-- style -->
     <link rel="stylesheet" href="./style.css" />
@@ -25,96 +24,119 @@
     />
   </head>
   <body onload="firstLoadSignUp()">
-    <div id="contentWrapper" class="flexContainer">
-      <div id="headerLogoContainer" class="headerLogo flexContainer">
-        <img
-          id="joinLogo"
-          class="joinLogo"
-          src="../assets/icons/Logo_login.svg"
-          alt="join.logo"
-        />
+    <div id="contentWrapper" class="flexContainerCol">
+      <div id="logoFormContainer" class="flexContainer">
+        <div id="headerLogoContainer" class="headerLogo flexContainer">
+          <img
+            id="joinLogo"
+            class="joinLogo"
+            src="../assets/icons/Logo_login.svg"
+            alt="join.logo"
+          />
+        </div>
+        <main id="main" class="mainSignUp" class="flexContainerCol">
+          <form
+            id="signUpForm"
+            onsubmit=" ; return false"
+            class="form flexContainerCol"
+          >
+            <div class="flexContainerCol">
+              <h1 class="formHeadline">Sign up</h1>
+              <div id="borderSignUp" class="borderSignUp"></div>
+            </div>
+
+            <section id="signUpData" class="signUpData flexContainerCol">
+              <div class="dataContainer">
+                <input
+                  id="signUpName"
+                  class="inputName"
+                  type="text"
+                  placeholder="Name"
+                  autocomplete="name"
+                  title="required"
+                />
+                <span
+                  id="signUpNameErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+              <div class="dataContainer">
+                <input
+                  id="signUpEmail"
+                  class="inputEmail"
+                  type="email"
+                  placeholder="Email"
+                  autocomplete="email"
+                  title="required"
+                />
+                <span
+                  id="signUpEmailErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+              <div class="dataContainer">
+                <input
+                  id="signUpPassword"
+                  class="inputPassword"
+                  type="password"
+                  placeholder="Password"
+                  autocomplete="currentPassword"
+                  title="required"
+                />
+                <span
+                  id="signUpPasswordErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+              <div class="dataContainer">
+                <input
+                  id="signUpPassword2"
+                  class="inputPassword"
+                  type="password"
+                  placeholder="Confirm Password"
+                  autocomplete="currentConfirmPassword"
+                  title="required"
+                />
+                <span
+                  id="signUpPassword2ErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+            </section>
+            <section class="formPrivacyPolicy flexContainer">
+              <div class="checkbox flexContainer">
+                <input
+                  id="checkboxPrivacyPolicy"
+                  type="checkbox"
+                  class="checkboxPrivacyPolicy checkboxUnchecked"
+                />
+                <label for="formPrivacyPolicy" class="labelPrivacyPolicy"
+                  >I accept the
+                  <span id="privacyPolicySpan">Privacy Policy</span></label
+                >
+                <span
+                  id="checkboxPrivacyPolicyErrorMessage"
+                  class="no-error-visible error-message"
+                  >This field is required.</span
+                >
+              </div>
+            </section>
+            <section class="formSubmit">
+              <button id="signUpBtn" type="submit" class="signUpBtn" disabled>
+                Sign Up
+              </button>
+            </section>
+          </form>
+        </main>
       </div>
-      <main class="mainSignUp">
-        <form id="signUpForm" onsubmit=" ; return false" class="form">
-          <h1 class="formHeadline">Sign up</h1>
-          <div class="borderSignUp"></div>
-          <section class="signUpData">
-            <div class="dataContainer">
-              <input
-                id="signUpName"
-                class="inputName"
-                type="text"
-                placeholder="Name"
-                autocomplete="name"
-                title="required"
-              />
-              <span id="signUpNameErrorMessage" class="no-error-visible error-message"
-                >This field is required.</span
-              >
-            </div>
-            <div class="dataContainer">
-              <input
-                id="signUpEmail"
-                class="inputEmail"
-                type="email"
-                placeholder="Email"
-                autocomplete="email"
-                title="required"
-              />
-              <span id="signUpEmailErrorMessage" class="no-error-visible error-message"
-                >This field is required.</span
-              >
-            </div>
-            <div class="dataContainer">
-              <input
-                id="signUpPassword"
-                class="inputPassword"
-                type="password"
-                placeholder="Password"
-                autocomplete="currentPassword"
-                title="required"
-              />
-              <span id="signUpPasswordErrorMessage" class="no-error-visible error-message"
-                >This field is required.</span
-              >
-            </div>
-            <div class="dataContainer">
-              <input
-                id="signUpPassword2"
-                class="inputPassword"
-                type="password"
-                placeholder="Confirm Password"
-                autocomplete="currentConfirmPassword"
-                title="required"
-              />
-              <span id="signUpPassword2ErrorMessage" class="no-error-visible error-message"
-                >This field is required.</span
-              >
-            </div>
-          </section>
-          <section class="formPrivacyPolicy flexContainer">
-            <div class="checkbox flexContainer">
-              <input
-                id="checkboxPrivacyPolicy"
-                type="checkbox"
-                class="checkboxPrivacyPolicy checkboxUnchecked"
-              />
-              <label for="formPrivacyPolicy" class="labelPrivacyPolicy"
-                >I accept the
-                <span id="privacyPolicySpan">Privacy Policy</span></label
-              >
-              <span id="checkboxPrivacyPolicyErrorMessage" class="no-error-visible error-message"
-                >This field is required.</span
-              >
-            </div>
-          </section>
-          <section class="formSubmit">
-            <button id="signUpBtn" type="submit" class="signUpBtn" disabled>
-              Sign Up
-            </button>
-          </section>
-        </form>
-      </main>
+      <footer id="footer" class="flexContainer">
+        <p>Privacy Policy</p>
+        <p>Legal notice</p>
+      </footer>
     </div>
     <script src="./script.js"></script>
   </body>

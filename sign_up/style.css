@@ -30,10 +30,24 @@ body {
 } */
 
 #contentWrapper {
+  justify-content: space-evenly;
   background-color: #f5f5f5;
   height: 100vh;
   width: 100%;
+}
+
+#logoFormContainer {
+  width: 100%;
   justify-content: flex-start;
+}
+
+#headerLogoContainer {
+  width: 33.33%;
+}
+
+#main {
+  width: 33.33%;
+  padding-top: 6%;
 }
 
 .mainSignUp {
@@ -42,7 +56,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 33.33%;
 }
 
 #signUpBtn {
@@ -62,7 +75,7 @@ body {
 }
 
 /* Heiko zugefügt */
-.signUpBtn-disabled{
+.signUpBtn-disabled {
   background-color: grey !important;
   pointer-events: none !important;
 }
@@ -70,6 +83,7 @@ body {
 
 #signUpForm {
   width: 90%;
+  gap: 20px;
 }
 
 .form {
@@ -93,24 +107,20 @@ body {
   text-align: center;
 }
 
+#borderSignUp {
+  width: 74%;
+}
+
 .borderSignUp {
   margin-top: 24px;
   margin-bottom: 35px;
-  width: 50%;
-  max-width: 150px;
   height: 3px;
   background-color: #29abe2;
 }
 
-.signUpData {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
 .dataContainer {
   position: relative;
+  width: 80%;
 }
 
 .error-message {
@@ -121,11 +131,15 @@ body {
   color: red;
 }
 
+#signUpData {
+  width: 100%;
+  gap: 24px;
+}
+
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  margin-bottom: 45px;
-  padding: 13px 21px;
+  padding: 10px;
   width: calc(100% - 42px - 2px);
   border: 1px solid #d1d1d1;
   border-radius: 10px;
@@ -154,7 +168,6 @@ input[type="password"] {
 }
 
 .formPrivacyPolicy {
-  margin-bottom: 35px;
   width: 100%;
 }
 
@@ -211,7 +224,6 @@ input[type="password"] {
 #joinLogo {
   height: 96px;
   width: auto;
-  padding-top: 20px;
   padding-left: 50px;
 }
 
@@ -244,6 +256,12 @@ input[type="password"] {
   cursor: pointer;
   text-decoration: underline;
   text-decoration-color: #29abe2;
+}
+
+#footer {
+  gap: 20px;
+  color: #a8a8a8;
+  padding-top: 4%;
 }
 
 @media (min-width: 1201px) {
