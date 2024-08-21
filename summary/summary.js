@@ -23,16 +23,48 @@ function renderTimeOfDay() {
 }
 
 async function renderGreeting() {    
+    let greetings = document.getElementById('summaryGreeting');
+    let mobileGreeting = document.getElementById('mobileGreeting');
+    
     renderTimeOfDay();
+    mobileGreeting.innerHTML = '';
+    greetings.innerHTML = '';
 
+    if (loggedInAsGuest()) {
+        renderGreetingGuest();
+    } else {
+        renderGreetingUser();
+    }
+}
+
+function renderGreetingGuest() {    
     let greetings = document.getElementById('summaryGreeting');
     let mobileGreeting = document.getElementById('mobileGreeting');
     mobileGreeting.innerHTML = /*html*/`
-        <p class="mobile-overlay-greeting">${timeOfDay}</p>
+        <p class="mobile-overlay-greeting">${timeOfDay},</p>
+        <p class="mobile-greeting-user">Guest</p>
     `   
     greetings.innerHTML = /*html*/`
-        <p id="greeting" class="p-greeting">${timeOfDay}</p>    
+        <p id="greeting" class="p-greeting">${timeOfDay},</p>
+        <p class="greeting-user">Guest</p>
     `
+}
+
+function renderGreetingUser() {    
+    let greetings = document.getElementById('summaryGreeting');
+    let mobileGreeting = document.getElementById('mobileGreeting');
+    mobileGreeting.innerHTML = /*html*/`
+        <p class="mobile-overlay-greeting">${timeOfDay},</p>
+        <p class="mobile-greeting-user">User Beispiel</p>
+    `   
+    greetings.innerHTML = /*html*/`
+        <p id="greeting" class="p-greeting">${timeOfDay},</p>
+        <p class="greeting-user">User Beispiel</p>
+    `
+}
+
+function loggedInAsGuest() {
+    return loggedInUser.length === 0;
 }
 
 function getNumberOfTasksByStatus(status) {

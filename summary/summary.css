@@ -226,6 +226,20 @@ body {
   display: none;
 }
 
+.greeting-user {
+  font-size: 64px;
+  font-weight: 700;
+  margin: 0;
+  color: #29abe2;
+}
+
+.mobile-greeting-user {
+  font-size: 47px;
+  font-weight: 700;
+  margin: 0;
+  color: #29abe2;
+}
+
 @media (max-height: 950px) {
   .sum-content {
     padding-top: 30px;
