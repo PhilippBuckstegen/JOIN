@@ -4,6 +4,7 @@ async function firstLoadLogin(){
     await getUsersFromDatabase();
     loadLoginFromLocalStorage();
     // clearLoginInputFields();
+    animationLogin();
     
 
 
@@ -101,4 +102,24 @@ function storeLoginToLocalStorage(){
                 localStorage.removeItem('userData');
             }
         }
+}
+
+// Philipp zugefügt für Animation Start Log in-------------------------
+
+function animationLogin() {
+    setTimeout(() => {
+      addClassToElement('animationJoin', 'd-none');
+      removeClassFromElement('joinLogo', 'd-none');
+      removeClassFromElement('notAuser', 'd-none');
+    }, 900);
+}
+
+function addClassToElement(elementId, className) {
+    let element = document.getElementById(elementId);
+    element.classList.add(className);
+}
+  
+function removeClassFromElement(elementId, className) {
+    let element = document.getElementById(elementId);
+    element.classList.remove(className);
 }

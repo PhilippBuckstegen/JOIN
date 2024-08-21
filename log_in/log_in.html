@@ -27,7 +27,7 @@
     />
   </head>
   <body onload="firstLoadLogin()">
-    <section id="animation-join" class="d-none">
+    <section id="animationJoin">
       <div id="screenAnimation" class="screen-animation">
       </div>
       <div id="logoAnimation" class="img-box">
@@ -38,12 +38,12 @@
     <div class="header-logo">
       <img
         id="joinLogo"
-        class="join-logo"
+        class="join-logo d-none"
         src="../assets/icons/Logo_login.svg"
         alt="join.logo"
       />
     </div>
-    <div class="not-a-user">
+    <div id="notAuser" class="not-a-user d-none">
       <p class="p-user">Not a Join user?</p>
       <button id="signUp" data-target="/sign_up.html" class="login-signup-button">Sign up</button>
     </div>
