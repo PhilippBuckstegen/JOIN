@@ -47,8 +47,6 @@ function validateAddInputs(){
     if (isValid === true){
       isValid = checkIfFieldContainsAtSign(isValid, emailToCheck, errorMessage);
     }
-    signUpEmailValid = isValid;
-    checkSignUpConditionsTrue();
     return isValid;
   }
   
@@ -244,6 +242,20 @@ function validateUserName(id){
     isValid = checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage);
   }
   signUpUserValid = isValid;
+  checkSignUpConditionsTrue();
+  return isValid;
+}
+
+
+function validateSignUpEmail(id){
+  let isValid = true;
+  let emailToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, emailToCheck, errorMessage);
+  if (isValid === true){
+    isValid = checkIfFieldContainsAtSign(isValid, emailToCheck, errorMessage);
+  }
+  signUpEmailValid = isValid;
   checkSignUpConditionsTrue();
   return isValid;
 }
