@@ -133,10 +133,94 @@
           </form>
         </main>
       </div>
+<<<<<<< Updated upstream
       <footer id="footer" class="flexContainer">
         <p>Privacy Policy</p>
         <p>Legal notice</p>
       </footer>
+=======
+      <main class="mainSignUp">
+        <form id="signUpForm" onsubmit=" ; return false" class="form">
+          <h1 class="formHeadline">Sign up</h1>
+          <div class="borderSignUp"></div>
+          <section class="signUpData">
+            <div class="dataContainer">
+              <input
+                id="signUpName"
+                class="inputName"
+                type="text"
+                placeholder="Name"
+                autocomplete="name"
+                title="required"
+              />
+              <span id="signUpNameErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
+              >
+            </div>
+            <div class="dataContainer">
+              <input
+                id="signUpEmail"
+                class="inputEmail"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+                title="required"
+              />
+              <span id="signUpEmailErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
+              >
+            </div>
+            <div class="dataContainer">
+              <input
+                id="signUpPassword"
+                class="inputPassword"
+                type="password"
+                placeholder="Password"
+                autocomplete="currentPassword"
+                title="required"
+              />
+              <span id="signUpPasswordErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
+              >
+            </div>
+            <div class="dataContainer">
+              <input
+                id="signUpPassword2"
+                class="inputPassword"
+                type="password"
+                placeholder="Confirm Password"
+                autocomplete="currentConfirmPassword"
+                title="required"
+              />
+              <span id="signUpPassword2ErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
+              >
+            </div>
+          </section>
+          <section class="formPrivacyPolicy flexContainer">
+            <div class="checkbox flexContainer">
+              <input
+                id="checkboxPrivacyPolicy"
+                type="checkbox"
+                class="checkboxPrivacyPolicy checkboxUnchecked"
+              />
+              <label for="formPrivacyPolicy" class="labelPrivacyPolicy"
+                >I accept the
+                <span id="privacyPolicySpan">Privacy Policy</span></label
+              >
+              <span id="checkboxPrivacyPolicyErrorMessage" class="no-error-visible error-message"
+                >This field is required.</span
+              >
+            </div>
+          </section>
+          <section class="formSubmit">
+            <button id="signUpBtn" type="submit" class="signUpBtn" onclick="writeNewUserToLocalArray()" disabled>
+              Sign Up
+            </button>
+          </section>
+        </form>
+      </main>
+>>>>>>> Stashed changes
     </div>
     <script src="./script.js"></script>
   </body>
