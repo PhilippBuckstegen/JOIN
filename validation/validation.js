@@ -216,9 +216,6 @@ function validateAddInputs(){
 
 // **** Validation!!! For Login ****
 
-// Validation For Login Event-Listeners
-
-
 
 function validateSignUp(){
   resetInputDataErrors(`signUpName`, `signUpEmail`, `signUpPassword`, `signUpPassword2`, `checkboxPrivacyPolicy`);
@@ -371,7 +368,9 @@ function checkStatusOfCheckbox(isValid, inputToCheck, errorMessage){
 }
 
 
-function loadEventListeners(){
+// Validation For Login Event-Listeners
+
+function loadSignUpValidationEventListeners(){
 signUpUserNameEventListener(`signUpName`);
 signUpEmailEventListener(`signUpEmail`);
 signUpPasswordEventListener(`signUpPassword`);
@@ -438,6 +437,9 @@ function checkSignUpConditionsTrue(){
   if(signUpUserValid && signUpEmailValid && signUpPasswordValid && signUpPasswordTwoValid && signUpPrivacyPolicy){
     document.getElementById(`signUpBtn`).disabled = false;
     document.getElementById('signUpBtn').classList.remove('signUpBtn-disabled');
+  } else{
+    document.getElementById(`signUpBtn`).disabled = true;
+    document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
   }
 }
 
