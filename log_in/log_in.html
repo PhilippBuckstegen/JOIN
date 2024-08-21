@@ -48,10 +48,10 @@
               type="email"
               placeholder="Email"
               autocomplete="email"
-              title="required"
+              title="required" onblur="validateEmail('loginEmail')" onfocus="resetSingleInputError('loginEmail')"
             />
-            <span id="loginError" class="no-error-visible error-message"
-              >Incorrect email or password.</span
+            <span id="loginEmailErrorMessage" class="no-error-visible error-message"
+              >This field is required.</span
             >
           </div>
           <div class="data-container">
@@ -63,8 +63,8 @@
               autocomplete="current-password"
               title="required"
             />
-            <span id="loginError" class="no-error-visible error-message"
-              >Incorrect email or password.</span
+            <span id="loginPasswordErrorMessage" class="no-error-visible error-message"
+              >This field is required.</span
             >
           </div>
         </section>

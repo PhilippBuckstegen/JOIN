@@ -47,6 +47,7 @@ function validateAddInputs(){
     if (isValid === true){
       isValid = checkIfFieldContainsAtSign(isValid, emailToCheck, errorMessage);
     }
+    signUpEmailValid = isValid;
     return isValid;
   }
   
@@ -241,6 +242,7 @@ function validateUserName(id){
   if (isValid === true){
     isValid = checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage);
   }
+  signUpUserValid = isValid;
   return isValid;
 }
 
@@ -265,6 +267,7 @@ function validatePassword(id){
   if (isValid === true){
     isValid =  checkIfFieldContainsSpecialCharacter(isValid, inputToCheck, errorMessage);
   }
+  signUpPasswordValid = isValid;
   return isValid;
 }
 
@@ -277,6 +280,7 @@ function validatePassword2(id1, id2){
   if (isValid === true){
     isValid = checkIfPasswordTwoFitsPasswordOne(isValid, inputToCheck, referenceInput, errorMessage);
   }
+  signUpPasswordTwoValid = isValid;
   return isValid;
 }
 
@@ -371,58 +375,58 @@ function checkStatusOfCheckbox(isValid, inputToCheck, errorMessage){
 // Validation For Login Event-Listeners
 
 function loadSignUpValidationEventListeners(){
-signUpUserNameEventListener(`signUpName`);
-signUpEmailEventListener(`signUpEmail`);
-signUpPasswordEventListener(`signUpPassword`);
-signUpPasswordTwoEventListener(`signUpPassword2`, `signUpPassword`);
+// signUpUserNameEventListener(`signUpName`);
+// signUpEmailEventListener(`signUpEmail`);
+// signUpPasswordEventListener(`signUpPassword`);
+// signUpPasswordTwoEventListener(`signUpPassword2`, `signUpPassword`);
 signUpCheckboxEventListener(`checkboxPrivacyPolicy`);
 }
 
 
-function signUpUserNameEventListener(id){
-  let signUpUserName = document.getElementById(`${id}`);  
-  signUpUserName.addEventListener('blur', function(event) {
-  signUpUserValid = validateUserName(id);
-  checkSignUpConditionsTrue();
-  });  
-  signUpUserName.addEventListener('focus', function(event) {
-  resetSingleInputError(id);
-});
-} 
+// function signUpUserNameEventListener(id){
+//   let signUpUserName = document.getElementById(`${id}`);  
+//   signUpUserName.addEventListener('blur', function(event) {
+//   signUpUserValid = validateUserName(id);
+//   checkSignUpConditionsTrue();
+//   });  
+//   signUpUserName.addEventListener('focus', function(event) {
+//   resetSingleInputError(id);
+// });
+// } 
 
-function signUpEmailEventListener(id){
-  let signUpUserName = document.getElementById(`${id}`);  
-  signUpUserName.addEventListener('blur', function(event) {
-  signUpEmailValid = validateEmail(id);
-  checkSignUpConditionsTrue();
-  });  
-  signUpUserName.addEventListener('focus', function(event) {
-  resetSingleInputError(id);
-});
-} 
+// function signUpEmailEventListener(id){
+//   let signUpUserName = document.getElementById(`${id}`);  
+//   signUpUserName.addEventListener('blur', function(event) {
+//   signUpEmailValid = validateEmail(id);
+//   checkSignUpConditionsTrue();
+//   });  
+//   signUpUserName.addEventListener('focus', function(event) {
+//   resetSingleInputError(id);
+// });
+// } 
 
-function signUpPasswordEventListener(id){
-  let signUpUserName = document.getElementById(`${id}`);  
-  signUpUserName.addEventListener('blur', function(event) {
-    signUpPasswordValid = validatePassword(id);
-    checkSignUpConditionsTrue();
-  });  
-  signUpUserName.addEventListener('focus', function(event) {
-  resetSingleInputError(id);
-});
-} 
+// function signUpPasswordEventListener(id){
+//   let signUpUserName = document.getElementById(`${id}`);  
+//   signUpUserName.addEventListener('blur', function(event) {
+//     signUpPasswordValid = validatePassword(id);
+//     checkSignUpConditionsTrue();
+//   });  
+//   signUpUserName.addEventListener('focus', function(event) {
+//   resetSingleInputError(id);
+// });
+// } 
 
 
-function signUpPasswordTwoEventListener(id1, id2){
-  let signUpPasswordTwo= document.getElementById(`${id1}`);  
-  signUpPasswordTwo.addEventListener('blur', function(event) {
-    signUpPasswordTwoValid = validatePassword2(id1, id2);
-    checkSignUpConditionsTrue();
-  });  
-  signUpPasswordTwo.addEventListener('focus', function(event) {
-  resetSingleInputError(id1);
-});
-} 
+// function signUpPasswordTwoEventListener(id1, id2){
+//   let signUpPasswordTwo= document.getElementById(`${id1}`);  
+//   signUpPasswordTwo.addEventListener('blur', function(event) {
+//     signUpPasswordTwoValid = validatePassword2(id1, id2);
+//     checkSignUpConditionsTrue();
+//   });  
+//   signUpPasswordTwo.addEventListener('focus', function(event) {
+//   resetSingleInputError(id1);
+// });
+// } 
 
 
 function signUpCheckboxEventListener(id){
@@ -442,4 +446,9 @@ function checkSignUpConditionsTrue(){
     document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
   }
 }
+
+
+// Validation Login
+
+
 

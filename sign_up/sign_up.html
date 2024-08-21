@@ -54,7 +54,8 @@
                   type="text"
                   placeholder="Name"
                   autocomplete="name"
-                  title="required"
+                  title="required" 
+                  onblur="validateUserName('signUpName')" onfocus="resetSingleInputError('signUpName')"
                 />
                 <span
                   id="signUpNameErrorMessage"
@@ -69,7 +70,8 @@
                   type="email"
                   placeholder="Email"
                   autocomplete="email"
-                  title="required"
+                  title="required" 
+                  onblur="validateEmail('signUpEmail')" onfocus="resetSingleInputError('signUpEmail')"
                 />
                 <span
                   id="signUpEmailErrorMessage"
@@ -84,7 +86,8 @@
                   type="password"
                   placeholder="Password"
                   autocomplete="currentPassword"
-                  title="required"
+                  title="required" 
+                  onblur="validatePassword('signUpPassword')" onfocus="resetSingleInputError('signUpPassword')"
                 />
                 <span
                   id="signUpPasswordErrorMessage"
@@ -100,6 +103,7 @@
                   placeholder="Confirm Password"
                   autocomplete="currentConfirmPassword"
                   title="required"
+                  onblur="validatePassword2('signUpPassword2', `signUpPassword`)" onfocus="resetSingleInputError('signUpPassword2')"
                 />
                 <span
                   id="signUpPassword2ErrorMessage"
