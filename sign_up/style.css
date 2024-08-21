@@ -42,11 +42,20 @@ body {
 }
 
 #headerLogoContainer {
-  width: 33.33%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 90%;
+  width: 25%;
+}
+
+#joinLogo {
+  height: 100px;
+  width: auto;
+  padding-left: 50px;
 }
 
 #main {
-  width: 33.33%;
+  width: 50%;
   padding-top: 6%;
 }
 
@@ -82,18 +91,13 @@ body {
 /* Heiko zugefügt Ende */
 
 #signUpForm {
-  width: 90%;
-  gap: 20px;
+  width: 620px;
+  padding: 40px 0;
+  gap: 26px;
 }
 
 .form {
-  min-width: 40%;
-  margin: 0 4%;
-  padding: 35px 4%;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #ffffff;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
@@ -107,46 +111,78 @@ body {
   text-align: center;
 }
 
-#borderSignUp {
-  width: 74%;
+#arrowTitleBorderContainer {
+  width: 100%;
+  justify-content: flex-start;
 }
 
-.borderSignUp {
-  margin-top: 24px;
-  margin-bottom: 35px;
+#borderSignUp {
+  width: 48%;
   height: 3px;
   background-color: #29abe2;
 }
 
+#arrowContainer {
+  justify-content: flex-start;
+  width: 25%;
+}
+
+#arrowLeftBlue {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding-left: 40px;
+}
+
+#titleBorderContainer {
+  gap: 14px;
+  width: 50%;
+}
+
 .dataContainer {
+  gap: 4px;
   position: relative;
-  width: 80%;
 }
 
 .error-message {
-  position: absolute;
-  left: 0;
-  bottom: 24px;
   font-size: 10px;
   color: red;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #signUpData {
   width: 100%;
-  gap: 24px;
+  gap: 12px;
 }
 
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  padding: 10px;
-  width: calc(100% - 42px - 2px);
+  width: 360px;
+  padding: 8px;
+  text-indent: 8px;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
   background-repeat: no-repeat;
   background-position: 95%;
   font-size: 21px;
   font-weight: 400;
+}
+
+input[type="email"]::placeholder,
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #d1d1d1 !important;
+}
+
+input[type="email"]:focus,
+input[type="email"]:active,
+input[type="text"]:focus,
+input[type="text"]:active,
+input[type="password"]:focus,
+input[type="password"]:active {
+  outline-color: #29abe2;
 }
 
 .inputName {
@@ -173,6 +209,10 @@ input[type="password"] {
 
 .checkbox {
   gap: 10px;
+}
+
+#checkboxContainer {
+  gap: 12px;
 }
 
 .checkboxPrivacyPolicy {
@@ -214,19 +254,6 @@ input[type="password"] {
   gap: 36px;
 }
 
-#headerLogoContainer {
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 90%;
-  width: 33.33%;
-}
-
-#joinLogo {
-  height: 96px;
-  width: auto;
-  padding-left: 50px;
-}
-
 #checkboxPrivacyPolicy {
   cursor: pointer;
   -webkit-appearance: none;
@@ -264,6 +291,10 @@ input[type="password"] {
   padding-top: 4%;
 }
 
+#footer p {
+  cursor: pointer;
+}
+
 @media (min-width: 1201px) {
 }
 
@@ -271,19 +302,110 @@ input[type="password"] {
 }
 
 @media (max-width: 900px) {
+  #joinLogo {
+    height: 80px;
+    width: auto;
+    padding-left: 20px;
+  }
+
+  #signUpForm {
+    width: 460px;
+  }
 }
 
 @media (max-width: 680px) {
+  #logoFormContainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #headerLogoContainer {
+    height: auto;
+    width: 80%;
+  }
+
+  #formHeadline {
+    font-size: 46px !important;
+  }
+
+  #joinLogo {
+    height: 60px;
+    width: auto;
+    padding-top: 20px;
+  }
+
+  #main {
+    width: 80%;
+    padding-top: 0;
+  }
+
+  #signUpForm {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    width: 300px;
+    font-size: 16px;
+  }
+
+  #labelPrivacyPolicy,
+  #footer {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
-  #contentWrapper {
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 15%;
+  #arrowTitleBorderContainer {
+    align-items: flex-start;
   }
 
-  .mainSignUp {
-    height: 60%;
+  #logoFormContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  #headerLogoContainer {
+    height: auto;
+    width: 94%;
+  }
+
+  #formHeadline {
+    font-size: 36px !important;
+  }
+
+  #joinLogo {
+    height: 60px;
+    width: auto;
+    padding-top: 10px;
+  }
+
+  #main {
+    width: 94%;
+    padding-top: 0;
+  }
+
+  #signUpForm {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    width: 250px;
+    font-size: 16px;
+  }
+
+  #arrowLeftBlue {
+    padding-left: 20px;
+    padding-top: 10px;
+  }
+
+  #labelPrivacyPolicy,
+  #footer {
+    font-size: 14px;
   }
 }
