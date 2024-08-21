@@ -1,8 +1,10 @@
 // Start - Heiko zugefügt
 
-let users=[];
+let users = [];
 
-async function firstLoadSignUp(){
+const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
+
+async function firstLoadSignUp() {
   await getUsersFromDatabase();
   loadSignUpEventListeners();
   loadSignUpValidationEventListeners();
@@ -22,21 +24,19 @@ async function getUsersFromDatabase() {
   }
 }
 
-
-function writeNewUserToLocalArray(){
-let userName = document.getElementById('signUpName');
-let userEmail = document.getElementById('signUpEmail');
-let userPassword = document.getElementById('signUpPassword');
-let newUser = {
-  "userName": userName.value,
-  "email": userEmail.value,
-  "password" : userPassword.value,
-  "initials": generateInitials(userName.value),
-  "backgroundColor" : getRandomColor(),
+function writeNewUserToLocalArray() {
+  let userName = document.getElementById("signUpName");
+  let userEmail = document.getElementById("signUpEmail");
+  let userPassword = document.getElementById("signUpPassword");
+  let newUser = {
+    userName: userName.value,
+    email: userEmail.value,
+    password: userPassword.value,
+    initials: generateInitials(userName.value),
+    backgroundColor: getRandomColor(),
+  };
+  users.push(newUser);
 }
-users.push(newUser);
-}
-
 
 async function writeUsersToDatabase() {
   await postData(
@@ -80,17 +80,18 @@ function acceptPrivacyPolicy() {
 // Start - Heiko zugefügt
 // document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
 
-function loadSignUpEventListeners(){
-    const signUpButton = document.getElementById("signUpBtn");
-    // Event listener für den  sign-up button
-    signUpButton.addEventListener("click", function () {
-      const targetUrl = signUpButton.getAttribute("data-target");
-      window.location.href = targetUrl;
-    });
-    // Event Listener Checkbox
-    const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
-    checkboxPrivacyPolicy.addEventListener("click", acceptPrivacyPolicy);
-    // Klasse SignUp Button zuweisen
-    document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
+function loadSignUpEventListeners() {
+  const signUpButton = document.getElementById("signUpBtn");
+  // Event listener für den  sign-up button
+  signUpButton.addEventListener("click", function () {
+    const targetUrl = signUpButton.getAttribute("data-target");
+    window.location.href = targetUrl;
+  });
+  // Event Listener Checkbox
+  const checkboxPrivacyPolicy = document.getElementById(
+    "checkboxPrivacyPolicy"
+  );
+  checkboxPrivacyPolicy.addEventListener("click", acceptPrivacyPolicy);
+  // Klasse SignUp Button zuweisen
+  document.getElementById("signUpBtn").classList.add("signUpBtn-disabled");
 }
-
