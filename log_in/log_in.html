@@ -17,6 +17,7 @@
     <script src="../sign_up/script.js"></script>
     <script src="../database/script.js"></script>
     <!-- style -->
+     <link rel="stylesheet" href="log_in_animation.css">
     <link rel="stylesheet" href="style.css" />
     <!-- <link rel="stylesheet" href="../validation/validation.css" /> -->
     <link
@@ -26,6 +27,14 @@
     />
   </head>
   <body onload="firstLoadLogin()">
+    <section id="animation-join" class="d-none">
+      <div id="screenAnimation" class="screen-animation">
+      </div>
+      <div id="logoAnimation" class="img-box">
+        <img class="logo-w-animation" src="../assets/icons/login_logo_mobile_w.svg" alt="logo white mobile">
+        <img class="logo-b-animation" src="../assets/icons/login_logo_b.svg" alt="logo black">
+      </div>
+    </section>
     <div class="header-logo">
       <img
         id="joinLogo"
