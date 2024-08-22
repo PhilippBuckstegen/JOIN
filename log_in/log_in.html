@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,11 +14,11 @@
     <!-- script -->
     <script src="../validation/validation.js"></script>
     <script src="../sign_up/script.js"></script>
-    <script src="script.js"></script>
+
     <script src="../database/script.js"></script>
     <!-- style -->
-     <link rel="stylesheet" href="log_in_animation.css">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="log_in_animation.css" />
+    <link rel="stylesheet" href="./style.css" />
     <!-- <link rel="stylesheet" href="../validation/validation.css" /> -->
     <link
       rel="shortcut icon"
@@ -27,72 +27,164 @@
     />
   </head>
   <body onload="firstLoadLogin()">
-    <section id="animationJoin">
-      <div id="screenAnimation" class="screen-animation">
-      </div>
-      <div id="logoAnimation" class="img-box">
-        <img class="logo-w-animation" src="../assets/icons/login_logo_mobile_w.svg" alt="logo white mobile">
-        <img class="logo-b-animation" src="../assets/icons/login_logo_b.svg" alt="logo black">
-      </div>
-    </section>
-    <div class="header-logo">
-      <img
-        id="joinLogo"
-        class="join-logo d-none"
-        src="../assets/icons/Logo_login.svg"
-        alt="join.logo"
-      />
-    </div>
-    <div id="notAuser" class="not-a-user d-none">
-      <p class="p-user">Not a Join user?</p>
-      <button onclick="location.href='../sign_up/sign_up.html'" id="signUp" data-target="/sign_up.html" class="login-signup-button">Sign up</button>
-    </div>
-    
-    <main class="main-login">
-      <form onsubmit=" ; return false" class="form">
-        <h1 class="form-headline">Log in</h1>
-        <div class="border-login"></div>
-        <section class="login-data">
-          <div class="data-container">
-            <input
-              id="loginEmail"
-              class="input-email"
-              type="email"
-              placeholder="Email"
-              autocomplete="email"
-              title="required" 
-              onblur="validateLoginEmail('loginEmail')" onfocus="resetSingleInputError('loginEmail')"
+    <div id="mainWrapper" class="flexContainerCol">
+      <div id="logoSignUpContainer" class="flexContainer">
+        <div id="logoAnimatedLogoHeaderContainer" class="flexContainerCol">
+          <section id="animationJoin">
+            <div id="screenAnimation" class="screen-animation"></div>
+            <div id="logoAnimation" class="img-box">
+              <img
+                class="logo-w-animation"
+                src="../assets/icons/login_logo_mobile_w.svg"
+                alt="logo white mobile"
+              />
+              <img
+                class="logo-b-animation"
+                src="../assets/icons/login_logo_b.svg"
+                alt="logo black"
+              />
+            </div>
+          </section>
+          <div class="header-logo">
+            <img
+              id="joinLogo"
+              class="join-logo d-none"
+              src="../assets/icons/Logo_login.svg"
+              alt="join.logo"
             />
-            <span id="loginEmailErrorMessage" class="no-error-visible error-message"
-              >This field is required.</span
+          </div>
+        </div>
+        <div id="notAuser" class="not-a-user not-a-user1 d-none flexContainer">
+          <p class="p-user">Not a Join user?</p>
+          <button
+            onclick="location.href='../sign_up/sign_up.html'"
+            id="signUp"
+            data-target="/sign_up.html"
+            class="login-signup-button"
+          >
+            Sign up
+          </button>
+        </div>
+      </div>
+
+      <main id="main" class="main-login">
+        <form
+          id="loginForm"
+          onsubmit=" ; return false"
+          class="form flexContainerCol"
+        >
+          <div id="titleBorderContainer" class="flexContainerCol">
+            <h1 id="formHeadline" class="form-headline formHeadline">Log in</h1>
+            <div id="borderLogin" class="border-login"></div>
+          </div>
+          <section class="login-data">
+            <div class="data-container dataContainer flexContainerCol">
+              <input
+                id="loginEmail"
+                class="input-email inputEmail"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+                title="required"
+                onblur="validateLoginEmail('loginEmail')"
+                onfocus="resetSingleInputError('loginEmail')"
+              />
+              <span
+                id="loginEmailErrorMessage"
+                class="no-error-visible error-message"
+                >This field is required.</span
+              >
+            </div>
+            <div class="data-container dataContainer flexContainerCol">
+              <input
+                id="loginPassword"
+                class="input-password inputPassword"
+                type="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                title="required"
+                onblur="validateLoginPassword('loginPassword')"
+                onfocus="resetSingleInputError('loginPassword')"
+              />
+              <span
+                id="loginPasswordErrorMessage"
+                class="no-error-visible error-message"
+                >This field is required.</span
+              >
+            </div>
+          </section>
+          <section id="rememberMeContainer" class="form-remember flexContainer">
+            <div id="checkboxErrorContainer" class="checkbox flexContainerCol">
+              <div id="checkboxContainer" class="flexContainer">
+                <input
+                  id="checkboxRememberMe"
+                  type="checkbox"
+                  class="remember checkboxRememberMe checkboxUnchecked"
+                />
+                <label for="formRemember" class="label-remember"
+                  >Remember me</label
+                >
+              </div>
+              <span
+                id="checkboxRememberMeErrorMessage"
+                class="no-error-visible error-message none"
+                >This field is required.</span
+              >
+            </div>
+          </section>
+          <section
+            id="loginGuestLoginContainer"
+            class="form-submit flexContainer"
+          >
+            <button
+              id="loginButton"
+              type="submit"
+              class="login-signup-button"
+              onclick="logIn()"
+              disabled
             >
-          </div>
-          <div class="data-container">
-            <input
-              id="loginPassword"
-              class="input-password"
-              type="password"
-              placeholder="Password"
-              autocomplete="current-password"
-              title="required"
-              onblur="validateLoginPassword('loginPassword')" onfocus="resetSingleInputError('loginPassword')"
-            />
-            <span id="loginPasswordErrorMessage" class="no-error-visible error-message"
-              >This field is required.</span
+              Log in
+            </button>
+            <button
+              id="guestLoginButton"
+              onclick="guestLogin(); return false"
+              class="guest-button"
             >
-          </div>
-        </section>
-        <section class="form-remember">
-          <div class="checkbox">
-            <input id="formRemember" type="checkbox" class="remember" />
-            <label for="formRemember" class="label-remember">Remember me</label>
-          </div>
-        </section>
-        <section class="form-submit">
-          <button id="loginButton" type="submit" class="login-signup-button" onclick="logIn()" disabled>Log in</button>
-          <button onclick="guestLogin(); return false" class="guest-button">Guest Log in</button>
-        </section>
-      </form>
-    </main>
+              Guest Log in
+            </button>
+          </section>
+        </form>
+      </main>
+
+      <div id="notAuser" class="not-a-user not-a-user2 none flexContainer">
+        <p class="p-user">Not a Join user?</p>
+        <button
+          onclick="location.href='../sign_up/sign_up.html'"
+          id="signUp"
+          data-target="/sign_up.html"
+          class="login-signup-button"
+        >
+          Sign up
+        </button>
+      </div>
+
+      <footer id="footer1" class="flexContainer">
+        <button
+          id="privacy-policy-button1"
+          data-target="../policies/privacy_policy.html"
+          class="police-button-sign-up"
+        >
+          Privacy Policy
+        </button>
+        <button
+          id="legal-notice-button1"
+          data-target="../legal_notice/legal_notice.html"
+          class="police-button-sign-up"
+        >
+          Legal notice
+        </button>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>

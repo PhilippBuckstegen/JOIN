@@ -12,16 +12,6 @@ body {
   align-items: center;
 }
 
-/* Marv zugefügt */
-.police-button-sign-up {
-  color: #a8a8a8;
-  background-color: #F5F5F5;
-  width: 232px;
-  height: 35px;
-  border: none;
-  cursor: pointer;
-}
-/* Marv ende */
 .flexContainerCol {
   display: flex;
   flex-direction: column;
@@ -29,6 +19,17 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* Marv zugefügt */
+.police-button-sign-up {
+  color: #a8a8a8;
+  background-color: #f5f5f5;
+  /*  width: 232px; Fabio rauskommentiert  */
+  height: 35px;
+  border: none;
+  cursor: pointer;
+}
+/* Marv ende */
 
 .d-none {
   display: none;
@@ -290,13 +291,13 @@ input[type="password"]:active {
   text-decoration-color: #29abe2;
 }
 
-#footer {
+footer {
   gap: 20px;
   color: #a8a8a8;
   padding-top: 4%;
 }
 
-#footer p {
+footer p {
   cursor: pointer;
 }
 
