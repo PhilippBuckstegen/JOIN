@@ -119,7 +119,10 @@ function addEventListeners() {
       event.preventDefault(); 
       const targetPage = button.getAttribute('data-target');
       if (targetPage) {
-        window.open(targetPage, '_blank'); // Öffnet den Link in einem neuen Tab
+        window.location.href = targetPage; // Im gleichen Tab 
+      //   window.open(targetPage, '_blank');   
+      // Öffnet den Link in einem neuen Tab   
+      //für die seite wenn einer noch nicht eingeloggt ist auf die seite verweisen im neuen tab
       }
     });
   });
