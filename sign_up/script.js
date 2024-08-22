@@ -93,3 +93,21 @@ function loadSignUpEventListeners(){
     // Klasse SignUp Button zuweisen
     document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
 }
+
+//Marv Hinzugefügt Listener zum verweis zur den Policen
+function addEventListeners() {
+  const buttons = document.querySelectorAll('#privacy-policy-button1, #legal-notice-button1');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault(); 
+      const targetPage = button.getAttribute('data-target');
+      if (targetPage) {
+        window.location.href = targetPage;
+      }
+    });
+  });
+}
+
+// Event Listener hinzufügen, wenn das DOM vollständig geladen ist
+document.addEventListener('DOMContentLoaded', addEventListeners);

@@ -35,12 +35,8 @@
             alt="join.logo"
           />
         </div>
-        <main id="main" class="mainSignUp" class="flexContainerCol">
-          <form
-            id="signUpForm"
-            onsubmit=" ; return false"
-            class="form flexContainerCol"
-          >
+        <main id="main" class="mainSignUp flexContainerCol">
+          <form id="signUpForm" class="form flexContainerCol">
             <div class="flexContainerCol">
               <h1 class="formHeadline">Sign up</h1>
               <div id="borderSignUp" class="borderSignUp"></div>
@@ -115,7 +111,7 @@
                   type="checkbox"
                   class="checkboxPrivacyPolicy checkboxUnchecked"
                 />
-                <label for="formPrivacyPolicy" class="labelPrivacyPolicy"
+                <label for="checkboxPrivacyPolicy" class="labelPrivacyPolicy"
                   >I accept the
                   <span id="privacyPolicySpan">Privacy Policy</span></label
                 >
@@ -127,16 +123,26 @@
               </div>
             </section>
             <section class="formSubmit">
-              <button id="signUpBtn" type="submit" class="signUpBtn" onclick="writeNewUserToLocalArray()" disabled>
+              <button
+                id="signUpBtn"
+                type="button"
+                class="signUpBtn-disabled"
+                disabled
+              >
                 Sign Up
               </button>
             </section>
           </form>
         </main>
       </div>
-      <footer id="footer" class="flexContainer">
-        <p>Privacy Policy</p>
-        <p>Legal notice</p>
+    <!-- Marv -->
+      <footer id="footer1" class="flexContainer">
+        <button id="privacy-policy-button1" data-target="../policies/privacy_police.html" class="police-button">
+          Privacy Policy
+        </button>
+        <button id="legal-notice-button1" data-target="../legal-notice/legal_notice.html" class="police-button">
+          Legal notice
+        </button>
       </footer>
     </div>
     <script src="./script.js"></script>

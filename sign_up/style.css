@@ -12,6 +12,16 @@ body {
   align-items: center;
 }
 
+/* Marv zugefügt */
+.police-button {
+  color: #a8a8a8;
+  background-color: #F5F5F5;
+  width: 232px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+}
+/* Marv ende */
 .flexContainerCol {
   display: flex;
   flex-direction: column;
@@ -23,11 +33,6 @@ body {
 .d-none {
   display: none;
 }
-
-/* Heiko auskommentiert */
-/* .no-error-visible {
-  visibility: hidden;
-} */
 
 #contentWrapper {
   justify-content: space-evenly;
