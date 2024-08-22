@@ -49,10 +49,6 @@ function renderGreetingUser() {
     `
 }
 
-function loggedInAsGuest() {
-    return loggedInUser.length === 0;
-}
-
 function getNumberOfTasksByStatus(status) {
     let filteredStatus = tasks.filter(task => task.status === status);
     return filteredStatus.length;

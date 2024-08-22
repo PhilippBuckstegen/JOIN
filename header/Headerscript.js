@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
                       <img class="ellipse-style" src="../header/img_header/Ellipse_3.svg" alt="">
                       <span id="user-logged-in" class="span-size">SM</span>
                   </div>
+                  <div id="slideInLogout" class="slide-in-logout d-none-logout">
+                    <span class="p-slide-in-logout">Help</span>
+                    <span class="p-slide-in-logout">Legal Notice</span>
+                    <span class="p-slide-in-logout">Privacy Policy</span>
+                    <span class="p-slide-in-logout">Log out</span>
+                  </div>
               </div>
           </div>
       </header>

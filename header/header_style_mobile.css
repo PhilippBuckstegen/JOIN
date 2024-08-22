@@ -18,6 +18,10 @@
     z-index: 11;
   }
 
+  .slide-in-logout {
+    top: 80px;
+  }
+
   .header-wrap p {
     display: none;
   }
