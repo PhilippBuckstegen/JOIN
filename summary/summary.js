@@ -30,13 +30,14 @@ async function renderGreeting() {
     renderTimeOfDay();
     mobileGreeting.innerHTML = '';
     greetings.innerHTML = '';
+    renderGreetingUser();
 
-    // if (loggedInAsGuest()) {
-    if (loggedInUser == 0) {
-        renderGreetingGuest();
-    } else {
-        renderGreetingUser();
-    }
+    // // if (loggedInAsGuest()) {
+    // if (loggedInUser == 0) {
+    //     renderGreetingGuest();
+    // } else {
+    //     renderGreetingUser();
+    // }
 }
 
 function renderGreetingGuest() {    
