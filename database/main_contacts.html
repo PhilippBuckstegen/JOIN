@@ -11,6 +11,7 @@
     <!-- script -->
     <script src="templates.js"></script>
     <script src="../validation/validation.js"></script>
+    <script src="../alertOverlays/script.js"></script>
     <script src="script.js"></script>
     <!-- <script src="contact_details.js"></script> -->
     <script src="../sidebar/sidebarScript.js"></script>
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <link rel="stylesheet" href="mobile_contacts.css" />
     <link rel="stylesheet" href="../sidebar/style.css" />
+    <link rel="stylesheet" href="../alertOverlays/style.css">
     <link rel="shortcut icon" href="../favicon/img/favicon.png" type="image/x-icon">
     
   </head>
@@ -33,6 +35,7 @@
     </div>
     <div id="header-placeholder"></div>
     <!-- header und nav from includeHTML -->
+    <div id="messageOverlay"></div>
     <section class="main-contacts">
       <div id="contactsContainer" class="contacts-container">
         <div id="addContactContainer" class="flexContainer">
@@ -128,7 +131,7 @@
                   Cancel
                   <img id="cancelImgAdd" src="./images/iconoir_cancel.svg" alt="icon"/>
                 </button>
-                <button type="button" id="createBtn" class="overlayBtns flexContainer" onclick="validateAddInputs()">
+                <button type="button" id="createBtn" class="overlayBtns flexContainer" onclick="validateAddInputs(), showMessage('messageOverlay', 'Contact created successfully!', 'show')">
                   Create contact
                   <img id="checkImgAdd" src="./images/check.svg" alt="icon" />
                 </button>
