@@ -121,6 +121,8 @@ async function renderContacts() {
     renderContactsConditions(contactArea, i);
     document.getElementById(`initialsCircle${i}`).style.backgroundColor = contacts[i].backgroundColor;
   }
+  getCurrentUserFromLocalStorage(); //Heiko zugefügt
+  renderInitialsInHeader();  
 }
 
 

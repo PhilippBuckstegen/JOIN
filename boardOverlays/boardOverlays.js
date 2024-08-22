@@ -17,6 +17,10 @@ async function initialCallBoardSite() {
   defineVariables();
   // renderBoardOverlays(2);
   preSelectMediumBtn();
+  getCurrentUserFromLocalStorage();
+  renderInitialsInHeader();
+  
+
 }
 
 ("use strict");

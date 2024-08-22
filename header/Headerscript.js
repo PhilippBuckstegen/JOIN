@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <img src="../header/img_header/help.svg" alt="" />
                   <div class="container">
                       <img class="ellipse-style" src="../header/img_header/Ellipse_3.svg" alt="">
-                      <span id="user-logged-in" class="span-size">SM</span>
+                      <span id="user-logged-in" class="span-size"></span>
                   </div>
                   <div id="slideInLogout" class="slide-in-logout d-none-logout">
                     <span class="p-slide-in-logout">Help</span>

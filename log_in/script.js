@@ -118,6 +118,11 @@ function getCurrentUserFromLocalStorage(){
 }
 
 
+function renderInitialsInHeader(){
+    document.getElementById('user-logged-in').innerHTML = `${loggedInUser[0].initials}` 
+}
+
+
 // Philipp zugefügt für Animation Start Log in-------------------------
 
 function animationLogin() {
