@@ -119,7 +119,7 @@ function addEventListeners() {
       event.preventDefault(); 
       const targetPage = button.getAttribute('data-target');
       if (targetPage) {
-        window.location.href = targetPage;
+        window.open(targetPage, '_blank'); // Öffnet den Link in einem neuen Tab
       }
     });
   });

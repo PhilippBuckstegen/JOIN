@@ -4,7 +4,6 @@ body {
 .button-sidebar.selected, .police-button.selected {
   background-color: #091931;
   color: white;
-  border-radius: 10px;
 }
 
 .side-wrap {
