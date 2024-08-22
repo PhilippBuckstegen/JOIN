@@ -4,6 +4,7 @@ async function initSummary() {
     getCurrentUserFromLocalStorage(); //Heiko zugefügt
     renderSummary();
     renderGreeting();
+    renderInitialsInHeader();
 }
 
 let timeOfDay

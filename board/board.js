@@ -138,6 +138,8 @@ let doneTasks = [];
 async function initialCallBoard(){
     await getContactsFromDatabase();
     await getTasksFromDatabase();
+    getCurrentUserFromLocalStorage();
+    renderInitialsInHeader();
     // loadCategoryArrays();
     // updateCategoryArrays();
     renderTasksInBoard();

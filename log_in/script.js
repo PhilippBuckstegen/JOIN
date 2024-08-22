@@ -60,7 +60,8 @@ function checkLoginData(){
         success = true;
         loggedInUser[0] = loggedInData;
     } else {
-        console.log("Login fehlgeschlagen: Benutzername oder Passwort ist falsch.");
+        document.getElementById('loginPasswordErrorMessage').classList.remove('no-error-visible');
+        document.getElementById('loginPasswordErrorMessage').innerHTML = "Login failed: invalid username or password.";
     }
     return success;
 }
@@ -115,6 +116,11 @@ function getCurrentUserFromLocalStorage(){
     if (currentUser) {
        loggedInUser = currentUser;
     }
+}
+
+
+function renderInitialsInHeader(){
+    document.getElementById('user-logged-in').innerHTML = `${loggedInUser[0].initials}` 
 }
 
 
