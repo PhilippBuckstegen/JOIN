@@ -15,7 +15,10 @@
     <script src="../validation/validation.js"></script>
     <script src="../sign_up/script.js"></script>
     <script src="script.js"></script>
+    <script src="../sign_up/script.js"></script>
+    <script src="../database/script.js"></script>
     <!-- style -->
+     <link rel="stylesheet" href="log_in_animation.css">
     <link rel="stylesheet" href="style.css" />
     <!-- <link rel="stylesheet" href="../validation/validation.css" /> -->
     <link
@@ -24,16 +27,24 @@
       type="image/x-icon"
     />
   </head>
-  <body>
+  <body onload="firstLoadLogin()">
+    <section id="animationJoin">
+      <div id="screenAnimation" class="screen-animation">
+      </div>
+      <div id="logoAnimation" class="img-box">
+        <img class="logo-w-animation" src="../assets/icons/login_logo_mobile_w.svg" alt="logo white mobile">
+        <img class="logo-b-animation" src="../assets/icons/login_logo_b.svg" alt="logo black">
+      </div>
+    </section>
     <div class="header-logo">
       <img
         id="joinLogo"
-        class="join-logo"
+        class="join-logo d-none"
         src="../assets/icons/Logo_login.svg"
         alt="join.logo"
       />
     </div>
-    <div class="not-a-user">
+    <div id="notAuser" class="not-a-user d-none">
       <p class="p-user">Not a Join user?</p>
       <button onclick="location.href='../sign_up/sign_up.html'" id="signUp" data-target="/sign_up.html" class="login-signup-button">Sign up</button>
     </div>
@@ -50,10 +61,11 @@
               type="email"
               placeholder="Email"
               autocomplete="email"
-              title="required"
+              title="required" 
+              onblur="validateLoginEmail('loginEmail')" onfocus="resetSingleInputError('loginEmail')"
             />
-            <span id="loginError" class="no-error-visible error-message"
-              >Incorrect email or password.</span
+            <span id="loginEmailErrorMessage" class="no-error-visible error-message"
+              >This field is required.</span
             >
           </div>
           <div class="data-container">
@@ -64,9 +76,10 @@
               placeholder="Password"
               autocomplete="current-password"
               title="required"
+              onblur="validateLoginPassword('loginPassword')" onfocus="resetSingleInputError('loginPassword')"
             />
-            <span id="loginError" class="no-error-visible error-message"
-              >Incorrect email or password.</span
+            <span id="loginPasswordErrorMessage" class="no-error-visible error-message"
+              >This field is required.</span
             >
           </div>
         </section>
@@ -77,10 +90,8 @@
           </div>
         </section>
         <section class="form-submit">
-          <button type="submit" class="login-signup-button">Log in</button>
-          <button onclick=" ; return false" class="guest-button">
-            Guest Log in
-          </button>
+          <button id="loginButton" type="submit" class="login-signup-button" onclick="logIn()" disabled>Log in</button>
+          <button onclick="guestLogin(); return false" class="guest-button">Guest Log in</button>
         </section>
       </form>
     </main>

@@ -1,6 +1,7 @@
 
 async function initSummary() {
     await getTasksFromDatabase();
+    getCurrentUserFromLocalStorage(); //Heiko zugefügt
     renderSummary();
     renderGreeting();
 }
@@ -23,12 +24,51 @@ function renderTimeOfDay() {
 }
 
 async function renderGreeting() {    
+    let greetings = document.getElementById('summaryGreeting');
+    let mobileGreeting = document.getElementById('mobileGreeting');
+    
     renderTimeOfDay();
+    mobileGreeting.innerHTML = '';
+    greetings.innerHTML = '';
 
-    let greetings = document.getElementById('summaryGreeting');    
+    // if (loggedInAsGuest()) {
+    if (loggedInUser == 0) {
+        renderGreetingGuest();
+    } else {
+        renderGreetingUser();
+    }
+}
+
+function renderGreetingGuest() {    
+    let greetings = document.getElementById('summaryGreeting');
+    let mobileGreeting = document.getElementById('mobileGreeting');
+    mobileGreeting.innerHTML = /*html*/`
+        <p class="mobile-overlay-greeting">${timeOfDay},</p>
+        <p class="mobile-greeting-user">Guest</p>
+    `   
     greetings.innerHTML = /*html*/`
-        <p id="greeting" class="p-greeting">${timeOfDay}</p>    
+        <p id="greeting" class="p-greeting">${timeOfDay},</p>
+        <p class="greeting-user">Guest</p>
     `
+}
+
+function renderGreetingUser() {    
+    let greetings = document.getElementById('summaryGreeting');
+    let mobileGreeting = document.getElementById('mobileGreeting');
+    mobileGreeting.innerHTML = /*html*/`
+        <p class="mobile-overlay-greeting">${timeOfDay},</p>
+        <!-- <p class="mobile-greeting-user">User Beispiel</p> -->
+        <p class="mobile-greeting-user">${loggedInUser[0].name}</p>
+    `   
+    greetings.innerHTML = /*html*/`
+        <p id="greeting" class="p-greeting">${timeOfDay},</p>
+        <!-- <p class="greeting-user">User Beispiel</p> -->
+        <p class="greeting-user">${loggedInUser[0].name}</p>
+    `
+}
+
+function loggedInAsGuest() {
+    return loggedInUser.length === 0;
 }
 
 function getNumberOfTasksByStatus(status) {

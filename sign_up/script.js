@@ -78,20 +78,36 @@ function acceptPrivacyPolicy() {
 }
 
 // Start - Heiko zugefügt
-// document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
 
 function loadSignUpEventListeners(){
-    // const signUpButton = document.getElementById("signUpBtn");
-    // // Event listener für den  sign-up button
-    // signUpButton.addEventListener("click", function () {
-    //   const targetUrl = signUpButton.getAttribute("data-target");
-    //   window.location.href = targetUrl;
-    // });
-    // Event Listener Checkbox
     const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
     checkboxPrivacyPolicy.addEventListener("click", acceptPrivacyPolicy);
-    // Klasse SignUp Button zuweisen
     document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
+}
+
+async function storeNewUser(){
+  writeNewUserToLocalArray();
+  await writeUsersToDatabase();
+  await getUsersFromDatabase();
+  clearSignUpInputFields();
+  signUpUserValid = false;
+  signUpEmailValid = false;
+  signUpPasswordValid = false;
+  signUpPasswordTwoValid = false;
+  signUpPrivacyPolicy = false;
+  checkSignUpConditionsTrue();
+}
+
+function clearSignUpInputFields(){
+  document.getElementById("signUpName").value = "";
+  document.getElementById("signUpEmail").value = "";
+  document.getElementById("signUpPassword").value = "";
+  document.getElementById("signUpPassword2").value = "";
+  resetSingleInputError("signUpName");
+  resetSingleInputError("signUpEmail");
+  resetSingleInputError("signUpPassword");
+  resetSingleInputError("signUpPassword2");
+  acceptPrivacyPolicy();
 }
 
 //Marv Hinzugefügt Listener zum verweis zur den Policen

@@ -5,7 +5,7 @@ body {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .no-error-visible {
@@ -191,4 +191,11 @@ input[type="password"] {
   z-index: 10;
   height: 96px;
   width: auto;
+}
+
+
+/* Heiko zugefügt */
+.loginBtn-disabled {
+  background-color: grey !important;
+  pointer-events: none !important;
 }

@@ -222,6 +222,24 @@ body {
   font-weight: 500;
 }
 
+.d-none {
+  display: none;
+}
+
+.greeting-user {
+  font-size: 64px;
+  font-weight: 700;
+  margin: 0;
+  color: #29abe2;
+}
+
+.mobile-greeting-user {
+  font-size: 47px;
+  font-weight: 700;
+  margin: 0;
+  color: #29abe2;
+}
+
 @media (max-height: 950px) {
   .sum-content {
     padding-top: 30px;
@@ -258,6 +276,29 @@ body {
 
   .sum-header-headline {
     width: auto;
+  }
+
+  .mobile-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    animation: fadeBackground 1.6s ease-in-out;
+    animation-direction: normal;
+    z-index: -1;
+  }
+
+  .mobile-overlay-greeting {
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0;
   }
 }
 
@@ -328,3 +369,22 @@ body {
   }
 }
 
+@keyframes fadeBackground {
+  0% {
+    opacity: 100%;
+    z-index: 10;
+  }
+
+  50% {
+    opacity: 100%;
+  }
+
+  99% {
+    opacity: 0%;
+    z-index: 10;
+  }
+
+  100% {
+    z-index: -1;
+  }
+}

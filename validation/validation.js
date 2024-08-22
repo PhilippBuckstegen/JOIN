@@ -3,6 +3,8 @@ let signUpEmailValid = false;
 let signUpPasswordValid = false;
 let signUpPasswordTwoValid = false;
 let signUpPrivacyPolicy = false;
+let loginEmailValid = false;
+let loginPasswordValid = false;
 // **** Validation!!! For Contacts****
 
 function validateAddInputs(){
@@ -241,6 +243,22 @@ function validateUserName(id){
   if (isValid === true){
     isValid = checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage);
   }
+  signUpUserValid = isValid;
+  checkSignUpConditionsTrue();
+  return isValid;
+}
+
+
+function validateSignUpEmail(id){
+  let isValid = true;
+  let emailToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, emailToCheck, errorMessage);
+  if (isValid === true){
+    isValid = checkIfFieldContainsAtSign(isValid, emailToCheck, errorMessage);
+  }
+  signUpEmailValid = isValid;
+  checkSignUpConditionsTrue();
   return isValid;
 }
 
@@ -265,6 +283,8 @@ function validatePassword(id){
   if (isValid === true){
     isValid =  checkIfFieldContainsSpecialCharacter(isValid, inputToCheck, errorMessage);
   }
+  signUpPasswordValid = isValid;
+  checkSignUpConditionsTrue();
   return isValid;
 }
 
@@ -277,6 +297,8 @@ function validatePassword2(id1, id2){
   if (isValid === true){
     isValid = checkIfPasswordTwoFitsPasswordOne(isValid, inputToCheck, referenceInput, errorMessage);
   }
+  signUpPasswordTwoValid = isValid;
+  checkSignUpConditionsTrue();
   return isValid;
 }
 
@@ -368,61 +390,9 @@ function checkStatusOfCheckbox(isValid, inputToCheck, errorMessage){
 }
 
 
-// Validation For Login Event-Listeners
-
 function loadSignUpValidationEventListeners(){
-signUpUserNameEventListener(`signUpName`);
-signUpEmailEventListener(`signUpEmail`);
-signUpPasswordEventListener(`signUpPassword`);
-signUpPasswordTwoEventListener(`signUpPassword2`, `signUpPassword`);
 signUpCheckboxEventListener(`checkboxPrivacyPolicy`);
 }
-
-
-function signUpUserNameEventListener(id){
-  let signUpUserName = document.getElementById(`${id}`);  
-  signUpUserName.addEventListener('blur', function(event) {
-  signUpUserValid = validateUserName(id);
-  checkSignUpConditionsTrue();
-  });  
-  signUpUserName.addEventListener('focus', function(event) {
-  resetSingleInputError(id);
-});
-} 
-
-function signUpEmailEventListener(id){
-  let signUpUserName = document.getElementById(`${id}`);  
-  signUpUserName.addEventListener('blur', function(event) {
-  signUpEmailValid = validateEmail(id);
-  checkSignUpConditionsTrue();
-  });  
-  signUpUserName.addEventListener('focus', function(event) {
-  resetSingleInputError(id);
-});
-} 
-
-function signUpPasswordEventListener(id){
-  let signUpUserName = document.getElementById(`${id}`);  
-  signUpUserName.addEventListener('blur', function(event) {
-    signUpPasswordValid = validatePassword(id);
-    checkSignUpConditionsTrue();
-  });  
-  signUpUserName.addEventListener('focus', function(event) {
-  resetSingleInputError(id);
-});
-} 
-
-
-function signUpPasswordTwoEventListener(id1, id2){
-  let signUpPasswordTwo= document.getElementById(`${id1}`);  
-  signUpPasswordTwo.addEventListener('blur', function(event) {
-    signUpPasswordTwoValid = validatePassword2(id1, id2);
-    checkSignUpConditionsTrue();
-  });  
-  signUpPasswordTwo.addEventListener('focus', function(event) {
-  resetSingleInputError(id1);
-});
-} 
 
 
 function signUpCheckboxEventListener(id){
@@ -442,4 +412,44 @@ function checkSignUpConditionsTrue(){
     document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
   }
 }
+
+
+// Validation Login
+
+function validateLoginEmail(id){
+  let isValid = true;
+  let emailToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, emailToCheck, errorMessage);
+  if (isValid === true){
+    isValid = checkIfFieldContainsAtSign(isValid, emailToCheck, errorMessage);
+  }
+  loginEmailValid = isValid;
+  checkLoginConditionsTrue();
+  return isValid;
+}
+
+
+function validateLoginPassword(id){
+  let isValid = true;
+  let inputToCheck = document.getElementById(`${id}`);
+  let errorMessage =  document.getElementById(`${id}ErrorMessage`);
+  isValid = checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage);
+  loginPasswordValid = isValid;
+  checkLoginConditionsTrue();
+  return isValid;
+}
+
+
+function checkLoginConditionsTrue(){
+  if(loginEmailValid && loginPasswordValid){
+    document.getElementById(`loginButton`).disabled = false;
+    document.getElementById('loginButton').classList.remove('loginBtn-disabled');
+  } else{
+    document.getElementById(`loginButton`).disabled = true;
+    document.getElementById('loginButton').classList.add('loginBtn-disabled');
+  }
+}
+
+
 
