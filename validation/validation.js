@@ -288,6 +288,7 @@ function validatePassword(id){
   return isValid;
 }
 
+
 function validatePassword2(id1, id2){
   let isValid = true;
   let inputToCheck = document.getElementById(`${id1}`);
@@ -322,6 +323,7 @@ function checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage){
   return isValid;
 }
 
+
 function checkIfFieldContainsNoNumbers(isValid, inputToCheck, errorMessage){
   const numberRegex = /\d/;
   if (!numberRegex.test(inputToCheck.value)) {
@@ -332,6 +334,7 @@ function checkIfFieldContainsNoNumbers(isValid, inputToCheck, errorMessage){
   }
   return isValid;
 }
+
 
 function checkIfFieldContainsCapitalLetters(isValid, inputToCheck, errorMessage){
   const dateRegex = /[A-Z]/;
