@@ -70,7 +70,7 @@ function checkLoginData(){
 function clearLoginInputFields(){
     document.getElementById("loginEmail").value = "";
     document.getElementById("loginPassword").value = "";
-    document.getElementById("formRemember").checked = false;
+    document.getElementById("checkboxRememberMe").checked = false;
     resetSingleInputError("loginEmail");
     resetSingleInputError("loginPassword");
 }
@@ -92,7 +92,7 @@ function loadLoginFromLocalStorage(){
 
 
 function storeLoginToLocalStorage(){
-    rememberMe = document.getElementById('formRemember').checked;
+    rememberMe = document.getElementById('checkboxRememberMe').checked;
     const currentUser = [{
         "email" : loggedInUser[0].email,
         "password" : loggedInUser[0].password,
@@ -124,6 +124,11 @@ function renderInitialsInHeader(){
 }
 
 
+function logOut(){
+    loggedInUser = [];
+    deleteCurrentUserFromLocalStorage();
+    window.location.href = "../log_in/log_in.html";
+}
 // Philipp zugefügt für Animation Start Log in-------------------------
 
 function animationLogin() {

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="p-slide-in-logout">Help</span>
                     <span class="p-slide-in-logout">Legal Notice</span>
                     <span class="p-slide-in-logout">Privacy Policy</span>
-                    <span id="logOut" class="p-slide-in-logout">Log out</span>
+                    <span id="logOut" class="p-slide-in-logout" onclick="logOut()">Log out</span>
                   </div>
               </div>
           </div>
