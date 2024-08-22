@@ -30,27 +30,9 @@ async function renderGreeting() {
     renderTimeOfDay();
     mobileGreeting.innerHTML = '';
     greetings.innerHTML = '';
-
-    // if (loggedInAsGuest()) {
-    if (loggedInUser == 0) {
-        renderGreetingGuest();
-    } else {
-        renderGreetingUser();
-    }
+    renderGreetingUser();
 }
 
-function renderGreetingGuest() {    
-    let greetings = document.getElementById('summaryGreeting');
-    let mobileGreeting = document.getElementById('mobileGreeting');
-    mobileGreeting.innerHTML = /*html*/`
-        <p class="mobile-overlay-greeting">${timeOfDay},</p>
-        <p class="mobile-greeting-user">Guest</p>
-    `   
-    greetings.innerHTML = /*html*/`
-        <p id="greeting" class="p-greeting">${timeOfDay},</p>
-        <p class="greeting-user">Guest</p>
-    `
-}
 
 function renderGreetingUser() {    
     let greetings = document.getElementById('summaryGreeting');

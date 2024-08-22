@@ -33,7 +33,12 @@ function logIn(){
 
 function guestLogin(){
     deleteCurrentUserFromLocalStorage();
-    loggedInUser = [];
+    const currentUser = [{
+        "name" : "Guest",
+        "initials" : "G"
+    }]
+    loggedInUser[0] = currentUser;
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
     window.location.href = "../summary/summary.html";
 }
 
@@ -75,7 +80,6 @@ function loadLoginFromLocalStorage(){
     const loginEmail = document.getElementById('loginEmail');
     const loginPassword = document.getElementById('loginPassword');
     const savedUserData = JSON.parse(localStorage.getItem('userDataRemember'));
-
     if (savedUserData) {
         loginEmail.value = savedUserData[0].email;
         loginPassword.value = savedUserData[0].password;
