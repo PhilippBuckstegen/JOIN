@@ -1,0 +1,25 @@
+#messageOverlay {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #091931;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: bottom 0.6s ease-in-out;
+  z-index: 1002;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#messageOverlay.show {
+  bottom: 33%;
+}
+
+@media (max-width: 420px) {
+    #messageOverlay {
+        font-size: 10px;
+    }
+}

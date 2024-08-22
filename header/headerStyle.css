@@ -105,6 +105,16 @@ img {
   animation: slideIn 0.3s forwards;
 }
 
+#slideInLogout {
+  box-sizing: content-box;
+  line-height: normal;
+}
+
+#user-logged-in {
+  cursor: pointer;
+  font-size: 18px;
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);
