@@ -29,6 +29,10 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.police-button-sign-up:hover{
+color:#29ABE2 ;
+}
 /* Marv ende */
 
 .d-none {
