@@ -86,6 +86,7 @@ async function storeEditedData(i) {
   await writeContactsToDatabase();
   await getContactsFromDatabase();
   toggleEditContactOverlay();
+  showMessage('messageOverlay', 'Contact successfully edited', 'show')
   await renderContacts();
   showContactDetails(findLastEditedIndex(contacts));
   editInputsCleanUp();
@@ -174,7 +175,8 @@ function addNewContact() {
   // validateAddInputs();
   setAllPrevousItemsLastAddedFalse(contacts);
   writeNewContactToLocalArray();
-  toggleAddContactOverlay()
+  showMessage('messageOverlay', 'Contact created successfully!', 'show');
+  toggleAddContactOverlay();
   sortContactsByInitials(contacts);
   // addRandomColorToJSON(contacts);
   await writeContactsToDatabase();
@@ -269,10 +271,13 @@ async function deleteContact(i) {
   // addRandomColorToJSON(contacts); // Heiko rausgenommen wegen Farbe wird nur random beim erstellen zugewiesen
   await writeContactsToDatabase();
   await renderContacts();
-  document.getElementById("contactDetailsContainer").innerHTML = renderDeleteContactMessageHTML();
+  showMessage('messageOverlay', 'Contact deleted successfully!', 'show')
+  document.getElementById("contactDetailsContainer").innerHTML = '';
+  hideContactDetails();
+  /*renderDeleteContactMessageHTML();
   setTimeout(() => {
     document.getElementById("deleteText").classList.add('fade-out');
-  }, 2000);
+  }, 2000); */
 }
 
 
