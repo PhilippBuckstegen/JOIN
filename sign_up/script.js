@@ -38,6 +38,7 @@ function writeNewUserToLocalArray() {
   users.push(newUser);
 }
 
+
 async function writeUsersToDatabase() {
   await postData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -45,25 +46,7 @@ async function writeUsersToDatabase() {
     users
   );
 }
-// Ende - Heiko zugefügt
 
-// Start - Heiko auskommentiert
-
-// const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   const signUpButton = document.getElementById("signUpBtn");
-
-//   // Event listener für den  sign-up button
-//   signUpButton.addEventListener("click", function () {
-//     const targetUrl = signUpButton.getAttribute("data-target");
-//     window.location.href = targetUrl;
-//   });
-// });
-
-// checkboxPrivacyPolicy.addEventListener("click", acceptPrivacyPolicy);
-
-// Ende - Heiko auskommentiert
 
 function acceptPrivacyPolicy() {
   if (!checkboxPrivacyPolicy.classList.contains("checkboxChecked")) {
@@ -77,13 +60,13 @@ function acceptPrivacyPolicy() {
   }
 }
 
-// Start - Heiko zugefügt
 
 function loadSignUpEventListeners(){
     const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
     checkboxPrivacyPolicy.addEventListener("click", acceptPrivacyPolicy);
     document.getElementById('signUpBtn').classList.add('signUpBtn-disabled');
 }
+
 
 async function storeNewUser(){
   writeNewUserToLocalArray();
@@ -102,6 +85,7 @@ async function storeNewUser(){
   }, 2000);
 }
 
+
 function clearSignUpInputFields(){
   document.getElementById("signUpName").value = "";
   document.getElementById("signUpEmail").value = "";
@@ -113,6 +97,25 @@ function clearSignUpInputFields(){
   resetSingleInputError("signUpPassword2");
   acceptPrivacyPolicy();
 }
+
+
+function checkIfEmailAlreadyExists(){
+  let userEmail = document.getElementById("signUpEmail").value;
+  let emailExists = false;
+  for(let i =0 ; i < users.length; i++){
+    if(users[i].email === userEmail){
+     emailExists = true;
+    }
+  }
+  if(emailExists === true){
+    document.getElementById('signUpEmailErrorMessage').innerHTML = 'This email is already signed Up! Please use the Login!';
+    document.getElementById('signUpEmailErrorMessage').classList.remove('no-error-visible');
+  } else if (emailExists === false){
+    storeNewUser();
+    emailExists = false;
+  } 
+}
+
 
 //Marv Hinzugefügt Listener zum verweis zur den Policen
 function addEventListeners() {
