@@ -263,7 +263,7 @@ function generateEditView(i) {
                       <div id="boardDateContainer" class="boardDateContainerEdit flexContainerColStart">
                       <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
                       <div id="boardDateInputImgContainer" class="flexContainer">
-                        <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('boardDate')"/>
+                        <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('editBoardDate')"/>
                         <span id="editBoardDateErrorMessage" class="error-message no-error-visible">This field is required</span>
                         <!--<img
                           id="calendarIcon"
