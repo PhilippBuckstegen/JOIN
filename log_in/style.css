@@ -25,6 +25,10 @@
   position: relative;
 }
 
+.button_policie:hover{
+  color:#29ABE2 ;
+}
+
 .guest-button {
   background-color: #ffffff;
   color: #2a3647;
