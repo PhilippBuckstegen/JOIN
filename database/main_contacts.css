@@ -325,6 +325,7 @@ body {
   background-color: #fff;
   border-top-right-radius: 20px !important;
   border-bottom-right-radius: 20px !important;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
 }
 
 .editOverlaySec1 {
@@ -470,6 +471,7 @@ body {
   background-color: #fff;
   border-top-right-radius: 20px !important;
   border-bottom-right-radius: 20px !important;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
 }
 
 .addOverlaySec1 {
