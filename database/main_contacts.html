@@ -29,6 +29,8 @@
     
   </head>
   <body onload="renderContacts()">
+    <div id="messageOverlay"></div>
+
     <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
       <div class="sidebar"></div>
@@ -131,7 +133,7 @@
                   Cancel
                   <img id="cancelImgAdd" src="./images/iconoir_cancel.svg" alt="icon"/>
                 </button>
-                <button type="button" id="createBtn" class="overlayBtns flexContainer" onclick="validateAddInputs(), showMessage('messageOverlay', 'Contact created successfully!', 'show')">
+                <button type="button" id="createBtn" class="overlayBtns flexContainer" onclick="validateAddInputs()">
                   Create contact
                   <img id="checkImgAdd" src="./images/check.svg" alt="icon" />
                 </button>

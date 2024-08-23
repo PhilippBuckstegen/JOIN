@@ -90,12 +90,16 @@ async function storeNewUser(){
   await writeUsersToDatabase();
   await getUsersFromDatabase();
   clearSignUpInputFields();
+  showMessage('messageOverlay', 'you signed up successfully!', 'show')
   signUpUserValid = false;
   signUpEmailValid = false;
   signUpPasswordValid = false;
   signUpPasswordTwoValid = false;
   signUpPrivacyPolicy = false;
   checkSignUpConditionsTrue();
+  setTimeout(() => {
+    window.location.href="../log_in/log_in.html";
+  }, 2000);
 }
 
 function clearSignUpInputFields(){

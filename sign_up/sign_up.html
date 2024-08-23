@@ -14,10 +14,12 @@
     <!-- script -->
     <script src="../validation/validation.js"></script>
     <script src="../database/script.js"></script>
+    <script src="../alertOverlays/script.js"></script>
 
     <!-- style -->
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="../validation/validation.css" />
+    <link rel="stylesheet" href="../alertOverlays/style.css">
     <link
       rel="shortcut icon"
       href="../favicon/img/favicon.png"
@@ -25,6 +27,7 @@
     />
   </head>
   <body onload="firstLoadSignUp()">
+    <div id="messageOverlay"></div>
     <div id="contentWrapper" class="flexContainerCol">
       <div id="logoFormContainer" class="flexContainer">
         <div id="headerLogoContainer" class="headerLogo flexContainer">

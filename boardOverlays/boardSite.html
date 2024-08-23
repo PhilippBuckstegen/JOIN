@@ -18,6 +18,7 @@
     <script src="../validation/validation.js"></script>
     <script src="../sign_up/script.js"></script>
     <script src="../log_in/script.js"></script>
+    <script src="../alertOverlays/script.js"></script>
 
 
     <link rel="stylesheet" href="./boardSite.css" />
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <link rel="stylesheet" href="../database_tasks/taskOverlay.css" />
     <link rel="stylesheet" href="../validation/validation.css" />
+    <link rel="stylesheet" href="../alertOverlays/style.css" /> 
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,6 +38,7 @@
   </head>
   <body onload="initialCallBoardSite()">
     <!-- Sidebar wird hier dynamisch geladen -->
+    <div id="messageOverlay"></div>
     <div class="side-wrap">
       <div class="sidebar"></div>
     </div>

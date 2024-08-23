@@ -5,6 +5,6 @@ function showMessage(elementId, message, elementClass) {
 
     setTimeout(() => {
         alertOverlay.classList.remove(elementClass);
-    }, 1500);
+    }, 2000);
 }
 

@@ -37,9 +37,16 @@ async function addNewTaskToDatabase(state, overlay) {
   // sortContactsByInitials(contacts);
   // addRandomColorToJSON(contacts);
   cleanAddtaskArea();
+  showMessage('messageOverlay', 'Task successfully added', 'show')
   if (overlay === 1) {
     addClassToElement("addTaskBoardOverlayContainer", "none");
     renderTasksInBoard();
+  }
+  if (overlay !==1) {
+    setTimeout(() => {
+      window.location.href="../board/board.html";
+    }, 2000);
+    
   }
   // await renderContacts();
   // showContactDetails(findLastAddedIndex(contacts));

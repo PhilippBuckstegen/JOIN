@@ -402,6 +402,7 @@ async function closeWindowWriteEditedDataToDatabase() {
   cancelEditArea();
   await writeTasksToDatabase();
   await getTasksFromDatabase();
+  showMessage('messageOverlay', 'Task successfully edited!', 'show')
   renderTasksInBoard();
 }
 
@@ -625,5 +626,6 @@ async function deleteSingleTask(i) {
   addClassToElement("taskOverlaySection", "none");
   await writeTasksToDatabase();
   await getTasksFromDatabase();
+  showMessage('messageOverlay', 'Task successfully deleted!', 'show')
   renderTasksInBoard();
 }

@@ -23,6 +23,7 @@
     <script src="../calendar/script.js"></script>
     <script src="../validation/validation.js"></script>   
     <script src="../log_in/script.js"></script>
+    <script src="../alertOverlays/script.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="../sidebar/style.css" />
@@ -30,6 +31,7 @@
     <link rel="stylesheet" href="../boardOverlays/boardOverlays.css" />
     <link rel="stylesheet" href="../database_tasks/taskOverlay.css">
     <link rel="stylesheet" href="../validation/validation.css" /> 
+    <link rel="stylesheet" href="../alertOverlays/style.css" /> 
     <link
       rel="shortcut icon"
       href="../favicon/img/favicon.png"
@@ -38,6 +40,8 @@
     <link rel="stylesheet" href="board.css" />
   </head>
   <body onload="initialCallBoard()">
+    <div id="messageOverlay"></div>
+
     <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
       <div class="sidebar"></div>

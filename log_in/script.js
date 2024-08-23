@@ -5,6 +5,8 @@ async function firstLoadLogin() {
   document.getElementById("loginButton").classList.add("loginBtn-disabled");
   loadLoginFromLocalStorage();
   animationLogin();
+  checkboxRememberMe.addEventListener("click", acceptRememberMe);
+
 }
 
 function loginUser(enteredUserEmail, enteredUserPassword) {
@@ -159,4 +161,4 @@ function acceptRememberMe() {
   }
 }
 
-checkboxRememberMe.addEventListener("click", acceptRememberMe);
+//checkboxRememberMe.addEventListener("click", acceptRememberMe);
