@@ -103,9 +103,10 @@
                 placeholder="Password"
                 autocomplete="current-password"
                 title="required"
-                onblur="validateLoginPassword('loginPassword')"
-                onfocus="resetSingleInputError('loginPassword')"
+                onfocus="passwordFieldActive('loginPassword', 'pwLoginOverlay'), resetSingleInputError('loginPassword')"
+                onblur="validateLoginPassword('loginPassword'), passwordFieldInactive('loginPassword', 'pwLoginOverlay')"
               />
+              <div id="pwLoginOverlay" class="icon-overlay d-none" onclick="togglePasswordVisibility('loginPassword')"></div> <!-- Heiko zugefügt -->
               <span
                 id="loginPasswordErrorMessage"
                 class="no-error-visible error-message"

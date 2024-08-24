@@ -116,6 +116,38 @@ function checkIfEmailAlreadyExists(){
   } 
 }
 
+// Password Function
+function passwordFieldActive(idPw, idOvl){
+  let passwordField = document.getElementById(idPw);
+  let passwordOverlay = document.getElementById(idOvl);
+    passwordField.style.backgroundImage = "url('../database/images/visibility_off.svg')";
+    passwordOverlay.classList.remove('d-none');
+} 
+
+  
+function passwordFieldInactive(idPw, idOvl){
+  let passwordField = document.getElementById(idPw);
+  let passwordOverlay = document.getElementById(idOvl);
+  if(passwordField.value.length > 0){
+    passwordField.style.backgroundImage = "url('../database/images/visibility_off.svg')";
+  } else {
+    passwordField.style.backgroundImage = "url('../database/images/lockSU.svg')";
+    passwordOverlay.classList.add('d-none');
+  }
+}  
+
+
+function togglePasswordVisibility(id){
+  let passwordField = document.getElementById(id);
+  if (passwordField.type === 'password') {
+    passwordField.style.backgroundImage = "url('../database/images/visibility.svg')";
+    passwordField.type = 'text';
+  } else {
+    passwordField.type = 'password';
+    passwordField.style.backgroundImage = "url('../database/images/visibility_off.svg')";
+  }
+}
+
 
 //Marv Hinzugefügt Listener zum verweis zur den Policen
 function addEventListeners() {

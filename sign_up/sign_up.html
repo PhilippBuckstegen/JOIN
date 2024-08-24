@@ -102,9 +102,10 @@
                   placeholder="Password"
                   autocomplete="currentPassword"
                   title="required"
-                  onblur="validatePassword('signUpPassword')"
-                  onfocus="resetSingleInputError('signUpPassword')"
+                  onblur="validatePassword('signUpPassword'), passwordFieldInactive('signUpPassword', 'pwSignUpOverlay')"
+                  onfocus="resetSingleInputError('signUpPassword'), passwordFieldActive('signUpPassword', 'pwSignUpOverlay')"
                 />
+                <div id="pwSignUpOverlay" class="icon-overlay d-none" onclick="togglePasswordVisibility('signUpPassword')"></div> <!-- Heiko zugefügt -->
                 <span
                   id="signUpPasswordErrorMessage"
                   class="no-error-visible error-message"
@@ -119,9 +120,10 @@
                   placeholder="Confirm Password"
                   autocomplete="currentConfirmPassword"
                   title="required"
-                  onblur="validatePassword2('signUpPassword2', `signUpPassword`)"
-                  onfocus="resetSingleInputError('signUpPassword2')"
+                  onblur="validatePassword2('signUpPassword2', `signUpPassword`), passwordFieldInactive('signUpPassword2', 'pw2SignUpOverlay')"
+                  onfocus="resetSingleInputError('signUpPassword2'), passwordFieldActive('signUpPassword2', 'pw2SignUpOverlay')"
                 />
+                <div id="pw2SignUpOverlay" class="icon-overlay d-none" onclick="togglePasswordVisibility('signUpPassword2')"></div> <!-- Heiko zugefügt -->
                 <span
                   id="signUpPassword2ErrorMessage"
                   class="no-error-visible error-message"

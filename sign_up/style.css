@@ -98,6 +98,17 @@ color:#29ABE2 ;
   background-color: grey !important;
   pointer-events: none !important;
 }
+
+.icon-overlay {
+  opacity: 0.5;
+  position: absolute;
+  right: 11px;
+  top: 2%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+}
 /* Heiko zugefügt Ende */
 
 #signUpForm {
@@ -365,7 +376,16 @@ footer p {
   #footer {
     font-size: 14px;
   }
+
+  .icon-overlay {
+    right: 10px;
+    top: 2%;
+    width: 35px;
+    height: 35px;  
+  }
 }
+
+
 
 @media (max-width: 480px) {
   #arrowTitleBorderContainer {
@@ -417,5 +437,12 @@ footer p {
   #labelPrivacyPolicy,
   #footer {
     font-size: 14px;
+  }
+
+  .icon-overlay {
+    right: 8px;
+    top: 2%;
+    width: 35px;
+    height: 35px;  
   }
 }

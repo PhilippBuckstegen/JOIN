@@ -358,6 +358,17 @@ footer p {
   background-color: grey !important;
   pointer-events: none !important;
 }
+ 
+.icon-overlay {
+    opacity: 0.5;
+    position: absolute;
+    right: 131px;
+    top: 2%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: transparent;
+}
 /* Heiko zugefügt Ende */
 
 /* Marv zugefügt */
@@ -395,6 +406,16 @@ footer p {
   #loginForm {
     width: 460px;
   }
+
+  /* Heiko zugefügt */
+  .icon-overlay {
+    right: 52px;
+    top: 1%;  
+  }
+
+  .error-message{
+    font-size: 10px !important;
+  }
 }
 
 @media (max-width: 680px) {
@@ -428,24 +449,41 @@ footer p {
   }
 
   #main {
-    width: 80%;
+    /* width: 80%; Heiko auskommentiert */
     padding-top: 0;
   }
 
   #loginForm {
-    width: 100%;
+    /* width: 100%;  Heiko auskommentiert*/
+    /* Heiko zugefügt */
+    width: 400px;
     padding: 20px 0;
   }
 
+  /* Heiko auskommentiert */
+  /* input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  .error-message {
+    width: 300px;
+    font-size: 16px;
+  } */
+
+
+.error-message{
+  width: 300px;
+}
+
   input[type="email"],
   input[type="password"],
-  .error-message {
+  input[type="text"]{
     width: 300px;
     font-size: 16px;
   }
 
   #checkboxErrorContainer {
-    padding-left: 16%;
+    /* padding-left: 16%; Heiko auskommentiert */
+    padding-left: 21%;
   }
 
   #labelPrivacyPolicy,
@@ -467,6 +505,14 @@ footer p {
   footer {
     padding-top: 20%;
   }
+
+  .icon-overlay {
+    right: 51px;
+    top: 1%;
+    width: 35px;
+    height: 35px;  
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -506,25 +552,39 @@ footer p {
   }
 
   #main {
-    width: 94%;
+    /* width: 94%; Heiko auskommentiert */
     padding-top: 0;
   }
 
   #loginForm {
-    width: 100%;
+    /* width: 100%; Heiko auskommentiert */
+    width: 300px;
     padding: 20px 0;
     gap: 20px;
   }
 
+  /* input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  .error-message {
+    width: 250px;
+    font-size: 16px;
+  } */
+
+  .error-message{
+    width: 250px;
+  }
+
   input[type="email"],
   input[type="password"],
-  .error-message {
+  input[type="text"]{
     width: 250px;
     font-size: 16px;
   }
 
   #checkboxErrorContainer {
-    padding-left: 16%;
+    /* padding-left: 16%; Heiko auskommentiert */
+    padding-left: 22%;
   }
 
   #labelPrivacyPolicy,
@@ -558,5 +618,12 @@ footer p {
     padding: 0 !important;
 
     gap: 20px !important;
+  }
+
+  .icon-overlay {
+    right: 24px;
+    top: 1%;
+    width: 35px;
+    height: 35px;  
   }
 }
