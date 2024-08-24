@@ -47,11 +47,23 @@ ol {
 }
 
 #enjoyJoin {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .arrow-back-help {
-    cursor: pointer;
-    width: 38px;
-    height: 38px;
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+}
+
+@media (max-width: 900px) {
+  .main-board {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+    .main-board {
+        padding-right: 20px;
+    }
 }
