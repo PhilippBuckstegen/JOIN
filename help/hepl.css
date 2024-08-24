@@ -1,0 +1,57 @@
+.header-help {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-help p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 24px;
+}
+
+.p-help {
+  margin-bottom: 40px;
+}
+
+.board {
+  display: block !important;
+}
+
+.h2-board {
+  margin-bottom: 0 !important;
+}
+
+#helpP {
+  margin-top: 0;
+}
+
+.help_li {
+  padding-left: 16px;
+}
+
+ol {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.join:hover {
+  font-weight: 700;
+}
+
+.join {
+  color: #29abe2;
+  text-decoration: none;
+}
+
+#enjoyJoin {
+    margin-bottom: 40px;
+}
+
+.arrow-back-help {
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+}

@@ -115,6 +115,10 @@ img {
   font-size: 18px;
 }
 
+.help-icon {
+  cursor: pointer;
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);
