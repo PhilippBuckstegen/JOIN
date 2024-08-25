@@ -1,7 +1,10 @@
+/**
+* This function laods functions for firstCall
+*/ 
 
 async function initSummary() {
     await getTasksFromDatabase();
-    getCurrentUserFromLocalStorage(); //Heiko zugefügt
+    getCurrentUserFromLocalStorage(); 
     renderSummary();
     renderGreeting();
     renderInitialsInHeader();
@@ -9,6 +12,10 @@ async function initSummary() {
 
 let timeOfDay
 
+
+/**
+* This function evaluates the time for the greeting of the user
+*/ 
 function renderTimeOfDay() {
     let date = new Date;
     let hours = date.getHours();
@@ -24,10 +31,13 @@ function renderTimeOfDay() {
     }
 }
 
+
+/**
+* This function clears the greeting area
+*/ 
 async function renderGreeting() {    
     let greetings = document.getElementById('summaryGreeting');
     let mobileGreeting = document.getElementById('mobileGreeting');
-    
     renderTimeOfDay();
     mobileGreeting.innerHTML = '';
     greetings.innerHTML = '';
@@ -35,32 +45,45 @@ async function renderGreeting() {
 }
 
 
+/**
+* This function renders greeting for mobile and desktop
+*/ 
 function renderGreetingUser() {    
     let greetings = document.getElementById('summaryGreeting');
     let mobileGreeting = document.getElementById('mobileGreeting');
     mobileGreeting.innerHTML = /*html*/`
         <p class="mobile-overlay-greeting">${timeOfDay},</p>
-        <!-- <p class="mobile-greeting-user">User Beispiel</p> -->
         <p class="mobile-greeting-user">${loggedInUser[0].name}</p>
     `   
     greetings.innerHTML = /*html*/`
         <p id="greeting" class="p-greeting">${timeOfDay},</p>
-        <!-- <p class="greeting-user">User Beispiel</p> -->
         <p class="greeting-user">${loggedInUser[0].name}</p>
     `
 }
 
+
+/**
+* This function checks the status of the different tasks and counts them up for each status
+*/ 
 function getNumberOfTasksByStatus(status) {
     let filteredStatus = tasks.filter(task => task.status === status);
     return filteredStatus.length;
 }
 
+
+/**
+* This function counts the amount of urgent tasks
+*/ 
 function getNumberOfUrgentTasks() {
     let urgentTasks = tasks.filter(task => task.priority === 3);
     urgentTasks = urgentTasks.length;
     return urgentTasks;
 }
 
+
+/**
+* This function checks the next ancoming due date
+*/ 
 function getNextDueDate() {
     let currentDate = new Date();
     let upcomingTasks = tasks.filter(task => new Date(task.dueDate) > currentDate);
@@ -68,6 +91,10 @@ function getNextDueDate() {
     return upcomingTasks.length > 0 ? upcomingTasks[0].dueDate : null;
 }
 
+
+/**
+* This function renders the summary area
+*/ 
 function renderSummary() {
     document.getElementById('tasksInBoard').innerHTML = tasks.length;
     document.getElementById('sumCountTodo').innerHTML = getNumberOfTasksByStatus(0);
