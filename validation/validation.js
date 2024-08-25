@@ -5,8 +5,14 @@ let signUpPasswordTwoValid = false;
 let signUpPrivacyPolicy = false;
 let loginEmailValid = false;
 let loginPasswordValid = false;
+
+
 // **** Validation!!! For Contacts****
 
+
+/**
+ * This function validates the inputs for the Add Contacts function
+ */
 function validateAddInputs(){
     resetInputDataErrors(`fullNameAdd`, `emailAdd`, `phoneAdd`);
     let validName = validateName(`fullNameAdd`);
@@ -17,7 +23,12 @@ function validateAddInputs(){
     }
   }
   
-  
+
+/**
+ * This function validates the inputs for the Edit Contacts function
+ * 
+ * @param {number} i - index of datset which should be edited
+ */
   function validateEditInputs(i){
     resetInputDataErrors(`fullName`, `email`, `phone`);
     let validName = validateName(`fullName`);
@@ -28,7 +39,12 @@ function validateAddInputs(){
     }
   }
   
-  
+
+/**
+ * This function validates the inputs which includes names
+ * 
+ * @param {number} id - id for Error message field of name field
+ */
   function validateName(id){
     let isValid = true;
     let inputToCheck = document.getElementById(`${id}`);
@@ -41,6 +57,11 @@ function validateAddInputs(){
   }
   
   
+/**
+ * This function validates the inputs which includes emails
+ * 
+ * @param {number} id - id for Error message field of email field
+ */
   function validateEmail(id){
     let isValid = true;
     let emailToCheck = document.getElementById(`${id}`);
@@ -53,6 +74,11 @@ function validateAddInputs(){
   }
   
   
+/**
+ * This function validates the inputs which includes phonenumber
+ * 
+ * @param {number} id - id for Error message field of phonenumber field
+ */
   function validatePhone(id){
     let isValid = true;
     let inputToCheck = document.getElementById(`${id}`);
@@ -65,7 +91,13 @@ function validateAddInputs(){
   }
   
   
-  
+/**
+ * This function checks if an input field is empty
+ * 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+ */
   function checkIfFieldIsEmpty(isValid, inputToCheck, errorMessage){
     if (inputToCheck.value.trim() === ''){
       inputToCheck.style.border = "1px solid red";
@@ -77,6 +109,13 @@ function validateAddInputs(){
   }
   
   
+/**
+ * This function checks if an input field contains numbers
+ * 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+ */
   function checkIfFieldContainsNumbers(isValid, inputToCheck, errorMessage){
     const numberRegex = /\d/;
     if (numberRegex.test(inputToCheck.value)) {
@@ -89,6 +128,13 @@ function validateAddInputs(){
   }
   
   
+ /**
+ * This function checks if an input field contains @ sign
+ * 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+ */
   function checkIfFieldContainsAtSign(isValid, inputToCheck, errorMessage){
     const atRegex = /@/;
     if (!atRegex.test(inputToCheck.value)) {
@@ -101,6 +147,13 @@ function validateAddInputs(){
   }
   
   
+/**
+ * This function checks if an input field contains + sign and only numbers
+ * 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+ */
   function checkIfFieldContainsPlusAndOnlyNumbers(isValid, inputToCheck, errorMessage){
     const phoneRegex = /^\+\d+$/;
     if (!phoneRegex.test(inputToCheck.value)) {
@@ -112,7 +165,13 @@ function validateAddInputs(){
     return isValid;
   }
   
-  
+/**
+ * This function resets input data errors of 3 inputs
+ * 
+ * @param {id} id1 - id of data input field from which error should be resetted
+ * @param {id} id2 - id of data input field from which error should be resetted
+ * @param {id} id3 - id of data input field from which error should be resetted
+ */
   function resetInputDataErrors(id1, id2, id3){
     document.getElementById(`${id1}`).style.border = "1px solid #d1d1d1";
     document.getElementById(`${id2}`).style.border = "1px solid #d1d1d1";
@@ -122,6 +181,13 @@ function validateAddInputs(){
     document.getElementById(`${id3}ErrorMessage`).classList.add('no-error-visible');
   }
 
+
+/**
+ * This function resets input data errors of 2 inputs
+ * 
+ * @param {id} id1 - id of data input field from which error should be resetted
+ * @param {id} id2 - id of data input field from which error should be resetted
+ */  
   function resetEditInputDataErrors(id1, id2){
     document.getElementById(`${id1}`).style.border = "1px solid #d1d1d1";
     document.getElementById(`${id2}`).style.border = "1px solid #d1d1d1";
@@ -129,6 +195,12 @@ function validateAddInputs(){
     document.getElementById(`${id2}ErrorMessage`).classList.add('no-error-visible');
   }
 
+
+/**
+ * This function resets input data errors of one inputs
+ * 
+ * @param {id} id1 - id of data input field from which error should be resetted
+ */    
   function resetSingleInputError(id){
     document.getElementById(`${id}`).style.border = "1px solid #d1d1d1";
     document.getElementById(`${id}ErrorMessage`).classList.add('no-error-visible');
@@ -137,6 +209,13 @@ function validateAddInputs(){
 
   // **** Validation!!! For Tasks****
 
+
+/**
+  * This function validates the inputs for the add task function
+ * 
+ * @param {number} y       - number of category where task should be added
+ * @param {number} overlay - 0 if boardSite add task / 1 if overlay add task
+ */  
   function validateAddTask(y, overlay){
     resetInputDataErrors(`boardTitle`, `boardDate`, `boardCategory`);
     let validTitle = validateTitle(`boardTitle`);
@@ -148,6 +227,11 @@ function validateAddInputs(){
   }
 
 
+/**
+* This function validates the inputs for the edit task function
+* 
+* @param {number} y - number of task which should be edited
+*/  
   function validateEditTask(y){
     resetEditInputDataErrors(`editBoardTitle`, `editBoardDate`);
     let validEditTitle = validateTitle(`editBoardTitle`);
@@ -157,6 +241,12 @@ function validateAddInputs(){
     }
   }
 
+
+/**
+* This function validates the inputs for titles
+* 
+* @param {id} id - id of input field which should be validated
+*/  
    function validateTitle(id){
     let isValid = true;
     let inputToCheck = document.getElementById(`${id}`);
@@ -166,6 +256,11 @@ function validateAddInputs(){
   }
 
 
+/**
+* This function validates the inputs for date
+* 
+* @param {id} id - id of input field which should be validated
+*/   
   function validateDate(id){
     let isValid = true;
     let inputToCheck = document.getElementById(`${id}`);
@@ -181,6 +276,11 @@ function validateAddInputs(){
   }
 
 
+/**
+* This function validates the inputs for category
+* 
+* @param {id} id - id of input field which should be validated
+*/ 
   function validateCategory(id){
     let isValid = true;
     let inputToCheck = document.getElementById(`${id}`);
@@ -190,6 +290,13 @@ function validateAddInputs(){
   }
 
 
+/**
+* This function checks if the inputs for the date has valid date format
+* 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+*/ 
   function checkIfDateHasValidFormat(isValid, inputToCheck, errorMessage){
     const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
     if (!dateRegex.test(inputToCheck.value)) {
@@ -202,6 +309,13 @@ function validateAddInputs(){
   }
 
 
+/**
+* This function checks if the chisen date is in present or future
+* 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+*/   
   function checkIfDateIsInPresent(isValid, inputToCheck, errorMessage){
     const [year, month, day] = inputToCheck.value.split('-').map(Number);
     const inputDateObj = new Date(year, month - 1, day);
@@ -216,9 +330,13 @@ function validateAddInputs(){
     return isValid;
   }
 
+
 // **** Validation!!! For Login ****
 
 
+/**
+* This function validates the sign up input fields
+*/  
 function validateSignUp(){
   resetInputDataErrors(`signUpName`, `signUpEmail`, `signUpPassword`, `signUpPassword2`, `checkboxPrivacyPolicy`);
   let validSignUpUserName = validateUserName(`signUpName`);
@@ -227,11 +345,15 @@ function validateSignUp(){
   let validSignUpPassword2 = validatePassword2(`signUpPassword2`);
   let validSignUpPrivacy = validatePolicy('checkboxPrivacyPolicy');
   if(validSignUpUserName && validSignUpEmail && validSignUpPassword && validSignUpPassword2 && validSignUpPrivacy){
-    // addNewTaskToDatabase(y, overlay);
   }
 }
 
 
+/**
+* This function validates the user name
+* 
+* @param {id} id - id of input field which should be validated
+*/  
 function validateUserName(id){
   let isValid = true;
   let inputToCheck = document.getElementById(`${id}`);
@@ -249,6 +371,11 @@ function validateUserName(id){
 }
 
 
+/**
+* This function validates the inputs for email
+* 
+* @param {id} id - id of input field which should be validated
+*/  
 function validateSignUpEmail(id){
   let isValid = true;
   let emailToCheck = document.getElementById(`${id}`);
@@ -263,6 +390,11 @@ function validateSignUpEmail(id){
 }
 
 
+/**
+* This function validates the inputs for password
+* 
+* @param {id} id - id of input field which should be validated
+*/  
 function validatePassword(id){
   let isValid = true;
   let inputToCheck = document.getElementById(`${id}`);
@@ -289,6 +421,12 @@ function validatePassword(id){
 }
 
 
+/**
+* This function validates the inputs for password2
+* 
+* @param {id} id1 - id of input field which should be validated
+* @param {id} id2 - id of reference input field for validation
+*/  
 function validatePassword2(id1, id2){
   let isValid = true;
   let inputToCheck = document.getElementById(`${id1}`);
@@ -304,6 +442,11 @@ function validatePassword2(id1, id2){
 }
 
 
+/**
+* This function validates a checkbox
+* 
+* @param {id} id - id of checkbox which should be validated
+*/
 function validateCheckbox(id){
   let isValid = true;
   let inputToCheck = document.getElementById(`${id}`);
@@ -313,6 +456,11 @@ function validateCheckbox(id){
 }
 
 
+/**
+* This function validates the checkbox
+* 
+* @param {id} id - id of checkbox which should be validated
+*/
 function checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage){
   if (inputToCheck.value.trim().length < 6) {
     inputToCheck.style.border = "1px solid red";
@@ -324,6 +472,13 @@ function checkIfFieldHasMinSixCharacters(isValid, inputToCheck, errorMessage){
 }
 
 
+/**
+* This function checks if the input contains NO numbers
+* 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+*/ 
 function checkIfFieldContainsNoNumbers(isValid, inputToCheck, errorMessage){
   const numberRegex = /\d/;
   if (!numberRegex.test(inputToCheck.value)) {
@@ -336,6 +491,13 @@ function checkIfFieldContainsNoNumbers(isValid, inputToCheck, errorMessage){
 }
 
 
+/**
+* This function checks if the input contains capital letters
+* 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+*/
 function checkIfFieldContainsCapitalLetters(isValid, inputToCheck, errorMessage){
   const dateRegex = /[A-Z]/;
   if (!dateRegex.test(inputToCheck.value)) {
@@ -348,6 +510,13 @@ function checkIfFieldContainsCapitalLetters(isValid, inputToCheck, errorMessage)
 }
 
 
+/**
+* This function checks if the input contains small letters
+* 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+*/
 function checkIfFieldContainsSmallLetters(isValid, inputToCheck, errorMessage){
   const dateRegex = /[a-z]/;
   if (!dateRegex.test(inputToCheck.value)) {
@@ -360,6 +529,13 @@ function checkIfFieldContainsSmallLetters(isValid, inputToCheck, errorMessage){
 }
 
 
+/**
+* This function checks if the input contains special characters
+* 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+*/
 function checkIfFieldContainsSpecialCharacter(isValid, inputToCheck, errorMessage){
   const dateRegex = /[!@#$%^&*(),.?":{}|<>]/;
   if (!dateRegex.test(inputToCheck.value)) {
@@ -372,6 +548,14 @@ function checkIfFieldContainsSpecialCharacter(isValid, inputToCheck, errorMessag
 }
 
 
+/**
+* This function checks if two passwords are equal
+* 
+ * @param {bool} isValid      - parameter for isValid
+ * @param {id} inputToCheck   - input id of field whoch should be checked
+ * @param {id} inputReference - input id of reference input field
+ * @param {id} errorMessage   - input id of error message field from input field
+*/
 function checkIfPasswordTwoFitsPasswordOne(isValid, inputToCheck, inputReference, errorMessage){
   if (inputToCheck.value !== inputReference.value) {
     inputToCheck.style.border = "1px solid red";
@@ -383,6 +567,13 @@ function checkIfPasswordTwoFitsPasswordOne(isValid, inputToCheck, inputReference
 }
 
 
+/**
+* This function checks the status of a checkbox
+* 
+ * @param {bool} isValid    - parameter for isValid
+ * @param {id} inputToCheck - input id of field whoch should be checked
+ * @param {id} errorMessage - input id of error message field from input field
+*/
 function checkStatusOfCheckbox(isValid, inputToCheck, errorMessage){
   if(inputToCheck.checked == true){
     isValid = true;
@@ -393,11 +584,19 @@ function checkStatusOfCheckbox(isValid, inputToCheck, errorMessage){
 }
 
 
+/**
+* This function loads the event listeners for signup checkbox
+*/
 function loadSignUpValidationEventListeners(){
 signUpCheckboxEventListener(`checkboxPrivacyPolicy`);
 }
 
 
+/**
+* This function defines the event listener for signup checkbox
+* 
+* @param {id} id - input id of field whoch should be checked
+*/
 function signUpCheckboxEventListener(id){
   let signUpCheckbox = document.getElementById(`${id}`);  
   signUpCheckbox.addEventListener('change', function(event) {
@@ -406,6 +605,10 @@ function signUpCheckboxEventListener(id){
   });  
 }
 
+
+/**
+* This function checks if the signup conditions are true
+*/
 function checkSignUpConditionsTrue(){
   if(signUpUserValid && signUpEmailValid && signUpPasswordValid && signUpPasswordTwoValid && signUpPrivacyPolicy){
     document.getElementById(`signUpBtn`).disabled = false;
@@ -419,6 +622,12 @@ function checkSignUpConditionsTrue(){
 
 // Validation Login
 
+
+/**
+* This function validate the email input for login
+* 
+ * @param {id} inputToCheck - input id of field whoch should be checked
+*/
 function validateLoginEmail(id){
   let isValid = true;
   let emailToCheck = document.getElementById(`${id}`);
@@ -433,6 +642,11 @@ function validateLoginEmail(id){
 }
 
 
+/**
+* This function validate the password input for login
+* 
+ * @param {id} inputToCheck - input id of field whoch should be checked
+*/
 function validateLoginPassword(id){
   let isValid = true;
   let inputToCheck = document.getElementById(`${id}`);
@@ -444,6 +658,9 @@ function validateLoginPassword(id){
 }
 
 
+/**
+* This function validates if login condition are true
+*/
 function checkLoginConditionsTrue(){
   if(loginEmailValid && loginPasswordValid){
     document.getElementById(`loginButton`).disabled = false;
