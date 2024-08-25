@@ -735,7 +735,7 @@ textarea {
     width: 200px !important;
   }
 
-  .selected-contacts{
+  .selected-contacts {
     width: 230px !important;
   }
 }
@@ -913,7 +913,7 @@ textarea {
     width: 280px !important;
   }
 
-  .selected-contacts{
+  .selected-contacts {
     width: 310px !important;
   }
 }
@@ -1141,7 +1141,7 @@ textarea {
   background-color: #f9f9f9;
   min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 10;
+  z-index: 999999 !important;
   max-height: 200px !important;
   overflow-y: auto;
 }

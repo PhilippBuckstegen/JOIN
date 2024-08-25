@@ -25,8 +25,8 @@
   position: relative;
 }
 
-.button_policie:hover{
-  color:#29ABE2 ;
+.button_policie:hover {
+  color: #29abe2;
 }
 
 .guest-button {
@@ -358,16 +358,16 @@ footer p {
   background-color: grey !important;
   pointer-events: none !important;
 }
- 
+
 .icon-overlay {
-    opacity: 0.5;
-    position: absolute;
-    right: 131px;
-    top: 2%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background: transparent;
+  opacity: 0.5;
+  position: absolute;
+  right: 131px;
+  top: 2%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
 }
 /* Heiko zugefügt Ende */
 
@@ -410,10 +410,10 @@ footer p {
   /* Heiko zugefügt */
   .icon-overlay {
     right: 52px;
-    top: 1%;  
+    top: 1%;
   }
 
-  .error-message{
+  .error-message {
     font-size: 10px !important;
   }
 }
@@ -469,14 +469,13 @@ footer p {
     font-size: 16px;
   } */
 
-
-.error-message{
-  width: 300px;
-}
+  .error-message {
+    width: 300px;
+  }
 
   input[type="email"],
   input[type="password"],
-  input[type="text"]{
+  input[type="text"] {
     width: 300px;
     font-size: 16px;
   }
@@ -510,9 +509,8 @@ footer p {
     right: 51px;
     top: 1%;
     width: 35px;
-    height: 35px;  
+    height: 35px;
   }
-
 }
 
 @media (max-width: 480px) {
@@ -571,13 +569,13 @@ footer p {
     font-size: 16px;
   } */
 
-  .error-message{
+  .error-message {
     width: 250px;
   }
 
   input[type="email"],
   input[type="password"],
-  input[type="text"]{
+  input[type="text"] {
     width: 250px;
     font-size: 16px;
   }
@@ -624,6 +622,14 @@ footer p {
     right: 24px;
     top: 1%;
     width: 35px;
-    height: 35px;  
+    height: 35px;
+  }
+
+  footer {
+    padding-top: 0;
+  }
+
+  #mainWrapper {
+    justify-content: space-between;
   }
 }
