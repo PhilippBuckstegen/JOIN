@@ -1,15 +1,20 @@
-// Start - Heiko zugefügt
-
 let users = [];
-
 const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
 
+
+/**
+* This function laods functions for firstCall
+*/ 
 async function firstLoadSignUp() {
   await getUsersFromDatabase();
   loadSignUpEventListeners();
   loadSignUpValidationEventListeners();
 }
 
+
+/**
+* This function loads the users from the database
+*/ 
 async function getUsersFromDatabase() {
   let data = await loadData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -24,6 +29,10 @@ async function getUsersFromDatabase() {
   }
 }
 
+
+/**
+* This function writes new users to the local array
+*/ 
 function writeNewUserToLocalArray() {
   let userName = document.getElementById("signUpName");
   let userEmail = document.getElementById("signUpEmail");
@@ -39,6 +48,9 @@ function writeNewUserToLocalArray() {
 }
 
 
+/**
+* This function writes new users ti the database
+*/ 
 async function writeUsersToDatabase() {
   await postData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -48,6 +60,9 @@ async function writeUsersToDatabase() {
 }
 
 
+/**
+* This function is for the visualization of the privacy policy checkbox
+*/ 
 function acceptPrivacyPolicy() {
   if (!checkboxPrivacyPolicy.classList.contains("checkboxChecked")) {
     checkboxPrivacyPolicy.classList.remove("checkboxUnchecked");
@@ -61,6 +76,9 @@ function acceptPrivacyPolicy() {
 }
 
 
+/**
+* This function loads the event listener for the signup button
+*/ 
 function loadSignUpEventListeners(){
     const checkboxPrivacyPolicy = document.getElementById("checkboxPrivacyPolicy");
     checkboxPrivacyPolicy.addEventListener("click", acceptPrivacyPolicy);
@@ -68,6 +86,9 @@ function loadSignUpEventListeners(){
 }
 
 
+/**
+* This function stores new users in database
+*/ 
 async function storeNewUser(){
   writeNewUserToLocalArray();
   await writeUsersToDatabase();
@@ -86,6 +107,9 @@ async function storeNewUser(){
 }
 
 
+/**
+* This function clears the signup input fields
+*/ 
 function clearSignUpInputFields(){
   document.getElementById("signUpName").value = "";
   document.getElementById("signUpEmail").value = "";
@@ -99,6 +123,9 @@ function clearSignUpInputFields(){
 }
 
 
+/**
+* This function checks if a signup mail already exists
+*/ 
 function checkIfEmailAlreadyExists(){
   let userEmail = document.getElementById("signUpEmail").value;
   let emailExists = false;
@@ -116,7 +143,13 @@ function checkIfEmailAlreadyExists(){
   } 
 }
 
-// Password Function
+
+/**
+* This function is to change the background image for the password from lock to unvisible and to show an overlay for change the passowrd visibility
+* 
+* @param {id} idPW  - id of input field where background image should be changed
+* @param {id} idOvl - od of ovl wihich shoukd be shown
+*/ 
 function passwordFieldActive(idPw, idOvl){
   let passwordField = document.getElementById(idPw);
   let passwordOverlay = document.getElementById(idOvl);
@@ -124,7 +157,13 @@ function passwordFieldActive(idPw, idOvl){
     passwordOverlay.classList.remove('d-none');
 } 
 
-  
+
+/**
+* This function is to change the background image for the password from unvisible to lock
+* 
+* @param {id} idPW  - id of input field where background image should be changed
+* @param {id} idOvl - od of ovl wihich shoukd be not shown
+*/ 
 function passwordFieldInactive(idPw, idOvl){
   let passwordField = document.getElementById(idPw);
   let passwordOverlay = document.getElementById(idOvl);
@@ -137,6 +176,11 @@ function passwordFieldInactive(idPw, idOvl){
 }  
 
 
+/**
+* This function is to change the password visibilty
+* 
+* @param {id} id  - id of input field where password should be shown or not
+*/ 
 function togglePasswordVisibility(id){
   let passwordField = document.getElementById(id);
   if (passwordField.type === 'password') {
@@ -158,14 +202,10 @@ function addEventListeners() {
       event.preventDefault(); 
       const targetPage = button.getAttribute('data-target');
       if (targetPage) {
-       // window.location.href = targetPage; // Im gleichen Tab 
          window.open(targetPage, '_blank');   
-      // Öffnet den Link in einem neuen Tab   
-      //für die seite wenn einer noch nicht eingeloggt ist auf die seite verweisen im neuen tab
       }
     });
   });
 }
 
-// Event Listener hinzufügen, wenn das DOM vollständig geladen ist
 document.addEventListener('DOMContentLoaded', addEventListeners);
