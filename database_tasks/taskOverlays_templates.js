@@ -1,12 +1,11 @@
-
 /**
  * This function generates HTML Code for generate Task
- * 
- * @param {number} i - index of task 
- * @returns          - HTML Code 
+ *
+ * @param {number} i - index of task
+ * @returns          - HTML Code
  */
-function generateTaskHTML(i){
-    return /*HTML*/ `
+function generateTaskHTML(i) {
+  return /*HTML*/ `
     <div id="currentUserTaskOverlay" class="currentUserTaskOverlays flexContainerColStart">
   
     <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
@@ -70,18 +69,17 @@ function generateTaskHTML(i){
         </button>
       </div>
     </div>`;
-  }
+}
 
-
-  /**
-   * This function generates HTML Code for renderAssigendNames 
-   * 
-   * @param {number} i - index of task
-   * @param {number} j - index of assigend users
-   * @returns          - HTML Code
-   */
-  function renderAssignedNamesNoUserLimitHTML(i,j){
-    return  /*html*/ `
+/**
+ * This function generates HTML Code for renderAssigendNames
+ *
+ * @param {number} i - index of task
+ * @param {number} j - index of assigend users
+ * @returns          - HTML Code
+ */
+function renderAssignedNamesNoUserLimitHTML(i, j) {
+  return /*html*/ `
             <div id='assignedContactsDetail${j}'>
               <span class="label-initials">
                 <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
@@ -89,18 +87,17 @@ function generateTaskHTML(i){
               </span>
           </div>
         `;
-  }
+}
 
-  
-  /**
-   * This function generates HTML Code for renderAssigendNames 
-   * 
-   * @param {number} i - index of task
-   * @param {number} j - index of assigend users
-   * @returns          - HTML Code
-   */
-  function renderAssignedNamesUserLimitHTML(i,j){
-    return /*html*/ `
+/**
+ * This function generates HTML Code for renderAssigendNames
+ *
+ * @param {number} i - index of task
+ * @param {number} j - index of assigend users
+ * @returns          - HTML Code
+ */
+function renderAssignedNamesUserLimitHTML(i, j) {
+  return /*html*/ `
     <div id='assignedContactsDetail${j}'>
       <span class="label-initials">
         <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
@@ -108,17 +105,16 @@ function generateTaskHTML(i){
       </span>
   </div>
   `;
-  }
+}
 
-
-  /**
-   * This function renders the edit view
-   * 
-   * @param {number} i - index of task
-   * @returns          - HTML Code
-   */
-  function generateEditViewHTML(i){
-    return /*HTML*/ `
+/**
+ * This function renders the edit view
+ *
+ * @param {number} i - index of task
+ * @returns          - HTML Code
+ */
+function generateEditViewHTML(i) {
+  return /*HTML*/ `
     <div id="xBtnContainerEdit" class="flexContainer">
                 <img id="xBtn" src="../database/images/close.svg" alt="icon"
                 onclick="cancelEditArea()"/>
@@ -224,18 +220,17 @@ function generateTaskHTML(i){
                     <!-- ????   button id="okBtnCur" onclick="storeEditedData(${i})">OK</button>-->
                   </div>
   `;
-  }
+}
 
-
-  /**
-   * This renders the subtasks
-   * 
-   * @param {number} x - index of task
-   * @param {number} i - index of subtask item
-   * @returns 
-   */
-  function editRenderSubtasksHTML(x,i){
-    return  /*html*/ `
+/**
+ * This renders the subtasks
+ *
+ * @param {number} x - index of task
+ * @param {number} i - index of subtask item
+ * @returns
+ */
+function editRenderSubtasksHTML(x, i) {
+  return /*html*/ `
     <li id="subtaskListItem${i}" class="subtaskListItems subtaskListItemsEdit flexContainer">
         <div id="subTaskTextListItem${i}" class="sub-task-text-list subtaskListItemsContainers flexContainer"><span class="sub-task-text-list" id="subTaskTextListItem${i}">${tasks[x].subtask[i].task}</span></div>
         <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">
@@ -245,5 +240,4 @@ function generateTaskHTML(i){
         <span>
     </li>
   `;
-  }
-  
+}

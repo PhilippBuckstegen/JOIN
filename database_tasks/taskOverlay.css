@@ -63,6 +63,7 @@
   border-radius: 20px;
   z-index: 999;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
 }
 
 .userTaskOverlayParts {
@@ -74,6 +75,10 @@
 
 .taskBoardOverlayFormEdit {
   overflow-y: auto;
+  justify-content: safe center !important;
+}
+.userTaskOverlayParts::-webkit-scrollbar,
+.taskBoardOverlayFormEdit::-webkit-scrollbar {
 }
 
 .userTaskOverlayParts::-webkit-scrollbar,
@@ -316,7 +321,6 @@
 }
 
 .boardTitleContainerEdit {
-  margin-top: 100px;
 }
 
 #boardPriorityContainerCur {
@@ -528,7 +532,7 @@
     border-radius: 20px;
   }
   .boardTitleContainerEdit {
-    margin-top: 200px;
+    /*margin-top: 200px;*/
   }
 }
 
@@ -543,10 +547,10 @@
     border-radius: 20px;
   }
   .selectedContacts {
-    width: 230px !important;
+    /*width: 230px !important;*/
   }
   .boardTitleContainerEdit {
-    margin-top: 200px;
+    /*margin-top: 200px;*/
   }
 }
 
@@ -565,7 +569,7 @@
   }
 
   .boardTitleContainerEdit {
-    margin-top: 200px;
+    /*margin-top: 200px;*/
   }
 }
 
@@ -601,7 +605,7 @@
   }
 
   .boardTitleContainerEdit {
-    margin-top: 180px;
+    /*margin-top: 180px;*/
   }
 
   .boardTitleContainerEdit {
