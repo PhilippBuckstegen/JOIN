@@ -1,3 +1,6 @@
+/**
+ * This function handles event listener for sidebar
+ */
 document.addEventListener('DOMContentLoaded', () => {
     fetch('../sidebar_clear/sidebar_clear.html')
       .then(response => response.text())
@@ -7,10 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         highlightSelectedButton(); 
       })
       .catch(error => console.error('Error loading sidebar:', error));
-  
-    function addEventListeners() {
+
+      
+/**
+ * This function handles event listener for sidebar content
+ */
+function addEventListeners() {
       const buttons = document.querySelectorAll('.button-sidebar, .police-button');
-  
       buttons.forEach(button => {
         button.addEventListener('click', (event) => {
           event.preventDefault(); 
@@ -18,20 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
           if (targetPage) {
             buttons.forEach(btn => btn.classList.remove('selected'));
             button.classList.add('selected');
-  
-          
             localStorage.setItem('selectedButton', button.id);
-  
             setTimeout(() => {
               window.location.href = targetPage;
             }, 100);
           }
-        });
-      });
-    }
+    });
+  });
+}
   
-    function highlightSelectedButton() {
-      const selectedButtonId = localStorage.getItem('selectedButton');
+/**
+ * This function highlights the select button
+ */
+function highlightSelectedButton() {
+  const selectedButtonId = localStorage.getItem('selectedButton');
       if (selectedButtonId) {
         const selectedButton = document.getElementById(selectedButtonId);
         if (selectedButton) {
@@ -39,5 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-  });
+  }
+);
   

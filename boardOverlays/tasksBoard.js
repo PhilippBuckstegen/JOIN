@@ -105,9 +105,7 @@ function renderDropdown() {
     label.appendChild(nameSpan);
     label.appendChild(checkbox);
     dropdownContent.appendChild(label);
-    document.getElementById(
-      `initials${index}`
-    ).style.backgroundColor = `${contact.backgroundColor}`;
+    document.getElementById(`initials${index}`).style.backgroundColor = `${contact.backgroundColor}`;
   });
 }
 

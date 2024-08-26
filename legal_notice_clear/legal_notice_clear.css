@@ -15,7 +15,7 @@ body{
     height: calc(100vh - 96px);
     overflow-y: scroll;
     padding-left: 100px;
-    max-width: calc(100% - 232px);
+    /*max-width: calc(100% - 232px);*/
     padding-right: 100px;
     background-color: #F5F5F5;
     /* display: flex;
@@ -29,4 +29,34 @@ body{
 .pb-50{
     padding-bottom: 50px;
 }
+
+.header-policy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .arrow-back-policy {
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
+  }
+
+@media (max-width: 900px) {
+    .legal-notice-area {
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 680px) {
+    .legal-notice-area {
+      padding: 0 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .legal-notice-area {
+      padding: 0 20px;
+    }
+  }
 

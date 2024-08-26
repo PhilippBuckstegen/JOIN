@@ -69,11 +69,11 @@
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .taskBoardOverlayFormEdit {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .userTaskOverlayParts::-webkit-scrollbar,
@@ -245,6 +245,18 @@
 
 /* generateEditView Design Start */
 
+.subtaskListCur {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
 #closeIcon,
 #plusIcon,
 #editSubtaskIcon,
@@ -256,7 +268,7 @@
 }
 
 .subtaskListCur .subtaskListItems {
-  width: 350px !important;
+  width: 340px !important;
 }
 
 #xBtnContainerEdit {
@@ -301,6 +313,10 @@
 #boardSubtasksContainerCur {
   gap: 10px !important;
   align-items: flex-start;
+}
+
+#boardTitleContainer {
+  margin-top: 100px;
 }
 
 #boardPriorityContainerCur {
@@ -496,7 +512,7 @@
     top: 10%;
     background-color: #fff;
     width: 420px;
-    height: 680px;
+    min-height: 680px !important;
     border-radius: 20px;
   }
 }
@@ -511,6 +527,9 @@
     height: 600px;
     border-radius: 20px;
   }
+  #boardTitleContainer {
+    margin-top: 200px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -523,8 +542,11 @@
     height: 600px;
     border-radius: 20px;
   }
-  .selectedContacts{
+  .selectedContacts {
     width: 230px !important;
+  }
+  #boardTitleContainer {
+    margin-top: 200px;
   }
 }
 
@@ -538,8 +560,12 @@
     height: 600px;
     border-radius: 20px;
   }
-  #selectedContacts{
+  #selectedContacts {
     width: 310px;
+  }
+
+  #boardTitleContainer {
+    margin-top: 200px;
   }
 }
 
@@ -566,8 +592,16 @@
     width: 180px !important;
   }
 
+  #subtaskList .subtaskListItems {
+    width: 200px !important;
+  }
+
   .selectedContactsEdit {
     width: 220px !important;
+  }
+
+  #boardTitleContainer {
+    margin-top: 100px;
   }
 
   .boardTitleContainerEdit {

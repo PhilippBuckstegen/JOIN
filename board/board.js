@@ -38,8 +38,12 @@ function allowDrop(ev) {
  * @returns {void}
  */
 
-// Heiko - Funktion abgeändert aufgrund anderen Sortieralgoritmus, so dass in den kategorien die neuesten verschobenen Einträge oben stehen
 
+/**
+ * This function handles the drag and drop 
+ * 
+ * @param {number} status - status of task to move
+ */
 async function moveTo(status) {
   tasks[currentDraggedElement]["status"] = status;
   let draggedTask = tasks.splice(currentDraggedElement, 1)[0];
@@ -50,6 +54,10 @@ async function moveTo(status) {
   renderTasksInBoard();
 }
 
+
+/**
+ * This function sorts the displayed tasks
+ */
 function tasksSort() {
   tasks.sort((a, b) => {
     if (a.status !== b.status) {
@@ -60,6 +68,12 @@ function tasksSort() {
   });
 }
 
+
+/**
+ * This function higlights the drag and drop area
+ * 
+ * @param {id} id - id of area to be highlighted 
+ */
 function highlight(id) {
   let element = document.getElementById(id);
   if (highlightTimeout) {
@@ -71,6 +85,12 @@ function highlight(id) {
   }, 300);
 }
 
+
+/**
+ * This function removes higlights for drag and drop area
+ * 
+ * @param {id} id - id of area to be highlighted 
+ */
 function removeHighlight(id) {
   let element = document.getElementById(id);
   element.classList.remove("drag-area-highlight");
@@ -80,8 +100,10 @@ function removeHighlight(id) {
   }
 }
 
-// Seatchfield "Find Task" on Board
 
+/**
+ * This functions handles the search for a task
+ */
 let searchTasks = () => {
   let searchTerm = document
     .getElementById("searchInput")
@@ -94,6 +116,7 @@ let searchTasks = () => {
   );
   renderFilteredTasks(filteredTasks);
 };
+
 
 /**
  * Renders the filtered tasks on the task board.
@@ -108,6 +131,7 @@ let renderFilteredTasks = (filteredTasks) => {
   });
 };
 
+
 /**
  * This function adds a specific class to an specific element
  * 
@@ -118,6 +142,7 @@ function addClassToElement(elementId, className) {
   let element = document.getElementById(elementId);
   element.classList.add(className);
 } 
+
 
 /**
  * This function removes a specific class from an specific element
@@ -130,21 +155,28 @@ function removeClassFromElement(elementId, className) {
   element.classList.remove(className);
 }
 
+
 let todoTasks = [];
 let inProgressTasks = [];
 let feedbackTasks = [];
 let doneTasks = [];
 
+
+/**
+ * This fiunction handles the initial call for board.html
+ */
 async function initialCallBoard(){
     await getContactsFromDatabase();
     await getTasksFromDatabase();
     getCurrentUserFromLocalStorage();
     renderInitialsInHeader();
-    // loadCategoryArrays();
-    // updateCategoryArrays();
     renderTasksInBoard();
 }
 
+
+/**
+ * This function renders the tasks in board
+ */
 function renderTasksInBoard() {
   clearTaskBoard();
   renderEmptycategories(tasks);
@@ -153,6 +185,12 @@ function renderTasksInBoard() {
   }
 }
 
+
+/**
+ * This function checks the status of the task to be rendered in
+ * 
+ * @param {number} i - id of task
+ */
 function checkTaskStatusAndRender(i) {
   switch (tasks[i].status) {
     case 0:
@@ -170,6 +208,10 @@ function checkTaskStatusAndRender(i) {
   }
 }
 
+
+/**
+ * This function loads different images depending on priority status
+ */
 let priorityImages = {
   0: '',
   1: '../assets/icons/Prio baja.svg',
@@ -177,64 +219,84 @@ let priorityImages = {
   3: '../assets/icons/Prio alta.svg'
 };
 
+
+/**
+ * This function renders single task in overview
+ * 
+ * @param {*} i  - index of task
+ * @param {*} id - id of area to be rendered in
+ */
 function renderSingleTaskOverview(i, id) {
   let toDoArea = document.getElementById(id);
-
   let task = tasks[i];
   let priorityImage = priorityImages[task.priority];
   let priorityImageClass = task.priority === 0 ? 'priority-image hidden' : 'priority-image';
-
-  toDoArea.innerHTML += /*html*/ `
-      <div onclick="generateTask(${i})" id="task${i}" class="task" draggable="true" ondragstart="startDragging(${i})">
-          <div class="category-headline">
-            <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
-         <div id="slideInMenu${i}" class="slide-in-menu d-none"></div>
-            <img onclick="openTaskMenu(event, ${i})" src="../assets/icons/moveTo.svg" alt="moveTo">
-          </div>
-          <h3>${tasks[i].title}</h3>
-          <span class="task-description">${tasks[i].description}</span>
-          <div id="progressContainer${i}" class="progress-container"></div>
-          <div class="assigned-and-prio">
-              <div class="assigned-contacts" id="assignedContacts${i}"></div>
-              <img src="${priorityImage}" class="${priorityImageClass}" alt="prio" onclick="edit(${i})" />
-          </div>
-      </div>
-  `;
-  addBackgroundColorToCategory(i); // Farbe für Kategorie setzen
-
-  // Überprüfen, ob "subtask" definiert ist, bevor darauf zugegriffen wird
+  toDoArea.innerHTML += renderSingleTaskOverviewHTML(i, priorityImage, priorityImageClass);
+  addBackgroundColorToCategory(i); 
   if (tasks[i].subtask && tasks[i].subtask.length > 0) {
       let completedSubtasks = countLowProgressValue(i);
       let totalSubtasks = tasks[i].subtask.length;
       let progressPercentage = (completedSubtasks / totalSubtasks) * 100;
-
-      document.getElementById(`progressContainer${i}`).innerHTML = /*html*/ `
-          <div class="progress">
-              <div class="progress-style" style="width: ${progressPercentage}%"></div>
-          </div>
-          <span><span id="progressLowValue${i}">${completedSubtasks}</span>/${totalSubtasks} Done</span>
-      `;
+      document.getElementById(`progressContainer${i}`).innerHTML = renderSingleTaskOverviewHTMLProgressContainer(i, progressPercentage, completedSubtasks, totalSubtasks);
   } else {
       document.getElementById(`progressContainer${i}`).remove();
   }
- renderAssignedNamesOverview(i)
-//   if(tasks[i].assignedTo){
-//     let limit = 4;
-//   // Kontakte rendern
-//   for (let j = 0; j < tasks[i].assignedTo.length; j++) {
-//       let assignedContacts = document.getElementById(`assignedContacts${i}`);
-//       const contact = tasks[i].assignedTo[j];
-//       assignedContacts.innerHTML += /*html*/ `
-//           <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
-//       `;
-
-//     document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
-//   }
-// }
+ renderAssignedNamesOverview(i);
 }
 
 
-// Heiko neu eingefügt
+/**
+ * This function generates HTML Code for single task overview
+ * 
+ * @param {number} i                   - index of task
+ * @param {image} priorityImage        - image for priority 
+ * @param {class} priorityImageClass   - class for priority
+ * @returns                            - HTML Code
+ */
+function renderSingleTaskOverviewHTML(i, priorityImage, priorityImageClass){
+  return /*html*/ `
+  <div onclick="generateTask(${i})" id="task${i}" class="task" draggable="true" ondragstart="startDragging(${i})">
+      <div class="category-headline">
+        <div id="cardCategory${i}" class="card-category">${tasks[i].taskCategory}</div>
+     <div id="slideInMenu${i}" class="slide-in-menu d-none"></div>
+        <img onclick="openTaskMenu(event, ${i})" src="../assets/icons/moveTo.svg" alt="moveTo">
+      </div>
+      <h3>${tasks[i].title}</h3>
+      <span class="task-description">${tasks[i].description}</span>
+      <div id="progressContainer${i}" class="progress-container"></div>
+      <div class="assigned-and-prio">
+          <div class="assigned-contacts" id="assignedContacts${i}"></div>
+          <img src="${priorityImage}" class="${priorityImageClass}" alt="prio" onclick="edit(${i})" />
+      </div>
+  </div>
+`;
+}
+
+
+/**
+ * This function renders Progress Container for subtasks
+ * 
+ * @param {number} i                   - index of task
+ * @param {number} progressPercentage  - percentage of progress
+ * @param {number} completedSubtasks   - completed subtasks
+ * @param {number} totalSubtasks       - total subtasks
+ * @returns                       - HTML Code
+ */
+function renderSingleTaskOverviewHTMLProgressContainer(i, progressPercentage, completedSubtasks, totalSubtasks){
+  return /*html*/ `
+  <div class="progress">
+      <div class="progress-style" style="width: ${progressPercentage}%"></div>
+  </div>
+  <span><span id="progressLowValue${i}">${completedSubtasks}</span>/${totalSubtasks} Done</span>
+`;
+}
+
+
+/**
+ * This function renders assigend names
+ * 
+ * @param {number} i - index of task
+ */
 function renderAssignedNamesOverview(i){
   let limit = 3;
   if(tasks[i].assignedTo){
@@ -249,14 +311,12 @@ function renderAssignedNamesOverview(i){
       }
     } else {
     for(let j = 0; j < limit; j++){
-      // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
         let assignedContacts = document.getElementById(`assignedContacts${i}`);
         const contact = tasks[i].assignedTo[j];
         assignedContacts.innerHTML += /*html*/ `
             <div id="assignedContactIcon${i}_${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
         `;
         document.getElementById(`assignedContactIcon${i}_${j}`).style.backgroundColor = contact.backgroundColor;
-      // } 
     }
     renderAssignedNamesGreaterThanLimitOverview(i, limit);
   }
@@ -264,6 +324,12 @@ function renderAssignedNamesOverview(i){
 }
 
 
+/**
+ * This function renders workaround when amount of assigend users is greater than limit
+ * 
+ * @param {number} i      - index of task
+ * @param {number} limit - limit of assigend users
+ */
 function renderAssignedNamesGreaterThanLimitOverview(i, limit){
   let assignedContacts = document.getElementById(`assignedContacts${i}`);
         assignedContacts.innerHTML += /*html*/ `
@@ -273,7 +339,9 @@ function renderAssignedNamesGreaterThanLimitOverview(i, limit){
 }
 
 
-
+/**
+ * This function clers the task areas in biard view
+ */
 function clearTaskBoard() {
   document.getElementById("columnToDo").innerHTML = "";
   document.getElementById("columnProgress").innerHTML = "";
@@ -281,49 +349,56 @@ function clearTaskBoard() {
   document.getElementById("columnDone").innerHTML = "";
 }
 
+
+/**
+ * This function counts the amount of tasks in categories
+ * 
+ * @param {JSON} tasks - tasks JSON
+ * @returns            - JSON with initialized countervalues
+ */
 function countStatus(tasks) {
-  // Zähler für die verschiedenen Statuswerte initialisieren
   let statusCounts = {
     0: 0,
     1: 0,
     2: 0,
     3: 0,
   };
-
-  // Durch die tasks iterieren und die Status zählen
   tasks.forEach((task) => {
     if (statusCounts.hasOwnProperty(task.status)) {
       statusCounts[task.status]++;
     }
   });
-
   return statusCounts;
 }
 
+
+/**
+ * This function handles if one category has no tasks to display
+ * 
+ * @param {JSON} tasks 
+ */
 function renderEmptycategories(tasks) {
   let categoriesCounts = countStatus(tasks);
   if (categoriesCounts[0] == 0) {
-    document.getElementById(
-      "columnToDo"
-    ).innerHTML = `<div class="empty-column">No tasks to do</div>`;
+    document.getElementById("columnToDo").innerHTML = `<div class="empty-column">No tasks to do</div>`;
   }
   if (categoriesCounts[1] == 0) {
-    document.getElementById(
-      "columnProgress"
-    ).innerHTML = `<div class="empty-column">No tasks in progress</div>`;
+    document.getElementById("columnProgress").innerHTML = `<div class="empty-column">No tasks in progress</div>`;
   }
   if (categoriesCounts[2] == 0) {
-    document.getElementById(
-      "columnFeedback"
-    ).innerHTML = `<div class="empty-column">No tasks awaiting</div>`;
+    document.getElementById("columnFeedback").innerHTML = `<div class="empty-column">No tasks awaiting</div>`;
   }
   if (categoriesCounts[3] == 0) {
-    document.getElementById(
-      "columnDone"
-    ).innerHTML = `<div class="empty-column">No tasks done</div>`;
+    document.getElementById("columnDone").innerHTML = `<div class="empty-column">No tasks done</div>`;
   }
 }
 
+
+/**
+ * This function generates Add task overlay with preset for category
+ * 
+ * @param {number} x 
+ */
 function openTaskOverlayWithCategoryPreset(x){
    subtask = [];
    removeClassFromElement('addTaskBoardOverlayContainer', 'none');
@@ -332,6 +407,13 @@ function openTaskOverlayWithCategoryPreset(x){
 }
 
 
+
+/**
+ * This function counts low progress value
+ * 
+ * @param {number} i - index of task
+ * @returns          - variable with amount if tasks
+ */
 function countLowProgressValue(i) {
     if(tasks[i].subtask){
     let count = 0;
@@ -345,32 +427,38 @@ function countLowProgressValue(i) {
 }
 
 
-// Setze alle Spalten auf die gleiche höhe
+/**
+ * This function sets all columns to same height
+ */
 function adjustColumnHeights() {
   let columns = document.querySelectorAll(".column-content");
   let maxHeight = 0;
-
-  // Bestimme die maximale Höhe aller Spalten
   columns.forEach((column) => {
     column.style.height = "auto";
     if (column.scrollHeight > maxHeight) {
       maxHeight = column.scrollHeight;
     }
   });
-
-  // Wende die maximale Höhe auf alle Spalten an
   columns.forEach((column) => {
     column.style.height = maxHeight + "px";
   });
 }
 
-// Setzt den Index des aktuell gezogenen Elements und passt die Spaltenhöhen an.
+
+/**
+ * This function handles the dragging of tasks
+ * 
+ * @param {number} i - index of task
+ */
 function startDragging(i) {
   currentDraggedElement = i;
   adjustColumnHeights();
 }
 
-//Usprüngliche höhe der spalten setzen.
+
+/**
+ * This function resets the column height
+ */
 function resetColumnHeights() {
   let columns = document.querySelectorAll(".column-content");
   columns.forEach((column) => {
@@ -381,7 +469,12 @@ function resetColumnHeights() {
 document.addEventListener("dragend", resetColumnHeights);
 document.addEventListener("drop", resetColumnHeights);
 
-// Heiko - Funktion für Farben der Category zugefügt
+
+/**
+ * This function sets bakcgorund-colors for categories
+ * 
+ * @param {number} i - index of task 
+ */
 function addBackgroundColorToCategory(i){
   let categoryContainer = document.getElementById(`cardCategory${i}`);
   tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
@@ -396,7 +489,6 @@ function openTaskMenu(event, index) {
   event.stopPropagation();
   event.preventDefault();
   closeDropdownMenus();
-
   let slideInMenu = document.getElementById(`slideInMenu${index}`);
   if (!slideInMenu) {
     console.error(`Slide-in menu for task ${index} not found`);
@@ -404,7 +496,6 @@ function openTaskMenu(event, index) {
   }
   slideInMenu.classList.remove('d-none');
   slideInMenu.classList.add('slide-in-menu-active');
-
   let currentStatus = tasks[index].status;
   let filteredStatuses = [0, 1, 2, 3].filter(status => status !== currentStatus);
   slideInMenu.innerHTML = '<div class="move-task">Move Task to</div>';
@@ -417,7 +508,6 @@ function openTaskMenu(event, index) {
       task.style.pointerEvents = 'none';
     }
   });
-
   let closeMenuHandler = event => {
     if (!slideInMenu.contains(event.target)) {
       closeDropdownMenus();
@@ -427,6 +517,7 @@ function openTaskMenu(event, index) {
   document.addEventListener('click', closeMenuHandler);
   slideInMenu.addEventListener('click', event => event.stopPropagation());
 }
+
 
 /**
  * This function closes all open dropdown menus by adding the d-none class.
@@ -441,6 +532,7 @@ function closeDropdownMenus() {
   });
 }
 
+
 /**
  * This function returns the category name based on the status number.
  * @param {number} status - The status number (0-3).
@@ -450,6 +542,7 @@ function getCategoryName(status) {
   let categories = ['To do', 'In progress', 'Await feedback', 'Done'];
   return categories[status] || '';
 }
+
 
 /**
  * This function moves a task to a new category based on the status number.
@@ -466,11 +559,25 @@ async function moveTaskToCategory(taskIndex, newStatus) {
   renderTasksInBoard();
 }
 
+
+/**
+ * This function adds a class to an element
+ * 
+ * @param {id} elementId     - id of element
+ * @param {class} className  - class to be added
+ */
 function addClassToElement(elementId, className) {
   let element = document.getElementById(elementId);
   element.classList.add(className);
 }
 
+
+/**
+ * This function removes a class from an element
+ * 
+ * @param {id} elementId     - id of element
+ * @param {class} className  - class to be removed
+ */
 function removeClassFromElement(elementId, className) {
   let element = document.getElementById(elementId);
   element.classList.remove(className);
