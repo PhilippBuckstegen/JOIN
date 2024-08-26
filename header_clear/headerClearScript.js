@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerHTML = `
       <header class="header-headerstyle">
           <div class="header-wrap">
+              <div class="header-logo-mobile">
+                  <img src="../header/img_header/logo_header.svg" alt="Logo_Header">
+              </div>
               <p class="p-header">Kanban Project Management Tool</p>
           </div>
       </header>
