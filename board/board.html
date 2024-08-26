@@ -48,206 +48,13 @@
       <div class="sidebar"></div>
     </div>
     <div id="header-placeholder"></div>
-
     <!-- header and sidebar from includeHTML -->
     <section id="taskOverlaySection" class="flexContainer none">
     </section>
     <!-- Overlay start -->
     <div id="addTaskBoardOverlayContainer" class="flexContainerCol none">
       <!-- Start - Heiko auskommentiert, da der Teil gerendert wird! -->
-      <!-- <div id="headerXbtnContainer" class="flexContainer">
-        <div id="taskBoardOverlayHeader">
-          <h1 id="taskBoardHeader">Add Task</h1>
-        </div>
-        <div id="xBtnContainer" class="none">
-          <img id="xBtn" src="../database/images/close.svg" alt="icon" />
-        </div>
-      </div>
-      <div id="addTaskBoardOverlays" class="flexContainer">
-        <div id="addTaskBoardOverlay1" class="flexContainerCol">
-          <div id="addTaskBoardOverlayForm1">
-            <div id="taskBoardOverlayForm" class="flexContainerCol">
-              <div id="boardTitleContainer">
-                <label for="boardTitle"
-                  >Title<span id="asteriskTitle" class="">*</span></label
-                ><br />
-                <input
-                  type="text"
-                  placeholder="Enter a title"
-                  id="boardTitle"
-                  name="boardTitle"
-                />
-              </div>
-              <div id="boardDescriptionContainer">
-                <label for="boardDescription">Description</label><br />
-                <textarea
-                  placeholder="Enter a Description"
-                  rows="4"
-                  cols="50"
-                  id="boardDescription"
-                  name="boardDescription"
-                ></textarea>
-              </div>
-              <div id="boardAssignedContainer"> -->
-                <!-- new dropdown start -->
-                <!-- <div class="dropdown" id="contactDropdown">
-                  <button class="dropdown-button" onclick="toggleDropdown()">
-                    Assigned to
-                  </button>
-                  <div class="dropdown-content"></div>
-                </div>
-                <div class="selected-contacts" id="selectedContacts"></div> -->
-                <!-- new dropdown end -->
-                <!-- <label for="boardAssigned">Assigned to</label><br />
-                <select id="boardAssigned" name="boardAssigned"> -->
-                <!-- multiple
-                  <option value="" selected disabled hidden>
-                    Select contacts to assign
-                  </option>
-                  <option value="antonMayer">Anton Mayer</option>
-                  <option value="anjaSchulz">Anja Schulz</option>
-                  <option value="benediktZiegler">
-                    Benedikt Ziegler
-                  </option>
-                  <option value="davidEisenberg">
-                    David Eisenberg
-                  </option> -->
-                <!-- </select> -->
-              <!-- </div>
-            </div>
-          </div>
-        </div>
-        <div id="addTaskBoardOverlay2" class="flexContainerCol">
-          <div id="addTaskBoardOverlayForm2" class="flexContainerCol">
-            <div id="boardDateContainer">
-              <label for="boardDate"
-                >Due date<span id="asteriskDate" class="">*</span></label
-              >
-              <div id="boardDateInputImgContainer" class="flexContainer">
-                <input
-                  type="date"
-                  data-date-format="DD  MM  YYYY"
-                  id="boardDate"
-                  name="boardDate"
-                  onclick="setMinDateToToday('boardDate')"
-                /> -->
-                <!--<img
-                  id="calendarIcon"
-                  src="../database/images/event.svg"
-                  alt="icon"
-                />-->
-              <!-- </div>
-            </div>
-            <div id="boardPriorityContainer" class="flexContainerCol">
-              <div id="priorityHeaderContainer" class="flexContainer">
-                <p class="prio">Prio</p>
-              </div>
-              <div id="priorityBtnsContainer" class="flexContainer">
-                <button
-                  id="urgentBtn"
-                  class="priorityButtons whiteButtons flexContainer"
-                  onclick="urgentBtnToggle()"
-                >
-                  Urgent
-                  <img
-                    id="urgentImg"
-                    class="boardBtnIcons"
-                    src="../database/images/prio_alta.svg"
-                    alt="icon"
-                  />
-                </button>
-                <button
-                  id="mediumBtn"
-                  class="priorityButtons whiteButtons flexContainer"
-                  onclick="mediumBtnToggle()"
-                >
-                  Medium
-                  <img
-                    id="mediumImg"
-                    class="boardBtnIcons"
-                    src="../database/images/prio_media.svg"
-                    alt="icon"
-                  />
-                </button>
-                <button
-                  id="lowBtn"
-                  class="priorityButtons whiteButtons flexContainer"
-                  onclick="lowBtnToggle()"
-                >
-                  Low
-                  <img
-                    id="lowImg"
-                    class="boardBtnIcons"
-                    src="../database/images/prio_baja.svg"
-                    alt="icon"
-                  />
-                </button>
-              </div>
-            </div>
-            <div id="boardCategoryContainer">
-              <label for="boardCategory"
-                >Category<span id="asteriskCategory" class="">*</span></label
-              ><br />
-              <select id="boardCategory" name="boardCategory"> -->
-                <!--multiple-->
-                <!-- <option value="" selected disabled hidden>
-                  Select task category
-                </option>
-                <option value="Technical Task">Technical Task</option>
-                <option value="User Story">User Story</option>
-              </select>
-            </div>
-            <div id="boardSubtasksContainer">
-              <label for="boardSubtasks">Subtasks</label>
-              <div id="boardSubtasksInputImgContainer" class="flexContainer">
-                <input
-                  type="text"
-                  placeholder="Add new subtask"
-                  id="boardSubtasks"
-                  name="boardSubtasks"
-                />
-                <img
-                  id="plusIcon"
-                  src="../database/images/plus.svg"
-                  alt="icon"
-                  onclick="createSubtask()"
-                />
-              </div>
-              <div>
-                <ul id="subtaskList"> -->
-                  <!-- Subtask Liste wird hier gerendert -->
-                <!-- </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="errorMsgCancelCreateBtnsContainer" class="flexContainer">
-        <div id="errorMessageContainer" class="flexContainerCol">
-          <p id="inputErrorMsg" class="">
-            <span id="asteriskRed">*</span>This field is required
-          </p>
-        </div>
-        <div id="cancelCreateBtnsContainer" class="flexContainer">
-          <button
-            onclick="addClassToElement('addTaskBoardOverlayContainer', 'none')"
-            id="cancelBoardOverlayBtn"
-            class="cancelCreateButtons flexContainer"
-          >
-            Cancel
-            <img src="../database/images/iconoir_cancel.svg" alt="icon" />
-          </button>
-          <button
-            id="createBoardOverlayBtn"
-            class="cancelCreateButtons flexContainer"
-            onclick="addNewTaskToDatabase(0)"
-          >
-            Create Task
-            <img src="../database/images/check.svg" alt="icon" />
-          </button>
-        </div>
-      </div> -->
-       <!-- Ende - Heiko auskommentiert -->
+      <!-- Ende - Heiko auskommentiert -->
     </div> 
     <!-- Overlay end -->
     <main class="main-board">
@@ -270,12 +77,6 @@
               alt="search"
             />
           </div>
-          <!-- Heiko auskommentiert wegen kategorie AddTask -->
-          <!-- <button
-            onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
-            class="addTask-button"
-          > -->
-          <!-- Start -  Heiko neu eingefügt -->
           <button
           onclick="openTaskOverlayWithCategoryPreset(0)"
           class="addTask-button"
@@ -290,14 +91,6 @@
         <article class="column-board">
           <div class="column-board-header">
             <h2 class="column-headline">To do</h2>
-            <!-- Heiko auskommentiert wegen kategorie AddTask -->
-            <!-- <img
-              onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
-              class="plus-button"
-              src="../assets/icons/plus button.svg"
-              alt="add task"
-            /> -->
-             <!-- Start -  Heiko neu eingefügt -->
             <img
             onclick="openTaskOverlayWithCategoryPreset(0)"
             class="plus-button"
@@ -314,8 +107,6 @@
               ondragleave="removeHighlight('columnToDo')"
               ondragover="allowDrop(event); highlight('columnToDo')"
             >
-              <!-- render tasks here -->
-              <!-- if no tasks -->
               <div class="empty-column">No tasks to do</div>
             </div>
           </div>
@@ -323,14 +114,6 @@
         <article class="column-board">
           <div class="column-board-header">
             <h2 class="column-headline">In progress</h2>
-            <!-- Heiko auskommentiert wegen kategorie AddTask -->
-            <!-- <img
-              onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
-              class="plus-button"
-              src="../assets/icons/plus button.svg"
-              alt="add task"
-            /> -->
-             <!-- Start -  Heiko neu eingefügt -->
              <img
              onclick="openTaskOverlayWithCategoryPreset(1)"
              class="plus-button"
@@ -348,7 +131,6 @@
               ondragover="allowDrop(event); highlight('columnProgress')"
             >
               <!-- render tasks here -->
-              <!-- if no tasks -->
               <div class="empty-column">No tasks in progress</div>
             </div>
           </div>
@@ -356,14 +138,6 @@
         <article class="column-board">
           <div class="column-board-header">
             <h2 class="column-headline">Await feedback</h2>
-            <!-- Heiko auskommentiert wegen kategorie AddTask -->
-            <!-- <img
-              onclick="removeClassFromElement('addTaskBoardOverlayContainer', 'none')"
-              class="plus-button"
-              src="../assets/icons/plus button.svg"
-              alt="add task"
-            /> -->
-            <!-- Start -  Heiko neu eingefügt -->
             <img
             onclick="openTaskOverlayWithCategoryPreset(2)"
             class="plus-button"
@@ -381,7 +155,6 @@
               ondragover="allowDrop(event); highlight('columnFeedback')"
             >
               <!-- render tasks here -->
-              <!-- if no tasks -->
               <div class="empty-column">No tasks awaiting</div>
             </div>
           </div>
@@ -398,8 +171,6 @@
               ondragleave="removeHighlight('columnDone')"
               ondragover="allowDrop(event); highlight('columnDone')"
             >
-              <!-- render tasks here -->
-              <!-- if no tasks -->
               <div class="empty-column">No tasks done</div>
             </div>
           </div>

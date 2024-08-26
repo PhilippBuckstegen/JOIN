@@ -6,11 +6,13 @@
  */
 let currentDraggedElement;
 
+
 /**
  * Timeout identifier for managing highlight removal.
  * @type {?number}
  */
 let highlightTimeout;
+
 
 /**
  * Sets the index of the currently dragged element.
@@ -20,6 +22,7 @@ let highlightTimeout;
 function startDragging(i) {
   currentDraggedElement = i;
 }
+
 
 /**
  * Prevents the default behavior of the dragover event to allow for dropping.
