@@ -470,6 +470,7 @@ function resetColumnHeights() {
   });
 }
 
+
 document.addEventListener("dragend", resetColumnHeights);
 document.addEventListener("drop", resetColumnHeights);
 
@@ -483,6 +484,7 @@ function addBackgroundColorToCategory(i){
   let categoryContainer = document.getElementById(`cardCategory${i}`);
   tasks[i].taskCategory == "Technical Task" ? categoryContainer.style.backgroundColor = "#1fd7c1" : categoryContainer.style.backgroundColor = "#0038ff";
 }
+
 
 /**
  * This function opens the task menu and positions it at the top right of the task element.
