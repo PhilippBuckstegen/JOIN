@@ -1,12 +1,18 @@
 let tasks = [];
 let subtask = [];
 
+/**
+ * This function is the initial call
+ */
 function firstCall() {
   renderDropdown();
   getTasksFromDatabase();
-  // editRenderDropdown();
 }
 
+
+/**
+ * This functions loads tasks from database
+ */
 async function getTasksFromDatabase() {
   let data = await loadData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -21,21 +27,25 @@ async function getTasksFromDatabase() {
   }
 }
 
+
+/**
+ * This function writes new tasks to databse
+ */
 async function writeTasksToDatabase() {
   await postData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
     "tasks",
     tasks
   );
-  // await getContactsFromDatabase();
 }
 
+
+/**
+ * This function adds new tasks to database
+ */
 async function addNewTaskToDatabase(state, overlay) {
   writeNewTaskToLocalArray(state);
   await writeTasksToDatabase();
-  // toggleAddContactOverlay()
-  // sortContactsByInitials(contacts);
-  // addRandomColorToJSON(contacts);
   cleanAddtaskArea();
   showMessage('messageOverlay', 'Task successfully added', 'show')
   if (overlay === 1) {
@@ -46,20 +56,18 @@ async function addNewTaskToDatabase(state, overlay) {
     setTimeout(() => {
       window.location.href="../board/board.html";
     }, 2000);
-    
   }
-  // await renderContacts();
-  // showContactDetails(findLastAddedIndex(contacts));
 }
 
+
+/**
+ * This function writes new tasks to the local array
+ */
 function writeNewTaskToLocalArray(state) {
   let addTaskTitle = document.getElementById("boardTitle");
   let addTaskDescription = document.getElementById("boardDescription");
-  // let addTaskAssignedTo = document.getElementById('newTaskAssignedTo');
   let addTaskDueDate = document.getElementById("boardDate");
-  // let addTaskPriority = priority;
   let addTaskCategory = document.getElementById("boardCategory");
-  // let addTaskSubtask = document.getElementById('newTaskSubtasks');
   let newTask = {
     status: state,
     title: addTaskTitle.value,
@@ -73,44 +81,29 @@ function writeNewTaskToLocalArray(state) {
   tasks.push(newTask);
 }
 
-// Dropdown User List und Checkbox
+
+/**
+ * This function renders the dropdown list for assigend users
+ */
 function renderDropdown() {
   const dropdownContent = document.querySelector(".dropdown-content");
-
-  // taskContacts.forEach((contact, index) => {
-
   contacts.forEach((contact, index) => {
-    // Erstelle ein label-Element
     const label = document.createElement("label");
-
-    // Erstelle ein gemeinsames span-Element für Initialen und Name
     const nameSpan = document.createElement("span");
     nameSpan.className = "label-initials";
-
-    // Erstelle ein span-Element für die Initialen
     const initialsSpan = document.createElement("span");
     initialsSpan.className = "initials-dropdown";
     initialsSpan.id = `initials${index}`;
-    initialsSpan.textContent = contact.initials; // Initialen hinzufügen
-
-    // Erstelle ein Text-Node für den Namen
+    initialsSpan.textContent = contact.initials;
     const nameTextNode = document.createTextNode(`${contact.name}`);
-
-    // Füge Initialen und Namen in das gemeinsame span-Element ein
     nameSpan.appendChild(initialsSpan);
     nameSpan.appendChild(nameTextNode);
-
-    // Erstelle die Checkbox
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = `contact_${index}`;
     checkbox.value = contact.name;
-
-    // Füge das gemeinsame span-Element und die Checkbox zum label-Element hinzu
     label.appendChild(nameSpan);
     label.appendChild(checkbox);
-
-    // Füge das label zum Dropdown-Inhalt hinzu
     dropdownContent.appendChild(label);
     document.getElementById(
       `initials${index}`
@@ -118,6 +111,10 @@ function renderDropdown() {
   });
 }
 
+
+/**
+ * This function toggles the dropdown for the assigned users
+ */
 function toggleDropdown() {
   const dropdown = document.getElementById("contactDropdown");
   dropdown.classList.toggle("open");
@@ -127,16 +124,24 @@ function toggleDropdown() {
 }
 
 
+/**
+ * This function closes the edit area
+ */
 function cancelEditArea(){
   document.getElementById("currentUserTaskOverlay").innerHTML = "";
   addClassToElement('taskOverlaySection', 'none')
 }
 
+
+/**
+ * This function updates the selected contacts in edit view
+ * 
+ * @returns - selected contacts in edit view
+ */
 function updateSelectedContacts() {
   const selectedContactsDiv = document.getElementById("selectedContacts");
-  selectedContactsDiv.innerHTML = ""; // Clear previous selections
+  selectedContactsDiv.innerHTML = "";
   const selectedContacts = [];
-  // for (let i = 0; i < taskContacts.length; i++) {
   for (let i = 0; i < contacts.length; i++) {
     const checkbox = document.getElementById(`contact_${i}`);
     if (checkbox.checked) {
@@ -145,23 +150,18 @@ function updateSelectedContacts() {
         initials: contacts[i].initials, 
         backgroundColor: contacts[i].backgroundColor,
       });
-    //   const contactDiv = document.createElement("div");
-    //   contactDiv.textContent = contacts[i].name;
-    //   selectedContactsDiv.innerHTML += `
-    //         <span class="initials-dropdown" id="selectedInitials${i}">${contacts[i].initials}</span>
-    //         `;
-    //   document.getElementById(
-    //     `selectedInitials${i}`
-    //   ).style.backgroundColor = `${contacts[i].backgroundColor}`;
-    // }
   }
-  // renderSelectedNames(selectedContacts);
-  // return selectedContacts;
 }
 renderSelectedNames(selectedContacts);
 return selectedContacts;
 }
 
+
+/**
+ * This function renders the selected names
+ * 
+ * @param {JSON} selectedContacts - JSON with selected contacts
+ */
 function renderSelectedNames(selectedContacts){
   let limit = 3;
   if(selectedContacts.length > 0){
@@ -176,14 +176,12 @@ function renderSelectedNames(selectedContacts){
       }
     } else {
     for(let j = 0; j < limit; j++){
-      // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
         let selectedContactsArea = document.getElementById(`selectedContacts`);
         const contact = selectedContacts[j];
         selectedContactsArea.innerHTML += /*html*/ `
              <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${selectedContacts[j].initials}</div>
         `;
         document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
-      // } 
     }
     renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit);
   }
@@ -191,6 +189,12 @@ function renderSelectedNames(selectedContacts){
 }
 
 
+/**
+ * This function renders a workaround for users freater than limit
+ * 
+ * @param {JSON} selectedContacts - JSON with selected contacts
+ * @param {number} limit          - limit of max users to be shown
+ */
 function renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit){
   let selectedContactsArea = document.getElementById(`selectedContacts`);
     selectedContactsArea.innerHTML += /*html*/ `
@@ -200,22 +204,33 @@ function renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit){
 }
 
 
+/**
+ * This function 
+ * 
+ * @param {JSON} selectedContacts - JSON with selected contacts
+ * @param {number} limit          - limit of max users to be shown
+ * @returns                       - amount of users above limit
+ */
 function calculateRestOfSelectedToGreaterThanLimit(selectedContacts, limit) {
   let restOfAssignedUsers = selectedContacts.length - limit;
   return restOfAssignedUsers;
 }
 
 
+// /**
+//  * This function creates a subtask
+//  */
+// function createSubtask() {
+//   let subtaskText = document.getElementById("boardSubtasks").value;
+//   subtask.push({ task: subtaskText });
+//   renderSubtasks();
+//   deleteSubtaskInputField();
+// }
 
-// Subtasks Liste
 
-function createSubtask() {
-  let subtaskText = document.getElementById("boardSubtasks").value;
-  subtask.push({ task: subtaskText });
-  renderSubtasks();
-  deleteSubtaskInputField();
-}
-
+/**
+ * This function deletes a subtask
+ */
 function decideSubtask() {
   if (document.getElementById("boardSubtasks").value) {
     document.getElementById("plusIcon").classList.add("none");
@@ -224,6 +239,10 @@ function decideSubtask() {
   }
 }
 
+
+/**
+ * This function cancels edit view of subtask
+ */
 function cancelSubtask() {
   document.getElementById("plusIcon").classList.remove("none");
   document.getElementById("closeIcon").classList.add("none");
@@ -231,6 +250,10 @@ function cancelSubtask() {
   document.getElementById("boardSubtasks").value = "";
 }
 
+
+/**
+ * This function creates a subtask
+ */
 function createSubtask() {
   document.getElementById("plusIcon").classList.remove("none");
   document.getElementById("closeIcon").classList.add("none");
@@ -245,6 +268,10 @@ function createSubtask() {
   document.getElementById("boardSubtasks").value = "";
 }
 
+
+/**
+ * This function renders subtasks
+ */
 function renderSubtasks() {
   let listArea = document.getElementById("subtaskList");
   listArea.innerHTML = "";
@@ -262,30 +289,50 @@ function renderSubtasks() {
   }
 }
 
+
+/**
+ * This fnction deletes specific subtask item
+ * 
+ * @param {number} i - index of subtask item
+ */
 function deleteSubtaskItem(i) {
   subtask.splice(i, 1);
   renderSubtasks();
 }
 
+
+/**
+ * This function clears subtask input field
+ */
 function deleteSubtaskInputField() {
   document.getElementById("boardSubtasks").value = "";
 }
 
-function clearInputFields() {
-  document.getElementById("boardTitle").value = "";
-  document.getElementById("boardDescription").value = "";
-  const checkboxes = document.querySelectorAll("input[type=checkbox]");
-  for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].checked = false;
-  }
-  document.getElementById("selectedContacts").innerHTML = "";
-  document.getElementById("boardDate").value = "";
-  mediumBtnToggle();
-  document.getElementById("boardCategory").value = "";
-  document.getElementById("boardSubtasks").value = "";
-  document.getElementById("subtaskList").innerHTML = "";
-}
 
+/**
+ * This function clears add task input field
+ */
+// function clearInputFields() {
+//   document.getElementById("boardTitle").value = "";
+//   document.getElementById("boardDescription").value = "";
+//   const checkboxes = document.querySelectorAll("input[type=checkbox]");
+//   for (let i = 0; i < checkboxes.length; i++) {
+//     checkboxes[i].checked = false;
+//   }
+//   document.getElementById("selectedContacts").innerHTML = "";
+//   document.getElementById("boardDate").value = "";
+//   mediumBtnToggle();
+//   document.getElementById("boardCategory").value = "";
+//   document.getElementById("boardSubtasks").value = "";
+//   document.getElementById("subtaskList").innerHTML = "";
+// }
+
+
+/**
+ * This function edits subtask item
+ * 
+ * @param {number} i - index of subtask item
+ */
 function editSubtaskItem(i) {
   setSubtaskEditModeOn(i);
   document
@@ -298,17 +345,36 @@ function editSubtaskItem(i) {
       `;
 }
 
+
+/**
+ * This function sets edit mode on for subtask in edit view
+ * 
+ * @param {number} i - index of subtask item
+ */
 function setSubtaskEditModeOn(i) {
   document.getElementById(`subTaskTextListItem${i}`).contentEditable = "true";
   document.getElementById(`subtaskListItem${i}`).style.border =
     "1px solid black";
 }
 
+
+/**
+ * This function sets edit mode on for subtask in edit view
+ * 
+ * @param {number} i - index of subtask item
+ */
 function setSubtaskEditModeOff(i) {
   document.getElementById(`subTaskTextListItem${i}`).contentEditable = "false";
   document.getElementById(`subtaskListItem${i}`).style.border = "none";
 }
 
+
+/**
+ * This function stores edited subtask item in edit view
+ * 
+ * @param {number} x - index of task
+ * @param {number} i - index of subtask item
+ */
 function storeEditedSubtaskItem(i) {
   subtask[i].task = document.getElementById(
     `subTaskTextListItem${i}`
@@ -317,6 +383,10 @@ function storeEditedSubtaskItem(i) {
   renderSubtasks();
 }
 
+
+/**
+ * This function clears Add task input field
+ */
 function cleanAddtaskArea() {
   document.getElementById("boardTitle").value = "";
   document.getElementById("boardDescription").value = "";
@@ -329,6 +399,10 @@ function cleanAddtaskArea() {
   clearSubtasks();
 }
 
+
+/**
+ * This function cleras assigned to area
+ */
 function clearAssignedtoArea() {
   document.getElementById("selectedContacts").innerHTML = "";
   for (let i = 0; i < contacts.length; i++) {
@@ -337,20 +411,36 @@ function clearAssignedtoArea() {
   }
 }
 
+
+/**
+ * This function cleras subtask area
+ */
 function clearSubtasks() {
   document.getElementById("boardSubtasks").value = "";
   document.getElementById("subtaskList").innerHTML = "";
   subtask = [];
 }
 
+
+/**
+ * This function generetes initials of user names
+ * 
+ * @param {string} name - name if user
+ * @returns             - initials of user
+ */
 function generateInitials(name) {
   let nameParts = name.split(" ");
   let firstNameInitial = nameParts[0] ? nameParts[0][0].toUpperCase() : "";
   let lastNameInitial = nameParts[1] ? nameParts[1][0].toUpperCase() : "";
   return firstNameInitial + lastNameInitial;
 }
-// *********************************************************************************************************************************************************************************
 
+
+/**
+ * This function loads the task of whch data should be edited
+ * 
+ * @param {number} i - index of task 
+ */
 function loadTaskDataToEdit(i) {
   document.getElementById("editTaskTitle").value = tasks[i].title;
   document.getElementById("editTaskDescription").value = tasks[i].description;
@@ -361,6 +451,12 @@ function loadTaskDataToEdit(i) {
   editAreaRenderSubtasks(i);
 }
 
+
+/**
+ * This function stores the edited task data
+ * 
+ * @param {number} x - index of task to edit
+ */
 function storeEditedTaskData(x) {
   tasks[x].title = document.getElementById("editTaskTitle").value;
   tasks[x].description = document.getElementById("editTaskDescription").value;
@@ -370,21 +466,10 @@ function storeEditedTaskData(x) {
   tasks[x].assignedTo = editUpdateSelectedContacts();
 }
 
-// function editRenderDropdown() {
-//   const dropdownContent = document.querySelector(".edit-dropdown-content");
-//   for (let i = 0; i < taskContacts.length; i++) {
-//     const contact = taskContacts[i];
-//     const label = document.createElement("label");
-//     const checkbox = document.createElement("input");
-//     checkbox.type = "checkbox";
-//     checkbox.id = `editContact_${i}`;
-//     checkbox.value = contact.name;
-//     label.appendChild(checkbox);
-//     label.appendChild(document.createTextNode(contact.name));
-//     dropdownContent.appendChild(label);
-//   }
-// }
 
+/**
+ * This function toggles the dropdown for assigend users in edit view
+ */
 function editToggleDropdown() {
   const dropdown = document.getElementById("editContactDropdown");
   dropdown.classList.toggle("open");
@@ -393,22 +478,29 @@ function editToggleDropdown() {
   }
 }
 
+
+/**
+ * This function updates the selected contacts in edit view
+ * 
+ * @returns - selected contacts in edit view
+ */
 function editUpdateSelectedContacts() {
-  // const selectedContactsDiv = document.getElementById('selectedContacts');
-  // selectedContactsDiv.innerHTML = '';  // Clear previous selections
   const selectedContacts = [];
   for (let i = 0; i < contacts.length; i++) {
     const checkbox = document.getElementById(`contact_${i}`);
     if (checkbox.checked) {
       selectedContacts.push({ user: contacts[i].name });
-      // const contactDiv = document.createElement('div');
-      // contactDiv.textContent = contacts[i].name;
-      // selectedContactsDiv.innerHTML += `<div>${contacts[i].name}</div>`;
     }
   }
   return selectedContacts;
 }
 
+
+/**
+ * This function preselects assigend users in dropwdown iin edit view
+ * 
+ * @param {number} x - index of task
+ */
 function editCheckBoxesForAssignedUsers(x) {
   const selectedContactsDiv = document.getElementById("selectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
@@ -426,6 +518,12 @@ function editCheckBoxesForAssignedUsers(x) {
   }
 }
 
+
+/**
+ * This function renders subtasks in edit view
+ * 
+ * @param {number} x - index of task for subtask
+ */
 function editAreaRenderSubtasks(x) {
   let listArea = document.getElementById("editSubtaskList");
   listArea.innerHTML = "";
@@ -438,21 +536,37 @@ function editAreaRenderSubtasks(x) {
                   <img id="binSubtaskIcon" class="hidden" onclick="editAreaDeleteSubtaskItem(${x},${i})" src="../database/images/delete.svg" alt="icon">
               <span>
         </li>
-
-
     `;
   }
 }
 
+
+/**
+ * This function deletes a subtask item in edit view
+ * 
+ * @param {number} x - index of task
+ * @param {number} i . index of subtask item
+ */
 function editAreaDeleteSubtaskItem(x, i) {
   tasks[x].subtask.splice(i, 1);
   editAreaRenderSubtasks(x);
 }
 
+
+/**
+ * This function deletes the subtask input field
+ */
 function editDeleteSubtaskInputField() {
   document.getElementById("subtaskInput").value = "";
 }
 
+
+/**
+ * This function renders edit area for subtask in edit view
+ * 
+ * @param {number} x - index of task
+ * @param {number} i - index of subtask item
+ */
 function editAreaEditSubtaskItem(x, i) {
   editAreaSetSubtaskEditModeOn(i);
   document.getElementById(`editSingleSubTaskButtons${i}`).innerHTML = /*html*/ `
@@ -461,6 +575,12 @@ function editAreaEditSubtaskItem(x, i) {
     `;
 }
 
+
+/**
+ * This function sets edit mode on for subtask in edit view
+ * 
+ * @param {number} i - index of subtask item
+ */
 function editAreaSetSubtaskEditModeOn(i) {
   document.getElementById(`editSubTaskTextListItem${i}`).contentEditable =
     "true";
@@ -468,12 +588,26 @@ function editAreaSetSubtaskEditModeOn(i) {
     "1px solid black";
 }
 
+
+/**
+ * This function sets edit mode on for subtask in edit view
+ * 
+ * @param {number} i - index of subtask item
+ */
 function editAreaSetSubtaskEditModeOff(i) {
   document.getElementById(`editSubTaskTextListItem${i}`).contentEditable =
     "false";
   document.getElementById(`editSubtaskListItem${i}`).style.border = "none";
 }
 
+
+
+/**
+ * This function stores edited subtask item in edit view
+ * 
+ * @param {number} x - index of task
+ * @param {number} i - index of subtask item
+ */
 function editAreaStoreEditedSubtaskItem(x, i) {
   tasks[x].subtask[i].task = document.getElementById(
     `editSubTaskTextListItem${i}`
@@ -482,6 +616,12 @@ function editAreaStoreEditedSubtaskItem(x, i) {
   editAreaRenderSubtasks(x);
 }
 
+
+/**
+ * This function renders subtask in edit view
+ * 
+ * @param {number} x - index of task
+ */
 function editAreaCreateSubtask(x) {
   let subtaskText = document.getElementById("editAreaSubtaskInput").value;
   tasks[x].subtask.push({ task: subtaskText });
@@ -489,6 +629,10 @@ function editAreaCreateSubtask(x) {
   editDeleteSubtaskInputField();
 }
 
+
+/**
+ * This function clears the subtask input field
+ */
 function editDeleteSubtaskInputField() {
   document.getElementById("editAreaSubtaskInput").value = "";
 }
