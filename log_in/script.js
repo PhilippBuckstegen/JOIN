@@ -25,7 +25,7 @@ function loginUser(enteredUserEmail, enteredUserPassword) {
       user.email === enteredUserEmail &&
       user.password === enteredUserPassword
     ) {
-      return user; // Rückgabe des passenden Benutzers
+      return user;
     }
   }
 }
@@ -273,5 +273,3 @@ function acceptRememberMe() {
     return 0;
   }
 }
-
-//checkboxRememberMe.addEventListener("click", acceptRememberMe);
