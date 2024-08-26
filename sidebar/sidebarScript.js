@@ -42,7 +42,48 @@ document.addEventListener('DOMContentLoaded', () => {
           correspondingButton.classList.add('selected');
           localStorage.setItem('selectedButton', correspondingButton.id);
 
-          
+          setTimeout(() => {
+            window.location.href = targetPage;
+          }, 100);
+        }
+      });
+    });
+  }
+
+  function addEventListeners() {
+    const buttons = document.querySelectorAll('.button-sidebar, .police-button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        const targetPage = button.getAttribute('data-target');
+        if (targetPage) {
+          buttons.forEach(btn => btn.classList.remove('selected'));
+          button.classList.add('selected');
+
+          // Ausgewählten Button in localStorage speichern
+          localStorage.setItem('selectedButton', button.id);
+
+          setTimeout(() => {
+            window.location.href = targetPage;
+          }, 100);
+        }
+      });
+    });
+
+    // Event-Listener für die Elemente im Hauptbereich hinzufügen
+    const contentLinks = document.querySelectorAll('.guest-button, .login-signup-button');
+
+    contentLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        const targetPage = link.getAttribute('data-target');
+        const correspondingButton = document.querySelector(`.button-sidebar[data-target='${targetPage}']`);
+        
+        if (correspondingButton) {
+          buttons.forEach(btn => btn.classList.remove('selected'));
+          correspondingButton.classList.add('selected');
+          localStorage.setItem('selectedButton', correspondingButton.id);
+
           setTimeout(() => {
             window.location.href = targetPage;
           }, 100);
@@ -53,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function highlightSelectedButton() {
     const currentPath = window.location.pathname;
-    const buttons = document.querySelectorAll('.button-sidebar, .police-button');
+    const buttons = document.querySelectorAll('.button-sidebar, .police-button, .login-signup-button');
 
     buttons.forEach(button => {
       const targetPage = button.getAttribute('data-target');

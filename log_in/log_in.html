@@ -14,10 +14,11 @@
     <!-- script -->
     <script src="../validation/validation.js"></script>
     <script src="../sign_up/script.js"></script>
+    <script src="../sidebar/sidebarScript.js"></script>
 
     <script src="../database/script.js"></script>
     <!-- style -->
-    <link rel="stylesheet" href="log_in_animation.css">
+    <link rel="stylesheet" href="log_in_animation.css" />
     <link rel="stylesheet" href="style.css" />
     <!-- <link rel="stylesheet" href="../validation/validation.css" /> -->
     <link
@@ -106,7 +107,12 @@
                 onfocus="passwordFieldActive('loginPassword', 'pwLoginOverlay'), resetSingleInputError('loginPassword')"
                 onblur="validateLoginPassword('loginPassword'), passwordFieldInactive('loginPassword', 'pwLoginOverlay')"
               />
-              <div id="pwLoginOverlay" class="icon-overlay d-none" onclick="togglePasswordVisibility('loginPassword')"></div> <!-- Heiko zugefügt -->
+              <div
+                id="pwLoginOverlay"
+                class="icon-overlay d-none"
+                onclick="togglePasswordVisibility('loginPassword')"
+              ></div>
+              <!-- Heiko zugefügt -->
               <span
                 id="loginPasswordErrorMessage"
                 class="no-error-visible error-message"
@@ -138,7 +144,7 @@
             class="form-submit flexContainer"
           >
             <button
-              id="loginButton"
+              id="loginButton" data-target="../summary/summary.html"
               type="submit"
               class="login-signup-button"
               onclick="logIn()"
@@ -147,7 +153,7 @@
               Log in
             </button>
             <button
-              id="guestLoginButton"
+              id="guestLoginButton" data-target="../summary/summary.html"
               onclick="guestLogin(); return false"
               class="guest-button"
             >
@@ -171,14 +177,14 @@
 
       <footer id="footer1" class="flexContainer">
         <button
-          id="privacy-policy-button1"
+          id="privacy-policy-button1" 
           data-target="../policies_clear/policies_clear.html"
           class="police-button-sign-up button_policie"
         >
           Privacy Policy
         </button>
         <button
-          id="legal-notice-button1"
+          id="legal-notice-button1" 
           data-target="../legal_notice_clear/legal_notice_clear.html"
           class="police-button-sign-up button_policie"
         >
