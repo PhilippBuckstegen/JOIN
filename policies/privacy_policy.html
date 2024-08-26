@@ -20,24 +20,27 @@
     <!-- <link rel="stylesheet" href="/database/main_contacts.css" /> -->
     <link rel="stylesheet" href="../policies/privacy.css" />
 
-
-    <link rel="stylesheet" href="../header/header_style_mobile.css"/>
+    <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <!-- <script type="module">
       import { loadHeader } from "/header/Headerscript.js";
       window.addEventListener("DOMContentLoaded", (event) => {
         loadHeader();
       });
     </script> -->
-      <!-- script -->
-  <script src="../sidebar/sidebarScript.js"></script>
-  <script src="../header/Headerscript.js"></script>
-  <script src="../log_in/script.js"></script>
-  <script src="script.js"></script>
+    <!-- script -->
+    <script src="../sidebar/sidebarScript.js"></script>
+    <script src="../header/Headerscript.js"></script>
+    <script src="../log_in/script.js"></script>
+    <script src="script.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <link rel="stylesheet" href="../sidebar/style.css" />
-    <link rel="shortcut icon" href="../favicon/img/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="../favicon/img/favicon.png"
+      type="image/x-icon"
+    />
   </head>
   <body onload="privacyInitialCall()">
     <!-- Sidebar wird hier dynamisch geladen -->
@@ -45,8 +48,6 @@
       <div class="sidebar"></div>
     </div>
     <div id="header-placeholder"></div>
-
-
 
     <!-- <script>
       fetch("../header/header.html")
@@ -57,7 +58,15 @@
     </script> -->
 
     <div class="privacy-policy-area">
-      <h1>Datenschutz&shy;erkl&auml;rung</h1>
+      <div class="header-policy">
+        <h1>Datenschutz&shy;erkl&auml;rung</h1>
+        <img
+          class="arrow-back-policy"
+          onclick="window.history.back()"
+          src="../assets/icons/arrow-left-line.svg"
+          alt="arrow-back"
+        />
+      </div>
       <div class="part-of-privacy">
         <h2>1. Datenschutz auf einen Blick</h2>
         <h3>Allgemeine Hinweise</h3>

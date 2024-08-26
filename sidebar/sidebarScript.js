@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error loading sidebar:', error));
 
+    document.addEventListener('DOMContentLoaded', function () {
+      addEventListeners();
+      highlightSelectedButton();
+      });
+      
+
   function addEventListeners() {
     const buttons = document.querySelectorAll('.button-sidebar, .police-button');
 

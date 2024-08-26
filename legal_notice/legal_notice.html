@@ -13,18 +13,23 @@
     />
     <!-- style -->
     <link rel="stylesheet" href="../policies/privacy.css" />
-    <link rel="stylesheet" href="../header/header_style_mobile.css"/>
-    <link rel="stylesheet" href="../legal_notice/legal_notice.css">
-      <!-- script -->
-      <script src="../sidebar/sidebarScript.js"></script>
-      <script src="../header/Headerscript.js"></script>
-      <script src="../log_in/script.js"></script>
-      <script src="script.js"></script>
+    <link rel="stylesheet" href="../header/header_style_mobile.css" />
+    <link rel="stylesheet" href="../legal_notice/legal_notice.css" />
+    <!-- script -->
+    <script src="../sidebar/sidebarScript.js"></script>
+    <script src="../header/Headerscript.js"></script>
+    <script src="../log_in/script.js"></script>
+    <script src="script.js"></script>
     <!-- style -->
     <link rel="stylesheet" href="../header/headerStyle.css" />
     <link rel="stylesheet" href="../header/header_style_mobile.css" />
     <link rel="stylesheet" href="../sidebar/style.css" />
-    <link rel="shortcut icon" href="../favicon/img/favicon.png" type="image/x-icon"> </head>
+    <link
+      rel="shortcut icon"
+      href="../favicon/img/favicon.png"
+      type="image/x-icon"
+    />
+  </head>
   <body onload="legalNoticeInitialCall()">
     <!-- Sidebar wird hier dynamisch geladen -->
     <div class="side-wrap">
@@ -32,7 +37,15 @@
     </div>
     <div id="header-placeholder"></div>
     <div class="legal-notice-area">
-      <h1>Legal Notice</h1>
+      <div class="header-policy">
+        <h1>Legal Notice</h1>
+        <img
+          class="arrow-back-policy"
+          onclick="window.history.back()"
+          src="../assets/icons/arrow-left-line.svg"
+          alt="arrow-back"
+        />
+      </div>
       <div class="part-of-notice">
         <h2>1. Company Information</h2>
         <p>
@@ -48,36 +61,52 @@
       <div class="part-of-notice">
         <h2>2. Legal Disclaimer</h2>
         <p>
-          The content of this website has been compiled with the utmost care. 
-          However, we cannot guarantee the accuracy, completeness, or timeliness of the content.
-          As a service provider, we are responsible for our own content on these pages according to general laws.
-          We are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.
-          Obligations to remove or block the use of information under general laws remain unaffected.
-          However, liability in this regard is only possible from the time of knowledge of a specific infringement.
-          Upon becoming aware of any such legal violations, we will remove the content in question immediately.
+          The content of this website has been compiled with the utmost care.
+          However, we cannot guarantee the accuracy, completeness, or timeliness
+          of the content. As a service provider, we are responsible for our own
+          content on these pages according to general laws. We are not obligated
+          to monitor transmitted or stored third-party information or to
+          investigate circumstances that indicate illegal activity. Obligations
+          to remove or block the use of information under general laws remain
+          unaffected. However, liability in this regard is only possible from
+          the time of knowledge of a specific infringement. Upon becoming aware
+          of any such legal violations, we will remove the content in question
+          immediately.
         </p>
       </div>
       <div class="part-of-notice">
         <h2>3. Copyright</h2>
         <p>
-          The content and works on these pages created by the site operators are subject to German copyright law.
-          The reproduction, processing, distribution, or any form of commercialization of such material beyond the scope of the copyright law shall require the prior written consent of its respective author or creator.
-          Downloads and copies of this page are only permitted for private, non-commercial use.
-          Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected.
-          In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please notify us accordingly.
-          Upon becoming aware of legal violations, we will remove such content immediately.
+          The content and works on these pages created by the site operators are
+          subject to German copyright law. The reproduction, processing,
+          distribution, or any form of commercialization of such material beyond
+          the scope of the copyright law shall require the prior written consent
+          of its respective author or creator. Downloads and copies of this page
+          are only permitted for private, non-commercial use. Insofar as the
+          content on this site was not created by the operator, the copyrights
+          of third parties are respected. In particular, third-party content is
+          marked as such. Should you nevertheless become aware of a copyright
+          infringement, please notify us accordingly. Upon becoming aware of
+          legal violations, we will remove such content immediately.
         </p>
       </div>
       <div class="part-of-notice">
         <h2>4. Data Protection</h2>
         <p>
-          The use of our website is generally possible without providing personal information.
-          Insofar as personal data (such as name, address, or email addresses) is collected on our pages, this is always done on a voluntary basis, as far as possible.
-          This data will not be passed on to third parties without your express consent.
-          We point out that data transmission over the internet (e.g., communication by email) can be subject to security vulnerabilities.
-          A complete protection of data against access by third parties is not possible.
-          The use of contact data published within the scope of the legal notice obligation by third parties for the transmission of advertising and information materials not expressly requested is hereby expressly prohibited.
-          The operators of the pages expressly reserve the right to take legal action in the event of unsolicited promotional information, such as spam emails.
+          The use of our website is generally possible without providing
+          personal information. Insofar as personal data (such as name, address,
+          or email addresses) is collected on our pages, this is always done on
+          a voluntary basis, as far as possible. This data will not be passed on
+          to third parties without your express consent. We point out that data
+          transmission over the internet (e.g., communication by email) can be
+          subject to security vulnerabilities. A complete protection of data
+          against access by third parties is not possible. The use of contact
+          data published within the scope of the legal notice obligation by
+          third parties for the transmission of advertising and information
+          materials not expressly requested is hereby expressly prohibited. The
+          operators of the pages expressly reserve the right to take legal
+          action in the event of unsolicited promotional information, such as
+          spam emails.
         </p>
       </div>
     </div>
