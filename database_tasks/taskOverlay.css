@@ -315,7 +315,7 @@
   align-items: flex-start;
 }
 
-#boardTitleContainer {
+.boardTitleContainerEdit {
   margin-top: 100px;
 }
 
@@ -527,7 +527,7 @@
     height: 600px;
     border-radius: 20px;
   }
-  #boardTitleContainer {
+  .boardTitleContainerEdit {
     margin-top: 200px;
   }
 }
@@ -545,7 +545,7 @@
   .selectedContacts {
     width: 230px !important;
   }
-  #boardTitleContainer {
+  .boardTitleContainerEdit {
     margin-top: 200px;
   }
 }
@@ -564,7 +564,7 @@
     width: 310px;
   }
 
-  #boardTitleContainer {
+  .boardTitleContainerEdit {
     margin-top: 200px;
   }
 }
@@ -600,7 +600,7 @@
     width: 220px !important;
   }
 
-  #boardTitleContainer {
+  .boardTitleContainerEdit {
     margin-top: 100px;
   }
 
