@@ -1,169 +1,20 @@
-let taskContacts = [
-  {
-    backgroundColor: "#6E52FF",
-    email: "anna.mueller@example.com",
-    initials: "AM",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Anna Müller",
-    phone: "+49151123456987",
-  },
-  {
-    backgroundColor: "#FC71FF",
-    email: "anette.svenson@internet.swe",
-    initials: "AS",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Anette Svenson",
-    phone: "+4585452587",
-  },
-  {
-    backgroundColor: "#9327FF",
-    email: "bernd.seiler@beispiel.de",
-    initials: "BS",
-    lastAdded: false,
-    lastEdited: true,
-    name: "Bernd Seiler",
-    phone: "+151818182619",
-  },
-  {
-    "background-color": "#651445",
-    backgroundColor: "#1FD7C1",
-    email: "franz.meier@gmx.net",
-    initials: "FM",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Franz Meier",
-    phone: "+4916518158181",
-  },
-  {
-    backgroundColor: "#FF4646",
-    email: "franz.mustermann@web.de",
-    initials: "FM",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Franz Mustermann",
-    phone: "+49245584254",
-  },
-  {
-    backgroundColor: "#462F8A",
-    email: "hans.mustermann@web.de",
-    initials: "HM",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Hans Mustermann",
-    phone: "+4924558753286",
-  },
-  {
-    backgroundColor: "#9327FF",
-    email: "heinz.schmitz@arcor.de",
-    initials: "HS",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Heinz Schmitz",
-    phone: "+49219181808",
-  },
-  {
-    backgroundColor: "#FC71FF",
-    email: "julia.koch@example.com",
-    initials: "JK",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Julia Koch",
-    phone: "+4915990123456",
-  },
-  {
-    backgroundColor: "#FF7A00",
-    email: "laura.fischer@example.com",
-    initials: "LF",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Laura Fischer",
-    phone: "+4915334567890",
-  },
-  {
-    backgroundColor: "#9327FF",
-    email: "lisa.wagner@example.com",
-    initials: "LW",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Lisa Wagner",
-    phone: "+4915556789012",
-  },
-  {
-    backgroundColor: "#462F8A",
-    email: "michael.bauer@example.com",
-    initials: "MB",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Michael Bauer",
-    phone: "+4915110234567",
-  },
-  {
-    backgroundColor: "#9327FF",
-    email: "max.schmidt@example.com",
-    initials: "MS",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Max Schmidt",
-    phone: "+4915223456789",
-  },
-  {
-    backgroundColor: "#00BEE8",
-    email: "maria.hoffmann@example.com",
-    initials: "M",
-    lastAdded: false,
-    lastEdited: false,
-    name: " Maria Hoffmann",
-    phone: "+4915778901234",
-  },
-  {
-    backgroundColor: "#6E52FF",
-    email: "natalie.imbruglia@web.de",
-    initials: "NI",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Natalie Imbruglia",
-    phone: "+45854524565",
-  },
-  {
-    backgroundColor: "#FF4646",
-    email: "peter.weber@example.com",
-    initials: "PW",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Peter Weber",
-    phone: "+4915445678901",
-  },
-  {
-    backgroundColor: "#9327FF",
-    email: "reiner.steinberg@arcor.com",
-    initials: "RS",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Reiner Steinberg",
-    phone: "+51812158618",
-  },
-  {
-    backgroundColor: "#FF7A00",
-    email: "thomas.becker@example.com",
-    initials: "TB",
-    lastAdded: false,
-    lastEdited: false,
-    name: "Thomas Becker",
-    phone: "+4915667890123",
-  },
-];
-
 let tasks = [];
 let subtask = [];
 
+
+/**
+ * This function is the initial call
+ */
 function firstCall() {
   renderDropdown();
   getTasksFromDatabase();
   editRenderDropdown();
 }
 
+
+/**
+ * This functions loads tasks from database
+ */
 async function getTasksFromDatabase() {
   let data = await loadData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -178,35 +29,38 @@ async function getTasksFromDatabase() {
   }
 }
 
+
+/**
+ * This function writes new tasks to databse
+ */
 async function writeTasksToDatabase() {
   await postData(
     "https://devakademie-default-rtdb.europe-west1.firebasedatabase.app/",
     "tasks",
     tasks
   );
-  // await getContactsFromDatabase();
 }
 
+
+/**
+ * This function adds new tasks to database
+ */
 async function addNewTaskToDatabase() {
-  // setAllPrevousItemsLastAddedFalse(contacts);
   writeNewTaskToLocalArray();
-  // toggleAddContactOverlay()
-  // sortContactsByInitials(contacts);
-  // addRandomColorToJSON(contacts);
   await writeTasksToDatabase();
   cleanAddtaskArea();
-  // await renderContacts();
-  // showContactDetails(findLastAddedIndex(contacts));
 }
 
+
+/**
+ * This function writes new tasks to the local array
+ */
 function writeNewTaskToLocalArray() {
   let addTaskTitle = document.getElementById("newTaskTitle");
   let addTaskDescription = document.getElementById("newTaskDescription");
-  // let addTaskAssignedTo = document.getElementById('newTaskAssignedTo');
   let addTaskDueDate = document.getElementById("newTaskDueDate");
   let addTaskPriority = document.getElementById("newTaskPriority");
   let addTaskCategory = document.getElementById("newTaskCategory");
-  // let addTaskSubtask = document.getElementById('newTaskSubtasks');
   let newTask = {
     title: addTaskTitle.value,
     description: addTaskDescription.value,
@@ -219,12 +73,13 @@ function writeNewTaskToLocalArray() {
   tasks.push(newTask);
 }
 
-// Dropdown User List und Checkbox
+
+/**
+ * This function renders the dropdown list for assigend users
+ */
 function renderDropdown() {
   const dropdownContent = document.querySelector(".dropdown-content");
-  // for (let i = 0; i < taskContacts.length; i++) {
     for (let i = 0; i < contacts.length; i++) {
-    // const contact = taskContacts[i];
     const contact = contacts[i];
     const label = document.createElement("label");
     const checkbox = document.createElement("input");
@@ -237,6 +92,10 @@ function renderDropdown() {
   }
 }
 
+
+/**
+ * This function toggles the dropdown for the assigned users
+ */
 function toggleDropdown() {
   const dropdown = document.getElementById("contactDropdown");
   dropdown.classList.toggle("open");
@@ -245,73 +104,10 @@ function toggleDropdown() {
   }
 }
 
-// function updateSelectedContacts() {
-//   const selectedContactsDiv = document.getElementById("selectedContacts");
-//   selectedContactsDiv.innerHTML = ""; // Clear previous selections
-//   const selectedContacts = [];
-//   // for (let i = 0; i < taskContacts.length; i++) {
-//     for (let i = 0; i < contacts.length; i++) {
-//     const checkbox = document.getElementById(`contact_${i}`);
-//     if (checkbox.checked) {
-//       // selectedContacts.push({ user: taskContacts[i].name });
-//       selectedContacts.push({ user: contacts[i].name });
-//       const contactDiv = document.createElement("div");
-//       // contactDiv.textContent = taskContacts[i].name;
-//       contactDiv.textContent = contacts[i].name;
-//       // selectedContactsDiv.innerHTML += `<div>${contacts[i].name}</div>`;
-//     }
-//   }
-//   renderSelectedNames(selectedContacts);
-//   return selectedContacts;
-// }
 
-
-// function renderSelectedNames(selectedContacts){
-//   let limit = 3;
-//   if(selectedContacts.length > 0){
-//     if(selectedContacts.length <= limit){
-//     for (let j = 0; j < selectedContacts.length; j++) {
-//       let selectedContactsArea = document.getElementById(`selectedContacts`);
-//       const contact = selectedContacts[j];
-//       selectedContactsArea.innerHTML += /*html*/ `
-//           <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
-//       `;
-//     document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
-//       }
-//     } else {
-//     for(let j = 0; j < limit; j++){
-//       // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
-//         let assignedContacts = document.getElementById(`selectedContacts${i}`);
-//         const contact = selectedContacts[j];
-//         assignedContacts.innerHTML += /*html*/ `
-//              <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${contact.initials}</div>
-//         `;
-//         document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
-//       // } 
-//     }
-//     renderSelectedNamesGreaterThanLimitOverview(limit);
-//   }
-// }
-// }
-
-
-// function renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit){
-//   let assignedContacts = document.getElementById(`selctedContacts${i}`);
-//         assignedContacts.innerHTML += /*html*/ `
-//             <div id="selectedContactIcon${limit}" class="contact-icon assigned-contact-icon">+${calculateRestOfAssigendToGreaterThanLimit(selectedContacts, limit)}</div>
-//         `;
-//     document.getElementById(`selectedContactIcon${limit}`).style.backgroundColor = "#301934"; 
-// }
-
-
-// function calculateRestOfSelecetdToGreaterThanLimit(selectedContacts, limit) {
-//   let restOfAssignedUsers = selectedContacts.length - limit;
-//   return restOfAssignedUsers;
-// }
-
-
-// Subtasks Liste
-
+/**
+ * This function creates new subtasks
+ */
 function createSubtask() {
   let subtaskText = document.getElementById("subtaskInput").value;
   subtask.push({ 
@@ -322,6 +118,10 @@ function createSubtask() {
   deleteSubtaskInputField();
 }
 
+
+/**
+ * This function renders created subtasks
+ */
 function renderSubtasks() {
   let listArea = document.getElementById("subtaskList");
   listArea.innerHTML = "";
@@ -338,15 +138,31 @@ function renderSubtasks() {
   }
 }
 
+
+/**
+ * This function deletes specific subtask items
+ * 
+ * @param {number} i - index of subtask item 
+ */
 function deleteSubtaskItem(i) {
   subtask.splice(i, 1);
   renderSubtasks();
 }
 
+
+/**
+ * This function deletes the value of subtask input field
+ */
 function deleteSubtaskInputField() {
   document.getElementById("subtaskInput").value = "";
 }
 
+
+/**
+ * This function edits the subtask item
+ * 
+ * @param {number} i - index of subtask item to edit
+ */
 function editSubtaskItem(i) {
   setSubtaskEditModeOn(i);
   document.getElementById(`singleSubTaskButtons${i}`).innerHTML = /*html*/ `
@@ -355,17 +171,35 @@ function editSubtaskItem(i) {
     `;
 }
 
+
+/**
+ * This function sets subtask edit mode on
+ * 
+ * @param {number} i - subtask item to edit
+ */
 function setSubtaskEditModeOn(i) {
   document.getElementById(`subTaskTextListItem${i}`).contentEditable = "true";
   document.getElementById(`subtaskListItem${i}`).style.border =
     "1px solid black";
 }
 
+
+/**
+ * This function sets subtask edit mode off
+ * 
+ * @param {number} i - subtask item to edit
+ */
 function setSubtaskEditModeOff(i) {
   document.getElementById(`subTaskTextListItem${i}`).contentEditable = "false";
   document.getElementById(`subtaskListItem${i}`).style.border = "none";
 }
 
+
+/**
+ * This function stores the edited subtask item
+ * 
+ * @param {number} i - subtask item to store
+ */
 function storeEditedSubtaskItem(i) {
   subtask[i].task = document.getElementById(
     `subTaskTextListItem${i}`
@@ -374,6 +208,10 @@ function storeEditedSubtaskItem(i) {
   renderSubtasks();
 }
 
+
+/**
+ * This function clears the add task area
+ */
 function cleanAddtaskArea() {
   document.getElementById("newTaskTitle").value = "";
   document.getElementById("newTaskDescription").value = "";
@@ -384,6 +222,10 @@ function cleanAddtaskArea() {
   cleanAssignedtoArea();
 }
 
+
+/**
+ * This function clears the assigned to area
+ */
 function cleanAssignedtoArea() {
   document.getElementById("selectedContacts").innerHTML = "";
   for (let i = 0; i < taskContacts.length; i++) {
@@ -392,8 +234,12 @@ function cleanAssignedtoArea() {
   }
 }
 
-// *********************************************************************************************************************************************************************************
 
+/**
+ * This function loads the task of whch data should be edited
+ * 
+ * @param {number} i - index of task 
+ */
 function loadTaskDataToEdit(i) {
   document.getElementById("editTaskTitle").value = tasks[i].title;
   document.getElementById("editTaskDescription").value = tasks[i].description;
@@ -404,6 +250,12 @@ function loadTaskDataToEdit(i) {
   editAreaRenderSubtasks(i);
 }
 
+
+/**
+ * This function stores the edited task data
+ * 
+ * @param {number} x - index of task to edit
+ */
 function storeEditedTaskData(x) {
   tasks[x].title = document.getElementById("editTaskTitle").value;
   tasks[x].description = document.getElementById("editTaskDescription").value;
@@ -413,6 +265,10 @@ function storeEditedTaskData(x) {
   tasks[x].assignedTo = editUpdateSelectedContacts();
 }
 
+
+/**
+ * This function renders the dropdown for assigend users in edit view
+ */
 function editRenderDropdown() {
   const dropdownContent = document.querySelector(".edit-dropdown-content");
   for (let i = 0; i < taskContacts.length; i++) {
@@ -428,6 +284,10 @@ function editRenderDropdown() {
   }
 }
 
+
+/**
+ * This function toggles the dropdown for assigend users in edit view
+ */
 function editToggleDropdown() {
   const dropdown = document.getElementById("editContactDropdown");
   dropdown.classList.toggle("open");
@@ -436,6 +296,12 @@ function editToggleDropdown() {
   }
 }
 
+
+/**
+ * This function updates the selected contacts in edit view
+ * 
+ * @returns - selected contacts in edit view
+ */
 function editUpdateSelectedContacts() {
   const selectedContactsDiv = document.getElementById("editSelectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
@@ -452,6 +318,12 @@ function editUpdateSelectedContacts() {
   return selectedContacts;
 }
 
+
+/**
+ * This function preselects assigend users in dropwdown iin edit view
+ * 
+ * @param {number} x 
+ */
 function editCheckBoxesForAssignedUsers(x) {
   const selectedContactsDiv = document.getElementById("editSelectedContacts");
   selectedContactsDiv.innerHTML = ""; // Clear previous selections
@@ -469,6 +341,12 @@ function editCheckBoxesForAssignedUsers(x) {
   }
 }
 
+
+/**
+ * This function renders subtasks in edit view
+ * 
+ * @param {number} x - index of task for subtask
+ */
 function editAreaRenderSubtasks(x) {
   let listArea = document.getElementById("editSubtaskList");
   listArea.innerHTML = "";
@@ -485,15 +363,33 @@ function editAreaRenderSubtasks(x) {
   }
 }
 
+
+/**
+ * This function deletes a subtask item in edit view
+ * 
+ * @param {number} x - index of task
+ * @param {number} i . index of subtask item
+ */
 function editAreaDeleteSubtaskItem(x, i) {
   tasks[x].subtask.splice(i, 1);
   editAreaRenderSubtasks(x);
 }
 
+
+/**
+ * This function deletes the subtask input field
+ */
 function deleteSubtaskInputField() {
   document.getElementById("subtaskInput").value = "";
 }
 
+
+/**
+ * This function renders edit area for subtask in edit view
+ * 
+ * @param {number} x - index of task
+ * @param {number} i - index of subtask item
+ */
 function editAreaEditSubtaskItem(x, i) {
   editAreaSetSubtaskEditModeOn(i);
   document.getElementById(`editSingleSubTaskButtons${i}`).innerHTML = /*html*/ `
@@ -502,6 +398,12 @@ function editAreaEditSubtaskItem(x, i) {
     `;
 }
 
+
+/**
+ * This function sets edit mode on for subtask in edit view
+ * 
+ * @param {number} i - index of subtask item
+ */
 function editAreaSetSubtaskEditModeOn(i) {
   document.getElementById(`editSubTaskTextListItem${i}`).contentEditable =
     "true";
@@ -509,12 +411,25 @@ function editAreaSetSubtaskEditModeOn(i) {
     "1px solid black";
 }
 
+
+/**
+ * This function sets edit mode on for subtask in edit view
+ * 
+ * @param {number} i - index of subtask item
+ */
 function editAreaSetSubtaskEditModeOff(i) {
   document.getElementById(`editSubTaskTextListItem${i}`).contentEditable =
     "false";
   document.getElementById(`editSubtaskListItem${i}`).style.border = "none";
 }
 
+
+/**
+ * This function stores edited subtask item in edit view
+ * 
+ * @param {number} x - index of task
+ * @param {number} i - index of subtask item
+ */
 function editAreaStoreEditedSubtaskItem(x, i) {
   tasks[x].subtask[i].task = document.getElementById(
     `editSubTaskTextListItem${i}`
@@ -523,6 +438,12 @@ function editAreaStoreEditedSubtaskItem(x, i) {
   editAreaRenderSubtasks(x);
 }
 
+
+/**
+ * This function renders subtask in edit view
+ * 
+ * @param {number} x - index of task
+ */
 function editAreaCreateSubtask(x) {
   let subtaskText = document.getElementById("editAreaSubtaskInput").value;
   tasks[x].subtask.push({ task: subtaskText });
@@ -530,6 +451,10 @@ function editAreaCreateSubtask(x) {
   editDeleteSubtaskInputField();
 }
 
+
+/**
+ * This function clears the subtask input field
+ */
 function editDeleteSubtaskInputField() {
   document.getElementById("editAreaSubtaskInput").value = "";
 }
