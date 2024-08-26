@@ -101,6 +101,10 @@ body {
   align-items: center;
 }
 
+.mobile-container {
+  display: none;
+}
+
 /* Media Query für Bildschirme mit max. Breite von 900px */
 @media (max-width: 900px) {
   .side-wrap {
@@ -175,5 +179,25 @@ body {
   .button-sidebar:hover {
     height: 80px;
     border-radius: 10px;
+  }
+
+  .mobile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    gap: 12%;
+  }
+
+  .mobile-container p {
+    font-size: 13px;
+    font-weight: 400;
+    color: #a8a8a8;
+    cursor: pointer;
+  }
+
+  .mobile-container p:hover {
+    color: #29abe2;
+    font-weight: 700;
   }
 }
