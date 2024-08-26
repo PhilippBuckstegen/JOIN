@@ -19,7 +19,7 @@
     <!-- style -->
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="../validation/validation.css" />
-    <link rel="stylesheet" href="../alertOverlays/style.css">
+    <link rel="stylesheet" href="../alertOverlays/style.css" />
     <link
       rel="shortcut icon"
       href="../favicon/img/favicon.png"
@@ -105,7 +105,12 @@
                   onblur="validatePassword('signUpPassword'), passwordFieldInactive('signUpPassword', 'pwSignUpOverlay')"
                   onfocus="resetSingleInputError('signUpPassword'), passwordFieldActive('signUpPassword', 'pwSignUpOverlay')"
                 />
-                <div id="pwSignUpOverlay" class="icon-overlay d-none" onclick="togglePasswordVisibility('signUpPassword')"></div> <!-- Heiko zugefügt -->
+                <div
+                  id="pwSignUpOverlay"
+                  class="icon-overlay d-none"
+                  onclick="togglePasswordVisibility('signUpPassword')"
+                ></div>
+                <!-- Heiko zugefügt -->
                 <span
                   id="signUpPasswordErrorMessage"
                   class="no-error-visible error-message"
@@ -123,7 +128,12 @@
                   onblur="validatePassword2('signUpPassword2', `signUpPassword`), passwordFieldInactive('signUpPassword2', 'pw2SignUpOverlay')"
                   onfocus="resetSingleInputError('signUpPassword2'), passwordFieldActive('signUpPassword2', 'pw2SignUpOverlay')"
                 />
-                <div id="pw2SignUpOverlay" class="icon-overlay d-none" onclick="togglePasswordVisibility('signUpPassword2')"></div> <!-- Heiko zugefügt -->
+                <div
+                  id="pw2SignUpOverlay"
+                  class="icon-overlay d-none"
+                  onclick="togglePasswordVisibility('signUpPassword2')"
+                ></div>
+                <!-- Heiko zugefügt -->
                 <span
                   id="signUpPassword2ErrorMessage"
                   class="no-error-visible error-message"
@@ -144,7 +154,11 @@
                     for="formPrivacyPolicy"
                     class="labelPrivacyPolicy"
                     >I accept the
-                    <span onclick="location.href='../policies_clear/policies_clear.html'" id="privacyPolicySpan">Privacy Policy</span></label
+                    <span
+                      onclick="location.href='../policies_clear/policies_clear.html'"
+                      id="privacyPolicySpan"
+                      >Privacy Policy</span
+                    ></label
                   >
                 </div>
                 <span
@@ -163,28 +177,36 @@
                 disabled
               > -->
               <button
-              id="signUpBtn"
-              type="submit"
-              class="signUpBtn"
-              onclick="checkIfEmailAlreadyExists()"
-              disabled
-            >
+                id="signUpBtn"
+                type="submit"
+                class="signUpBtn"
+                onclick="checkIfEmailAlreadyExists()"
+                disabled
+              >
                 Sign Up
               </button>
             </section>
           </form>
         </main>
       </div>
-    <!-- Marv -->
-      <footer id="footer1" class="flexContainer">
-        <button id="privacy-policy-button1" data-target="../policies_clear/policies_clear.html" class="police-button-sign-up">
-          Privacy Policy
-        </button>
-        <button id="legal-notice-button1" data-target="../legal_notice_clear/legal_notice_clear.html" class="police-button-sign-up">
-          Legal notice
-        </button>
-      </footer>
+      <!-- Marv -->
     </div>
+    <footer id="footer1" class="flexContainer">
+      <button
+        id="privacy-policy-button1"
+        data-target="../policies_clear/policies_clear.html"
+        class="police-button-sign-up"
+      >
+        Privacy Policy
+      </button>
+      <button
+        id="legal-notice-button1"
+        data-target="../legal_notice_clear/legal_notice_clear.html"
+        class="police-button-sign-up"
+      >
+        Legal notice
+      </button>
+    </footer>
     <script src="./script.js"></script>
   </body>
 </html>

@@ -26,7 +26,7 @@
       type="image/x-icon"
     />
   </head>
-  <body onload="firstLoadLogin()">
+  <body onload="firstLoadLogin()" class="flexContainerCol">
     <div id="mainWrapper" class="flexContainerCol">
       <div id="logoSignUpContainer" class="flexContainer">
         <div id="logoAnimatedLogoHeaderContainer" class="flexContainerCol">
@@ -143,7 +143,8 @@
             class="form-submit flexContainer"
           >
             <button
-              id="loginButton" data-target="../summary/summary.html"
+              id="loginButton"
+              data-target="../summary/summary.html"
               type="submit"
               class="login-signup-button"
               onclick="logIn()"
@@ -152,7 +153,8 @@
               Log in
             </button>
             <button
-              id="guestLoginButton" data-target="../summary/summary.html"
+              id="guestLoginButton"
+              data-target="../summary/summary.html"
               onclick="guestLogin(); return false"
               class="guest-button"
             >
@@ -173,24 +175,23 @@
           Sign up
         </button>
       </div>
-
-      <footer id="footer1" class="flexContainer">
-        <button
-          id="privacy-policy-button1" 
-          data-target="../policies_clear/policies_clear.html"
-          class="police-button-sign-up button_policie"
-        >
-          Privacy Policy
-        </button>
-        <button
-          id="legal-notice-button1" 
-          data-target="../legal_notice_clear/legal_notice_clear.html"
-          class="police-button-sign-up button_policie"
-        >
-          Legal notice
-        </button>
-      </footer>
     </div>
+    <footer id="footer1" class="flexContainer">
+      <button
+        id="privacy-policy-button1"
+        data-target="../policies_clear/policies_clear.html"
+        class="police-button-sign-up button_policie"
+      >
+        Privacy Policy
+      </button>
+      <button
+        id="legal-notice-button1"
+        data-target="../legal_notice_clear/legal_notice_clear.html"
+        class="police-button-sign-up button_policie"
+      >
+        Legal notice
+      </button>
+    </footer>
     <script src="./script.js"></script>
   </body>
 </html>
