@@ -1,7 +1,6 @@
 /**
  * This function laods functions for firstCall
  */
-
 async function initSummary() {
   await getTasksFromDatabase();
   getCurrentUserFromLocalStorage();
@@ -11,8 +10,13 @@ async function initSummary() {
   renderAddSummaryRemoveold();
 }
 
+
 let timeOfDay;
 
+
+/**
+ * This function handles selected class from sidebar elements
+ */
 function renderAddSummaryRemoveold() {
   document.getElementById("add-task-button").classList.remove("selected");
   document.getElementById("board-button").classList.remove("selected");
@@ -21,6 +25,8 @@ function renderAddSummaryRemoveold() {
   document.getElementById("legal-notice-button").classList.remove("selected");
   document.getElementById("summary-button").classList.add("selected");
 }
+
+
 /**
  * This function evaluates the time for the greeting of the user
  */
@@ -38,6 +44,7 @@ function renderTimeOfDay() {
   }
 }
 
+
 /**
  * This function clears the greeting area
  */
@@ -49,6 +56,7 @@ async function renderGreeting() {
   greetings.innerHTML = "";
   renderGreetingUser();
 }
+
 
 /**
  * This function renders greeting for mobile and desktop
@@ -66,6 +74,7 @@ function renderGreetingUser() {
     `;
 }
 
+
 /**
  * This function checks the status of the different tasks and counts them up for each status
  */
@@ -73,6 +82,7 @@ function getNumberOfTasksByStatus(status) {
   let filteredStatus = tasks.filter((task) => task.status === status);
   return filteredStatus.length;
 }
+
 
 /**
  * This function counts the amount of urgent tasks
@@ -82,6 +92,7 @@ function getNumberOfUrgentTasks() {
   urgentTasks = urgentTasks.length;
   return urgentTasks;
 }
+
 
 /**
  * This function checks the next ancoming due date
@@ -94,6 +105,7 @@ function getNextDueDate() {
   upcomingTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
   return upcomingTasks.length > 0 ? upcomingTasks[0].dueDate : null;
 }
+
 
 /**
  * This function renders the summary area

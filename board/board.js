@@ -30,6 +30,7 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
+
 /**
  * Updates the status of the currently dragged task, moves it to the top of the category,
  * and re-renders the task board.
