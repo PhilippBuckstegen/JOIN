@@ -1,3 +1,6 @@
+/**
+ * This function handles event listener for loading header
+ */
 document.addEventListener('DOMContentLoaded', () => {
     fetch('../header_clear/header_clear.html')  
       .then(response => response.text())
@@ -6,9 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
         loadHeaderClear();
       })
       .catch(error => console.error('Error loading header:', error));
-  });
+});
   
-  function loadHeaderClear() {
+
+/**
+* This function generates HTML Code for empty header
+*/
+function loadHeaderClear() {
     const headerHTML = `
       <header class="header-headerstyle">
           <div class="header-wrap">
@@ -21,4 +28,3 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.getElementById('header-placeholder-clear').innerHTML = headerHTML;
   }
- 
