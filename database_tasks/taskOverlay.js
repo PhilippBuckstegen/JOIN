@@ -1,76 +1,15 @@
 "use strict";
 
+
+/**
+ * This function generates the task detail view
+ * 
+ * @param {number} i - index of task which should be shown in detail view
+ */
 function generateTask(i) {
   removeClassFromElement("taskOverlaySection", "none");
   let currentTaskOverlay = "";
-  currentTaskOverlay = /*HTML*/ `
-
-        <div id="currentUserTaskOverlay" class="currentUserTaskOverlays flexContainerColStart">
-
-        <div id="taskTypeContainer" class="taskTypeContainers flexContainer">
-            <div id="taskType${i}" class="taskTypes">${
-    tasks[i].taskCategory
-  }</div>
-            <div>
-              <img onclick="closeAndStore()"
-                id="contactCloseBtn"
-                src="../database/images/close.svg"
-                alt="icon"
-              />
-            </div>
-          </div>
-          <div id="userTaskOverlayPart" class="userTaskOverlayParts">
-        
-          <div id="titleContainer" class="titleContainers">
-            <p id="contactTitle" class="contactTitles">${tasks[i].title}</p>
-          </div>
-          <div id="taskContainer" class="taskContainers">
-            <p id="contactTask" class="contactTasks">${tasks[i].description}</p>
-          </div>
-          <div id="dateContainer" class="dateContainers flexContainerStart">
-            <div><p id="dueDatePar" class="dueDatePars">Due date:</p></div>
-            <div><p id="contactDate" class="contactDates">${
-              tasks[i].dueDate
-            }</p></div>
-          </div>
-          <div id="priorityContainer" class="priorityContainers flexContainerStart">
-            <div><p id="priorityPar" class="priorityPars">Priority:</p></div>
-            <div id="contactPriority" class="contactPriorities flexContainer">${setPriority(
-              tasks[i].priority
-            )}</div>
-          </div>
-          <div id="assignContainer" class="assignContainers flexContainerColStart">
-            <div><p id="assignPar" class="assignPars">Assigned To:</p></div>
-            <div id="assignContactsContainer" class="assignContactsContainers flexContainerColStart">
-              <div id="assignContact" class="assignContacts flexContainerStart">
-              <!-- Assigened to wird hierein gerendert -->
-            </div>
-          </div>
-            <div id="subtasksContainer" class="subtasksContainers flexContainerColStart">
-            <!-- Subtasks werden hierein gerendert -->
-            </div>
-          </div>
-          </div>
-          <div id="deleteEditBtnsContainer" class="deleteEditBtnsContainers flexContainerStart">
-            <button id="deleteBtnContacts" class="flexContainer" onclick="deleteSingleTask(${i})">
-              <img
-                id="deleteImgContacts"
-                src="../database/images/delete.svg"
-                alt="icon"
-              />
-              Delete
-            </button>
-            <button id="editBtnContacts" class="flexContainer" onclick="generateEditView(${i})">
-              <img
-                id="editImgContacts"
-                src="../database/images//edit.svg"
-                alt="icon"
-              />
-              Edit
-            </button>
-          </div>
-        </div>`;
-
+  currentTaskOverlay = generateTaskHTML(i);
   const taskOverlaySection = document.getElementById("taskOverlaySection");
   if (taskOverlaySection) {
     taskOverlaySection.innerHTML = currentTaskOverlay;
@@ -80,6 +19,12 @@ function generateTask(i) {
   setSubtasks(i);
 }
 
+
+/**
+ * This function generates the bakchround to the category in tasl detail view
+ * 
+ * @param {*} i - index of task which should be shown in detail view
+ */
 function addBackgroundColorToCategoryDetail(i) {
   let categoryContainer = document.getElementById(`taskType${i}`);
   tasks[i].taskCategory == "Technical Task"
@@ -87,36 +32,34 @@ function addBackgroundColorToCategoryDetail(i) {
     : (categoryContainer.style.backgroundColor = "#0038ff");
 }
 
+
+/**
+ * This function presets the priority buttons for add task and edit task
+ * 
+ * @param {number} priority - priotity which should be presetted
+ * @returns                 - HTML Code for priority buttons
+ */
 function setPriority(priority) {
   if (priority === 0) {
     return /* HTML */ `<p id="noPriorityPar">Keine Priorität</p>`;
   } else if (priority === 3) {
     return /* HTML */ ` <p id="urgentPar">Urgent</p>
-      <img
-        id="urgentImg"
-        class="overlayBtnIcons"
-        src="../database/images/prio_alta.svg"
-        alt="icon"
-      />`;
+      <img id="urgentImg" class="overlayBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>`;
   } else if (priority === 2) {
     return /* HTML */ ` <p id="mediumPar">Medium</p>
-      <img
-        id="mediumImg"
-        class="overlayBtnIcons"
-        src="../database/images/prio_media.svg"
-        alt="icon"
-      />`;
+      <img id="mediumImg" class="overlayBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>`;
   } else {
     return /* HTML */ ` <p id="lowPar">Low</p>
-      <img
-        id="lowImg"
-        class="overlayBtnIcons"
-        src="../database/images/prio_baja.svg"
-        alt="icon"
-      />`;
+      <img id="lowImg" class="overlayBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>`;
   }
 }
 
+
+/**
+ * This function renders created subtsaks
+ * 
+ * @param {number} i - number of main task where subtasks are added
+ */
 function setSubtasks(i) {
   if (tasks[i].subtask) {
     document.getElementById("subtasksContainer").innerHTML = /*html*/ `
@@ -124,18 +67,9 @@ function setSubtasks(i) {
     <div id="subtasksContactsContainer" class="subtasksContactsContainers flexContainerColStart"></div>
     `;
     for (let j = 0; j < tasks[i].subtask.length; j++) {
-      document.getElementById(
-        "subtasksContactsContainer"
-      ).innerHTML += /* HTML */ `
+      document.getElementById("subtasksContactsContainer").innerHTML += /* HTML */ `
         <div id="subContainer" class="subContainers flexContainer">
-          <input
-            type="checkbox"
-            id="checkboxSubtask${j}"
-            class="subtaskboxes"
-            name="checkbox${j}"
-            value="subtask${j}"
-            onclick="writeClickToVariable(${i}, ${j})"
-          />
+          <input type="checkbox" id="checkboxSubtask${j}" class="subtaskboxes" name="checkbox${j}" value="subtask${j}" onclick="writeClickToVariable(${i}, ${j})"/>
           <div class="subtaskboxesLabels">${tasks[i].subtask[j].task}</div>
         </div>
       `;
@@ -144,67 +78,70 @@ function setSubtasks(i) {
   }
 }
 
-// Heiko Code ab hier
 
+/**
+ * This function renders the assigned names for a single task
+ * 
+ * @param {number} i - index of task 
+ */
 function renderAssignedNames(i) {
   let limit = 4;
   if (tasks[i].assignedTo) {
     if (tasks[i].assignedTo.length <= limit) {
       for (let j = 0; j < tasks[i].assignedTo.length; j++) {
-        document.getElementById(
-          "assignContactsContainer"
-        ).innerHTML += /*html*/ `
-          <div id='assignedContactsDetail${j}'>
-            <span class="label-initials">
-              <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
-              ${tasks[i].assignedTo[j].user}
-            </span>
-        </div>
-      `;
-        document.getElementById(`initialsDropdown${j}`).style.backgroundColor =
-          tasks[i].assignedTo[j].backgroundColor;
+        document.getElementById("assignContactsContainer").innerHTML += renderAssignedNamesNoUserLimitHTML(i,j);
+        document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
       }
     } else {
       for (let j = 0; j < limit; j++) {
-        document.getElementById(
-          "assignContactsContainer"
-        ).innerHTML += /*html*/ `
-        <div id='assignedContactsDetail${j}'>
-          <span class="label-initials">
-            <span class="initials-dropdown" id='initialsDropdown${j}'>${tasks[i].assignedTo[j].initials}</span>
-            ${tasks[i].assignedTo[j].user}
-          </span>
-      </div>
-    `;
-        document.getElementById(`initialsDropdown${j}`).style.backgroundColor =
-          tasks[i].assignedTo[j].backgroundColor;
+        document.getElementById("assignContactsContainer").innerHTML += renderAssignedNamesUserLimitHTML(i,j);
+        document.getElementById(`initialsDropdown${j}`).style.backgroundColor = tasks[i].assignedTo[j].backgroundColor;
       }
       renderAssignedNamesGreaterThanLimit(i, limit);
     }
   }
 }
 
+
+
+/**
+ * This function generates the icon when users maximun is reached 
+ * 
+ * @param {number} i     - index of task
+ * @param {number} limit - limit of max shown users
+ */
 function renderAssignedNamesGreaterThanLimit(i, limit) {
   document.getElementById("assignContactsContainer").innerHTML += /*html*/ `
        <div id='assignedContactsDetail${limit}'>
           <span class="label-initials">
-            <span class="initials-dropdown" id='initialsDropdown${limit}'>+${calculateRestOfAssigendToGreaterThanLimit(
-    i,
-    limit
-  )}</span>
+            <span class="initials-dropdown" id='initialsDropdown${limit}'>+${calculateRestOfAssigendToGreaterThanLimit(i,limit)}</span>
             further users
           </span>
        </div>
        `;
-  document.getElementById(`initialsDropdown${limit}`).style.backgroundColor =
-    "#301934";
+  document.getElementById(`initialsDropdown${limit}`).style.backgroundColor ="#301934";
 }
 
+
+/**
+ * This function calculates the amount of users which are over the setup limit
+ * 
+ * @param {number} i      - index of task
+ * @param {number} limit - limit of max shown users
+ * @returns         - returns amount of users over setup limit
+ */
 function calculateRestOfAssigendToGreaterThanLimit(i, limit) {
   let restOfAssignedUsers = tasks[i].assignedTo.length - limit;
   return restOfAssignedUsers;
 }
 
+
+/**
+ * This function presete the checkboxes for the subtasks in task detail view
+ * 
+ * @param {number} i - index of task
+ * @param {number} j - index of subtask
+ */
 function presetCheckboxes(i, j) {
   let presetCheckboxes = document.getElementById(`checkboxSubtask${j}`);
   if (tasks[i].subtask[j].status == 1) {
@@ -215,6 +152,13 @@ function presetCheckboxes(i, j) {
   }
 }
 
+
+/**
+ * This function writes the subtask checkbox click to task array variable
+ * 
+ * @param {number} i - index of task
+ * @param {number} j -index of subtask
+ */
 function writeClickToVariable(i, j) {
   let actCheckbox = document.getElementById(`checkboxSubtask${j}`);
   if (!actCheckbox.classList.contains("checkboxChecked")) {
@@ -226,154 +170,37 @@ function writeClickToVariable(i, j) {
   }
 }
 
+
+/**
+ * This function closes the tasl detail view and stores the subtask checkbox status
+ */
 async function closeAndStore() {
-  // forceToCloseDropdown();
   addClassToElement("taskOverlaySection", "none");
   await writeTasksToDatabase();
   await getTasksFromDatabase();
   renderTasksInBoard();
-  // addClassToElement('taskOverlaySection', 'none');
 }
 
+
+/**
+ * This function creates the edit view
+ * 
+ * @param {number} i - index of task for edit view
+ */
 function generateEditView(i) {
   removeClassFromElement("taskOverlaySection", "none");
-  // document.getElementById("taskOverlaySection").innerHTML =  "";
-  document.getElementById("currentUserTaskOverlay").innerHTML = /*HTML*/ `
-     <!-- <div id="addTaskBoardOverlayContainer" class="flexContainerCol"> -->
-             
-                
-             
-                <div id="xBtnContainerEdit" class="flexContainer">
-                  <img id="xBtn" src="../database/images/close.svg" alt="icon"
-                  onclick="cancelEditArea()"/>
-                </div>
-         
-              <div id="taskBoardOverlayForm" class="taskBoardOverlayFormEdit flexContainerCol">
-                      <div id="boardTitleContainer" class="boardTitleContainerEdit flexContainerColStart">
-                        <label for="boardTitle">Title<span id="asteriskTitle" class="">*</span></label>
-                        <div class="edit-inputs-title-mid">
-                          <input type="text" placeholder="Enter a title" id="editBoardTitle" name="boardTitle"/>
-                          <span id="editBoardTitleErrorMessage" class="error-message no-error-visible">This field is required</span>
-                        </div>
-                      </div>
-                      <div id="boardDescriptionContainer" class="boardDescriptionContainerEdit flexContainerColStart">
-                        <label for="boardDescription">Description</label>
-                        <textarea placeholder="Enter a Description" rows="4" cols="50" id="editBoardDescription" name="boardDescription"></textarea>
-                      </div>
-                      <div id="boardDateContainer" class="boardDateContainerEdit flexContainerColStart">
-                      <label for="boardDate">Due date<span id="asteriskDate" class="">*</span></label>
-                      <div id="boardDateInputImgContainer" class="flexContainer">
-                        <input type="date" data-date-format="DD  MM  YYYY" id="editBoardDate" name="boardDate" onclick="setMinDateToToday('editBoardDate')"/>
-                        <span id="editBoardDateErrorMessage" class="error-message no-error-visible">This field is required</span>
-                        <!--<img
-                          id="calendarIcon"
-                          src="../database/images/event.svg"
-                          alt="icon"
-                        />-->
-                      </div>
-                    </div>
-                    <div id="boardPriorityContainerCur" class="boardPriorityContainerEdit flexContainerCol">
-                      <div id="priorityHeaderContainer" class="flexContainer">
-                        <p>Prio</p>
-                      </div>
-                      <div id="priorityBtnsContainer" class="priorityBtnsContainerEdit flexContainer">
-                        <button id="editUrgentBtn" class="priorityButtons whiteButtons flexContainer" onclick="editUrgentBtnToggle(${i})">
-                          Urgent
-                          <img id="editUrgentImg" class="boardBtnIcons" src="../database/images/prio_alta.svg" alt="icon"/>
-                        </button>
-                        <button id="editMediumBtn" class="priorityButtons whiteButtons flexContainer" onclick="editMediumBtnToggle(${i})">
-                          Medium
-                          <img id="editMediumImg" class="boardBtnIcons" src="../database/images/prio_media.svg" alt="icon"/>
-                        </button>
-                        <button id="editLowBtn" class="priorityButtons whiteButtons flexContainer" onclick="editLowBtnToggle(${i})">
-                          Low
-                          <img id="editLowImg" class="boardBtnIcons" src="../database/images/prio_baja.svg" alt="icon"/>
-                        </button>
-                      </div>
-                    </div>
-
-
-                
-
-                    <div id="boardAssignedContainer" class="boardAssignedContainerEdit flexContainerCol">
-                        <!-- new dropdown start -->
-
-                        <div id="contactDropdown" class="contactDropdownCur dropdown flexContainerColStart" >
-                          <label for="boardAssigned">Assigned to</label>
-                          <button id="dropdownBtn"
-                            class="dropdown-button"
-                            onclick="toggleDropdown()"
-                          >Select contacts to assign</button>
-                          <div
-                            class="dropdown-content"
-                            id="dropdownListContent"
-                          ></div>
-                        </div>
-                        <div
-                          class="selected-contacts-edit flexContainerStart"
-                          id="selectedContacts"
-                        ></div>
-                      </div>
-
-
-                    <div id="boardSubtasksContainerCur" class="boardSubtasksContainerEdit flexContainerColStart">
-                      <label for="boardSubtasks">Subtasks</label>
-                      <div
-                        id="boardSubtasksInputImgContainer"
-                        class="flexContainer"
-                      >
-                        <input
-                          type="text"
-                          placeholder="Add new subtask"
-                          id="boardSubtasks"
-                          name="boardSubtasks"
-                        />
-                        <img
-                          id="plusIcon"
-                          src="../database/images/plus.svg"
-                          alt="icon"
-                          onclick="decideSubtask()"
-                        />
-                        <img
-                          id="closeIcon"
-                          class="none"
-                          src="../database/images/close.svg"
-                          alt="icon"
-                          onclick="cancelSubtask()"
-                        />
-                        <img
-                          class="none"
-                          id="checkIcon"
-                          src="../database/images/check_blue.svg"
-                          alt="icon"
-                          onclick="createSubtask()"
-                        />
-                      </div>
-                      <div>
-                        <ul id="subtaskList" class="subtaskListCur">
-                          <!-- Subtask Liste wird hier gerendert -->
-                        </ul>
-                      </div>
-                    </div>
-
-                    
-</div>
-<div id="okBtnCurContainer" class="store-edited-data-button flexContainer">
-                      <button id="okBtnCur" onclick="validateEditTask(${i})">OK</button>
-                      <!-- ????   button id="okBtnCur" onclick="storeEditedData(${i})">OK</button>-->
-                    </div>
-
-                  
-
-                    <!-- Start - Heiko eingefügt zum testen -->
-                    
-                    <!-- Ende - Heiko eingefügt zum testen -->
-`;
+  document.getElementById("currentUserTaskOverlay").innerHTML = generateEditViewHTML(i);
   renderDropdown();
   loadDataToEdit(i);
   editRenderSubtasks(i);
 }
 
+
+/**
+ * This function loads the data for task edit view
+ * 
+ * @param {number} i - index of task to edit
+ */
 function loadDataToEdit(i) {
   document.getElementById("editBoardTitle").value = tasks[i].title;
   document.getElementById("editBoardDescription").value = tasks[i].description;
@@ -382,23 +209,27 @@ function loadDataToEdit(i) {
   editCheckBoxesForAssignedUsers(i);
 }
 
+
+/**
+ * This function stores the edited data
+ * 
+ * @param {number} i index of task to edit 
+ */
 function storeEditedData(i) {
   tasks[i].title = document.getElementById("editBoardTitle").value;
   tasks[i].description = document.getElementById("editBoardDescription").value;
   tasks[i].dueDate = document.getElementById("editBoardDate").value;
-  //  priority wird direkt aus Button Funktion in den Local Array geschrieben //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
-  //  priority wird direkt aus Button Funktion in den Local Array geschrieben
   //  priority wird direkt aus Button Funktion in den Local Array geschrieben
   tasks[i].assignedTo = updateSelectedContacts();
   tasks[i].subtask = subtask;
   closeWindowWriteEditedDataToDatabase();
 }
 
+
+/**
+ * This function closes the edit view and stores the edited data
+ */
 async function closeWindowWriteEditedDataToDatabase() {
-  // addClassToElement("taskOverlaySection", "none");
   cancelEditArea();
   await writeTasksToDatabase();
   await getTasksFromDatabase();
@@ -406,6 +237,12 @@ async function closeWindowWriteEditedDataToDatabase() {
   renderTasksInBoard();
 }
 
+
+/**
+ * This function presets the priority buttin in edit view
+ * 
+ * @param {number} i - number of task to edit
+ */
 function loadAndSetPriorityToEdit(i) {
   switch (tasks[i].priority) {
     case 3:
@@ -421,6 +258,13 @@ function loadAndSetPriorityToEdit(i) {
   }
 }
 
+
+/**
+ * This functions toggles the state of the priority low button
+ * 
+ * @param {number} i - index of task
+ * @returns 
+ */
 function editLowBtnToggle(i) {
   editVariablesPriorityButtons();
   if (editLowBtn.classList.contains("whiteButtons")) {
@@ -432,28 +276,27 @@ function editLowBtnToggle(i) {
     editLowBtn.classList.add("whiteButtons");
     editLowImg.src = "../database/images/prio_baja.svg";
   }
-
   if (!editUrgentBtn.classList.contains("whiteButtons")) {
     editUrgentBtn.classList.add("whiteButtons");
     editUrgentImg.src = "../database/images/prio_alta.svg";
   }
-
   if (!editMediumBtn.classList.contains("whiteButtons")) {
     editMediumBtn.classList.add("whiteButtons");
     editMediumImg.src = "../database/images/prio_media.svg";
   }
-
-  const lowSelected = !editLowBtn.classList.contains("whiteButtons")
-    ? true
-    : false;
-
-  // Heiko Code added - Start
+  const lowSelected = !editLowBtn.classList.contains("whiteButtons") ? true : false;
   evaluateLowState(lowSelected);
   tasks[i].priority = priority;
-  // Heiko Code added - End
   return lowSelected;
 }
 
+
+/**
+ * This functions toggles the state of the priority urgent button
+ * 
+ * @param {number} i - index of task
+ * @returns 
+ */
 function editUrgentBtnToggle(i) {
   editVariablesPriorityButtons();
   if (editUrgentBtn.classList.contains("whiteButtons")) {
@@ -465,28 +308,27 @@ function editUrgentBtnToggle(i) {
     editUrgentBtn.classList.add("whiteButtons");
     editUrgentImg.src = "../database/images/prio_alta.svg";
   }
-
   if (!editUrgentBtn.classList.contains("whiteButtons")) {
     editMediumBtn.classList.add("whiteButtons");
     editMediumImg.src = "../database/images/prio_media.svg";
   }
-
   if (!editLowBtn.classList.contains("whiteButtons")) {
     editLowBtn.classList.add("whiteButtons");
     editLowImg.src = "../database/images/prio_baja.svg";
   }
-
-  const urgentSelected = !editUrgentBtn.classList.contains("whiteButtons")
-    ? true
-    : false;
-
-  // Heiko Code added - Start
+  const urgentSelected = !editUrgentBtn.classList.contains("whiteButtons") ? true : false;
   evaluateUrgentState(urgentSelected);
   tasks[i].priority = priority;
-  // Heiko Code added - End
   return urgentSelected;
 }
 
+
+/**
+ * This functions toggles the state of the priority medium button
+ * 
+ * @param {number} i - index of task
+ * @returns 
+ */
 function editMediumBtnToggle(i) {
   editVariablesPriorityButtons();
   if (editMediumBtn.classList.contains("whiteButtons")) {
@@ -498,28 +340,24 @@ function editMediumBtnToggle(i) {
     editMediumBtn.classList.add("whiteButtons");
     editMediumImg.src = "../database/images/prio_media.svg";
   }
-
   if (!editUrgentBtn.classList.contains("whiteButtons")) {
     editUrgentBtn.classList.add("whiteButtons");
     editUrgentImg.src = "../database/images/prio_alta.svg";
   }
-
   if (!editLowBtn.classList.contains("whiteButtons")) {
     editLowBtn.classList.add("whiteButtons");
     editLowImg.src = "../database/images/prio_baja.svg";
   }
-
-  const mediumSelected = !editMediumBtn.classList.contains("whiteButtons")
-    ? true
-    : false;
-
-  // Heiko Code added - Start
+  const mediumSelected = !editMediumBtn.classList.contains("whiteButtons") ? true : false;
   evaluateMediumState(mediumSelected);
   tasks[i].priority = priority;
-  // Heiko Code added - End
   return mediumSelected;
 }
 
+
+/**
+ * This function declares the variables for priority buttons
+ */
 function editVariablesPriorityButtons() {
   let editUrgentBtn = document.getElementById(`editUrgentBtn`);
   let editUrgentImg = document.getElementById("editurgentImg");
@@ -529,10 +367,16 @@ function editVariablesPriorityButtons() {
   let editLowImg = document.getElementById("editLowImg");
 }
 
+
+/**
+ * This function presets the checkboxes for assigned users in edit view
+ * 
+ * @param {number} x - index of task
+ */
 function editCheckBoxesForAssignedUsers(x) {
   if (tasks[x].assignedTo) {
     const selectedContactsDiv = document.getElementById("selectedContacts");
-    selectedContactsDiv.innerHTML = ""; // Clear previous selections
+    selectedContactsDiv.innerHTML = ""; 
     for (let i = 0; i < contacts.length; i++) {
       const checkbox = document.getElementById(`contact_${i}`);
       checkbox.checked = false;
@@ -541,10 +385,6 @@ function editCheckBoxesForAssignedUsers(x) {
           checkbox.checked = true;
           const contactDiv = document.createElement("div");
           contactDiv.textContent = tasks[x].assignedTo[j].user;
-          // selectedContactsDiv.innerHTML += `<span id="editShowAssignedContacts${j}" class="initials-dropdown">${tasks[x].assignedTo[j].initials}</span>`;
-          // document.getElementById(
-          //   `editShowAssignedContacts${j}`
-          // ).style.backgroundColor = tasks[x].assignedTo[j].backgroundColor;
         }
       }
     }
@@ -552,6 +392,12 @@ function editCheckBoxesForAssignedUsers(x) {
   }
 }
 
+
+/**
+ * This function renders the assigend names in edit view
+ * 
+ * @param {number} x - index of task
+ */
 function renderAssignedNamesEditView(x){
   let limit = 3;
   if(tasks[x].assignedTo){
@@ -566,20 +412,25 @@ function renderAssignedNamesEditView(x){
       }
     } else {
     for(let j = 0; j < limit; j++){
-      // for (let j = 0; j < tasks[i].assignedTo.length; j++) {
         let assignedContacts = document.getElementById(`selectedContacts`);
         const contact = tasks[x].assignedTo[j];
         assignedContacts.innerHTML += /*html*/ `
             <span id="editShowAssignedContacts${j}" class="contact-icon assigned-contact-icon">${tasks[x].assignedTo[j].initials}</span>
         `;
         document.getElementById(`editShowAssignedContacts${j}`).style.backgroundColor = contact.backgroundColor;
-      // } 
     }
     renderAssignedNamesEditGreaterThanLimit(x, limit);
   }
 }
 }
 
+
+/**
+ * This function calculates the assigned names which are greater than limit
+ * 
+ * @param {number} x     - index of task
+ * @param {number} limit - limit of users to be shown
+ */
 function renderAssignedNamesEditGreaterThanLimit(x, limit){
   let assignedContacts = document.getElementById(`selectedContacts`);
         assignedContacts.innerHTML += /*html*/ `
@@ -589,12 +440,11 @@ function renderAssignedNamesEditGreaterThanLimit(x, limit){
 }
 
 
-
-// function calculateRestOfSelectedToGreaterThanLimit(selectedContacts, limit) {
-//   let restOfAssignedUsers = selectedContacts.length - limit;
-//   return restOfAssignedUsers;
-// }
-
+/**
+ * This function renders the subtasks for edit view
+ * 
+ * @param {number} x - index of task
+ */
 function editRenderSubtasks(x) {
   subtask = [];
   if (tasks[x].subtask) {
@@ -602,17 +452,7 @@ function editRenderSubtasks(x) {
     subtask = [];
     listArea.innerHTML = "";
     for (let i = 0; i < tasks[x].subtask.length; i++) {
-      listArea.innerHTML += /*html*/ `
-        <li id="subtaskListItem${i}" class="subtaskListItems subtaskListItemsEdit flexContainer">
-            
-            <div id="subTaskTextListItem${i}" class="sub-task-text-list subtaskListItemsContainers flexContainer"><span class="sub-task-text-list" id="subTaskTextListItem${i}">${tasks[x].subtask[i].task}</span></div>
-            <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">
-                  <img id="editSubtaskIcon" class="hidden" onclick="editSubtaskItem(${i})" src="../database/images/edit.svg" alt="icon">
-                  <img id="binSubtaskIcon" class="hidden" onclick="deleteSubtaskItem(${i})" src="../database/images/delete.svg" alt="icon">
-              <span>
-            <span>
-        </li>
-    `;
+      listArea.innerHTML += editRenderSubtasksHTML(x,i);
       subtask.push({
         task: tasks[x].subtask[i].task,
         status: tasks[x].subtask[i].status,
@@ -621,6 +461,12 @@ function editRenderSubtasks(x) {
   }
 }
 
+
+/**
+ * This function deletes a single task
+ * 
+ * @param {number} i - index of task
+ */
 async function deleteSingleTask(i) {
   tasks.splice(i, 1);
   addClassToElement("taskOverlaySection", "none");
