@@ -215,17 +215,6 @@ function calculateRestOfSelectedToGreaterThanLimit(selectedContacts, limit) {
 }
 
 
-// /**
-//  * This function creates a subtask
-//  */
-// function createSubtask() {
-//   let subtaskText = document.getElementById("boardSubtasks").value;
-//   subtask.push({ task: subtaskText });
-//   renderSubtasks();
-//   deleteSubtaskInputField();
-// }
-
-
 /**
  * This function deletes a subtask
  */
