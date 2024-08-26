@@ -36,8 +36,7 @@ function addEventListeners() {
       }
     });
 });
-
-
+  
 /**
  * This function adds event listeners to main area
  */
