@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   </div>
                   <div id="slideInLogout" class="slide-in-logout d-none-logout slide-in-animation">
                     <span onclick="window.location.href='../help/help.html'" class="p-slide-in-logout">Help</span>
-                    <span class="p-slide-in-logout">Legal Notice</span>
-                    <span class="p-slide-in-logout">Privacy Policy</span>
+                    <span onclick="window.location.href='../legal_notice/legal_notice.html'" class="p-slide-in-logout">Legal Notice</span>
+                    <span onclick="window.location.href='../policies/privacy_policy.html'" class="p-slide-in-logout">Privacy Policy</span>
                     <span id="logOut" class="p-slide-in-logout" onclick="logOut()">Log out</span>
                   </div>
               </div>
