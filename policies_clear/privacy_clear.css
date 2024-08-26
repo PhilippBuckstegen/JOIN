@@ -30,6 +30,18 @@ body{
     padding-bottom: 50px;
 }
 
+.header-policy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .arrow-back-policy {
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
+  }
+
 @media (max-width: 900px) {
     .privacy-policy-area {
       margin-left: 0;
