@@ -1,3 +1,6 @@
+/**
+ * This function handels the event listener for header 
+ */
 document.addEventListener('DOMContentLoaded', () => {
     fetch('../header/header.html')  
       .then(response => response.text())
@@ -8,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => console.error('Error loading header:', error));
   });
   
+
+  /**
+   * This function generates HTML Code for header
+   */
   function loadHeader() {
     const headerHTML = `
       <header class="header-headerstyle">
@@ -32,10 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
       </header>
     `;
-  
     document.getElementById('header-placeholder').innerHTML = headerHTML;
   }
   
+
+  /**
+   * This function handles the slide-in menu
+   */
   const toggleMenu = () => {
     const menu = document.getElementById('slideInLogout');
     menu.classList.toggle('d-none-logout');
