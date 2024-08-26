@@ -312,20 +312,20 @@ function deleteSubtaskInputField() {
 /**
  * This function clears add task input field
  */
-// function clearInputFields() {
-//   document.getElementById("boardTitle").value = "";
-//   document.getElementById("boardDescription").value = "";
-//   const checkboxes = document.querySelectorAll("input[type=checkbox]");
-//   for (let i = 0; i < checkboxes.length; i++) {
-//     checkboxes[i].checked = false;
-//   }
-//   document.getElementById("selectedContacts").innerHTML = "";
-//   document.getElementById("boardDate").value = "";
-//   mediumBtnToggle();
-//   document.getElementById("boardCategory").value = "";
-//   document.getElementById("boardSubtasks").value = "";
-//   document.getElementById("subtaskList").innerHTML = "";
-// }
+function clearInputFields() {
+  document.getElementById("boardTitle").value = "";
+  document.getElementById("boardDescription").value = "";
+  const checkboxes = document.querySelectorAll("input[type=checkbox]");
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = false;
+  }
+  document.getElementById("selectedContacts").innerHTML = "";
+  document.getElementById("boardDate").value = "";
+  mediumBtnToggle();
+  document.getElementById("boardCategory").value = "";
+  document.getElementById("boardSubtasks").value = "";
+  document.getElementById("subtaskList").innerHTML = "";
+}
 
 
 /**
