@@ -45,6 +45,7 @@ body {
 @media (max-width: 900px) {
   .legal-notice-area {
     margin-left: 0;
+    height: calc(100vh - 160px);
   }
 }
 
