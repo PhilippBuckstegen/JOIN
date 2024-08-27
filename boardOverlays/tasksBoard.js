@@ -9,7 +9,6 @@ function firstCall() {
   getTasksFromDatabase();
 }
 
-
 /**
  * This functions loads tasks from database
  */
@@ -27,7 +26,6 @@ async function getTasksFromDatabase() {
   }
 }
 
-
 /**
  * This function writes new tasks to databse
  */
@@ -38,7 +36,6 @@ async function writeTasksToDatabase() {
     tasks
   );
 }
-
 
 /**
  * This function adds new tasks to database
@@ -58,7 +55,6 @@ async function addNewTaskToDatabase(state, overlay) {
     }, 2000);
   }
 }
-
 
 /**
  * This function writes new tasks to the local array
@@ -81,47 +77,6 @@ function writeNewTaskToLocalArray(state) {
   tasks.push(newTask);
 }
 
-
-/**
- * This function renders the dropdown list for assigend users
- */
-function renderDropdown() {
-  const dropdownContent = document.querySelector(".dropdown-content");
-  contacts.forEach((contact, index) => {
-    const label = document.createElement("label");
-    const nameSpan = document.createElement("span");
-    nameSpan.className = "label-initials";
-    const initialsSpan = document.createElement("span");
-    initialsSpan.className = "initials-dropdown";
-    initialsSpan.id = `initials${index}`;
-    initialsSpan.textContent = contact.initials;
-    const nameTextNode = document.createTextNode(`${contact.name}`);
-    nameSpan.appendChild(initialsSpan);
-    nameSpan.appendChild(nameTextNode);
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = `contact_${index}`;
-    checkbox.value = contact.name;
-    label.appendChild(nameSpan);
-    label.appendChild(checkbox);
-    dropdownContent.appendChild(label);
-    document.getElementById(`initials${index}`).style.backgroundColor = `${contact.backgroundColor}`;
-  });
-}
-
-
-/**
- * This function toggles the dropdown for the assigned users
- */
-function toggleDropdown() {
-  const dropdown = document.getElementById("contactDropdown");
-  dropdown.classList.toggle("open");
-  if (!dropdown.classList.contains("open")) {
-    updateSelectedContacts();
-  }
-}
-
-
 /**
  * This function closes the edit area
  */
@@ -130,66 +85,30 @@ function cancelEditArea(){
   addClassToElement('taskOverlaySection', 'none')
 }
 
-
-/**
+  /**
  * This function updates the selected contacts in edit view
- * 
  * @returns - selected contacts in edit view
  */
-function updateSelectedContacts() {
-  const selectedContactsDiv = document.getElementById("selectedContacts");
-  selectedContactsDiv.innerHTML = "";
-  const selectedContacts = [];
-  for (let i = 0; i < contacts.length; i++) {
-    const checkbox = document.getElementById(`contact_${i}`);
-    if (checkbox.checked) {
-      selectedContacts.push({
-        user: contacts[i].name,
-        initials: contacts[i].initials, 
-        backgroundColor: contacts[i].backgroundColor,
-      });
+  function updateSelectedContacts() {
+    const selectedContactsDiv = document.getElementById("selectedContacts");
+    selectedContactsDiv.innerHTML = "";
+    const selectedContacts = [];
+    for (let i = 0; i < contacts.length; i++) {
+      const checkbox = document.getElementById(`contact_${i}`);
+      if (checkbox.checked) {
+        selectedContacts.push({
+          user: contacts[i].name,
+          initials: contacts[i].initials, 
+          backgroundColor: contacts[i].backgroundColor,
+        });
+    }
   }
-}
-renderSelectedNames(selectedContacts);
+  renderSelectedNames(selectedContacts);
 return selectedContacts;
 }
 
-
-/**
- * This function renders the selected names
- * 
- * @param {JSON} selectedContacts - JSON with selected contacts
- */
-function renderSelectedNames(selectedContacts){
-  let limit = 3;
-  if(selectedContacts.length > 0){
-    if(selectedContacts.length <= limit){
-    for (let j = 0; j < selectedContacts.length; j++) {
-      let selectedContactsArea = document.getElementById(`selectedContacts`);
-      const contact = selectedContacts[j];
-      selectedContactsArea.innerHTML += /*html*/ `
-          <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${selectedContacts[j].initials}</div>
-      `;
-    document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
-      }
-    } else {
-    for(let j = 0; j < limit; j++){
-        let selectedContactsArea = document.getElementById(`selectedContacts`);
-        const contact = selectedContacts[j];
-        selectedContactsArea.innerHTML += /*html*/ `
-             <div id="selectedContactIcon${j}" class="contact-icon assigned-contact-icon">${selectedContacts[j].initials}</div>
-        `;
-        document.getElementById(`selectedContactIcon${j}`).style.backgroundColor = contact.backgroundColor;
-    }
-    renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit);
-  }
-}
-}
-
-
 /**
  * This function renders a workaround for users freater than limit
- * 
  * @param {JSON} selectedContacts - JSON with selected contacts
  * @param {number} limit          - limit of max users to be shown
  */
@@ -201,10 +120,8 @@ function renderSelectedNamesGreaterThanLimitOverview(selectedContacts, limit){
     document.getElementById(`selectedContactIcon${limit}`).style.backgroundColor = "#301934"; 
 }
 
-
 /**
  * This function 
- * 
  * @param {JSON} selectedContacts - JSON with selected contacts
  * @param {number} limit          - limit of max users to be shown
  * @returns                       - amount of users above limit
@@ -213,7 +130,6 @@ function calculateRestOfSelectedToGreaterThanLimit(selectedContacts, limit) {
   let restOfAssignedUsers = selectedContacts.length - limit;
   return restOfAssignedUsers;
 }
-
 
 /**
  * This function deletes a subtask
@@ -226,7 +142,6 @@ function decideSubtask() {
   }
 }
 
-
 /**
  * This function cancels edit view of subtask
  */
@@ -236,7 +151,6 @@ function cancelSubtask() {
   document.getElementById("checkIcon").classList.add("none");
   document.getElementById("boardSubtasks").value = "";
 }
-
 
 /**
  * This function creates a subtask
@@ -255,31 +169,8 @@ function createSubtask() {
   document.getElementById("boardSubtasks").value = "";
 }
 
-
-/**
- * This function renders subtasks
- */
-function renderSubtasks() {
-  let listArea = document.getElementById("subtaskList");
-  listArea.innerHTML = "";
-  for (i = 0; i < subtask.length; i++) {
-    listArea.innerHTML += /*html*/ `
-          <li id="subtaskListItem${i}" class="subtaskListItems flexContainer">
-            <div class="subtaskListItemsContainers flexContainer"><span class="sub-task-text-list" id="subTaskTextListItem${i}">${subtask[i].task}</span></div>
-              
-              <span id="singleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">
-                  <img id="editSubtaskIcon" class="hidden" onclick="editSubtaskItem(${i})" src="../database/images/edit.svg" alt="icon">
-                  <img id="binSubtaskIcon" class="hidden" onclick="deleteSubtaskItem(${i})" src="../database/images/delete.svg" alt="icon">
-              <span>
-          </li>
-      `;
-  }
-}
-
-
 /**
  * This fnction deletes specific subtask item
- * 
  * @param {number} i - index of subtask item
  */
 function deleteSubtaskItem(i) {
@@ -287,14 +178,12 @@ function deleteSubtaskItem(i) {
   renderSubtasks();
 }
 
-
 /**
  * This function clears subtask input field
  */
 function deleteSubtaskInputField() {
   document.getElementById("boardSubtasks").value = "";
 }
-
 
 /**
  * This function clears add task input field
@@ -314,10 +203,8 @@ function clearInputFields() {
   document.getElementById("subtaskList").innerHTML = "";
 }
 
-
 /**
  * This function edits subtask item
- * 
  * @param {number} i - index of subtask item
  */
 function editSubtaskItem(i) {
@@ -332,10 +219,8 @@ function editSubtaskItem(i) {
       `;
 }
 
-
 /**
  * This function sets edit mode on for subtask in edit view
- * 
  * @param {number} i - index of subtask item
  */
 function setSubtaskEditModeOn(i) {
@@ -344,10 +229,8 @@ function setSubtaskEditModeOn(i) {
     "1px solid black";
 }
 
-
 /**
  * This function sets edit mode on for subtask in edit view
- * 
  * @param {number} i - index of subtask item
  */
 function setSubtaskEditModeOff(i) {
@@ -355,10 +238,8 @@ function setSubtaskEditModeOff(i) {
   document.getElementById(`subtaskListItem${i}`).style.border = "none";
 }
 
-
 /**
  * This function stores edited subtask item in edit view
- * 
  * @param {number} x - index of task
  * @param {number} i - index of subtask item
  */
@@ -369,7 +250,6 @@ function storeEditedSubtaskItem(i) {
   setSubtaskEditModeOff(i);
   renderSubtasks();
 }
-
 
 /**
  * This function clears Add task input field
@@ -386,7 +266,6 @@ function cleanAddtaskArea() {
   clearSubtasks();
 }
 
-
 /**
  * This function cleras assigned to area
  */
@@ -398,7 +277,6 @@ function clearAssignedtoArea() {
   }
 }
 
-
 /**
  * This function cleras subtask area
  */
@@ -408,10 +286,8 @@ function clearSubtasks() {
   subtask = [];
 }
 
-
 /**
  * This function generetes initials of user names
- * 
  * @param {string} name - name if user
  * @returns             - initials of user
  */
@@ -422,10 +298,8 @@ function generateInitials(name) {
   return firstNameInitial + lastNameInitial;
 }
 
-
 /**
  * This function loads the task of whch data should be edited
- * 
  * @param {number} i - index of task 
  */
 function loadTaskDataToEdit(i) {
@@ -438,10 +312,8 @@ function loadTaskDataToEdit(i) {
   editAreaRenderSubtasks(i);
 }
 
-
 /**
  * This function stores the edited task data
- * 
  * @param {number} x - index of task to edit
  */
 function storeEditedTaskData(x) {
@@ -452,7 +324,6 @@ function storeEditedTaskData(x) {
   tasks[x].taskCategory = document.getElementById("editTaskCategory").value;
   tasks[x].assignedTo = editUpdateSelectedContacts();
 }
-
 
 /**
  * This function toggles the dropdown for assigend users in edit view
@@ -465,10 +336,8 @@ function editToggleDropdown() {
   }
 }
 
-
 /**
  * This function updates the selected contacts in edit view
- * 
  * @returns - selected contacts in edit view
  */
 function editUpdateSelectedContacts() {
@@ -482,10 +351,8 @@ function editUpdateSelectedContacts() {
   return selectedContacts;
 }
 
-
 /**
  * This function preselects assigend users in dropwdown iin edit view
- * 
  * @param {number} x - index of task
  */
 function editCheckBoxesForAssignedUsers(x) {
@@ -505,32 +372,8 @@ function editCheckBoxesForAssignedUsers(x) {
   }
 }
 
-
-/**
- * This function renders subtasks in edit view
- * 
- * @param {number} x - index of task for subtask
- */
-function editAreaRenderSubtasks(x) {
-  let listArea = document.getElementById("editSubtaskList");
-  listArea.innerHTML = "";
-  for (i = 0; i < tasks[x].subtask.length; i++) {
-    listArea.innerHTML += /*html*/ `
-        <li id="editSubtaskListItem${i}" class="subtaskListItems flexContainer">
-            <span class="sub-task-text-list" id="editSubTaskTextListItem${i}">${tasks[x].subtask[i].task}</span>
-            <span id="editSingleSubTaskButtons${i}" class="singleSubtaskButtons flexContainer">
-                  <img id="editSubtaskIcon" class="hidden" onclick="editAreaEditSubtaskItem(${x},${i})" src="../database/images/edit.svg" alt="icon">
-                  <img id="binSubtaskIcon" class="hidden" onclick="editAreaDeleteSubtaskItem(${x},${i})" src="../database/images/delete.svg" alt="icon">
-              <span>
-        </li>
-    `;
-  }
-}
-
-
 /**
  * This function deletes a subtask item in edit view
- * 
  * @param {number} x - index of task
  * @param {number} i . index of subtask item
  */
@@ -539,7 +382,6 @@ function editAreaDeleteSubtaskItem(x, i) {
   editAreaRenderSubtasks(x);
 }
 
-
 /**
  * This function deletes the subtask input field
  */
@@ -547,10 +389,8 @@ function editDeleteSubtaskInputField() {
   document.getElementById("subtaskInput").value = "";
 }
 
-
 /**
  * This function renders edit area for subtask in edit view
- * 
  * @param {number} x - index of task
  * @param {number} i - index of subtask item
  */
@@ -562,10 +402,8 @@ function editAreaEditSubtaskItem(x, i) {
     `;
 }
 
-
 /**
  * This function sets edit mode on for subtask in edit view
- * 
  * @param {number} i - index of subtask item
  */
 function editAreaSetSubtaskEditModeOn(i) {
@@ -575,10 +413,8 @@ function editAreaSetSubtaskEditModeOn(i) {
     "1px solid black";
 }
 
-
 /**
  * This function sets edit mode on for subtask in edit view
- * 
  * @param {number} i - index of subtask item
  */
 function editAreaSetSubtaskEditModeOff(i) {
@@ -587,11 +423,8 @@ function editAreaSetSubtaskEditModeOff(i) {
   document.getElementById(`editSubtaskListItem${i}`).style.border = "none";
 }
 
-
-
 /**
  * This function stores edited subtask item in edit view
- * 
  * @param {number} x - index of task
  * @param {number} i - index of subtask item
  */
@@ -603,10 +436,8 @@ function editAreaStoreEditedSubtaskItem(x, i) {
   editAreaRenderSubtasks(x);
 }
 
-
 /**
  * This function renders subtask in edit view
- * 
  * @param {number} x - index of task
  */
 function editAreaCreateSubtask(x) {
@@ -615,7 +446,6 @@ function editAreaCreateSubtask(x) {
   editAreaRenderSubtasks(x);
   editDeleteSubtaskInputField();
 }
-
 
 /**
  * This function clears the subtask input field
